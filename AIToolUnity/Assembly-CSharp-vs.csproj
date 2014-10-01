@@ -46,7 +46,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AI.cs" />
      <Compile Include="Assets\AILearningSim.cs" />
+     <Compile Include="Assets\NeuralNet.cs" />
+     <Compile Include="Assets\Neuron.cs" />
+     <Compile Include="Assets\NeuronLayer.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>G:/THIS IS WHAT WE CARE ABOUT/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>
