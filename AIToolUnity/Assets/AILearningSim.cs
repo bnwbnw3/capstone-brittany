@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets;
 
 public class AILearningSim : MonoBehaviour {
 
@@ -8,9 +9,13 @@ public class AILearningSim : MonoBehaviour {
 	public int minNumChoices = 2;
 	int[] choicesGiven;
 	int AiChoice;
+    int directionGiven;
 	int PlayerChoice;
+    Brain AIBrain;
+    
 	void Start () {
 		getRandomChoices ();
+        AIBrain = new Brain();
 	}
 	
 	// Update is called once per frame
@@ -20,7 +25,7 @@ public class AILearningSim : MonoBehaviour {
 
 	void OnGUI()
 	{
-		GUI.Label (new Rect (10, Screen.height - 600, 200, 100), "Please pick a number...\n But you should pick: " + AiChoice);
+		GUI.Label (new Rect (10, Screen.height - 600, 200, 100), "Please pick a number...\n But you should pick: " + directionGiven);
 
 		int size = 50;
 		int index = 0;
@@ -40,8 +45,11 @@ public class AILearningSim : MonoBehaviour {
 
 			if (GUI.Button (new Rect(x,y,size,size), ""+c))
 			{
+                AIBrain.checkUserChoice(c);
 				Debug.Log("Player Choice: " + c);
 				getRandomChoices();
+                directionGiven = AIBrain.getChoiceToDeliver(choicesGiven, AiChoice);
+                Debug.Log("AI tells you to pick:" + directionGiven + ", but actually wants you to pick: " + AiChoice);
 			}
 			index++;
 		}
@@ -57,7 +65,8 @@ public class AILearningSim : MonoBehaviour {
 			choicesGiven[i] = i+1;
 		}
 
-        //decide what AI says to do
-		AiChoice = choicesGiven [Random.Range(0, choicesGiven.Length)];
+        //decide what AI says to do 
+        AiChoice = choicesGiven[Random.Range(0, choicesGiven.Length)];
+        directionGiven = AiChoice;
 	}
 }
