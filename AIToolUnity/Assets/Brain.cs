@@ -3,42 +3,48 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Assets
-{
-    class Brain
+    [Serializable]
+    public class PlayerData
+    {
+        public int numOfInputs;
+        public int desired;
+        public int delivered;
+        public int picked;
+    }
+
+    [Serializable]
+    public class BrainData
+    {
+        public Dictionary<string, int> pastPatterns;
+        public List<PlayerData> pastActions;
+    }
+
+    public class Brain
     {
         public Dictionary<string, int> patternCount;
+        public List<PlayerData> playerActions;
         int[] inputs;
         int lastDesiredChoice;
         int lastChoiceToDeliver;
         int score;
 
-        public Brain()
+        public Brain(BrainData pastHistory)
         {
-            patternCount = new Dictionary<string, int>()
-            {
-                {"PicksGivenNum", 1},
-                {"TotalPickedAI", 0},
-                {"TotalNotPickedAI", 0}
-            };
+            patternCount = pastHistory.pastPatterns;
+            playerActions = pastHistory.pastActions;
             score = 0;
         }
 
         public void checkUserChoice(int userChoice)
         {
-            if (userChoice == lastChoiceToDeliver)
-            {
-                patternCount["PicksGivenNum"] += 1;
-            }
-            else
-            {
-                patternCount["PicksGivenNum"] += -1;
-            }
+            picksGivenNumCheck(userChoice);
+            picksSpecificNumCheck(userChoice);
 
             if (userChoice == lastDesiredChoice)
             {
                 score += 1;
             }
+            playerActions.Add( new PlayerData {numOfInputs = inputs.Length, desired = lastDesiredChoice, delivered = lastChoiceToDeliver, picked = userChoice });
         }
 
         public int getChoiceToDeliver(int[] inputsGiven, int desiredChoice)
@@ -56,45 +62,93 @@ namespace Assets
 
         private int checkForPatterns()
         {
-            int picksGivenNum = picksGivenNumPattern();
-            return picksGivenNum;
+            int final = -1;
+            int picksGivenNumR = picksGivenNumPattern();
+            int picksSpecificNumR = picksSpecificNumPattern();
+            final = picksSpecificNumR >= 1 ? picksSpecificNumR : picksGivenNumR;
+            return final;
         }
 
         private int picksGivenNumPattern()
         {
             int toReturn = -1;
-            if (Math.Abs(patternCount["PicksGivenNum"]) >= 5)
-            {
-                patternCount["PicksGivenNum"] = patternCount["PicksGivenNum"] > 0 ? 1 : -1;
-            }
+            resetPatternIfOver(5, "PicksGivenNum");
 
             toReturn = lastDesiredChoice;
             if (patternCount["PicksGivenNum"] < 0)
             {
                 while (toReturn == lastDesiredChoice)
                 {
-                    if (inputs.Length > 2)
-                    {
-                        toReturn = new Random().Next(1, inputs.Length + 1);
-                    }
-                    else
-                    {
-                        int index = lastDesiredChoice - 1 > 0 ? 0:1;
-                        toReturn = inputs[index];
-                    }
+                    toReturn = grabNextBestNumberDumb();
                 }
-                patternCount["TotalNotPickedAI"] += 1;
-            }
-            else
-            {
-                patternCount["TotalPickedAI"] += 1;
             }
             return toReturn;
         }
-
-        private void checkForPatterns(string fileName)
+        private void picksGivenNumCheck(int userChoice)
         {
-            //read in file and check for patterns with file instead of individual inputs
+            if (userChoice == lastChoiceToDeliver)
+            {
+                patternCount["PicksGivenNum"] += 1;
+                patternCount["TotalPickedAI"] += 1;
+            }
+            else
+            {
+                patternCount["PicksGivenNum"] += -1;
+                patternCount["TotalNotPickedAI"] += 1;
+            }
+        }
+
+        private int picksSpecificNumPattern()
+        {
+            int toReturn = -1;
+            if (patternCount["PicksSpecificNum"] > 2)
+            {
+                toReturn = playerActions[playerActions.Count - 1].picked;
+                bool nextPatternNumIsDesired = toReturn == lastDesiredChoice;
+
+                if (patternCount["PicksSpecificNum"] <= 4)
+                {
+                    if ((!nextPatternNumIsDesired && patternCount["PicksGivenNum"] > 0) || nextPatternNumIsDesired && patternCount["PicksGivenNum"] < 0)
+                    {
+                        toReturn = grabNextBestNumberDumb();
+                    }
+                }
+            }
+            resetPatternIfOver(6, "PicksSpecificNum");
+            return toReturn;
+        }
+        private void picksSpecificNumCheck(int userChoice)
+        {
+            if(playerActions.Count >= 1)
+            {
+                patternCount["PicksSpecificNum"] += (userChoice == playerActions[playerActions.Count - 1].picked) ? 1: -1;
+            }
+            patternCount["Picks" + userChoice] += 1;
+        }
+
+        private void resetPatternIfOver(int threshHold, string key)
+        {
+            if (Math.Abs(patternCount[key]) >= threshHold)
+            {
+                patternCount[key] = patternCount[key] > 0 ? 1 : -1;
+            }
+        }
+
+        private int grabNextBestNumberDumb()
+        {
+            int toReturn = -1;
+            while (toReturn == lastDesiredChoice)
+            {
+                if (inputs.Length > 2)
+                {
+                    toReturn = new Random().Next(1, inputs.Length + 1);
+                }
+                else
+                {
+                    int index = lastDesiredChoice - 1 > 0 ? 0 : 1;
+                    toReturn = inputs[index];
+                }
+            }
+            return toReturn;
         }
     }
-}
