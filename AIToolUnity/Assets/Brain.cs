@@ -154,4 +154,8 @@ using System.Text;
             }
             return toReturn;
         }
+        private int grabNextBestNumberSmart()
+        {
+            //use data of which numbers user likes to use to choose next best number to deliver.
+        }
     }
