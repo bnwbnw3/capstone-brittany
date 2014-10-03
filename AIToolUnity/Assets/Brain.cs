@@ -66,6 +66,11 @@ using System.Text;
             int picksGivenNumR = picksGivenNumPattern();
             int picksSpecificNumR = picksSpecificNumPattern();
             final = picksSpecificNumR >= 1 ? picksSpecificNumR : picksGivenNumR;
+            if (final == -1)
+            {
+                //something went wrong
+                int four = 1;
+            }
             return final;
         }
 
@@ -77,11 +82,9 @@ using System.Text;
             toReturn = lastDesiredChoice;
             if (patternCount["PicksGivenNum"] < 0)
             {
-                while (toReturn == lastDesiredChoice)
-                {
-                    toReturn = grabNextBestNumberDumb();
-                }
+                toReturn = grabNextBestNumberDumb();
             }
+
             return toReturn;
         }
         private void picksGivenNumCheck(int userChoice)
@@ -136,7 +139,7 @@ using System.Text;
 
         private int grabNextBestNumberDumb()
         {
-            int toReturn = -1;
+            int toReturn = lastDesiredChoice;
             while (toReturn == lastDesiredChoice)
             {
                 if (inputs.Length > 2)
