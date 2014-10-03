@@ -49,8 +49,9 @@
      <Compile Include="Assets\AI.cs" />
      <Compile Include="Assets\AILearningSim.cs" />
      <Compile Include="Assets\Brain.cs" />
-     <Compile Include="Assets\Neuron.cs" />
+     <Compile Include="Assets\GameControl.cs" />
      <Compile Include="Assets\old\NeuralNet.cs" />
+     <Compile Include="Assets\old\Neuron.cs" />
      <Compile Include="Assets\old\NeuronLayer.cs" />
      <Compile Include="Assets\old\NeuronTrainer.cs" />
  <Reference Include="UnityEngine.UI">
