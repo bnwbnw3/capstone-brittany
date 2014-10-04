@@ -4,8 +4,6 @@ using System.Collections;
 public class AILearningSim : MonoBehaviour {
 
 	// Use this for initialization
-	public int maxNumChoices = 5;
-	public int minNumChoices = 2;
 	int[] choicesGiven;
 	int AiChoice;
     int directionGiven;
@@ -63,12 +61,13 @@ public class AILearningSim : MonoBehaviour {
         if (GUI.Button(new Rect(10, Screen.height - 180, 100, 100), "Load"))
         {
             GameControl.control.Load(text + ".dat");
+            GameControl.control.gameReady = false;
         }
 	}
 
 	void getRandomChoices()
 	{
-		int randomL = Random.Range (minNumChoices, maxNumChoices);
+        int randomL = Random.Range(GameControl.control.minNumChoices, GameControl.control.maxNumChoices);
 		choicesGiven = new int[randomL];
 		
 		for(int i = 0; i< randomL; i++)
