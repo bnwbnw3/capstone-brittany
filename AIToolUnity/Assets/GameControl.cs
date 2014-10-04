@@ -7,9 +7,11 @@ using System.IO;
 
 public class GameControl : MonoBehaviour
 {
+    public int maxNumChoices = 3;
+    public int minNumChoices = 2;
     public static GameControl control;
     public Brain AIBrain;
-    public bool gameReady;
+    public bool gameReady = false;
 
     void Awake()
     {
