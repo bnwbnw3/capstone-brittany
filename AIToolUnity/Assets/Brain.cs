@@ -32,6 +32,7 @@ using System.Text;
         {
             patternCount = pastHistory.pastPatterns;
             playerActions = pastHistory.pastActions;
+            checkForKeys();
             score = 0;
         }
 
@@ -111,7 +112,11 @@ using System.Text;
 
                 if (patternCount["PicksSpecificNum"] <= 4)
                 {
-                    if ((!nextPatternNumIsDesired && patternCount["PicksGivenNum"] > 0) || nextPatternNumIsDesired && patternCount["PicksGivenNum"] < 0)
+                    if (!nextPatternNumIsDesired && patternCount["PicksGivenNum"] > 0) 
+                    {
+                        toReturn = -1;
+                    }   
+                    else if (nextPatternNumIsDesired && patternCount["PicksGivenNum"] < 0)
                     {
                         toReturn = grabNextBestNumberDumb();
                     }
@@ -148,14 +153,64 @@ using System.Text;
                 }
                 else
                 {
-                    int index = lastDesiredChoice - 1 > 0 ? 0 : 1;
-                    toReturn = inputs[index];
+                    toReturn = grabOppositeNumOutOfTwo();
                 }
             }
             return toReturn;
         }
-        private int grabNextBestNumberSmart()
+
+        //picks next best number that is not the lastDesiredNumber
+       /* private int grabNextBestNumberMostPicked()
         {
+            int toReturn = lastDesiredChoice;
             //use data of which numbers user likes to use to choose next best number to deliver.
+            if (inputs.Length < 2)
+            {
+                toReturn = grabOppositeNumOutOfTwo();
+            }
+            else
+            {
+                    int highestCount = 0;
+                    int highestIndex = -1;
+                    for(int i = 0; i < inputs.Length; i++)
+                    {
+                        if(highestCount < patternCount["Picks" + i] && i != toReturn)
+                        {
+                            highestIndex = i;
+                        }
+                    }
+                    toReturn = highestIndex;
+            }
+            return toReturn;
+        }*/
+
+        private int grabOppositeNumOutOfTwo()
+        {
+            int index = lastDesiredChoice - 1 > 0 ? 0 : 1;
+            return inputs[index];
+        }
+
+        private void checkForKeys()
+        {
+            addKeyToPatternCount("PicksGivenNum", 1);
+            addKeyToPatternCount("TotalPickedAI");
+            addKeyToPatternCount("TotalNotPickedAI");
+            addKeyToPatternCount("PicksSpecificNum");
+
+            //Be able to count how many times each input is chosen
+            for (int i = 0; i < GameControl.control.maxNumChoices; i++)
+            {
+                addKeyToPatternCount("Picks" + (i + 1));
+            }
+
+        }
+
+        //adds if doesn't exist
+        private void addKeyToPatternCount(string key, int initialCount = 0)
+        {
+             if (!patternCount.ContainsKey(key))
+            {
+                patternCount.Add(key, initialCount);
+            }
         }
     }
