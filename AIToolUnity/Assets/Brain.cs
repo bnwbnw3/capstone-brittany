@@ -17,27 +17,32 @@ using System.Text;
     {
         public Dictionary<string, int> pastPatterns;
         public SizedList<PlayerData> pastActions;
+        public int score;
+        public int totalPossible;
     }
 
     public class Brain
     {
-        public Dictionary<string, int> patternCount;
-        public SizedList<PlayerData> playerActions;
-        int[] inputs;
-        int lastDesiredChoice;
-        int lastChoiceToDeliver;
-        int score;
+       private Dictionary<string, int> patternCount;
+       private SizedList<PlayerData> playerActions;
+       private int[] inputs;
+       private int lastDesiredChoice;
+       private int lastChoiceToDeliver;
+       private int score;
+       private int totalPossible;
 
         public Brain(BrainData pastHistory)
         {
             patternCount = pastHistory.pastPatterns;
             playerActions = pastHistory.pastActions;
             checkForKeys();
-            score = 0;
+            score = pastHistory.score;
+            totalPossible = pastHistory.totalPossible;
         }
 
         public void checkUserChoice(int userChoice)
         {
+            totalPossible++;
             picksGivenNumCheck(userChoice);
             picksSpecificNumCheck(userChoice);
             picksDoubleBackNumCheck(userChoice);
@@ -258,5 +263,26 @@ using System.Text;
             {
                 patternCount.Add(key, initialCount);
             }
+        }
+
+
+        public Dictionary<string, int> getPatternCount()
+        {
+            return patternCount;
+        }
+
+        public SizedList<PlayerData> getPlayerActions()
+        {
+            return playerActions;
+        }
+
+        public int getScore()
+        {
+            return score;
+        }
+
+        public int getTotalPossible()
+        {
+            return totalPossible;
         }
     }
