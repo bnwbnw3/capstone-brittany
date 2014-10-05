@@ -67,7 +67,7 @@ public class AILearningSim : MonoBehaviour {
 
 	void getRandomChoices()
 	{
-        int randomL = Random.Range(GameControl.control.minNumChoices, GameControl.control.maxNumChoices);
+        int randomL = Random.Range(GameControl.control.minNumChoices, GameControl.control.maxNumChoices + 1);
 		choicesGiven = new int[randomL];
 		
 		for(int i = 0; i< randomL; i++)

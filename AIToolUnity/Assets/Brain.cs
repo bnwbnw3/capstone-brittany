@@ -146,7 +146,7 @@ using System.Text;
         private int picksDoubleBackNumPattern()
         {
             int toReturn = -1;
-            if (patternCount["PicksDoubleBackNum"] > 1)
+            if (patternCount["PicksDoubleBackNum"] > 0)
             {
                 int nextInPattern = playerActions[playerActions.Count - 2].picked;
                  bool nextPatternNumIsDesired = (nextInPattern == lastDesiredChoice);
@@ -158,19 +158,23 @@ using System.Text;
                          toReturn = nextInPattern;
                      }
                  }
-                 resetPatternIfOver(5, "PicksDoubleBackNum");
             }
+            resetPatternIfOver(5, "PicksDoubleBackNum");
             return toReturn;
         }
 
         private void picksDoubleBackNumCheck(int userChoice)
         {
-            if (playerActions.Count >= 4)
+            if (playerActions.Count >= 3)
             {
                 int pastPicked1 = playerActions[playerActions.Count - 3].picked;
                 int pastPicked2 = playerActions[playerActions.Count - 2].picked;
                 int pastPicked3 = playerActions[playerActions.Count - 1].picked;
                 patternCount["PicksDoubleBackNum"] += (pastPicked1 == pastPicked3 && pastPicked2 == userChoice) ? 1 : -1;
+                if (pastPicked1 != pastPicked3 && pastPicked2 != userChoice && patternCount["PicksDoubleBackNum"] > 0)
+                {
+                    patternCount["PicksDoubleBackNum"] = 0;
+                }
             }
         }
 
@@ -204,7 +208,7 @@ using System.Text;
         {
             int toReturn = lastDesiredChoice;
             //use data of which numbers user likes to use to choose next best number to deliver.
-            if (inputs.Length < 2)
+            if (inputs.Length <= 2)
             {
                 toReturn = grabOppositeNumOutOfTwo();
             }

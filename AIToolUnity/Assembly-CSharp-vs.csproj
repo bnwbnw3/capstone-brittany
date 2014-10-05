@@ -50,6 +50,7 @@
      <Compile Include="Assets\AILearningSim.cs" />
      <Compile Include="Assets\Brain.cs" />
      <Compile Include="Assets\GameControl.cs" />
+     <Compile Include="Assets\SizedList.cs" />
      <Compile Include="Assets\old\NeuralNet.cs" />
      <Compile Include="Assets\old\Neuron.cs" />
      <Compile Include="Assets\old\NeuronLayer.cs" />
