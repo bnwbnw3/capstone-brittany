@@ -29,18 +29,8 @@ public class GameControl : MonoBehaviour
 
     void Start()
     {
-        //this is where to load data if there is any
-        Dictionary<string, int> basePatterns = new Dictionary<string, int>()
-            {
-                {"PicksGivenNum", 1},
-                {"TotalPickedAI", 0},
-                {"TotalNotPickedAI", 0},
-                {"PicksSpecificNum",0},
-                {"Picks1",0},
-                {"Picks2",0},
-                {"Picks3",0}
-            };
-        BrainData bd = new BrainData() { pastPatterns = basePatterns, pastActions = new List<PlayerData>() };
+        //start with empty set. Use load to get in past data
+        BrainData bd = new BrainData() { pastPatterns = new Dictionary<string, int>(), pastActions = new List<PlayerData>() };
         AIBrain = new Brain(bd);
     }
 
