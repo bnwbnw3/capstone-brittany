@@ -46,6 +46,7 @@ using System.Text;
             picksGivenNumCheck(userChoice);
             picksSpecificNumCheck(userChoice);
             picksDoubleBackNumCheck(userChoice);
+            picksFarthestNumCheck(userChoice);
 
             if (userChoice == lastDesiredChoice)
             {
@@ -72,8 +73,13 @@ using System.Text;
             int final =  picksGivenNumPattern();
             int picksSpecificNumR = picksSpecificNumPattern();
             int picksDoubleBackNumR = picksDoubleBackNumPattern();
+            int picksFarthestNumR = picksFarthestNumPattern();
 
-            if (picksDoubleBackNumR != -1)
+            if (picksFarthestNumR != -1)
+            {
+                final = picksFarthestNumR;
+            }
+            else if (picksDoubleBackNumR != -1)
             {
                 final = picksDoubleBackNumR;
             }
@@ -136,7 +142,7 @@ using System.Text;
                     }
                 }
             }
-            resetPatternIfOver(6, "PicksSpecificNum");
+            resetPatternIfOver(6, "PicksSpecificNum", 3);
             return toReturn;
         }
         private void picksSpecificNumCheck(int userChoice)
@@ -183,11 +189,57 @@ using System.Text;
             }
         }
 
-        private void resetPatternIfOver(int threshHold, string key)
+        private int picksFarthestNumPattern()
+        {
+            int toReturn = -1;
+
+            if(patternCount["PicksFarthestNum"] > 2 && patternCount["PicksGivenNum"] < 0)
+            {
+                if (lastDesiredChoice == inputs[0])
+                {
+                    toReturn = inputs[inputs.Length - 1];
+                } 
+                else if (lastDesiredChoice == inputs[inputs.Length - 1])
+                {
+                    toReturn = inputs[0];
+                }
+                else
+                {
+                    if (inputs.Length % 2 != 0)
+                    {
+                       toReturn = (inputs.Length - 1) + 1;
+                    }
+                    else
+                    {
+                        toReturn = (inputs.Length - 1) / 2;
+                    }
+                    toReturn = toReturn != lastDesiredChoice ? toReturn : -1;
+                }
+            }
+            resetPatternIfOver(5, "PicksFarthestNum",3);
+            return toReturn;
+        }
+
+        private void picksFarthestNumCheck(int userChoice)
+        {
+            if (playerActions.Count > 2)
+            {
+                if (lastChoiceToDeliver == inputs[0])
+                {
+                    patternCount["PicksFarthestNum"] += (userChoice == inputs[inputs.Length - 1]) ? 1 : -1;
+                }
+                else if (lastChoiceToDeliver == inputs[inputs.Length - 1])
+                {
+                    patternCount["PicksFarthestNum"] += (userChoice == inputs[0]) ? 1 : -1;
+                }
+            }
+        }
+
+        private void resetPatternIfOver(int threshHold, string key, int restartPositive = 1, int restartNegative = -1)
         {
             if (Math.Abs(patternCount[key]) >= threshHold)
             {
-                patternCount[key] = patternCount[key] > 0 ? 1 : -1;
+                patternCount[key] = patternCount[key] > 0 ? restartPositive : restartNegative;
             }
         }
 
@@ -253,6 +305,7 @@ using System.Text;
             }
 
             addKeyToPatternCount("PicksDoubleBackNum");
+            addKeyToPatternCount("PicksFarthestNum");
 
         }
 
