@@ -40,6 +40,7 @@ using System.Text;
         {
             picksGivenNumCheck(userChoice);
             picksSpecificNumCheck(userChoice);
+            picksDoubleBackNumCheck(userChoice);
 
             if (userChoice == lastDesiredChoice)
             {
@@ -63,10 +64,18 @@ using System.Text;
 
         private int checkForPatterns()
         {
-            int final = -1;
-            int picksGivenNumR = picksGivenNumPattern();
+            int final =  picksGivenNumPattern();
             int picksSpecificNumR = picksSpecificNumPattern();
-            final = picksSpecificNumR >= 1 ? picksSpecificNumR : picksGivenNumR;
+            int picksDoubleBackNumR = picksDoubleBackNumPattern();
+
+            if (picksDoubleBackNumR != -1)
+            {
+                final = picksDoubleBackNumR;
+            }
+            else if (picksSpecificNumR != -1)
+            {
+                final = picksSpecificNumR;
+            }
             if (final == -1)
             {
                 //something went wrong
