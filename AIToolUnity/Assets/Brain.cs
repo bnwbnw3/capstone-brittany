@@ -83,7 +83,7 @@ using System.Text;
             toReturn = lastDesiredChoice;
             if (patternCount["PicksGivenNum"] < 0)
             {
-                toReturn = grabNextBestNumberDumb();
+                toReturn = grabNextBestNumberMostPicked();
             }
 
             return toReturn;
@@ -118,7 +118,7 @@ using System.Text;
                     }   
                     else if (nextPatternNumIsDesired && patternCount["PicksGivenNum"] < 0)
                     {
-                        toReturn = grabNextBestNumberDumb();
+                        toReturn = grabNextBestNumberMostPicked();
                     }
                 }
             }
@@ -160,7 +160,7 @@ using System.Text;
         }
 
         //picks next best number that is not the lastDesiredNumber
-       /* private int grabNextBestNumberMostPicked()
+        private int grabNextBestNumberMostPicked()
         {
             int toReturn = lastDesiredChoice;
             //use data of which numbers user likes to use to choose next best number to deliver.
@@ -172,7 +172,7 @@ using System.Text;
             {
                     int highestCount = 0;
                     int highestIndex = -1;
-                    for(int i = 0; i < inputs.Length; i++)
+                    for(int i = 1; i <= inputs.Length; i++)
                     {
                         if(highestCount < patternCount["Picks" + i] && i != toReturn)
                         {
@@ -182,7 +182,7 @@ using System.Text;
                     toReturn = highestIndex;
             }
             return toReturn;
-        }*/
+        }
 
         private int grabOppositeNumOutOfTwo()
         {
