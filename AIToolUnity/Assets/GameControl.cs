@@ -41,11 +41,15 @@ public class GameControl : MonoBehaviour
         FileStream file = File.Create(Application.persistentDataPath + "/" + fileName);
 
         BrainData data = new BrainData();
-        data.pastPatterns = AIBrain.patternCount;
-        data.pastActions = AIBrain.playerActions;
+        data.pastPatterns = AIBrain.getPatternCount();
+        data.pastActions = AIBrain.getPlayerActions();
+        data.score = AIBrain.getScore();
+        data.totalPossible = AIBrain.getTotalPossible();
 
         bf.Serialize(file, data);
-        Debug.Log("Saved data to: " + Application.persistentDataPath + "/" + fileName);
+        Debug.Log("Stats: AI scored: " +data.score + "/" + data.totalPossible 
+                + "  Grade = " + ((float)data.score / data.totalPossible) * 100
+                + "\n" + "Saved data to: " + Application.persistentDataPath + "/" + fileName);
         file.Close();
     }
 
