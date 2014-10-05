@@ -134,6 +134,37 @@ using System.Text;
             patternCount["Picks" + userChoice] += 1;
         }
 
+        private int picksDoubleBackNumPattern()
+        {
+            int toReturn = -1;
+            if (patternCount["PicksDoubleBackNum"] > 1)
+            {
+                int nextInPattern = playerActions[playerActions.Count - 2].picked;
+                 bool nextPatternNumIsDesired = (nextInPattern == lastDesiredChoice);
+
+                 if (!nextPatternNumIsDesired)
+                 {
+                     if(patternCount["PicksGivenNum"] < 0)
+                     {
+                         toReturn = nextInPattern;
+                     }
+                 }
+                 resetPatternIfOver(5, "PicksDoubleBackNum");
+            }
+            return toReturn;
+        }
+
+        private void picksDoubleBackNumCheck(int userChoice)
+        {
+            if (playerActions.Count >= 4)
+            {
+                int pastPicked1 = playerActions[playerActions.Count - 3].picked;
+                int pastPicked2 = playerActions[playerActions.Count - 2].picked;
+                int pastPicked3 = playerActions[playerActions.Count - 1].picked;
+                patternCount["PicksDoubleBackNum"] += (pastPicked1 == pastPicked3 && pastPicked2 == userChoice) ? 1 : -1;
+            }
+        }
+
         private void resetPatternIfOver(int threshHold, string key)
         {
             if (Math.Abs(patternCount[key]) >= threshHold)
@@ -202,6 +233,8 @@ using System.Text;
             {
                 addKeyToPatternCount("Picks" + (i + 1));
             }
+
+            addKeyToPatternCount("PicksDoubleBackNum");
 
         }
 
