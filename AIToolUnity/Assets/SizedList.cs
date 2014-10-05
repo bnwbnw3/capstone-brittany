@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Assets
-{
-    class SizedList<T> 
+    [Serializable]
+    public class SizedList<T> 
     {
         private T[] array;
         private int _size;
         private int currentSize;
 
-        SizedList(T typeForArray, int size)
+        public SizedList(int maxSize)
         {
-            T[] array = new T[size];
-            _size = size;
+            array = new T[maxSize];
+            _size = maxSize;
             currentSize = 0;
         }
         /// <summary>
@@ -34,7 +33,10 @@ namespace Assets
                 {
                     for (int i = 0; i < _size; i++)
                     {
-                        array[i] = array[i + 1];
+                        if (i < _size - 1)
+                        {
+                            array[i] = array[i + 1];
+                        }
                     }
                     array[_size - 1] = item;
                 }
@@ -57,7 +59,11 @@ namespace Assets
                 return array[index];
             }
         }
+
+        public int Count
+        {
+            get { return currentSize; }
+        }
     }
-}
 
 
