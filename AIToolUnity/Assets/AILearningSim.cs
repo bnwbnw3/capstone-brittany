@@ -21,7 +21,7 @@ public class AILearningSim : MonoBehaviour {
 
 	void OnGUI()
 	{
-        if (!GameControl.control.gameReady)
+        if (!GameControl.control.GameReady)
         {
             getNextDirection();
         }
@@ -46,7 +46,7 @@ public class AILearningSim : MonoBehaviour {
 
 			if (GUI.Button (new Rect(x,y,size,size), ""+c))
 			{
-                GameControl.control.AIBrain.checkUserChoice(c);
+                GameControl.control.AiBrain.checkUserChoice(c);
 				Debug.Log("Player Choice: " + c);
                 getNextDirection();
 			}
@@ -61,7 +61,7 @@ public class AILearningSim : MonoBehaviour {
         if (GUI.Button(new Rect(10, Screen.height - 180, 100, 100), "Load"))
         {
             GameControl.control.Load(text + ".dat");
-            GameControl.control.gameReady = false;
+            GameControl.control.GameReady = false;
         }
 	}
 
@@ -83,8 +83,8 @@ public class AILearningSim : MonoBehaviour {
     void getNextDirection()
     {
         getRandomChoices();
-        directionGiven = GameControl.control.AIBrain.getChoiceToDeliver(choicesGiven, AiChoice);
+        directionGiven = GameControl.control.AiBrain.getChoiceToDeliver(choicesGiven, AiChoice);
         Debug.Log("AI tells you to pick:" + directionGiven + ", but actually wants you to pick: " + AiChoice);
-        GameControl.control.gameReady = true;
+        GameControl.control.GameReady = true;
     }
 }

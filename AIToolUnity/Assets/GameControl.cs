@@ -10,8 +10,8 @@ public class GameControl : MonoBehaviour
     public int maxNumChoices = 3;
     public int minNumChoices = 2;
     public static GameControl control;
-    public Brain AIBrain;
-    public bool gameReady = false;
+    private Brain brain;
+    private bool gameReady = false;
 
     void Awake()
     {
@@ -32,7 +32,7 @@ public class GameControl : MonoBehaviour
         //start with empty set. Use load to get in past data
         SizedList<PlayerData> temp = new SizedList<PlayerData>(10);
         BrainData bd = new BrainData() { pastPatterns = new Dictionary<string, int>(), pastActions = temp };
-        AIBrain = new Brain(bd);
+        brain = new Brain(bd);
     }
 
     public void Save(string fileName)
@@ -41,10 +41,10 @@ public class GameControl : MonoBehaviour
         FileStream file = File.Create(Application.persistentDataPath + "/" + fileName);
 
         BrainData data = new BrainData();
-        data.pastPatterns = AIBrain.getPatternCount();
-        data.pastActions = AIBrain.getPlayerActions();
-        data.score = AIBrain.getScore();
-        data.totalPossible = AIBrain.getTotalPossible();
+        data.pastPatterns = brain.getPatternCount();
+        data.pastActions = brain.getPlayerActions();
+        data.score = brain.getScore();
+        data.totalPossible = brain.getTotalPossible();
 
         bf.Serialize(file, data);
         Debug.Log("Stats: AI scored: " +data.score + "/" + data.totalPossible 
@@ -63,7 +63,18 @@ public class GameControl : MonoBehaviour
             BrainData data = (BrainData)bf.Deserialize(file);
             file.Close();
             Debug.Log("Loaded data from: " + Application.persistentDataPath + "/" + fileName);
-            AIBrain = new Brain(data);
+            brain = new Brain(data);
         }
+    }
+
+    public Brain AiBrain
+    {
+        get { return brain; }
+    }
+
+    public bool GameReady
+    {
+        get { return gameReady; }
+        set { gameReady = value; }
     }
 }
