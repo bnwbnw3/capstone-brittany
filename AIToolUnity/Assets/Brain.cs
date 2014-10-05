@@ -278,6 +278,7 @@ using System.Text;
                         if(highestCount < patternCount["Picks" + i] && i != toReturn)
                         {
                             highestIndex = i;
+                            highestCount = patternCount["Picks" + i];
                         }
                     }
                     toReturn = highestIndex;
