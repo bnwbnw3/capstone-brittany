@@ -47,6 +47,8 @@ using System.Text;
             picksSpecificNumCheck(userChoice);
             picksDoubleBackNumCheck(userChoice);
             picksFarthestNumCheck(userChoice);
+            picksReccesionWrapNumCheck(userChoice);
+            picksSuccesionWrapNumCheck(userChoice);
 
             if (userChoice == lastDesiredChoice)
             {
@@ -74,8 +76,18 @@ using System.Text;
             int picksSpecificNumR = picksSpecificNumPattern();
             int picksDoubleBackNumR = picksDoubleBackNumPattern();
             int picksFarthestNumR = picksFarthestNumPattern();
+            int picksSuccesionWrapNumR = picksSuccesionWrapNumPattern();
+            int picksReccesionWrapNumR = picksReccesionWrapNumPattern();
 
-            if (picksFarthestNumR != -1)
+            if (picksSuccesionWrapNumR != -1)
+            {
+                final = picksSuccesionWrapNumR;
+            }
+            else if (picksReccesionWrapNumR != -1)
+            {
+                final = picksReccesionWrapNumR;
+            }
+            else if (picksFarthestNumR != -1)
             {
                 final = picksFarthestNumR;
             }
@@ -173,7 +185,6 @@ using System.Text;
             resetPatternIfOver(5, "PicksDoubleBackNum");
             return toReturn;
         }
-
         private void picksDoubleBackNumCheck(int userChoice)
         {
             if (playerActions.Count >= 3)
@@ -219,7 +230,6 @@ using System.Text;
             resetPatternIfOver(5, "PicksFarthestNum",3);
             return toReturn;
         }
-
         private void picksFarthestNumCheck(int userChoice)
         {
             if (playerActions.Count > 2)
@@ -232,6 +242,62 @@ using System.Text;
                 {
                     patternCount["PicksFarthestNum"] += (userChoice == inputs[0]) ? 1 : -1;
                 }
+            }
+        }
+
+        private int picksSuccesionWrapNumPattern()
+        {
+           int toReturn = -1;
+            if(patternCount["PicksSuccesionWrapNum"] > 0 && patternCount["PicksGivenNum"] < 0)
+            {
+                toReturn = (lastDesiredChoice -1);
+                toReturn = toReturn >= inputs[0] ? toReturn : inputs[inputs.Length - 1];
+            }
+            resetPatternIfOver(4, "PicksSuccesionWrapNum");
+            return toReturn;
+        }
+        private void picksSuccesionWrapNumCheck(int userChoice)
+        {
+            int checkAt = 3;
+            if (playerActions.Count >= checkAt)
+            {
+                bool pickedPlusOne = true;
+                for (int i = checkAt; i > 0 && pickedPlusOne; i--)
+                {
+                    PlayerData current = playerActions.Get(playerActions.Count - i);
+                    int shouldBe = (current.delivered + 1);
+                    shouldBe = shouldBe <= inputs[inputs.Length-1] ? shouldBe : inputs[0];
+                    pickedPlusOne = current.picked == shouldBe;
+                }
+                patternCount["PicksSuccesionWrapNum"] += pickedPlusOne? 1 : -1;
+            }
+        }
+
+        private int picksReccesionWrapNumPattern()
+        {
+            int toReturn = -1;
+            if (patternCount["PicksReccesionWrapNum"] > 0 && patternCount["PicksGivenNum"] < 0)
+            {
+                toReturn = (lastDesiredChoice + 1);
+                toReturn = toReturn <= inputs[inputs.Length-1] ? toReturn : inputs[0] ;
+            }
+            resetPatternIfOver(4, "PicksReccesionWrapNum");
+            return toReturn;
+        }
+        private void picksReccesionWrapNumCheck(int userChoice)
+        {
+            int checkAt = 3;
+            if (playerActions.Count >= checkAt)
+            {
+                bool pickedPlusOne = true;
+                for (int i = checkAt; i > 0 && pickedPlusOne; i--)
+                {
+                    PlayerData current = playerActions.Get(playerActions.Count - i);
+                    int shouldBe = (current.delivered - 1);
+                    shouldBe = shouldBe >= inputs[0] ? shouldBe :inputs[inputs.Length-1];
+                    pickedPlusOne = current.picked == shouldBe;
+                }
+                patternCount["PicksReccesionWrapNum"] += pickedPlusOne ? 1 : -1;
             }
         }
 
@@ -307,7 +373,8 @@ using System.Text;
 
             addKeyToPatternCount("PicksDoubleBackNum");
             addKeyToPatternCount("PicksFarthestNum");
-
+            addKeyToPatternCount("PicksSuccesionWrapNum");
+            addKeyToPatternCount("PicksReccesionWrapNum");
         }
 
         //adds if doesn't exist
@@ -319,24 +386,22 @@ using System.Text;
             }
         }
 
-
+        //Get-ers
         public Dictionary<string, int> getPatternCount()
         {
             return patternCount;
         }
-
         public SizedList<PlayerData> getPlayerActions()
         {
             return playerActions;
         }
-
         public int getScore()
         {
             return score;
         }
-
         public int getTotalPossible()
         {
             return totalPossible;
         }
     }
+    
