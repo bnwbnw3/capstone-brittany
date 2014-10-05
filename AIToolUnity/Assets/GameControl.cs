@@ -30,7 +30,8 @@ public class GameControl : MonoBehaviour
     void Start()
     {
         //start with empty set. Use load to get in past data
-        BrainData bd = new BrainData() { pastPatterns = new Dictionary<string, int>(), pastActions = new List<PlayerData>() };
+        SizedList<PlayerData> temp = new SizedList<PlayerData>(10);
+        BrainData bd = new BrainData() { pastPatterns = new Dictionary<string, int>(), pastActions = temp };
         AIBrain = new Brain(bd);
     }
 

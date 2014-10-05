@@ -16,13 +16,13 @@ using System.Text;
     public class BrainData
     {
         public Dictionary<string, int> pastPatterns;
-        public List<PlayerData> pastActions;
+        public SizedList<PlayerData> pastActions;
     }
 
     public class Brain
     {
         public Dictionary<string, int> patternCount;
-        public List<PlayerData> playerActions;
+        public SizedList<PlayerData> playerActions;
         int[] inputs;
         int lastDesiredChoice;
         int lastChoiceToDeliver;
@@ -116,7 +116,7 @@ using System.Text;
             int toReturn = -1;
             if (patternCount["PicksSpecificNum"] > 2)
             {
-                toReturn = playerActions[playerActions.Count - 1].picked;
+                toReturn = playerActions.Get(playerActions.Count - 1).picked;
                 bool nextPatternNumIsDesired = toReturn == lastDesiredChoice;
 
                 if (patternCount["PicksSpecificNum"] <= 4)
@@ -138,7 +138,7 @@ using System.Text;
         {
             if(playerActions.Count >= 1)
             {
-                patternCount["PicksSpecificNum"] += (userChoice == playerActions[playerActions.Count - 1].picked) ? 1: -1;
+                patternCount["PicksSpecificNum"] += (userChoice == playerActions.Get(playerActions.Count - 1).picked) ? 1: -1;
             }
             patternCount["Picks" + userChoice] += 1;
         }
@@ -148,7 +148,7 @@ using System.Text;
             int toReturn = -1;
             if (patternCount["PicksDoubleBackNum"] > 0)
             {
-                int nextInPattern = playerActions[playerActions.Count - 2].picked;
+                int nextInPattern = playerActions.Get(playerActions.Count - 2).picked;
                  bool nextPatternNumIsDesired = (nextInPattern == lastDesiredChoice);
 
                  if (!nextPatternNumIsDesired)
@@ -167,9 +167,9 @@ using System.Text;
         {
             if (playerActions.Count >= 3)
             {
-                int pastPicked1 = playerActions[playerActions.Count - 3].picked;
-                int pastPicked2 = playerActions[playerActions.Count - 2].picked;
-                int pastPicked3 = playerActions[playerActions.Count - 1].picked;
+                int pastPicked1 = playerActions.Get(playerActions.Count - 3).picked;
+                int pastPicked2 = playerActions.Get(playerActions.Count - 2).picked;
+                int pastPicked3 = playerActions.Get(playerActions.Count - 1).picked;
                 patternCount["PicksDoubleBackNum"] += (pastPicked1 == pastPicked3 && pastPicked2 == userChoice) ? 1 : -1;
                 if (pastPicked1 != pastPicked3 && pastPicked2 != userChoice && patternCount["PicksDoubleBackNum"] > 0)
                 {
