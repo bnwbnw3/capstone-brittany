@@ -118,7 +118,6 @@ public class GameControl : MonoBehaviour
             AIData data = (AIData)bf.Deserialize(file);
             file.Close();
             Debug.Log("Loaded data from: " + Application.persistentDataPath + "/" + fileName);
-            Brain newBrain = new Brain(data.brain);
             ai = new AI(maze, new Neutrality(data.neutrality), new Brain(data.brain), mazeEndIndexs);
         }
     }
