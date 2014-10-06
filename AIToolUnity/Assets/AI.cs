@@ -1,34 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public class AI
 {
        private Neutrality _neutrality;
        private Graph _maze;
        private Brain _brain;
+       private Dictionary<NeutralityTypes, int> _mazeEndIndexs;
+       private PathWayFinder pf;
 
-       int AiChoice;
-       int directionGiven;
-       int PlayerChoice;
+      public int AiChoice;
+      public int AiDesiredEndIndex;
+      public int directionGiven;
 
-        public AI(Graph maze, Neutrality starting, Brain brain)
+        public AI(Graph maze, Neutrality starting, Brain brain, Dictionary<NeutralityTypes, int> mazeEndIndexs)
         {
             _maze = maze;
             _neutrality = starting;
             _brain = brain;
+            _mazeEndIndexs = mazeEndIndexs;
+            int lowestEndIndex = mazeEndIndexs.OrderBy(k => k.Value).FirstOrDefault().Value;
+            pf = new PathWayFinder(_maze,lowestEndIndex);
+            AiChoice = 0;
+            directionGiven = 0;
+            AiDesiredEndIndex = _mazeEndIndexs[_neutrality.getState()];
         }
 
         public int DeliverDirection()
         {
-            //get desired node from maze/nodes from game
-            //check players position in maze and use info to deliever new directions
-            return -1;
+            return directionGiven;
         }
 
-       public void informOfPick(int userChoice)
+       public void informOfPick(int userChoice, int[] inputs)
        {
            _brain.checkUserChoice(userChoice);
-           //update Ai's knowledge of where the player is
+           AiChoice = pf.getNextDesiredInput(userChoice, AiDesiredEndIndex).input;
+           directionGiven = _brain.getChoiceToDeliver(inputs, AiChoice);
+           if (pf.isEndOfPath())
+           {
+               pf.resetDesiredInputs();
+               //UPDATE NEUTRALITY
+               int endIndexWas = pf.findVertexAt(userChoice);
+
+               //set new neutrality after effects from last game
+               AiDesiredEndIndex = _mazeEndIndexs[_neutrality.getState()];
+           }
        }
 
        public Brain getBrain()
