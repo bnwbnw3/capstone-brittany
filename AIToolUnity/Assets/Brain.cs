@@ -366,9 +366,9 @@ using System.Text;
             addKeyToPatternCount("PicksSpecificNum");
 
             //Be able to count how many times each input is chosen
-            for (int i = 0; i < GameControl.control.maxNumChoices; i++)
+            for (int i = 0; i <= GameControl.control.maxNumChoices; i++)
             {
-                addKeyToPatternCount("Picks" + (i + 1));
+                addKeyToPatternCount("Picks" + (i));
             }
 
             addKeyToPatternCount("PicksDoubleBackNum");
