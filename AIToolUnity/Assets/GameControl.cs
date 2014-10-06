@@ -49,6 +49,11 @@ public class GameControl : MonoBehaviour
 
     void createMaze()
     {
+        testMazeGraph1();
+    }
+
+    void testMazeGraph1()
+    {
         maze = new Graph(12);
         maze.addEdge(0, 1, 1);
         maze.addEdge(0, 2, 1);
