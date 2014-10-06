@@ -48,9 +48,14 @@
   <ItemGroup>
      <Compile Include="Assets\AI.cs" />
      <Compile Include="Assets\AILearningSim.cs" />
+     <Compile Include="Assets\BfsGraphTraversal.cs" />
      <Compile Include="Assets\Brain.cs" />
+     <Compile Include="Assets\DfsGraphTraversal.cs" />
      <Compile Include="Assets\GameControl.cs" />
+     <Compile Include="Assets\Graph.cs" />
+     <Compile Include="Assets\PathWayFinder.cs" />
      <Compile Include="Assets\SizedList.cs" />
+     <Compile Include="Assets\TopologicalSort.cs" />
      <Compile Include="Assets\old\NeuralNet.cs" />
      <Compile Include="Assets\old\Neuron.cs" />
      <Compile Include="Assets\old\NeuronLayer.cs" />

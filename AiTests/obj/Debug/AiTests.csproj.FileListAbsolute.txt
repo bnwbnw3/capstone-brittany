@@ -1,0 +1,9 @@
+C:\Users\bwaite\Documents\College\CapstoneProject\AiTests\obj\Debug\AiTests.csprojResolveAssemblyReference.cache
+C:\Users\bwaite\Documents\College\CapstoneProject\AiTests\bin\Debug\AiTests.dll
+C:\Users\bwaite\Documents\College\CapstoneProject\AiTests\bin\Debug\AiTests.pdb
+C:\Users\bwaite\Documents\College\CapstoneProject\AiTests\bin\Debug\Assembly-CSharp.dll
+C:\Users\bwaite\Documents\College\CapstoneProject\AiTests\bin\Debug\UnityEngine.dll
+C:\Users\bwaite\Documents\College\CapstoneProject\AiTests\bin\Debug\Assembly-CSharp.pdb
+C:\Users\bwaite\Documents\College\CapstoneProject\AiTests\bin\Debug\UnityEngine.xml
+C:\Users\bwaite\Documents\College\CapstoneProject\AiTests\obj\Debug\AiTests.dll
+C:\Users\bwaite\Documents\College\CapstoneProject\AiTests\obj\Debug\AiTests.pdb
