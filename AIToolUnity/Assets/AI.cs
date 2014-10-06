@@ -10,9 +10,10 @@ public class AI
        private Dictionary<NeutralityTypes, int> _mazeEndIndexs;
        private PathWayFinder pf;
 
-      public int AiChoice;
-      public int AiDesiredEndIndex;
-      public int directionGiven;
+      private int AiCurrentDesire;
+      private int AiDesiredEndIndex;
+      private int directionGiven;
+      private int inputsAvalible;
 
         public AI(Graph maze, Neutrality starting, Brain brain, Dictionary<NeutralityTypes, int> mazeEndIndexs)
         {
@@ -22,30 +23,53 @@ public class AI
             _mazeEndIndexs = mazeEndIndexs;
             int lowestEndIndex = mazeEndIndexs.OrderBy(k => k.Value).FirstOrDefault().Value;
             pf = new PathWayFinder(_maze,lowestEndIndex);
-            AiChoice = 0;
+            AiCurrentDesire = 0;
             directionGiven = 0;
             AiDesiredEndIndex = _mazeEndIndexs[_neutrality.getState()];
+            int numInputs = pf.getNumPossibleInputs(0);
+            int[] inputs = new int[numInputs];
+            for (int i = 0; i < numInputs; i++)
+            {
+                inputs[i] = i + 1;
+            }
+            informOfPick(0, inputs);
         }
 
-        public int DeliverDirection()
+        public int getDirection()
         {
             return directionGiven;
+        }
+        public int getAiCurrentDesire()
+        {
+            return AiCurrentDesire;
+        }
+        public int getSizeOfInputs()
+        {
+            return inputsAvalible;
         }
 
        public void informOfPick(int userChoice, int[] inputs)
        {
-           _brain.checkUserChoice(userChoice);
-           AiChoice = pf.getNextDesiredInput(userChoice, AiDesiredEndIndex).input;
-           directionGiven = _brain.getChoiceToDeliver(inputs, AiChoice);
-           if (pf.isEndOfPath())
+           if (userChoice != 0)
            {
-               pf.resetDesiredInputs();
+               _brain.checkUserChoice(userChoice);
+           }
+           AiCurrentDesire = pf.getNextDesiredInput(userChoice, AiDesiredEndIndex).input;
+
+           while(pf.isEndOfPath())
+           {
+               pf.reset();
                //UPDATE NEUTRALITY
-               int endIndexWas = pf.findVertexAt(userChoice);
+               int endIndexWas = pf.endIndex;
 
                //set new neutrality after effects from last game
                AiDesiredEndIndex = _mazeEndIndexs[_neutrality.getState()];
+               AiCurrentDesire = pf.getNextDesiredInput(0, AiDesiredEndIndex).input;
            }
+
+            inputsAvalible = pf.getNumPossibleInputs();
+           directionGiven = _brain.getChoiceToDeliver(inputs, AiCurrentDesire);
+           
        }
 
        public Brain getBrain()
