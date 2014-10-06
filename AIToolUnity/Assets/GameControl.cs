@@ -81,6 +81,11 @@ public class GameControl : MonoBehaviour
         mazeEndIndexs[NeutralityTypes.Heavenly] = 11;
     }
 
+    void testMazeGraph2()
+    {
+        maze = new Graph(25);
+    }
+
     public void Save(string fileName)
     {
         BinaryFormatter bf = new BinaryFormatter();
