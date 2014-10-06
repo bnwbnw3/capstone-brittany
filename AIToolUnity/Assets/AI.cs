@@ -13,7 +13,7 @@ public class AI
       private int AiCurrentDesire;
       private int AiDesiredEndIndex;
       private int directionGiven;
-      private int inputsAvalible;
+      private int[] inputsAvalible;
 
         public AI(Graph maze, Neutrality starting, Brain brain, Dictionary<NeutralityTypes, int> mazeEndIndexs)
         {
@@ -32,7 +32,7 @@ public class AI
             {
                 inputs[i] = i + 1;
             }
-            informOfPick(0, inputs);
+            informOfPick(0);
         }
 
         public int getDirection()
@@ -43,12 +43,12 @@ public class AI
         {
             return AiCurrentDesire;
         }
-        public int getSizeOfInputs()
+        public int[] getNextInputsFromGraph()
         {
             return inputsAvalible;
         }
 
-       public void informOfPick(int userChoice, int[] inputs)
+       public void informOfPick(int userChoice)
        {
            if (userChoice != 0)
            {
@@ -56,7 +56,16 @@ public class AI
            }
            AiCurrentDesire = pf.getNextDesiredInput(userChoice, AiDesiredEndIndex).input;
 
-           while(pf.isEndOfPath())
+           findNewPathIfReachedAnEnd();
+           getNextInputsFromCurrentGraphPosition();
+           
+           directionGiven = _brain.getChoiceToDeliver(inputsAvalible, AiCurrentDesire);
+           
+       }
+
+    public void findNewPathIfReachedAnEnd()
+    {
+        while(pf.isEndOfPath())
            {
                pf.reset();
                //UPDATE NEUTRALITY
@@ -66,11 +75,16 @@ public class AI
                AiDesiredEndIndex = _mazeEndIndexs[_neutrality.getState()];
                AiCurrentDesire = pf.getNextDesiredInput(0, AiDesiredEndIndex).input;
            }
+    }
 
-            inputsAvalible = pf.getNumPossibleInputs();
-           directionGiven = _brain.getChoiceToDeliver(inputs, AiCurrentDesire);
-           
-       }
+    public void getNextInputsFromCurrentGraphPosition()
+    {
+        inputsAvalible = new int[pf.getNumPossibleInputs()];
+        for (int i = 0; i < inputsAvalible.Length; i++)
+        {
+            inputsAvalible[i] = i + 1;
+        }
+    }
 
        public Brain getBrain()
        {
