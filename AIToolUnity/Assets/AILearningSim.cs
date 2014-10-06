@@ -44,7 +44,10 @@ public class AILearningSim : MonoBehaviour {
 			int y = height + yIndex * spacePerButton;
 			int x = xIndex * spacePerButton;
 
-			if (GUI.Button (new Rect(x,y,size,size), ""+c))
+            string msg = ""+c;
+            msg = (c == directionGiven) ? "Pick\nMe!" : "NO!";
+
+            if (GUI.Button(new Rect(x, y, size, size), msg))
 			{
                 GameControl.control.AiBrain.checkUserChoice(c);
 				Debug.Log("Player Choice: " + c);
