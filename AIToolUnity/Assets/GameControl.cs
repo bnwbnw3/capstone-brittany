@@ -49,9 +49,9 @@ public class GameControl : MonoBehaviour
 
     void createMaze()
     {
-        //testMazeGraph1();
+        testMazeGraph1();
         //testMazeGraph2();
-        testMazeGraph3();
+        //testMazeGraph3();
     }
 
     void testMazeGraph1()
