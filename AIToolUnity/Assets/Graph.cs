@@ -61,7 +61,7 @@ public class Graph
         return neighbors;
     }
 
-    public void addEdge(int vertex, int neighbor, int weight)
+    public void addEdge(int vertex, int neighbor, int weight = 1)
     {
         //if adding weight 0, complain
         if ((vertex >= 0 && vertex < matrix.Length) && (neighbor >= 0 && neighbor < matrix.Length))
