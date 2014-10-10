@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Node : MonoBehaviour {
 
     public List<Node> Edges_Connections;
+    public List<Node> extraCloseNodesOnTrigger;
     public Material openDoorMaterial;
     public Material closedDoorMaterial;
     private int index;
@@ -37,12 +38,25 @@ public class Node : MonoBehaviour {
 
     public void OnTriggerEnter(Collider c)
     {
-        renderer.material = closedDoorMaterial;
-        collider.isTrigger = false;
+        if (collider.isTrigger)
+        {
+            renderer.material = closedDoorMaterial;
+            collider.isTrigger = false;
+            for (int i = 0; i < extraCloseNodesOnTrigger.Count; i++)
+            {
+                extraCloseNodesOnTrigger[i].renderer.material = extraCloseNodesOnTrigger[i].closedDoorMaterial;
+                extraCloseNodesOnTrigger[i].collider.isTrigger = false;
+            }
+        }
     }
     public int getIndexFromNodeManager()
     {
         return index;
+    }
+    public void resetBackToNodeTrigger()
+    {
+        renderer.material = openDoorMaterial;
+        collider.isTrigger = true;
     }
 }
 
