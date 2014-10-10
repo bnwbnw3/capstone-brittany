@@ -3,10 +3,11 @@ using System.Collections;
 
 public class MovementSoundManager : MonoBehaviour {
     private bool walking = false;
+    [ReadOnly]public Vector3 startingPosition;
 	// Use this for initialization
 	void Start () 
     {
-	
+        startingPosition = transform.position;
 	}
 	
 	// Update is called once per frame

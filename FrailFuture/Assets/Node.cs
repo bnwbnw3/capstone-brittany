@@ -42,21 +42,19 @@ public class Node : MonoBehaviour {
         {
             renderer.material = closedDoorMaterial;
             collider.isTrigger = false;
-            for (int i = 0; i < extraCloseNodesOnTrigger.Count; i++)
-            {
-                extraCloseNodesOnTrigger[i].renderer.material = extraCloseNodesOnTrigger[i].closedDoorMaterial;
-                extraCloseNodesOnTrigger[i].collider.isTrigger = false;
-            }
+            
         }
     }
     public int getIndexFromNodeManager()
     {
         return index;
     }
-    public void resetBackToNodeTrigger()
+    public void reset()
     {
         renderer.material = openDoorMaterial;
         collider.isTrigger = true;
+
+        this.BroadcastMessage("reset");
     }
 }
 

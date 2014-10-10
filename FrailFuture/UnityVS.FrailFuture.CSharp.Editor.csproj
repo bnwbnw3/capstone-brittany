@@ -112,7 +112,6 @@
     <Compile Include="Assets\ProCore\Prototype\Editor\ProBuilderMenuItems.cs" />
     <Compile Include="Assets\ProCore\Prototype\Editor\pb_Preferences.cs" />
     <Compile Include="Assets\ProCore\Shared\About\Editor\pc_AboutWindow.cs" />
-    <None Include="Assets\FootstepsSoundsCarpetPack\FootstepsSoundsCarpetPackInfo.txt" />
     <None Include="Assets\ProCore\Prototype\About\changelog.txt" />
     <None Include="Assets\ProCore\Prototype\About\Credits.txt" />
     <None Include="Assets\ProCore\Prototype\About\pc_AboutEntry_ProBuilder.txt" />
@@ -123,6 +122,7 @@
     <None Include="Assets\ProCore\Prototype\Shader\UnlitColor-Overlay.shader" />
     <None Include="Assets\ProCore\Prototype\Shader\VertexBillboard.shader" />
     <None Include="Assets\ProCore\Shared\About\README.txt" />
+    <None Include="Assets\Sounds\FootstepsSoundsCarpetPack\FootstepsSoundsCarpetPackInfo.txt" />
     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
     <None Include="Assets\ProCore\Prototype\Editor\ProBuilderEditor.dll" />
     <None Include="Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll" />

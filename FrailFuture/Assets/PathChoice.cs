@@ -31,7 +31,7 @@ public class PathChoice : MonoBehaviour
             collider.isTrigger = false;
         }
     }
-    public void resetBackToPathTrigger()
+    public void reset()
     {
         renderer.material = openDoorMaterial;
         collider.isTrigger = true;

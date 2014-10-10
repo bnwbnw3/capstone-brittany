@@ -32,4 +32,12 @@ public class NodeManager : MonoBehaviour
     {
 	
 	}
+
+    public void resetAllNodes()
+    {
+        for (int i = 0; i < AllNodes.Count; i++)
+        {
+            AllNodes[i].reset();
+        }
+    }
 }
