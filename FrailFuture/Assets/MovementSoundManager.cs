@@ -2,14 +2,15 @@
 using System.Collections;
 
 public class MovementSoundManager : MonoBehaviour {
-    private bool walking = false;
-    [ReadOnly]public Vector3 startingPosition;
 	// Use this for initialization
-	void Start () 
+    void Awake()
     {
-        startingPosition = transform.position;
-	}
-	
+        if (GameControl.control.canSetPlayerStartingTransform)
+        {
+            GameControl.control.setPlayerStartingTransform(transform.position, transform.eulerAngles, transform.localScale);
+        }
+    }
+    void Start() { }
 	// Update is called once per frame
 	void Update () 
     {
@@ -25,12 +26,10 @@ public class MovementSoundManager : MonoBehaviour {
         if ((WDown || ADown || SDown || DDown) && !audio.isPlaying)
         {
             SoundManager.soundManager.playWalkSound(audio);
-            walking = true;
         }
         else if (!WHeld && !AHeld && !SHeld && !DHeld)
         {
             SoundManager.soundManager.stopWalkSound(audio);
-            walking = false;
         }
 	}
 }

@@ -15,8 +15,13 @@ public class ResetButton : MonoBehaviour {
 
     public void OnTriggerEnter(Collider c)
     {
-       var MSM = c.gameObject.GetComponent<MovementSoundManager>();
-       c.transform.position = MSM.startingPosition;
-       NodeManager.nodeManager.resetAllNodes();
+        if (c.tag == "Player")
+        {
+            StartingPlayerVariables spv = GameControl.control.getPlayerStartingTransform();
+            c.transform.position = spv.pos;
+            c.transform.localScale = spv.scale;
+            c.transform.eulerAngles = spv.eulerAngles;
+            NodeManager.nodeManager.resetAllNodes();
+        }
     }
 }

@@ -72,12 +72,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\AI.cs" />
+    <Compile Include="Assets\AILearningSim.cs" />
+    <Compile Include="Assets\Brain.cs" />
+    <Compile Include="Assets\GUINode.cs" />
+    <Compile Include="Assets\GameControl.cs" />
+    <Compile Include="Assets\Graph.cs" />
     <Compile Include="Assets\MovementSoundManager.cs" />
-    <Compile Include="Assets\Node.cs" />
     <Compile Include="Assets\NodeManager.cs" />
     <Compile Include="Assets\PathChoice.cs" />
+    <Compile Include="Assets\PathWayFinder.cs" />
     <Compile Include="Assets\ProCore\Prototype\Scripts\RebuildMeshOnWake.cs" />
     <Compile Include="Assets\ResetButton.cs" />
+    <Compile Include="Assets\SizedList.cs" />
     <Compile Include="Assets\SoundManager.cs" />
     <None Include="Assets\ProCore\Prototype\About\changelog.txt" />
     <None Include="Assets\ProCore\Prototype\About\Credits.txt" />

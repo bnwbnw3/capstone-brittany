@@ -7,7 +7,6 @@ public class PathChoice : MonoBehaviour
     public Material openDoorMaterial;
     public Material closedDoorMaterial;
     public int pathNum;
-    private int index;
 
     void Awake()
     {
@@ -31,7 +30,7 @@ public class PathChoice : MonoBehaviour
             collider.isTrigger = false;
         }
     }
-    public void reset()
+    public void resetPath()
     {
         renderer.material = openDoorMaterial;
         collider.isTrigger = true;

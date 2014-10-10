@@ -6,7 +6,7 @@ public class NodeManager : MonoBehaviour
 
     //0 = start node
     //last = very last end node
-    public List<Node> AllNodes;
+    public List<GUINode> AllNodes;
     public static NodeManager nodeManager;
 	// Use this for initialization
     void Awake()
@@ -37,7 +37,7 @@ public class NodeManager : MonoBehaviour
     {
         for (int i = 0; i < AllNodes.Count; i++)
         {
-            AllNodes[i].reset();
+            AllNodes[i].resetGUINode();
         }
     }
 }
