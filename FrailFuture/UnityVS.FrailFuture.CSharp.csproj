@@ -72,9 +72,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\MovementSoundManager.cs" />
     <Compile Include="Assets\Node.cs" />
     <Compile Include="Assets\NodeManager.cs" />
+    <Compile Include="Assets\PathChoice.cs" />
     <Compile Include="Assets\ProCore\Prototype\Scripts\RebuildMeshOnWake.cs" />
+    <Compile Include="Assets\SoundManager.cs" />
+    <None Include="Assets\FootstepsSoundsCarpetPack\FootstepsSoundsCarpetPackInfo.txt" />
     <None Include="Assets\ProCore\Prototype\About\changelog.txt" />
     <None Include="Assets\ProCore\Prototype\About\Credits.txt" />
     <None Include="Assets\ProCore\Prototype\About\pc_AboutEntry_ProBuilder.txt" />
