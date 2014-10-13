@@ -44,11 +44,15 @@ public class SoundManager : MonoBehaviour {
     //Player Movement Audio
 	public void playWalkSound()
     {
-       playAudio(playerMovementSounds[0], GameObject.Find("Player").audio, 0.25f, true);
+       playAudio(playerMovementSounds[0], GameObject.Find("Player").audio, 0.15f, true);
     }
     public void stopWalkSound()
     {
         stopAudio(GameObject.Find("Player").audio);
+    }
+    public void playJumpSound()
+    {
+        //playAudio(playerMovementSounds[1], GameObject.Find("Player").audio, 0.15f, false);
     }
 
 
@@ -116,7 +120,7 @@ public class SoundManager : MonoBehaviour {
         }
     }
 
-    private void playAudio(AudioClip clip, AudioSource source, float volume = 0.5f, bool loopMe = false)
+    private void playAudio(AudioClip clip, AudioSource source, float volume = 1.0f, bool loopMe = false)
     {
         source.clip = clip;
         source.loop = loopMe;

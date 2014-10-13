@@ -82,6 +82,9 @@
     <Compile Include="Assets\Scripts\Graph.cs" />
     <Compile Include="Assets\Scripts\MovementSoundManager.cs" />
     <Compile Include="Assets\Scripts\NodeManager.cs" />
+    <Compile Include="Assets\Scripts\NotMine\CharacterMotor.cs" />
+    <Compile Include="Assets\Scripts\NotMine\FPSInputController.cs" />
+    <Compile Include="Assets\Scripts\NotMine\PlatformInputController.cs" />
     <Compile Include="Assets\Scripts\PathChoice.cs" />
     <Compile Include="Assets\Scripts\PathWayFinder.cs" />
     <Compile Include="Assets\Scripts\ResetButton.cs" />

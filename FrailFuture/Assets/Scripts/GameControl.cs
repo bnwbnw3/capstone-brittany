@@ -50,7 +50,9 @@ public class GameControl : MonoBehaviour
         Brain brain = new Brain(bd);
         initMazeEndIndexsToNeg1();
         createMaze();
-        Neutrality neutrality = new Neutrality();
+        System.Random random = new System.Random();
+        float randNeutrality = (float)random.NextDouble() * (1 - (-1)) + (-1);
+        Neutrality neutrality = new Neutrality(randNeutrality);
         ai = new AI(maze, neutrality, brain, mazeEndIndexs);
         aiReady = true;
     }

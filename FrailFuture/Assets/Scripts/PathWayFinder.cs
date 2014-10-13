@@ -71,7 +71,8 @@ public class PathWayFinder
             endIndex = currentGraphVertex;
             endPath = true;
         }
-        if(!endPath && (indexInputsDesired == null || !(indexInputsDesired[nextToUse-1].input == input && indexInputsDesired[indexInputsDesired.Count - 1].vertex == desiredEndingIndex)))
+        int nextDesiredIndex = nextToUse > 0 ? nextToUse - 1 : 0;
+        if (!endPath && (indexInputsDesired == null || !(indexInputsDesired[nextDesiredIndex].input == input && indexInputsDesired[indexInputsDesired.Count - 1].vertex == desiredEndingIndex)))
         {
             nextToUse = 0;
             generatePath(currentGraphVertex);

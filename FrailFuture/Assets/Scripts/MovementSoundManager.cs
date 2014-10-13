@@ -22,14 +22,23 @@ public class MovementSoundManager : MonoBehaviour {
         bool AHeld = Input.GetKey(KeyCode.A);
         bool SHeld = Input.GetKey(KeyCode.S);
         bool DHeld = Input.GetKey(KeyCode.D);
+        bool spaceDown = Input.GetKeyDown(KeyCode.Space);
 
-        if ((WDown || ADown || SDown || DDown) && !audio.isPlaying)
+        if (spaceDown)
         {
-            SoundManager.soundManager.playWalkSound();
+
         }
-        else if (!WHeld && !AHeld && !SHeld && !DHeld)
-        {
-            SoundManager.soundManager.stopWalkSound();
-        }
+        bool onGround = GetComponent<CharacterMotor>().grounded;
+            if(onGround)
+            {
+                if ((WDown || ADown || SDown || DDown) && !audio.isPlaying)
+                {
+                    SoundManager.soundManager.playWalkSound();
+                }
+                else if (!WHeld && !AHeld && !SHeld && !DHeld)
+                {
+                    SoundManager.soundManager.stopWalkSound();
+                }
+            }
 	}
 }

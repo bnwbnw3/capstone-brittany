@@ -14,7 +14,7 @@ public class AI
       private int AiDesiredEndIndex;
       private int directionGiven;
       private int[] inputsAvalible;
-
+      private const float neutralityAdder = 0.1f;
         public AI(Graph maze, Neutrality starting, Brain brain, Dictionary<NeutralityTypes, int> mazeEndIndexs)
         {
             _maze = maze;
@@ -64,6 +64,15 @@ public class AI
            if (userChoice != 0)
            {
                _brain.checkUserChoice(userChoice);
+               PlayerData pd = getLastPickedInfo();
+               if (pd.delivered == pd.picked)
+               {
+                   _neutrality.Add(neutralityAdder);
+               }
+               else
+               {
+                   _neutrality.Add(-neutralityAdder);
+               }
            }
            AiCurrentDesire = pf.getNextDesiredInput(userChoice, AiDesiredEndIndex).input;
 
