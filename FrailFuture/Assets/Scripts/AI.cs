@@ -47,6 +47,17 @@ public class AI
         {
             return inputsAvalible;
         }
+        public PlayerData getLastPickedInfo()
+        {
+            if (_brain.getPlayerActions().Count > 0)
+            {
+                return _brain.getPlayerActions().Get(0);
+            }
+            else
+            {
+                return null;
+            }
+        }
 
        public void informOfPick(int userChoice)
        {
