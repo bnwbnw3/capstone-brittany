@@ -77,7 +77,7 @@ public class GameControl : MonoBehaviour
             for (int i = 0; i < allNodesCount; i++)
             {
                 int nodeIndex = i;
-                if (!allNodes[i].isEndNode)
+                if (allNodes[i].endNodeType == NeutralityTypes.None)
                 {
                     List<GUINode> edges_connections = allNodes[i].Edges_Connections;
                     int edges_connectionsCount = edges_connections.Count;

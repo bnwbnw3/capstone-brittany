@@ -88,7 +88,6 @@ public class AILearningSim : MonoBehaviour {
     {
         GameControl.control.Ai.informOfPick(choice);
         Debug.Log("Player Choice: " + choice);
-        //getNextDirection();
     }
 
 	void getRandomChoices()
@@ -110,7 +109,7 @@ public class AILearningSim : MonoBehaviour {
     {
         choicesGiven = GameControl.control.Ai.getNextInputsFromGraph();
         AiChoice = GameControl.control.Ai.getAiCurrentDesire();
-        directionGiven = GameControl.control.Ai.getDirection();//GameControl.control.Ai.getChoiceToDeliver(choicesGiven, AiCurrentDesire);
+        directionGiven = GameControl.control.Ai.getDirection();
         Debug.Log("AI tells you to pick:" + directionGiven + ", but actually wants you to pick: " + AiChoice);
         GameControl.control.GameReady = true;
         return directionGiven;

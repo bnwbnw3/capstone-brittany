@@ -75,6 +75,7 @@
     <Compile Include="Assets\ProCore\Prototype\Scripts\RebuildMeshOnWake.cs" />
     <Compile Include="Assets\Scripts\AI.cs" />
     <Compile Include="Assets\Scripts\AILearningSim.cs" />
+    <Compile Include="Assets\Scripts\BeginMaze.cs" />
     <Compile Include="Assets\Scripts\Brain.cs" />
     <Compile Include="Assets\Scripts\GUINode.cs" />
     <Compile Include="Assets\Scripts\GameControl.cs" />

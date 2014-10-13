@@ -8,7 +8,7 @@ public class SoundManager : MonoBehaviour {
     public List<AudioClip> PickedRightDoor;
     public List<AudioClip> PickedWrongDoor;
     public List<AudioClip> PickedWrong_DesiredDoor;
-    public List<AudioClip> EngingsFromWorstToBest;
+    public List<AudioClip> EngingsFromBestToWorst;
     public List<AudioClip> AiDialogue;
     public List<AudioClip> AiComments;
 
@@ -31,77 +31,87 @@ public class SoundManager : MonoBehaviour {
         }
     }
 
-    //Player Movement Audio
-	public void playWalkSound(AudioSource source)
+    void Update()
     {
-       playAudio(playerMovementSounds[0], source, 0.5f, true);
+
     }
-    public void stopWalkSound(AudioSource source)
+
+   public bool getIsAiTalking()
     {
-        stopAudio(source);
+        return GameObject.Find("AiSpeaker").audio.isPlaying;
+    }
+
+    //Player Movement Audio
+	public void playWalkSound()
+    {
+       playAudio(playerMovementSounds[0], GameObject.Find("Player").audio, 0.25f, true);
+    }
+    public void stopWalkSound()
+    {
+        stopAudio(GameObject.Find("Player").audio);
     }
 
 
     //Ai Audio
 
     //Ai Diolauge
-    public void playStartMaze(AudioSource source)
+    public void playStartMaze()
     {
         if (GameControl.control.Ai.getLastPickedInfo() == null)
         {
-            startMaze0(source);
+            startMaze0();
         }
         else
         {
-            startMazeRandom(source);
+            startMazeRandom();
         }
     }
-    private void startMaze0(AudioSource source)
+    private void startMaze0()
     {
         //play intro DONA
-        playAudio(AiDialogue[0], source);
+        playAudio(AiDialogue[0], GameObject.Find("AiSpeaker").audio);
     }
-    private void startMazeRandom(AudioSource source)
+    private void startMazeRandom()
     {
         //play random fact
         int index = randMaker.Next(0,AiComments.Count);
-        playAudio(AiComments[index], source);
+        playAudio(AiComments[index], GameObject.Find("AiSpeaker").audio);
     }
 
-    public void playEndMaze(AudioSource source, NeutralityTypes neutralityOfEnding)
+    public void playEndMaze(NeutralityTypes neutralityOfEnding)
     {
         Tools.AssertFalse(neutralityOfEnding == NeutralityTypes.None);
-        playAudio(EngingsFromWorstToBest[(int)neutralityOfEnding],source);
+        playAudio(EngingsFromBestToWorst[(int)neutralityOfEnding], GameObject.Find("AiSpeaker").audio);
     }
 
     //Ai Instructions
-    public void playDirection(AudioSource source, int doorToPick)
+    public void playDirection(int doorToPick)
     {
         Tools.AssertFalse(doorToPick <= 0 && doorToPick > GameControl.control.maxNumChoices);
-        playAudio(AiDirections[doorToPick - 1], source);
+        playAudio(AiDirections[doorToPick - 1], GameObject.Find("AiSpeaker").audio);
     }
 
-    public void playResponse(AudioSource source)
+    public void playResponse()
     {
         PlayerData pd = GameControl.control.Ai.getLastPickedInfo();
         if (pd.picked == pd.delivered)
         {
             int index = randMaker.Next(1, 5);
             index = index % 2 == 0 ? 0 : 1;
-            playAudio(PickedRightDoor[index], source);
+            playAudio(PickedRightDoor[index], GameObject.Find("AiSpeaker").audio);
         }
         else
         {
             if (pd.picked == pd.desired)
             {
-                int index = randMaker.Next(1, 4);
-                playAudio(PickedRightDoor[index], source);
+                int index = randMaker.Next(0, 3);
+                playAudio(PickedWrong_DesiredDoor[index], GameObject.Find("AiSpeaker").audio);
             }
             else
             {
                 int index = randMaker.Next(1, 5);
                 index = index % 2 == 0 ? 0 : 1;
-                playAudio(PickedWrongDoor[index], source);
+                playAudio(PickedWrongDoor[index], GameObject.Find("AiSpeaker").audio);
             }
         }
     }

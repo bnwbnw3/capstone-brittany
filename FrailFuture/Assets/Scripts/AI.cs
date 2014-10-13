@@ -51,7 +51,7 @@ public class AI
         {
             if (_brain.getPlayerActions().Count > 0)
             {
-                return _brain.getPlayerActions().Get(0);
+                return _brain.getPlayerActions().Get(_brain.getPlayerActions().Count-1);
             }
             else
             {
@@ -169,12 +169,13 @@ public class Neutrality
 
 public enum NeutralityTypes
 {
-    Heavenly,
-    Lovely,
-    Neutral,
-    Agitated,
-    Evil, 
-    None
+    Heavenly = 0,
+    Lovely = 1,
+    Neutral = 2,
+    Agitated = 3,
+    Evil = 4,  
+    //always make none the last index
+    None = 5
 }
 
 [Serializable]

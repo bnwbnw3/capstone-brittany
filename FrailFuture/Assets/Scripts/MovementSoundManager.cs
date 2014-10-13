@@ -25,11 +25,11 @@ public class MovementSoundManager : MonoBehaviour {
 
         if ((WDown || ADown || SDown || DDown) && !audio.isPlaying)
         {
-            SoundManager.soundManager.playWalkSound(audio);
+            SoundManager.soundManager.playWalkSound();
         }
         else if (!WHeld && !AHeld && !SHeld && !DHeld)
         {
-            SoundManager.soundManager.stopWalkSound(audio);
+            SoundManager.soundManager.stopWalkSound();
         }
 	}
 }

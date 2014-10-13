@@ -9,10 +9,12 @@ public class PathChoice : MonoBehaviour
     public Material openDoorMaterial;
     public Material closedDoorMaterial;
     public int pathNum;
+    private bool passedThrough;
 
     void Awake()
     {
         this.renderer.material = openDoorMaterial;
+        passedThrough = false;
     }
     // Use this for initialization
     void Start()
@@ -22,6 +24,23 @@ public class PathChoice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!passedThrough)
+        {
+            if (collider.isTrigger)
+            {
+                if (SoundManager.soundManager.getIsAiTalking())
+                {
+                    closingPath();
+                }
+            }
+            else
+            {
+                if (!SoundManager.soundManager.getIsAiTalking())
+                {
+                    openingPath();
+                }
+            }
+        }
     }
 
     public void OnTriggerExit(Collider c)
@@ -29,19 +48,32 @@ public class PathChoice : MonoBehaviour
         if (collider.isTrigger)
         {
             StartCoroutine(closePath(waitTimeTillClosePath));
+            passedThrough = true;
         }
     }
     public void resetPath()
     {
-        renderer.material = openDoorMaterial;
-        collider.isTrigger = true;
+        openingPath();
+        passedThrough = false;
     }
 
     public IEnumerator closePath(float secondsToWait)
     {
         //play next audio for Naration/AI Thoughts
         AILearningSim.AIsim.userPicked(pathNum);
-        yield return new WaitForSeconds(secondsToWait); 
+        SoundManager.soundManager.playResponse();
+        yield return new WaitForSeconds(secondsToWait);
+        closingPath();
+    }
+
+    void openingPath()
+    {
+        renderer.material = openDoorMaterial;
+        collider.isTrigger = true;
+    }
+
+    void closingPath()
+    {
         renderer.material = closedDoorMaterial;
         collider.isTrigger = false;
     }

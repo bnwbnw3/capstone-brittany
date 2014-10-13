@@ -188,7 +188,7 @@ public class Brain
     {
         int toReturn = -1;
 
-        if(patternCount["PicksFarthestNum"] > 2 && patternCount["PicksGivenNum"] < 0 && inputs.Length >= 3)
+        if(patternCount["PicksFarthestNum"] > 1 && patternCount["PicksGivenNum"] < 0 && inputs.Length >= 3)
         {
             if (lastDesiredChoice == inputs[0])
             {
