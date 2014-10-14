@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
+using System.Collections;
 
 public class SoundManager : MonoBehaviour {
     public List<AudioClip> playerMovementSounds;
@@ -44,15 +45,19 @@ public class SoundManager : MonoBehaviour {
     //Player Movement Audio
 	public void playWalkSound()
     {
-       playAudio(playerMovementSounds[0], GameObject.Find("Player").audio, 0.15f, true);
+       playAudio(playerMovementSounds[0], GameObject.Find("Player").audio, 0.20f, true);
     }
-    public void stopWalkSound()
+    public void stopPlayerSounds()
     {
         stopAudio(GameObject.Find("Player").audio);
     }
     public void playJumpSound()
     {
-        //playAudio(playerMovementSounds[1], GameObject.Find("Player").audio, 0.15f, false);
+        playAudio(playerMovementSounds[1], GameObject.Find("Player").audio, 0.25f, false);
+    }
+    public void playLandSound()
+    {
+        playAudio(playerMovementSounds[2], GameObject.Find("Player").audio, 0.25f, false);
     }
 
 
@@ -126,11 +131,27 @@ public class SoundManager : MonoBehaviour {
         source.loop = loopMe;
         source.volume = volume;
         source.Play();
+        if (!source.loop)
+        {
+            StartCoroutine(stopNon_LoopAudio(source));
+        }
     }
 
     private void stopAudio(AudioSource source)
     {
+        if (source.audio.isPlaying && source.audio.loop)
+        {
+            source.loop = false;
+            source.volume = 0.0f;
+            source.Stop();
+        }
+    }
+
+    private IEnumerator stopNon_LoopAudio(AudioSource source)
+    {
+        yield return new WaitForSeconds(source.audio.clip.length);
         source.loop = false;
+        source.volume = 0.0f;
         source.Stop();
     }
 }
