@@ -29,15 +29,15 @@ public class MovementSoundManager : MonoBehaviour {
 
         if (onGround)
         {
-            if (wasAirbourne)
+             if (wasPressingJump)
+            {
+                wasPressingJump = false; 
+                 SoundManager.soundManager.playJumpSound();
+             }
+            else if (wasAirbourne)
             {
                 wasAirbourne = false;
-                SoundManager.soundManager.playLandSound();
-            }
-            else if (wasPressingJump)
-            {
-                wasPressingJump = false;
-                SoundManager.soundManager.playJumpSound();
+                //SoundManager.soundManager.playLandSound();
             }
             if ((getIfWASDKeysDown() || getIfWASDKeysHeld() || getIfARROWKeysDown() || getIfARROWKeysHeld()) && (!audio.isPlaying || audio.volume == 0.0f))
             {
