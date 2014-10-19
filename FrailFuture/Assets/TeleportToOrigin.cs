@@ -4,16 +4,21 @@ using System.Collections;
 public class TeleportToOrigin : MonoBehaviour {
 
     static private Vector3 origin;
+    static private Vector3 eulerOrigin;
 
     void Awake()
     {
-        origin.x = origin.y = origin.z = 0;
+        origin.x = origin.z = 0;
+        origin.y = 0.05f;
+        eulerOrigin.x = eulerOrigin.z = 0;
+        eulerOrigin.y = 270;
     }
     public void OnTriggerEnter(Collider c)
     {
         if (c.tag == "Player")
         {
             c.transform.position = origin;
+            c.transform.eulerAngles = eulerOrigin;
         }
     }
 }
