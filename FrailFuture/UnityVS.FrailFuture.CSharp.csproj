@@ -91,6 +91,7 @@
     <Compile Include="Assets\Scripts\SizedList.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Tools.cs" />
+    <Compile Include="Assets\TeleportToOrigin.cs" />
     <None Include="Assets\ProCore\Prototype\About\changelog.txt" />
     <None Include="Assets\ProCore\Prototype\About\Credits.txt" />
     <None Include="Assets\ProCore\Prototype\About\pc_AboutEntry_ProBuilder.txt" />
