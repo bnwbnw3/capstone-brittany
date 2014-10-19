@@ -4,42 +4,44 @@ using System.Collections;
 
 public class GUINode : MonoBehaviour {
 
-    public List<GUINode> Edges_Connections;
+    //public List<GUINode> Edges_Connections;
     //public bool isEndNode = false;
     public NeutralityTypes endNodeType = NeutralityTypes.None;
     public float waitTimeTillCloseNode = 0.25f;
     public Material openDoorMaterial;
     public Material closedDoorMaterial;
-    private int index;
-    private bool indexSet;
+   // private int index;
+   // private bool indexSet;
     private bool passedThrough;
 
     void Awake()
     {
         this.renderer.material = openDoorMaterial;
-        index = -1;
-        indexSet = false;
+       // index = -1;
+       // indexSet = false;
         passedThrough = false;
     }
 
     public void init()
     {
-        if (!indexSet)
-        {
-            index = NodeManager.nodeManager.AllNodes.IndexOf(this);
-            indexSet = true;
-            Tools.AssertTrue(index != -1, "Make sure this node is in Node Manager.");
-        }
-        if (Edges_Connections.Count == 0)
-        {
-            //Tools.AssertTrue(isEndNode, "Node has 0 connections, should be an End Node");
-            Tools.AssertFalse(endNodeType == NeutralityTypes.None, "Should have an End Node type");
-        }
-        else
-        {
-            //Tools.AssertFalse(isEndNode, "Node has multi-connections, should not be an End Node");
-            Tools.AssertTrue(endNodeType == NeutralityTypes.None, "Should have no End Node type");
-        }
+        /* 
+       if (!indexSet)
+       {
+           index = NodeManager.nodeManager.AllNodes.IndexOf(this);
+           indexSet = true;
+           Tools.AssertTrue(index != -1, "Make sure this node is in Node Manager.");
+       }
+     if (Edges_Connections.Count == 0)
+       {
+           //Tools.AssertTrue(isEndNode, "Node has 0 connections, should be an End Node");
+           Tools.AssertFalse(endNodeType == NeutralityTypes.None, "Should have an End Node type");
+       }
+       else
+       {
+           //Tools.AssertFalse(isEndNode, "Node has multi-connections, should not be an End Node");
+           Tools.AssertTrue(endNodeType == NeutralityTypes.None, "Should have no End Node type");
+       }
+       */
     }
 
     // Update is called once per frame
@@ -72,19 +74,14 @@ public class GUINode : MonoBehaviour {
            passedThrough = true;
         }
     }
-    public int getIndexFromNodeManager()
+    /*public int getIndexFromNodeManager()
     {
         return index;
-    }
+    }*/
     public void resetGUINode()
     {
         openingNode();
         passedThrough = false;
-
-        if (Edges_Connections.Count > 0)
-        {
-            this.BroadcastMessage("resetPath");
-        }
     }
 
     public IEnumerator closeNode(float secondsToWait)

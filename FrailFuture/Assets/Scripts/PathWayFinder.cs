@@ -59,6 +59,10 @@ public class PathWayFinder
         return possibleNextInputs;
     }
 
+    public int getCurrentGraphIndex()
+    {
+        return currentGraphVertex;
+    }
 
     public Node getNextDesiredInput(int input, int desiredEndingIndex)
     {
@@ -111,6 +115,7 @@ public class PathWayFinder
             done = generatePathHelper(g.findAllNeighbors(currentVertex), start);
             if (!done)
             {
+                //NEED TO FIX!!!!
                 desiredTried.Add(_desiredEndingIndex);
                     List<int> neighborsLeft = g.findAllNeighbors(currentVertex);
                     var range = Enumerable.Range(_lowestEndPathIndex, g.vCount()).Where(i => neighborsLeft.Contains(i) && !desiredTried.Contains(i)).ToList();

@@ -13,10 +13,11 @@ public class TeleportToOrigin : MonoBehaviour {
         eulerOrigin.x = eulerOrigin.z = 0;
         eulerOrigin.y = 270;
     }
-    public void OnTriggerEnter(Collider c)
+    public void OnTriggerExit(Collider c)
     {
         if (c.tag == "Player")
         {
+            NodeManager.nodeManager.showNextRoom();
             c.transform.position = origin;
             c.transform.eulerAngles = eulerOrigin;
         }

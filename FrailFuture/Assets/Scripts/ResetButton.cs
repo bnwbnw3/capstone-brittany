@@ -21,7 +21,8 @@ public class ResetButton : MonoBehaviour {
             c.transform.position = spv.pos;
             c.transform.localScale = spv.scale;
             c.transform.eulerAngles = spv.eulerAngles;
-            NodeManager.nodeManager.resetAllNodes();
+
+            NodeManager.nodeManager.showNextRoom();
         }
     }
 }

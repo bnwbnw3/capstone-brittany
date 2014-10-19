@@ -14,6 +14,7 @@ public class AI
       private int AiDesiredEndIndex;
       private int directionGiven;
       private int[] inputsAvalible;
+      private int graphIndex;
       private const float neutralityAdder = 0.1f;
         public AI(Graph maze, Neutrality starting, Brain brain, Dictionary<NeutralityTypes, int> mazeEndIndexs)
         {
@@ -59,6 +60,20 @@ public class AI
             }
         }
 
+        public NeutralityTypes getNextGraphEndNodeType()
+    {
+        NeutralityTypes type = NeutralityTypes.None;
+        for (int i = (int)NeutralityTypes.Heavenly; i < (int)NeutralityTypes.COUNT; i++)
+        {
+            if (_mazeEndIndexs.ContainsKey((NeutralityTypes)i) && _mazeEndIndexs[(NeutralityTypes)i] == graphIndex)
+            {
+                type = (NeutralityTypes)i;
+            }
+        }
+
+        return type;
+    }
+
        public void informOfPick(int userChoice)
        {
            if (userChoice != 0)
@@ -75,12 +90,12 @@ public class AI
                }
            }
            AiCurrentDesire = pf.getNextDesiredInput(userChoice, AiDesiredEndIndex).input;
+           graphIndex = pf.getCurrentGraphIndex();
 
            findNewPathIfReachedAnEnd();
            getNextInputsFromCurrentGraphPosition();
            
            directionGiven = _brain.getChoiceToDeliver(inputsAvalible, AiCurrentDesire);
-           
        }
 
     public void findNewPathIfReachedAnEnd()
@@ -184,7 +199,8 @@ public enum NeutralityTypes
     Agitated = 3,
     Evil = 4,  
     //always make none the last index
-    None = 5
+    None = 5,
+    COUNT = 6
 }
 
 [Serializable]

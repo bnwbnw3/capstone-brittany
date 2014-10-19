@@ -47,16 +47,18 @@ public class PathChoice : MonoBehaviour
     {
         if (collider.isTrigger)
         {
-            StartCoroutine(closePath(waitTimeTillClosePath));
-            passedThrough = true;
+            AILearningSim.AIsim.userPicked(pathNum);
+            SoundManager.soundManager.playResponse();
+            //StartCoroutine(closePath(waitTimeTillClosePath));
+           // passedThrough = true;
         }
     }
     public void resetPath()
     {
-        openingPath();
         passedThrough = false;
+        openingPath();
     }
-
+    /*
     public IEnumerator closePath(float secondsToWait)
     {
         //play next audio for Naration/AI Thoughts
@@ -64,7 +66,7 @@ public class PathChoice : MonoBehaviour
         SoundManager.soundManager.playResponse();
         yield return new WaitForSeconds(secondsToWait);
         closingPath();
-    }
+    }*/
 
     void openingPath()
     {

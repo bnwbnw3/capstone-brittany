@@ -59,12 +59,13 @@ public class GameControl : MonoBehaviour
 
     void createMaze()
     {
-        useGUINodesToMakeGraph();
-        //testMazeGraph1();
+       // useGUINodesToMakeGraph();
+        testMazeGraph1();
         //testMazeGraph2();
         //testMazeGraph3();
     }
-    void useGUINodesToMakeGraph()
+    //OLD
+    /*void useGUINodesToMakeGraph()
     {
         NodeManager nodeManager = NodeManager.nodeManager;
         //check that maze exists
@@ -89,7 +90,7 @@ public class GameControl : MonoBehaviour
                         maze.addEdge(nodeIndex, neighborIndex) ;
                     }
                 }
-                //Grab End Nodes
+                //Grab End AllNodes
                 else
                 {
                     NeutralityTypes type = (NeutralityTypes)allNodes[i].endNodeType;
@@ -100,8 +101,8 @@ public class GameControl : MonoBehaviour
                 }
             }
         }
-    }
-
+    }*/
+    //OLD
     public void initMazeEndIndexsToNeg1()
     {
         mazeEndIndexs = new Dictionary<NeutralityTypes, int>();

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 
 public class NodeManager : MonoBehaviour 
 {
-
     //0 = start node
     //last = very last end node
-    public List<GUINode> AllNodes;
+    //public List<GUINode> AllNodes;
+    public List<GameObject> AllNodes;
+    public List<GameObject> Hallways;
     public static NodeManager nodeManager;
+    private bool justReset;
 	// Use this for initialization
     void Awake()
     {
@@ -16,6 +18,7 @@ public class NodeManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             nodeManager = this;
             init();
+            justReset = false;
         }
         else if (nodeManager != this)
         {
@@ -25,13 +28,65 @@ public class NodeManager : MonoBehaviour
 
     void init()
     {
+        showNextRoom();
+    }
+    public void showNextRoom()
+    {
+        showNextNode();
+    }
+
+    void showNextNode()
+    {
+        int inputsAvalible = (!justReset && GameControl.control.Ai.getNextGraphEndNodeType() != NeutralityTypes.None) ? 0 : GameControl.control.Ai.getNextInputsFromGraph().Length;
+        justReset = (inputsAvalible == 0);
+        string name = "" + inputsAvalible + "DoorGUINode";
+        onlyShowNode(name);
+    }
+
+    void showNextHall()
+    {
+        //Do later
+    }
+
+    void onlyShowNode(string name)
+    {
         for (int i = 0; i < AllNodes.Count; i++)
         {
-            AllNodes[i].init();
+            if (AllNodes[i].name == name)
+            {
+                AllNodes[i].SetActive(true);
+                //AllNodes[i].GetComponentInChildren<GUINode>().resetGUINode();
+                GameObject go = AllNodes[i];
+                GUINode node = (GUINode)go.GetComponentInChildren<GUINode>();
+                node.endNodeType = !justReset ? NeutralityTypes.None : GameControl.control.Ai.getNextGraphEndNodeType();
+                node.resetGUINode();
+            }
+            else
+            {
+                AllNodes[i].SetActive(false);
+            }
+        }
+        for (int i = 0; i < Hallways.Count; i++)
+        {
+            Hallways[i].SetActive(false);
         }
     }
 
-	void Start () 
+    void onlyShowHallway(int index)
+    {
+        for (int i = 0; i < Hallways.Count; i++)
+        {
+            //if active and not the node we want, deActivate it.
+            Hallways[i].SetActive(!(AllNodes[i].activeInHierarchy == true && i != index));
+        }
+        for (int i = 0; i < AllNodes.Count; i++)
+        {
+            AllNodes[i].SetActive(false);
+        }
+        AllNodes[index].GetComponent<GUINode>().resetGUINode();
+    }
+
+    void Start() 
     {
 	
 	}
@@ -44,9 +99,6 @@ public class NodeManager : MonoBehaviour
 
     public void resetAllNodes()
     {
-        for (int i = 0; i < AllNodes.Count; i++)
-        {
-            AllNodes[i].resetGUINode();
-        }
+        BroadcastMessage("resetGUINode");
     }
 }
