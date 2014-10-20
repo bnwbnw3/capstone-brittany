@@ -105,6 +105,14 @@ public class AI
                pf.reset();
                //UPDATE NEUTRALITY
                int endIndexWas = pf.endIndex;
+               if (endIndexWas == AiDesiredEndIndex)
+               {
+                   int winner = 3;
+               }
+               if (endIndexWas == pf.getAvalibleDesiredIndex())
+               {
+                   int halfWinner = 4;
+               }
 
                //set new neutrality after effects from last game
                AiDesiredEndIndex = _mazeEndIndexs[_neutrality.getState()];
@@ -143,8 +151,8 @@ public class Neutrality
     public Neutrality(float beginAt = 0)
     {
         _neutrality = beginAt;
-        //-1 for the Neutrality of None
-        numOfNeutralityTypes = (Enum.GetNames(typeof(NeutralityTypes)).Length) - 1;
+        //-2 for the Neutrality of None and COUNT
+        numOfNeutralityTypes = (Enum.GetNames(typeof(NeutralityTypes)).Length) - 2;
         devidePoint = (maxPosNeutrality + Math.Abs(maxNegNeutrality)) / numOfNeutralityTypes;
     }
     public void Add(float amount)

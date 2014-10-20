@@ -45,7 +45,7 @@ public class PathChoice : MonoBehaviour
 
     public void OnTriggerExit(Collider c)
     {
-        if (collider.isTrigger)
+        if (c.tag == "Player")
         {
             AILearningSim.AIsim.userPicked(pathNum);
             SoundManager.soundManager.playResponse();

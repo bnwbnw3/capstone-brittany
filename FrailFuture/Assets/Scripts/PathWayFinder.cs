@@ -63,6 +63,10 @@ public class PathWayFinder
     {
         return currentGraphVertex;
     }
+    public int getAvalibleDesiredIndex()
+    {
+        return _desiredEndingIndex;
+    }
 
     public Node getNextDesiredInput(int input, int desiredEndingIndex)
     {
@@ -118,10 +122,26 @@ public class PathWayFinder
                 //NEED TO FIX!!!!
                 desiredTried.Add(_desiredEndingIndex);
                     List<int> neighborsLeft = g.findAllNeighbors(currentVertex);
+                //Make sure we have a list of end index nodes
+                    bool foundEndIndex = false;
+                    while (!foundEndIndex)
+                    {
+                        foundEndIndex = true;
+                        for(int i = 0; i < neighborsLeft.Count; i++)
+                        {
+                            List<int> nextNeighbors = g.findAllNeighbors(neighborsLeft[i]);
+                            if (nextNeighbors.Count > 0)
+                            {
+                                foundEndIndex = false;
+                                neighborsLeft.RemoveAt(i);
+                                neighborsLeft.AddRange(nextNeighbors);
+                            }
+                        }
+                    }
                     var range = Enumerable.Range(_lowestEndPathIndex, g.vCount()).Where(i => neighborsLeft.Contains(i) && !desiredTried.Contains(i)).ToList();
-                  // var rand = new System.Random();
-                   //int index = rand.Next(0, range.Count);
-                   _desiredEndingIndex = range.ElementAt(0);
+                    var rand = new System.Random();
+                    int index = rand.Next(0, range.Count);
+                   _desiredEndingIndex = range.ElementAt(index);
 
                    done = generatePathHelper(g.findAllNeighbors(currentVertex), start);
             }

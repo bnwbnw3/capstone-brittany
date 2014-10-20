@@ -8,18 +8,22 @@ public class TeleportToOrigin : MonoBehaviour {
 
     void Awake()
     {
-        origin.x = origin.z = 0;
+        origin.x = 1;
+        origin.z = 0;
         origin.y = 0.05f;
-        eulerOrigin.x = eulerOrigin.z = 0;
-        eulerOrigin.y = 270;
     }
     public void OnTriggerExit(Collider c)
     {
         if (c.tag == "Player")
         {
             NodeManager.nodeManager.showNextRoom();
+            Vector3 Offset = this.transform.position - c.transform.position;
+            Offset.z *= -1;
+            Offset.x += 0.70f;
+            Offset.y /= 10;
+            origin = Offset;
+            Debug.Log("offset of y: " + Offset.y);
             c.transform.position = origin;
-            c.transform.eulerAngles = eulerOrigin;
         }
     }
 }

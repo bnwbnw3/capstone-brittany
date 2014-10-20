@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class NodeManager : MonoBehaviour 
 {
@@ -8,8 +9,10 @@ public class NodeManager : MonoBehaviour
     //public List<GUINode> AllNodes;
     public List<GameObject> AllNodes;
     public List<GameObject> Hallways;
+    HashSet<int> hallwaysUsed;
     public static NodeManager nodeManager;
     private bool justReset;
+    private System.Random rand;
 	// Use this for initialization
     void Awake()
     {
@@ -30,9 +33,22 @@ public class NodeManager : MonoBehaviour
     {
         showNextRoom();
     }
+
     public void showNextRoom()
     {
-        showNextNode();
+        if (hallwaysUsed == null)
+        {
+            //first round, start of maze, only needs 1 hallway
+            hallwaysUsed = new HashSet<int>() { 3, 4 };
+        }
+        if (hallwaysUsed.Count <= 2)
+        {
+            showNextHall();
+        }
+        else
+        {
+            showNextNode();
+        }
     }
 
     void showNextNode()
@@ -45,11 +61,17 @@ public class NodeManager : MonoBehaviour
 
     void showNextHall()
     {
-        //Do later
+        var range = Enumerable.Range(0, Hallways.Count).Where(i => !hallwaysUsed.Contains(i));
+        var rand = new System.Random();
+        int index = rand.Next(0, Hallways.Count - hallwaysUsed.Count);
+        int indexToUse = range.ElementAt(index);
+        hallwaysUsed.Add(indexToUse);
+        onlyShowHallway(indexToUse);
     }
 
     void onlyShowNode(string name)
     {
+        hallwaysUsed.Clear();
         for (int i = 0; i < AllNodes.Count; i++)
         {
             if (AllNodes[i].name == name)
@@ -77,13 +99,12 @@ public class NodeManager : MonoBehaviour
         for (int i = 0; i < Hallways.Count; i++)
         {
             //if active and not the node we want, deActivate it.
-            Hallways[i].SetActive(!(AllNodes[i].activeInHierarchy == true && i != index));
+            Hallways[i].SetActive((Hallways[i].activeInHierarchy != true && i == index) || i ==index);
         }
         for (int i = 0; i < AllNodes.Count; i++)
         {
             AllNodes[i].SetActive(false);
         }
-        AllNodes[index].GetComponent<GUINode>().resetGUINode();
     }
 
     void Start() 
