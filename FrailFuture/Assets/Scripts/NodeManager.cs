@@ -41,6 +41,10 @@ public class NodeManager : MonoBehaviour
             //first round, start of maze, only needs 1 hallway
             hallwaysUsed = new HashSet<int>() { 3, 4 };
         }
+
+        //testing Nodes
+        showNextNode();
+        /*
         if (hallwaysUsed.Count <= 2)
         {
             showNextHall();
@@ -48,7 +52,7 @@ public class NodeManager : MonoBehaviour
         else
         {
             showNextNode();
-        }
+        }*/
     }
 
     void showNextNode()
