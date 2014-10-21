@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class EndRoomSpawner : MonoBehaviour {
-
+    public GameObject spawner;
 	// Use this for initialization
 	void Start () 
     {
@@ -18,29 +18,39 @@ public class EndRoomSpawner : MonoBehaviour {
         if (c.tag == "Player")
         {
             //get the top parent, which holds neutrality, and grab neutrality
-            NeutralityTypes type = transform.root.gameObject.GetComponent<NodeTypeHolder>().neutralityOfNode;
-
-            GameObjectSpawner spawner = GetComponentInChildren<GameObjectSpawner>();
+            NeutralityTypes type = (NeutralityTypes)transform.root.gameObject.GetComponentInChildren<GUINode>().endNodeType;
+            float timeTillDelete = 9; ;
+            GameObjectSpawner spawnScript = spawner.GetComponent<GameObjectSpawner>();
             if (type == NeutralityTypes.Heavenly)
             {
-                spawner.spawnObject(new int[] { 0, 1, 2, 3, 4, 5, 6 }, 20, 0.5f);
+                spawnScript.spawnObject(new int[] { 0, 1, 2, 3 }, timeTillDelete, 60, 0.05f);
             }
             else if (type == NeutralityTypes.Lovely)
             {
-                spawner.spawnObject(new int[] { 7,8,9 }, 10, 1.0f);
+                spawnScript.spawnObject(new int[] { 4,5,6}, timeTillDelete, 60, 0.05f);
             }
             else if (type == NeutralityTypes.Neutral)
             {
-                spawner.spawnObject(new int[] { 10,11,12,13 }, 8, 1.0f);
+                spawnScript.spawnObject(new int[] { 7, 8, 9, 10}, timeTillDelete, 30, 0.05f);
             }
-            //Do this stuff after spawning items (good or bad) and playing Ai script.
-            /*
-            StartingPlayerVariables spv = GameControl.control.getPlayerStartingTransform();
-            c.transform.position = spv.pos;
-            c.transform.localScale = spv.scale;
-            c.transform.eulerAngles = spv.eulerAngles;
+            transform.collider.isTrigger = false;
+            c.gameObject.GetComponent<CharacterMotor>().enabled = false;
+            //Play script for end index, use script length + 1 for wait time
 
-            NodeManager.nodeManager.showNextRoom();*/
+            float waitTime = 10;
+            StartCoroutine(ResetGame(waitTime, c));
         }
+    }
+
+    private IEnumerator ResetGame(float waitTime, Collider c)
+    {
+        yield return new WaitForSeconds(waitTime); 
+        StartingPlayerVariables spv = GameControl.control.getPlayerStartingTransform();
+        c.transform.position = spv.pos;
+        c.transform.localScale = spv.scale;
+        c.transform.eulerAngles = spv.eulerAngles;
+        NodeManager.nodeManager.showNextRoom(); 
+        transform.collider.isTrigger = true;
+        c.gameObject.GetComponent<CharacterMotor>().enabled = true;
     }
 }

@@ -12,27 +12,35 @@ public class GameObjectSpawner : MonoBehaviour {
     {
         random = new System.Random();
     }
-	public void spawnObject(int[] indexsToSpawnAtSameTime,int numberToSpawn = 20, float secondsTillEachSpawn = .5f)
+	public void spawnObject(int[] indexsToSpawnAtSameTime, float secondsTillDestroy, int numberToSpawn = 20, float secondsTillEachSpawn = .5f)
     {
-        StartCoroutine(SpawnOverTime(indexsToSpawnAtSameTime, numberToSpawn,  secondsTillEachSpawn));
+        StartCoroutine(SpawnOverTime(indexsToSpawnAtSameTime, numberToSpawn,  secondsTillEachSpawn, secondsTillDestroy));
     }
 
-    private IEnumerator SpawnOverTime(int[] indexsToSpawnAtSameTime, int numberToSpawn, float wait)
+    private IEnumerator SpawnOverTime(int[] indexsToSpawnAtSameTime, int numberToSpawn, float wait, float secondsTillDestroy)
     {
-        for(int i = 0; i < numberToSpawn; i++)
+       for (int i = 0; i < numberToSpawn; i++)
         {
-            for(int j = 0; j < indexsToSpawnAtSameTime.Length; j++)
+            for (int j = 0; j < indexsToSpawnAtSameTime.Length; j++)
             {
-                if(j >= 0 && j < objectsAvalible.Count)
+                if (j >= 0 && j < objectsAvalible.Count)
                 {
                     if (objectsAvalible[j] != null)
                     {
+                        int index = indexsToSpawnAtSameTime[j];
                         Vector3 location = transform.position;
                         location.x += (float)GetRandomDouble(minOffset, maxOffset + 1);
                         location.z += (float)GetRandomDouble(minOffset, maxOffset + 1);
                         location.y += (float)GetRandomDouble(-2, 0 + 1);
-                        Instantiate(objectsAvalible[j], location, objectsAvalible[j].gameObject.transform.rotation);
-                        Debug.Log("location: (" + location.x + "," + location.y + "," + location.z + ")");
+                        GameObject toSpawn = objectsAvalible[index];
+                        if (secondsTillDestroy != -1)
+                        {
+                            Destroy(Instantiate(toSpawn, location, toSpawn.transform.rotation), secondsTillDestroy);
+                        }
+                        else
+                        {
+                            Instantiate(toSpawn, location, toSpawn.transform.rotation);
+                        }
                     }
                 }
                 else

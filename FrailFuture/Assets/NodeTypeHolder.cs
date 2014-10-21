@@ -4,24 +4,20 @@ using System.Collections;
 public class NodeTypeHolder : MonoBehaviour {
 
      [ReadOnly]public NeutralityTypes neutralityOfNode;
-     private bool updateMe;
+     private bool wasJustActivated;
     // Use this for initialization
     void Start()
     {
         neutralityOfNode = (NeutralityTypes)this.GetComponentInChildren<GUINode>().endNodeType;
-        updateMe = false;
+        wasJustActivated = this.gameObject.activeInHierarchy;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (this.gameObject.activeInHierarchy && updateMe == true)
+        if (this.gameObject.activeInHierarchy != wasJustActivated && !this.gameObject.activeInHierarchy)
         {
-            neutralityOfNode = (NeutralityTypes)this.GetComponentInChildren<GUINode>().endNodeType;
-            updateMe = false;
+           neutralityOfNode = (NeutralityTypes)this.GetComponentInChildren<GUINode>().endNodeType;
         }
-        else
-        {
-            updateMe = !this.gameObject.activeInHierarchy;
-        }
+        wasJustActivated = this.gameObject.activeInHierarchy;
 	}
 }
