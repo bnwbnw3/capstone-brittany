@@ -4,7 +4,6 @@ using System.Collections;
 public class TeleportToOrigin : MonoBehaviour {
 
     static private Vector3 origin;
-    static private Vector3 eulerOrigin;
 
     void Awake()
     {

@@ -115,11 +115,9 @@ public class PathWayFinder
         while (!done)
         {
             List<Node> start = new List<Node>();
-            //start.Add(new Node() { input = 0, vertex = currentVertex });
             done = generatePathHelper(g.findAllNeighbors(currentVertex), start);
             if (!done)
             {
-                //NEED TO FIX!!!!
                 desiredTried.Add(_desiredEndingIndex);
                     List<int> neighborsLeft = g.findAllNeighbors(currentVertex);
                 //Make sure we have a list of end index nodes
@@ -187,66 +185,8 @@ public class PathWayFinder
     }
 }
 
-
 public class Node
-    {
-        public int vertex;
-        public int input;
-    }
-
-/*
-
-    public int generateDesiredInput()
-    {
-      // pathCost = new double[g.vCount()];
-       pointer = new int[g.vCount()];
-       List<int> topo = new TopologicalSort().sort(g);
-
-       for (int i = 0; i < topo.Count; i++)
-       {
-           var parents = getParents(i, topo)
-           if (parents.Count > 0)
-           {
-               int desiredParent = (int)parents.Min(n => pathCost[n] + g.getEdge(n, i));
-              // pathCost[i] = pathCost[desiredParent] + g.getEdge(desiredParent, i);
-               pointer[i] = desiredParent;
-           }
-       }
-
-        //now switch pointers to point to parent instead of away
-       // var correctPaths = pointer.Select(n=>
-
-        //------------------------------------------------------------------------
-
-    }
-
-       
-
-        private List<int> getParents(int index, List<int> source)
-        {
-            return Enumerable.Range(0, source.Count).Where(n => g.findAllNeighbors(n).Contains(index)).ToList();
-        }
-        
-        //find lowest path
-        int lowestYIndexStart = 0;
-        int X = width()-1;
-        for(int y = 1; y < height(); y++)
-        {
-            if(pathCost[X][y] < pathCost[X][lowestYIndexStart])
-            {
-                lowestYIndexStart = y;
-            }
-        }
-        //make and return path
-        int[] path = new int[width()];
-        path[width()-1] = lowestYIndexStart;
-        for(int i = width()-2; i >= 0; i--)
-        {
-            path[i] = pointer[i][path[i+1]].y;
-        }
-        return path;
-    }
-
-    }
+{
+    public int vertex;
+    public int input;
 }
-*/

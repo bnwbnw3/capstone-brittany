@@ -2,9 +2,10 @@
 using System.Collections;
 
 public class MovementSoundManager : MonoBehaviour {
+
     private bool wasAirbourne;
     private bool wasPressingJump;
-	// Use this for initialization
+
     void Awake()
     {
         if (GameControl.control.canSetPlayerStartingTransform)

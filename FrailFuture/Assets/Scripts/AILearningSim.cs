@@ -25,11 +25,6 @@ public class AILearningSim : MonoBehaviour {
         text = "default";
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	void OnGUI()
 	{
         text =  GUI.TextField(new Rect(10, Screen.height - 380,100,50), text, 20) ;

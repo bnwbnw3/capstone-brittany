@@ -4,9 +4,6 @@ using System.Linq;
 
 public class NodeManager : MonoBehaviour 
 {
-    //0 = start node
-    //last = very last end node
-    //public List<GUINode> AllNodes;
     public List<GameObject> AllNodes;
     public List<GameObject> Hallways;
     HashSet<int> hallwaysUsed;
@@ -22,6 +19,7 @@ public class NodeManager : MonoBehaviour
             nodeManager = this;
             init();
             justReset = false;
+            rand = new System.Random();
         }
         else if (nodeManager != this)
         {
@@ -41,18 +39,6 @@ public class NodeManager : MonoBehaviour
             //first round, start of maze, only needs 1 hallway
             hallwaysUsed = new HashSet<int>() { 3, 4 };
         }
-
-        //testing Nodes
-        showNextNode();
-        /*
-        if (hallwaysUsed.Count <= 2)
-        {
-            showNextHall();
-        }
-        else
-        {
-            showNextNode();
-        }*/
     }
 
     void showNextNode()
@@ -66,7 +52,6 @@ public class NodeManager : MonoBehaviour
     void showNextHall()
     {
         var range = Enumerable.Range(0, Hallways.Count).Where(i => !hallwaysUsed.Contains(i));
-        var rand = new System.Random();
         int index = rand.Next(0, Hallways.Count - hallwaysUsed.Count);
         int indexToUse = range.ElementAt(index);
         hallwaysUsed.Add(indexToUse);
@@ -81,7 +66,6 @@ public class NodeManager : MonoBehaviour
             if (AllNodes[i].name == name)
             {
                 AllNodes[i].SetActive(true);
-                //AllNodes[i].GetComponentInChildren<GUINode>().resetGUINode();
                 GameObject go = AllNodes[i];
                 GUINode node = (GUINode)go.GetComponentInChildren<GUINode>();
                 node.endNodeType = !justReset ? NeutralityTypes.None : GameControl.control.Ai.getNextGraphEndNodeType();
@@ -110,17 +94,6 @@ public class NodeManager : MonoBehaviour
             AllNodes[i].SetActive(false);
         }
     }
-
-    void Start() 
-    {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () 
-    {
-	
-	}
 
     public void resetAllNodes()
     {

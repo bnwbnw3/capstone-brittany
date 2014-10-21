@@ -143,7 +143,6 @@ public class Brain
     {
         if(playerActions.Count >= 1)
         {
-            //patternCount["PicksSpecificNum"] += (userChoice == playerActions.Get(playerActions.Count - 1).picked) ? 1: -1;
             checkPatternHelper((userChoice == playerActions.Get(playerActions.Count - 1).picked), "PicksSpecificNum");
         }
         patternCount["Picks" + userChoice] += 1;
@@ -175,7 +174,6 @@ public class Brain
             int pastPicked1 = playerActions.Get(playerActions.Count - 3).picked;
             int pastPicked2 = playerActions.Get(playerActions.Count - 2).picked;
             int pastPicked3 = playerActions.Get(playerActions.Count - 1).picked;
-            //patternCount["PicksDoubleBackNum"] += (pastPicked1 == pastPicked3 && pastPicked2 == userChoice) ? 1 : -1;
             checkPatternHelper((pastPicked1 == pastPicked3 && pastPicked2 == userChoice), "PicksDoubleBackNum");
             if (pastPicked1 != pastPicked3 && pastPicked2 != userChoice && patternCount["PicksDoubleBackNum"] > 0)
             {
@@ -222,12 +220,10 @@ public class Brain
             {
                 if (lastChoiceToDeliver == inputs[0])
                 {
-                    //patternCount["PicksFarthestNum"] += (userChoice == inputs[inputs.Length - 1]) ? 1 : -1;
                     checkPatternHelper((userChoice == inputs[inputs.Length - 1]), "PicksFarthestNum");
                 }
                 else if (lastChoiceToDeliver == inputs[inputs.Length - 1])
                 {
-                    //patternCount["PicksFarthestNum"] += (userChoice == inputs[0]) ? 1 : -1;
                     checkPatternHelper((userChoice == inputs[0]), "PicksFarthestNum");
                 }
             }
@@ -258,7 +254,6 @@ public class Brain
                 shouldBe = shouldBe <= inputs[inputs.Length-1] ? shouldBe : inputs[0];
                 pickedPlusOne = current.picked == shouldBe;
             }
-           // patternCount["PicksSuccesionWrapNum"] += pickedPlusOne? 1 : -1;
             checkPatternHelper(pickedPlusOne, "PicksSuccesionWrapNum");
         }
     }
@@ -287,7 +282,6 @@ public class Brain
                 shouldBe = shouldBe >= inputs[0] ? shouldBe :inputs[inputs.Length-1];
                 pickedPlusOne = current.picked == shouldBe;
             }
-            //patternCount["PicksReccesionWrapNum"] += pickedPlusOne ? 1 : -1;
             checkPatternHelper(pickedPlusOne, "PicksReccesionWrapNum");
         }
     }

@@ -39,10 +39,6 @@ public class GameControl : MonoBehaviour
         _playerStartTransNotSet = true;
     }
 
-    void Start()
-    {
-    }
-
     void makeStartUpAi()
     {
          SizedList<PlayerData> temp = new SizedList<PlayerData>(10);
@@ -102,7 +98,7 @@ public class GameControl : MonoBehaviour
             }
         }
     }*/
-    //OLD
+
     public void initMazeEndIndexsToNeg1()
     {
         mazeEndIndexs = new Dictionary<NeutralityTypes, int>();

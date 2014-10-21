@@ -80,6 +80,7 @@ public class AI
            {
                _brain.checkUserChoice(userChoice);
                PlayerData pd = getLastPickedInfo();
+               //CHANGE LATER NEUTRALITY NEEDS TO BE TWEAKED
                if (pd.delivered == pd.picked)
                {
                    _neutrality.Add(neutralityAdder);

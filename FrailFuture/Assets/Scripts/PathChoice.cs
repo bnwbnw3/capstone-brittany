@@ -16,10 +16,6 @@ public class PathChoice : MonoBehaviour
         this.renderer.material = openDoorMaterial;
         passedThrough = false;
     }
-    // Use this for initialization
-    void Start()
-    {
-    }
 
     // Update is called once per frame
     void Update()
@@ -49,8 +45,6 @@ public class PathChoice : MonoBehaviour
         {
             AILearningSim.AIsim.userPicked(pathNum);
             SoundManager.soundManager.playResponse();
-            //StartCoroutine(closePath(waitTimeTillClosePath));
-           // passedThrough = true;
         }
     }
     public void resetPath()
@@ -58,15 +52,6 @@ public class PathChoice : MonoBehaviour
         passedThrough = false;
         openingPath();
     }
-    /*
-    public IEnumerator closePath(float secondsToWait)
-    {
-        //play next audio for Naration/AI Thoughts
-        AILearningSim.AIsim.userPicked(pathNum);
-        SoundManager.soundManager.playResponse();
-        yield return new WaitForSeconds(secondsToWait);
-        closingPath();
-    }*/
 
     void openingPath()
     {
