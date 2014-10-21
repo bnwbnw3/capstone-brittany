@@ -77,6 +77,7 @@
     <Compile Include="Assets\GameObjectSpawner.cs" />
     <Compile Include="Assets\NodeTypeHolder.cs" />
     <Compile Include="Assets\ProCore\Prototype\Scripts\RebuildMeshOnWake.cs" />
+    <Compile Include="Assets\SaveOriginalPos.cs" />
     <Compile Include="Assets\Scripts\AI.cs" />
     <Compile Include="Assets\Scripts\AILearningSim.cs" />
     <Compile Include="Assets\Scripts\BeginMaze.cs" />

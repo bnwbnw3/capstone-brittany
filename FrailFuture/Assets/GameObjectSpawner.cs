@@ -14,7 +14,7 @@ public class GameObjectSpawner : MonoBehaviour {
     }
 	public void spawnObject(int[] indexsToSpawnAtSameTime, float secondsTillDestroy, int numberToSpawn = 20, float secondsTillEachSpawn = .5f)
     {
-        StartCoroutine(SpawnOverTime(indexsToSpawnAtSameTime, numberToSpawn,  secondsTillEachSpawn, secondsTillDestroy));
+        StartCoroutine(SpawnOverTime(indexsToSpawnAtSameTime, numberToSpawn, secondsTillEachSpawn, secondsTillDestroy));
     }
 
     private IEnumerator SpawnOverTime(int[] indexsToSpawnAtSameTime, int numberToSpawn, float wait, float secondsTillDestroy)

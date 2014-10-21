@@ -17,7 +17,7 @@ public class ResetButton : MonoBehaviour {
     {
         if (c.tag == "Player")
         {
-            StartingPlayerVariables spv = GameControl.control.getPlayerStartingTransform();
+            StartingTransform spv = GameControl.control.getPlayerStartingTransform();
             c.transform.position = spv.pos;
             c.transform.localScale = spv.scale;
             c.transform.eulerAngles = spv.eulerAngles;

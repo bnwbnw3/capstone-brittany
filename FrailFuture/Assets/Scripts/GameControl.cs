@@ -17,7 +17,7 @@ public class GameControl : MonoBehaviour
     private const int MAZE_END_INDEX_NULL = 999;
     private bool gameReady;
     private bool aiReady;
-    private StartingPlayerVariables _startingPlayerVars;
+    private StartingTransform _startingPlayerVars;
     private bool _playerStartTransNotSet;
 
     void Awake()
@@ -35,7 +35,7 @@ public class GameControl : MonoBehaviour
         makeStartUpAi();
         gameReady = false;
         aiReady = false;
-        _startingPlayerVars = new StartingPlayerVariables();
+        _startingPlayerVars = new StartingTransform();
         _playerStartTransNotSet = true;
     }
 
@@ -292,7 +292,7 @@ public class GameControl : MonoBehaviour
             _playerStartTransNotSet = false;
         }
     }
-    public StartingPlayerVariables getPlayerStartingTransform()
+    public StartingTransform getPlayerStartingTransform()
     {
         return _startingPlayerVars;
     }
@@ -310,7 +310,7 @@ public class GameControl : MonoBehaviour
     }
 }
 
-public class StartingPlayerVariables
+public class StartingTransform
 {
     public Vector3 pos;
     public Vector3 eulerAngles;
