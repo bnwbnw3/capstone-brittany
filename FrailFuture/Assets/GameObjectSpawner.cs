@@ -31,7 +31,7 @@ public class GameObjectSpawner : MonoBehaviour {
                         location.x += (float)GetRandomDouble(minOffset, maxOffset + 1);
                         location.z += (float)GetRandomDouble(minOffset, maxOffset + 1);
                         location.y += (float)GetRandomDouble(-2, 0 + 1);
-                        Instantiate(objectsAvalible[j], location, transform.rotation);
+                        Instantiate(objectsAvalible[j], location, objectsAvalible[j].gameObject.transform.rotation);
                         Debug.Log("location: (" + location.x + "," + location.y + "," + location.z + ")");
                     }
                 }
