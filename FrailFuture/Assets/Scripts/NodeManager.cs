@@ -38,17 +38,18 @@ public class NodeManager : MonoBehaviour
             hallwaysUsed = new HashSet<int>() { 3, 4 };
         }
         //TESTING PURPOSES
-        showNextNode();
+        //showNextNode();
 
         //USE FOR GAME
-       /* if (hallwaysUsed.Count <= 2)
+       ///*
+       if (hallwaysUsed.Count <= 2)
         {
             showNextHall();
         }
         else
         {
             showNextNode();
-        }*/
+        }//*/
     }
 
     void showNextNode()
