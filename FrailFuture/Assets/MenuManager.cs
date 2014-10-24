@@ -20,4 +20,14 @@ public class MenuManager : MonoBehaviour
         CurrentMenu = menu;
         CurrentMenu.IsOpen = true;
     }
+
+    public void QuitMenus()
+    {
+        Application.Quit();
+    }
+
+    public void StartGame()
+    {
+        Application.LoadLevel("GameScene");
+    }
 }
