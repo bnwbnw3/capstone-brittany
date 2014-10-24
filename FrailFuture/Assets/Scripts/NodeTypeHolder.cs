@@ -3,7 +3,7 @@ using System.Collections;
 
 public class NodeTypeHolder : MonoBehaviour {
 
-     [ReadOnly]public NeutralityTypes neutralityOfNode;
+     private NeutralityTypes neutralityOfNode;
      private bool wasJustActivated;
     // Use this for initialization
     void Start()

@@ -21,7 +21,6 @@ public class TeleportToOrigin : MonoBehaviour {
             Offset.x += 0.70f;
             Offset.y /= 10;
             origin = Offset;
-            Debug.Log("offset of y: " + Offset.y);
             c.transform.position = origin;
         }
     }
