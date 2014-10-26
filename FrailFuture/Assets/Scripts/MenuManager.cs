@@ -23,6 +23,14 @@ public class MenuManager : MonoBehaviour
         if (CurrentMenu != null)
         {
             CurrentMenu.IsOpen = false;
+
+            ChangeSettings options = GameObject.Find("OptionsMenuContainer").GetComponentInChildren<ChangeSettings>();
+            Debug.Log(options);
+            options.invertX.isOn = GameControl.control.invertX;
+            options.invertY.isOn = GameControl.control.invertY;
+            options.mouseSensitivity.value = GameControl.control.mouseSensitivity;
+            options.backgroundMusic.value = GameControl.control.backgroundMusicVolume;
+            options.soundEffects.value = GameControl.control.soundEffectsVolume;
         }
 
         CurrentMenu = menu;

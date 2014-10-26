@@ -78,26 +78,26 @@ public class SoundManager : MonoBehaviour {
     private void startMaze0()
     {
         //play intro DONA
-        playAudio(AiDialogue[0], GameObject.Find("AiSpeaker").audio);
+        playAudio(AiDialogue[0], GameObject.Find("AiSpeaker").audio, 2.0f);
     }
     private void startMazeRandom()
     {
         //play random fact
         int index = randMaker.Next(0,AiComments.Count);
-        playAudio(AiComments[index], GameObject.Find("AiSpeaker").audio);
+        playAudio(AiComments[index], GameObject.Find("AiSpeaker").audio, 2.0f);
     }
 
     public void playEndMaze(NeutralityTypes neutralityOfEnding)
     {
         Tools.AssertFalse(neutralityOfEnding == NeutralityTypes.None);
-        playAudio(EngingsFromBestToWorst[(int)neutralityOfEnding], GameObject.Find("AiSpeaker").audio);
+        playAudio(EngingsFromBestToWorst[(int)neutralityOfEnding], GameObject.Find("AiSpeaker").audio, 2.0f);
     }
 
     //Ai Instructions
     public void playDirection(int doorToPick)
     {
         Tools.AssertFalse(doorToPick <= 0 && doorToPick > GameControl.control.maxNumChoices);
-        playAudio(AiDirections[doorToPick - 1], GameObject.Find("AiSpeaker").audio);
+        playAudio(AiDirections[doorToPick - 1], GameObject.Find("AiSpeaker").audio,2.0f);
     }
 
     public void playResponse()
@@ -107,20 +107,20 @@ public class SoundManager : MonoBehaviour {
         {
             int index = randMaker.Next(1, 5);
             index = index % 2 == 0 ? 0 : 1;
-            playAudio(PickedRightDoor[index], GameObject.Find("AiSpeaker").audio);
+            playAudio(PickedRightDoor[index], GameObject.Find("AiSpeaker").audio, 2.0f);
         }
         else
         {
             if (pd.picked == pd.desired)
             {
                 int index = randMaker.Next(0, 3);
-                playAudio(PickedWrong_DesiredDoor[index], GameObject.Find("AiSpeaker").audio);
+                playAudio(PickedWrong_DesiredDoor[index], GameObject.Find("AiSpeaker").audio, 2.0f);
             }
             else
             {
                 int index = randMaker.Next(1, 5);
                 index = index % 2 == 0 ? 0 : 1;
-                playAudio(PickedWrongDoor[index], GameObject.Find("AiSpeaker").audio);
+                playAudio(PickedWrongDoor[index], GameObject.Find("AiSpeaker").audio,2.0f);
             }
         }
     }
