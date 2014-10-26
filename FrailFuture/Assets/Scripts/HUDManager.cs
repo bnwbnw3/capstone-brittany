@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class HUDManager : MonoBehaviour
@@ -48,6 +49,11 @@ public class HUDManager : MonoBehaviour
         }
     }
 
+    public void SaveGame(InputField Field)
+    {
+        string fileName = Field.text.text + ".dat";
+        GameControl.control.Save(fileName);
+    }
 
     public void ResumeGame()
     {

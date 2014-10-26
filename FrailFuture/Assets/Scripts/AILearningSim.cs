@@ -8,7 +8,6 @@ public class AILearningSim : MonoBehaviour {
 	int[] choicesGiven;
 	int AiChoice;
     int directionGiven;
-    private string text;
     void Awake()
     {
         if (AIsim == null)
@@ -22,7 +21,6 @@ public class AILearningSim : MonoBehaviour {
         }
     }
 	void Start () {
-        text = "default";
 	}
 	
 	void OnGUI()

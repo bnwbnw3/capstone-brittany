@@ -16,24 +16,33 @@ public class AI
       private int[] inputsAvalible;
       private int graphIndex;
       private const float neutralityAdder = 0.1f;
-        public AI(Graph maze, Neutrality starting, Brain brain, Dictionary<NeutralityTypes, int> mazeEndIndexs)
+        public AI(Graph maze, Neutrality starting, Brain brain, Dictionary<NeutralityTypes, int> mazeEndIndexs, int currentGraphIndex = 0)
         {
             _maze = maze;
             _neutrality = starting;
             _brain = brain;
             _mazeEndIndexs = mazeEndIndexs;
             int lowestEndIndex = mazeEndIndexs.OrderBy(k => k.Value).FirstOrDefault().Value;
-            pf = new PathWayFinder(_maze,lowestEndIndex);
-            AiCurrentDesire = 0;
+            pf = new PathWayFinder(_maze, lowestEndIndex, currentGraphIndex);
             directionGiven = 0;
             AiDesiredEndIndex = _mazeEndIndexs[_neutrality.getState()];
-            int numInputs = pf.getNumPossibleInputs(0);
+            int numInputs = pf.getNumPossibleInputs(currentGraphIndex);
             int[] inputs = new int[numInputs];
             for (int i = 0; i < numInputs; i++)
             {
                 inputs[i] = i + 1;
             }
-            informOfPick(0);
+            if (currentGraphIndex == 0)
+            {
+                AiCurrentDesire = 0;
+                informOfPick(0);
+            }
+            else
+            {
+                AiCurrentDesire = pf.getNextDesiredInput(0, AiDesiredEndIndex, currentGraphIndex).input;
+                getNextInputsFromCurrentGraphPosition();
+                directionGiven = _brain.getChoiceToDeliver(inputsAvalible, AiCurrentDesire);
+            }
         }
 
         public int getDirection()
@@ -58,6 +67,11 @@ public class AI
             {
                 return null;
             }
+        }
+
+        public int getCurrentGraphIndex()
+        {
+            return graphIndex;
         }
 
         public NeutralityTypes getNextGraphEndNodeType()
@@ -139,6 +153,16 @@ public class AI
        {
            return _neutrality.getNeutrality();
        }
+
+       public Graph getGraph()
+       {
+           return _maze;
+       }
+
+       public Dictionary<NeutralityTypes, int> getEndings()
+       {
+           return _mazeEndIndexs;
+       }
 }
 
 public class Neutrality
@@ -217,4 +241,7 @@ public class AIData
 {
    public BrainData brain;
    public float neutrality;
+   public Graph maze;
+   public Dictionary<NeutralityTypes, int> mazeEndIndexs;
+   public int currentGraphIndex;
 }

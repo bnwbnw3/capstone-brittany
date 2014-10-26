@@ -10,6 +10,7 @@ public class GameControl : MonoBehaviour
     public static GameControl control;
     public int maxNumChoices;
     public int minNumChoices;
+    static public bool ableToLoadGame;
 
     private AI ai;
     private Graph maze;
@@ -32,14 +33,15 @@ public class GameControl : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        makeStartUpAi();
+        // makeBeginnerAi();
         gameReady = false;
         aiReady = false;
         _startingPlayerVars = new StartingTransform();
         _playerStartTransNotSet = true;
+        ableToLoadGame = false;
     }
 
-    void makeStartUpAi()
+    public void makeBeginnerAi()
     {
          SizedList<PlayerData> temp = new SizedList<PlayerData>(10);
         BrainData bd = new BrainData() { pastPatterns = new Dictionary<string, int>(), pastActions = temp };
@@ -247,6 +249,9 @@ public class GameControl : MonoBehaviour
         AIData allData = new AIData();
         allData.brain = data;
         allData.neutrality = ai.getNeutrality();
+        allData.maze = ai.getGraph();
+        allData.mazeEndIndexs = ai.getEndings();
+        allData.currentGraphIndex = ai.getCurrentGraphIndex();
 
         bf.Serialize(file, allData);
         Debug.Log("Stats: AI scored: " + data.score + "/" + data.totalPossible
@@ -265,7 +270,8 @@ public class GameControl : MonoBehaviour
             AIData data = (AIData)bf.Deserialize(file);
             file.Close();
             Debug.Log("Loaded data from: " + Application.persistentDataPath + "/" + fileName);
-            ai = new AI(maze, new Neutrality(data.neutrality), new Brain(data.brain), mazeEndIndexs);
+            ai = new AI(data.maze, new Neutrality(data.neutrality), new Brain(data.brain), data.mazeEndIndexs, data.currentGraphIndex);
+            ableToLoadGame = true;
         }
     }
 
@@ -302,7 +308,6 @@ public class GameControl : MonoBehaviour
     public bool AiReady
     {
         get { return aiReady; }
-        set { makeStartUpAi(); }
     }
 }
 

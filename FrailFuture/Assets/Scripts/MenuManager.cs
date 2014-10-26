@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class MenuManager : MonoBehaviour 
@@ -33,17 +34,29 @@ public class MenuManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void LoadGame(InputField Field)
+    {
+        string fileName = Field.text.text + ".dat";
+        GameControl.control.Load(fileName);
+        if (GameControl.ableToLoadGame)
+        {
+            GameControl.ableToLoadGame = false;
+            StartCoroutine(waitToLoadGame(5.0f));
+        }
+    }
+
     public void StartGame()
     {
-        mainScene.SetActive(false);
-        loadingScene.SetActive(true);
-        loadingObj.SetActive(true);
-        CurrentMenu.IsOpen = false;
+        GameControl.control.makeBeginnerAi();
         StartCoroutine(waitToLoadGame(5.0f));
     }
 
     IEnumerator waitToLoadGame(float waitTime)
     {
+        mainScene.SetActive(false);
+        loadingScene.SetActive(true);
+        loadingObj.SetActive(true);
+        CurrentMenu.IsOpen = false;
         yield return new WaitForSeconds(waitTime);
         Application.LoadLevel("GameScene");
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
+[Serializable]
 public class Graph
 {
     //using Adjacency Matrix

@@ -11,25 +11,25 @@ public class PathWayFinder
     int nextToUse;
     bool endPath;
     public int endIndex;
-    int currentGraphVertex;
+    int _currentGraphVertex;
     int _lowestEndPathIndex;
     int possibleNextInputs;
 
-    public PathWayFinder(Graph toUse, int lowestEndPathIndex)
+    public PathWayFinder(Graph toUse, int lowestEndPathIndex, int currentGraphVertex)
     {
         g = toUse;
         nextToUse = 0;
         endPath = false;
-        currentGraphVertex = 0;
+        _currentGraphVertex = currentGraphVertex;
         _lowestEndPathIndex = lowestEndPathIndex;
         possibleNextInputs = 0;
     }
 
     public int findVertexAt(int input)
     {
-        var choices = g.findAllNeighbors(currentGraphVertex);
+        var choices = g.findAllNeighbors(_currentGraphVertex);
         possibleNextInputs = choices.Count;
-        int vertex = currentGraphVertex;
+        int vertex = _currentGraphVertex;
         if (input <= choices.Count && input > 0)
         {
             vertex = choices[input - 1];
@@ -56,34 +56,45 @@ public class PathWayFinder
     }
     public int getNumPossibleInputs()
     {
+        if (possibleNextInputs == 0)
+        {
+            possibleNextInputs = g.findAllNeighbors(_currentGraphVertex).Count;
+        }
         return possibleNextInputs;
     }
 
     public int getCurrentGraphIndex()
     {
-        return currentGraphVertex;
+        return _currentGraphVertex;
     }
     public int getAvalibleDesiredIndex()
     {
         return _desiredEndingIndex;
     }
 
-    public Node getNextDesiredInput(int input, int desiredEndingIndex)
+    public Node getNextDesiredInput(int input, int desiredEndingIndex, int KnownVertex = 0)
     {
         Node toReturn;
         _desiredEndingIndex  = desiredEndingIndex;
-        currentGraphVertex = findVertexAt(input);
-        possibleNextInputs =  g.findAllNeighbors(currentGraphVertex).Count;
+        if (KnownVertex == 0)
+        {
+            _currentGraphVertex = findVertexAt(input);
+        }
+        else
+        {
+            _currentGraphVertex = KnownVertex;
+        }
+        possibleNextInputs =  g.findAllNeighbors(_currentGraphVertex).Count;
         if (possibleNextInputs < 1)
         {
-            endIndex = currentGraphVertex;
+            endIndex = _currentGraphVertex;
             endPath = true;
         }
         int nextDesiredIndex = nextToUse > 0 ? nextToUse - 1 : 0;
         if (!endPath && (indexInputsDesired == null || !(indexInputsDesired[nextDesiredIndex].input == input && indexInputsDesired[indexInputsDesired.Count - 1].vertex == desiredEndingIndex)))
         {
             nextToUse = 0;
-            generatePath(currentGraphVertex);
+            generatePath(_currentGraphVertex);
         }
 
         if (!endPath && nextToUse < indexInputsDesired.Count)
@@ -101,7 +112,7 @@ public class PathWayFinder
 
     public void reset()
     {
-        currentGraphVertex = 0;
+        _currentGraphVertex = 0;
         indexInputsDesired = null;
         endPath = false;
         nextToUse = 0;
