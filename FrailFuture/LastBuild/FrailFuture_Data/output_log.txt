@@ -25,15 +25,9 @@ Platform assembly: C:\Users\bwaite\Documents\College\CapstoneProject\FrailFuture
 Loading C:\Users\bwaite\Documents\College\CapstoneProject\FrailFuture\LastBuild\FrailFuture_Data\Managed\ProCore.dll into Unity Child Domain
 Platform assembly: C:\Users\bwaite\Documents\College\CapstoneProject\FrailFuture\LastBuild\FrailFuture_Data\Managed\SixBySeven.dll (this message is harmless)
 Loading C:\Users\bwaite\Documents\College\CapstoneProject\FrailFuture\LastBuild\FrailFuture_Data\Managed\SixBySeven.dll into Unity Child Domain
-- Completed reload, in  0.050 seconds
+- Completed reload, in  0.151 seconds
 desktop: 1920x1080 50Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 Platform assembly: C:\Users\bwaite\Documents\College\CapstoneProject\FrailFuture\LastBuild\FrailFuture_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\bwaite\Documents\College\CapstoneProject\FrailFuture\LastBuild\FrailFuture_Data\Managed\System.dll (this message is harmless)
-UnloadTime: 5.066232 ms
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 2052.
-Total: 7.027142 ms (FindLiveObjects: 0.091635 ms CreateObjectMapping: 0.023422 ms MarkObjects: 6.384874 ms  DeleteObjects: 0.103551 ms)
-

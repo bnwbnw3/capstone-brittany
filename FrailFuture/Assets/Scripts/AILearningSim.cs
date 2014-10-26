@@ -27,6 +27,7 @@ public class AILearningSim : MonoBehaviour {
 	
 	void OnGUI()
 	{
+        /*
         text =  GUI.TextField(new Rect(10, Screen.height - 380,100,50), text, 20) ;
 
         if (GUI.Button(new Rect(10, Screen.height - 280, 100, 100), "Save"))
@@ -37,7 +38,7 @@ public class AILearningSim : MonoBehaviour {
         {
             GameControl.control.Load(text + ".dat");
             GameControl.control.GameReady = false;
-        }
+        }*/
 	}
     public void userPicked(int choice)
     {
