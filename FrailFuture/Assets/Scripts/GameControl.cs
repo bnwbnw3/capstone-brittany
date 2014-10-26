@@ -11,6 +11,11 @@ public class GameControl : MonoBehaviour
     public int maxNumChoices;
     public int minNumChoices;
     static public bool ableToLoadGame;
+    public bool invertY = false;
+    public bool invertX = false;
+    public float mouseSensitivity = 15F;
+    public float backgroundMusicVolume = 1.0f;
+    public float soundEffectsVolume =  0.25f;
 
     private AI ai;
     private Graph maze;

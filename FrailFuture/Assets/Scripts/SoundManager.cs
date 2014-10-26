@@ -45,7 +45,7 @@ public class SoundManager : MonoBehaviour {
     //Player Movement Audio
 	public void playWalkSound()
     {
-       playAudio(playerMovementSounds[0], GameObject.Find("Player").audio, 0.20f, true);
+       playAudio(playerMovementSounds[0], GameObject.Find("Player").audio, 1.00f, true);
     }
     public void stopPlayerSounds()
     {
@@ -53,11 +53,11 @@ public class SoundManager : MonoBehaviour {
     }
     public void playJumpSound()
     {
-        playAudio(playerMovementSounds[1], GameObject.Find("Player").audio, 0.25f, false);
+        playAudio(playerMovementSounds[1], GameObject.Find("Player").audio, 1.00f, false);
     }
     public void playLandSound()
     {
-        playAudio(playerMovementSounds[2], GameObject.Find("Player").audio, 0.25f, false);
+        playAudio(playerMovementSounds[2], GameObject.Find("Player").audio, 1.00f, false);
     }
 
 
@@ -129,7 +129,7 @@ public class SoundManager : MonoBehaviour {
     {
         source.clip = clip;
         source.loop = loopMe;
-        source.volume = volume;
+        source.volume = volume*GameControl.control.soundEffectsVolume;
         source.Play();
         if (!source.loop)
         {
