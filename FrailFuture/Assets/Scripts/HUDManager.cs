@@ -4,19 +4,19 @@ using System.Collections;
 public class HUDManager : MonoBehaviour
 {
     public GameObject player;
+    public Menu ResetMenuTo;
     public Menu CurrentMenu;
     private bool HUDOpen;
 
 
     public void Start()
     {
-        //ShowMenu(CurrentMenu);
         HUDOpen = false;
     }
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             HUDOpen = !HUDOpen;
 
@@ -28,6 +28,7 @@ public class HUDManager : MonoBehaviour
             else
             {
                 ResumeGame();
+                CurrentMenu = ResetMenuTo;
             }
         }
     }
