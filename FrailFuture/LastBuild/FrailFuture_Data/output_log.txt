@@ -9,6 +9,8 @@ Direct3D:
 Begin MonoManager ReloadAssembly
 Platform assembly: C:\Users\bwaite\Documents\College\CapstoneProject\FrailFuture\LastBuild\FrailFuture_Data\Managed\UnityEngine.dll (this message is harmless)
 Loading C:\Users\bwaite\Documents\College\CapstoneProject\FrailFuture\LastBuild\FrailFuture_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\bwaite\Documents\College\CapstoneProject\FrailFuture\LastBuild\FrailFuture_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\bwaite\Documents\College\CapstoneProject\FrailFuture\LastBuild\FrailFuture_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
 Platform assembly: C:\Users\bwaite\Documents\College\CapstoneProject\FrailFuture\LastBuild\FrailFuture_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading C:\Users\bwaite\Documents\College\CapstoneProject\FrailFuture\LastBuild\FrailFuture_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\bwaite\Documents\College\CapstoneProject\FrailFuture\LastBuild\FrailFuture_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
@@ -23,91 +25,9 @@ Platform assembly: C:\Users\bwaite\Documents\College\CapstoneProject\FrailFuture
 Loading C:\Users\bwaite\Documents\College\CapstoneProject\FrailFuture\LastBuild\FrailFuture_Data\Managed\ProCore.dll into Unity Child Domain
 Platform assembly: C:\Users\bwaite\Documents\College\CapstoneProject\FrailFuture\LastBuild\FrailFuture_Data\Managed\SixBySeven.dll (this message is harmless)
 Loading C:\Users\bwaite\Documents\College\CapstoneProject\FrailFuture\LastBuild\FrailFuture_Data\Managed\SixBySeven.dll into Unity Child Domain
-- Completed reload, in  0.055 seconds
+- Completed reload, in  0.184 seconds
 desktop: 1920x1080 50Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 Platform assembly: C:\Users\bwaite\Documents\College\CapstoneProject\FrailFuture\LastBuild\FrailFuture_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\bwaite\Documents\College\CapstoneProject\FrailFuture\LastBuild\FrailFuture_Data\Managed\System.dll (this message is harmless)
-ChangeSettings (ChangeSettings)
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-UnloadTime: 6.105252 ms
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 47 unused Assets to reduce memory usage. Loaded Objects now: 2403.
-Total: 7.399609 ms (FindLiveObjects: 0.108068 ms CreateObjectMapping: 0.024243 ms MarkObjects: 6.606148 ms  DeleteObjects: 0.217780 ms)
-
-ChangeSettings (ChangeSettings)
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-ChangeSettings (ChangeSettings)
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-ChangeSettings (ChangeSettings)
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-ChangeSettings (ChangeSettings)
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-ChangeSettings (ChangeSettings)
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-Stats: AI scored: 4/5  Grade = 80
-Saved data to: C:/Users/bwaite/AppData/LocalLow/BNWGames/FrailFuture/default.dat
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-Stats: AI scored: 4/5  Grade = 80
-Saved data to: C:/Users/bwaite/AppData/LocalLow/BNWGames/FrailFuture/default.dat
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-Stats: AI scored: 4/5  Grade = 80
-Saved data to: C:/Users/bwaite/AppData/LocalLow/BNWGames/FrailFuture/default.dat
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-Stats: AI scored: 4/5  Grade = 80
-Saved data to: C:/Users/bwaite/AppData/LocalLow/BNWGames/FrailFuture/default.dat
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-ChangeSettings (ChangeSettings)
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-UnloadTime: 3.492296 ms
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 367 unused Assets to reduce memory usage. Loaded Objects now: 1032.
-Total: 3.219454 ms (FindLiveObjects: 0.040268 ms CreateObjectMapping: 0.023421 ms MarkObjects: 1.443515 ms  DeleteObjects: 1.291890 ms)
-
-ChangeSettings (ChangeSettings)
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-ChangeSettings (ChangeSettings)
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-Loaded data from: C:/Users/bwaite/AppData/LocalLow/BNWGames/FrailFuture/default.dat
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-UnloadTime: 2.769511 ms
-Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2419.
-Total: 7.338384 ms (FindLiveObjects: 0.088344 ms CreateObjectMapping: 0.027941 ms MarkObjects: 6.510407 ms  DeleteObjects: 0.278594 ms)
-
-ChangeSettings (ChangeSettings)
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
