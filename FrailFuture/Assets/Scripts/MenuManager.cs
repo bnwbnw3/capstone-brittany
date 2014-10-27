@@ -25,7 +25,6 @@ public class MenuManager : MonoBehaviour
             CurrentMenu.IsOpen = false;
 
             ChangeSettings options = GameObject.Find("OptionsMenuContainer").GetComponentInChildren<ChangeSettings>();
-            Debug.Log(options);
             options.invertX.isOn = GameControl.control.invertX;
             options.invertY.isOn = GameControl.control.invertY;
             options.mouseSensitivity.value = GameControl.control.mouseSensitivity;

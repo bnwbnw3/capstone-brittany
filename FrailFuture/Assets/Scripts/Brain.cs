@@ -3,28 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+[Serializable]
 public class Brain
 {
-   private Dictionary<string, int> patternCount;
-   private SizedList<PlayerData> playerActions;
+   BrainData bd;
    private int[] inputs;
    private int lastDesiredChoice;
    private int lastChoiceToDeliver;
-   private int score;
-   private int totalPossible;
 
     public Brain(BrainData pastHistory)
     {
-        patternCount = pastHistory.pastPatterns;
-        playerActions = pastHistory.pastActions;
+        bd = pastHistory;
         checkForKeys();
-        score = pastHistory.score;
-        totalPossible = pastHistory.totalPossible;
     }
 
     public void checkUserChoice(int userChoice)
     {
-        totalPossible++;
+        bd.totalPossible++;
         picksGivenNumCheck(userChoice);
         picksSpecificNumCheck(userChoice);
         picksDoubleBackNumCheck(userChoice);
@@ -34,9 +29,9 @@ public class Brain
 
         if (userChoice == lastDesiredChoice)
         {
-            score += 1;
+            bd.score += 1;
         }
-        playerActions.Add( new PlayerData {numOfInputs = inputs.Length, desired = lastDesiredChoice, delivered = lastChoiceToDeliver, picked = userChoice });
+        bd.pastActions.Add(new PlayerData { numOfInputs = inputs.Length, desired = lastDesiredChoice, delivered = lastChoiceToDeliver, picked = userChoice });
     }
 
     public int getChoiceToDeliver(int[] inputsGiven, int desiredChoice)
@@ -95,7 +90,7 @@ public class Brain
         resetPatternIfOver(5, "PicksGivenNum");
 
         toReturn = lastDesiredChoice;
-        if (patternCount["PicksGivenNum"] < 0)
+        if (bd.pastPatterns["PicksGivenNum"] < 0)
         {
             toReturn = grabNextBestNumberMostPicked();
         }
@@ -106,31 +101,31 @@ public class Brain
     {
         if (userChoice == lastChoiceToDeliver)
         {
-            patternCount["PicksGivenNum"] += 1;
-            patternCount["TotalPickedAI"] += 1;
+            bd.pastPatterns["PicksGivenNum"] += 1;
+            bd.pastPatterns["TotalPickedAI"] += 1;
         }
         else
         {
-            patternCount["PicksGivenNum"] += -1;
-            patternCount["TotalNotPickedAI"] += 1;
+            bd.pastPatterns["PicksGivenNum"] += -1;
+            bd.pastPatterns["TotalNotPickedAI"] += 1;
         }
     }
 
     private int picksSpecificNumPattern()
     {
         int toReturn = -1;
-        if (patternCount["PicksSpecificNum"] > 2)
+        if (bd.pastPatterns["PicksSpecificNum"] > 2)
         {
-            toReturn = playerActions.Get(playerActions.Count - 1).picked;
+            toReturn = bd.pastActions.Get(bd.pastActions.Count - 1).picked;
             bool nextPatternNumIsDesired = toReturn == lastDesiredChoice;
 
-            if (patternCount["PicksSpecificNum"] <= 4)
+            if (bd.pastPatterns["PicksSpecificNum"] <= 4)
             {
-                if (!nextPatternNumIsDesired && patternCount["PicksGivenNum"] > 0) 
+                if (!nextPatternNumIsDesired && bd.pastPatterns["PicksGivenNum"] > 0) 
                 {
                     toReturn = -1;
-                }   
-                else if (nextPatternNumIsDesired && patternCount["PicksGivenNum"] < 0)
+                }
+                else if (nextPatternNumIsDesired && bd.pastPatterns["PicksGivenNum"] < 0)
                 {
                     toReturn = grabNextBestNumberMostPicked();
                 }
@@ -141,24 +136,24 @@ public class Brain
     }
     private void picksSpecificNumCheck(int userChoice)
     {
-        if(playerActions.Count >= 1)
+        if(bd.pastActions.Count >= 1)
         {
-            checkPatternHelper((userChoice == playerActions.Get(playerActions.Count - 1).picked), "PicksSpecificNum");
+            checkPatternHelper((userChoice == bd.pastActions.Get(bd.pastActions.Count - 1).picked), "PicksSpecificNum");
         }
-        patternCount["Picks" + userChoice] += 1;
+        bd.pastPatterns["Picks" + userChoice] += 1;
     }
 
     private int picksDoubleBackNumPattern()
     {
         int toReturn = -1;
-        if (patternCount["PicksDoubleBackNum"] > 0)
+        if (bd.pastPatterns["PicksDoubleBackNum"] > 0)
         {
-            int nextInPattern = playerActions.Get(playerActions.Count - 2).picked;
+            int nextInPattern = bd.pastActions.Get(bd.pastActions.Count - 2).picked;
              bool nextPatternNumIsDesired = (nextInPattern == lastDesiredChoice);
 
              if (!nextPatternNumIsDesired)
              {
-                 if(patternCount["PicksGivenNum"] < 0)
+                 if(bd.pastPatterns["PicksGivenNum"] < 0)
                  {
                      toReturn = nextInPattern;
                  }
@@ -169,15 +164,15 @@ public class Brain
     }
     private void picksDoubleBackNumCheck(int userChoice)
     {
-        if (playerActions.Count >= 3)
+        if (bd.pastActions.Count >= 3)
         {
-            int pastPicked1 = playerActions.Get(playerActions.Count - 3).picked;
-            int pastPicked2 = playerActions.Get(playerActions.Count - 2).picked;
-            int pastPicked3 = playerActions.Get(playerActions.Count - 1).picked;
+            int pastPicked1 = bd.pastActions.Get(bd.pastActions.Count - 3).picked;
+            int pastPicked2 = bd.pastActions.Get(bd.pastActions.Count - 2).picked;
+            int pastPicked3 = bd.pastActions.Get(bd.pastActions.Count - 1).picked;
             checkPatternHelper((pastPicked1 == pastPicked3 && pastPicked2 == userChoice), "PicksDoubleBackNum");
-            if (pastPicked1 != pastPicked3 && pastPicked2 != userChoice && patternCount["PicksDoubleBackNum"] > 0)
+            if (pastPicked1 != pastPicked3 && pastPicked2 != userChoice && bd.pastPatterns["PicksDoubleBackNum"] > 0)
             {
-                patternCount["PicksDoubleBackNum"] = 0;
+                bd.pastPatterns["PicksDoubleBackNum"] = 0;
             }
         }
     }
@@ -186,7 +181,7 @@ public class Brain
     {
         int toReturn = -1;
 
-        if(patternCount["PicksFarthestNum"] > 1 && patternCount["PicksGivenNum"] < 0 && inputs.Length >= 3)
+        if(bd.pastPatterns["PicksFarthestNum"] > 1 && bd.pastPatterns["PicksGivenNum"] < 0 && inputs.Length >= 3)
         {
             if (lastDesiredChoice == inputs[0])
             {
@@ -214,7 +209,7 @@ public class Brain
     }
     private void picksFarthestNumCheck(int userChoice)
     {
-        if (playerActions.Count > 2)
+        if (bd.pastActions.Count > 2)
         {
             if (inputs.Length >= 3)
             {
@@ -233,7 +228,7 @@ public class Brain
     private int picksSuccesionWrapNumPattern()
     {
        int toReturn = -1;
-        if(patternCount["PicksSuccesionWrapNum"] > 0 && patternCount["PicksGivenNum"] < 0 && inputs.Length >= 3)
+        if(bd.pastPatterns["PicksSuccesionWrapNum"] > 0 && bd.pastPatterns["PicksGivenNum"] < 0 && inputs.Length >= 3)
         {
             toReturn = (lastDesiredChoice -1);
             toReturn = toReturn >= inputs[0] ? toReturn : inputs[inputs.Length - 1];
@@ -244,12 +239,12 @@ public class Brain
     private void picksSuccesionWrapNumCheck(int userChoice)
     {
         int checkAt = 3;
-        if (playerActions.Count >= checkAt && inputs.Length >= 3)
+        if (bd.pastActions.Count >= checkAt && inputs.Length >= 3)
         {
             bool pickedPlusOne = false;
             for (int i = checkAt; i > 0 && pickedPlusOne; i--)
             {
-                PlayerData current = playerActions.Get(playerActions.Count - i);
+                PlayerData current = bd.pastActions.Get(bd.pastActions.Count - i);
                 int shouldBe = (current.delivered + 1);
                 shouldBe = shouldBe <= inputs[inputs.Length-1] ? shouldBe : inputs[0];
                 pickedPlusOne = current.picked == shouldBe;
@@ -261,7 +256,7 @@ public class Brain
     private int picksReccesionWrapNumPattern()
     {
         int toReturn = -1;
-        if (patternCount["PicksReccesionWrapNum"] > 0 && patternCount["PicksGivenNum"] < 0 && inputs.Length >= 3)
+        if (bd.pastPatterns["PicksReccesionWrapNum"] > 0 && bd.pastPatterns["PicksGivenNum"] < 0 && inputs.Length >= 3)
         {
             toReturn = (lastDesiredChoice + 1);
             toReturn = toReturn <= inputs[inputs.Length-1] ? toReturn : inputs[0] ;
@@ -272,12 +267,12 @@ public class Brain
     private void picksReccesionWrapNumCheck(int userChoice)
     {
         int checkAt = 3;
-        if (playerActions.Count >= checkAt && inputs.Length >= 3)
+        if (bd.pastActions.Count >= checkAt && inputs.Length >= 3)
         {
             bool pickedPlusOne = false;
             for (int i = checkAt; i > 0 && pickedPlusOne; i--)
             {
-                PlayerData current = playerActions.Get(playerActions.Count - i);
+                PlayerData current = bd.pastActions.Get(bd.pastActions.Count - i);
                 int shouldBe = (current.delivered - 1);
                 shouldBe = shouldBe >= inputs[0] ? shouldBe :inputs[inputs.Length-1];
                 pickedPlusOne = current.picked == shouldBe;
@@ -290,22 +285,22 @@ public class Brain
     {
         if (condition)
         {
-            patternCount[key] += 1;
+            bd.pastPatterns[key] += 1;
         }
         else
         {
-            if (patternCount[key] > 0)
+            if (bd.pastPatterns[key] > 0)
             {
-                patternCount[key] += -1;
+                bd.pastPatterns[key] += -1;
             }
         }
     }
 
     private void resetPatternIfOver(int threshHold, string key, int restartPositive = 1, int restartNegative = -1)
     {
-        if (Math.Abs(patternCount[key]) >= threshHold)
+        if (Math.Abs(bd.pastPatterns[key]) >= threshHold)
         {
-            patternCount[key] = patternCount[key] > 0 ? restartPositive : restartNegative;
+            bd.pastPatterns[key] = bd.pastPatterns[key] > 0 ? restartPositive : restartNegative;
         }
     }
 
@@ -341,10 +336,10 @@ public class Brain
                 int highestIndex = -1;
                 for(int i = 1; i <= inputs.Length; i++)
                 {
-                    if(highestCount < patternCount["Picks" + i] && i != toReturn)
+                    if(highestCount < bd.pastPatterns["Picks" + i] && i != toReturn)
                     {
                         highestIndex = i;
-                        highestCount = patternCount["Picks" + i];
+                        highestCount = bd.pastPatterns["Picks" + i];
                     }
                 }
                 toReturn = highestIndex;
@@ -380,28 +375,28 @@ public class Brain
     //adds if doesn't exist
     private void addKeyToPatternCount(string key, int initialCount = 0)
     {
-         if (!patternCount.ContainsKey(key))
+         if (!bd.pastPatterns.ContainsKey(key))
         {
-            patternCount.Add(key, initialCount);
+            bd.pastPatterns.Add(key, initialCount);
         }
     }
 
     //Get-ers
     public Dictionary<string, int> getPatternCount()
     {
-        return patternCount;
+        return bd.pastPatterns;
     }
     public SizedList<PlayerData> getPlayerActions()
     {
-        return playerActions;
+        return bd.pastActions;
     }
     public int getScore()
     {
-        return score;
+        return bd.score;
     }
     public int getTotalPossible()
     {
-        return totalPossible;
+        return bd.totalPossible;
     }
 }
 
@@ -413,6 +408,7 @@ public class PlayerData
     public int delivered;
     public int picked;
 }
+
 
 [Serializable]
 public class BrainData

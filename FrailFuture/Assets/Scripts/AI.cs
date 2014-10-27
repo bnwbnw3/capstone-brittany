@@ -24,7 +24,6 @@ public class AI
             _mazeEndIndexs = mazeEndIndexs;
             int lowestEndIndex = mazeEndIndexs.OrderBy(k => k.Value).FirstOrDefault().Value;
             pf = new PathWayFinder(_maze, lowestEndIndex, currentGraphIndex);
-            directionGiven = 0;
             AiDesiredEndIndex = _mazeEndIndexs[_neutrality.getState()];
             int numInputs = pf.getNumPossibleInputs(currentGraphIndex);
             int[] inputs = new int[numInputs];
@@ -34,11 +33,13 @@ public class AI
             }
             if (currentGraphIndex == 0)
             {
+                directionGiven = 0;
                 AiCurrentDesire = 0;
                 informOfPick(0);
             }
             else
             {
+                graphIndex = currentGraphIndex;
                 AiCurrentDesire = pf.getNextDesiredInput(0, AiDesiredEndIndex, currentGraphIndex).input;
                 getNextInputsFromCurrentGraphPosition();
                 directionGiven = _brain.getChoiceToDeliver(inputsAvalible, AiCurrentDesire);
@@ -239,7 +240,7 @@ public enum NeutralityTypes
 [Serializable]
 public class AIData
 {
-   public BrainData brain;
+   public Brain brain;
    public float neutrality;
    public Graph maze;
    public Dictionary<NeutralityTypes, int> mazeEndIndexs;

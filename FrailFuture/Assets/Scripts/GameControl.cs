@@ -245,22 +245,18 @@ public class GameControl : MonoBehaviour
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/" + fileName);
 
-        BrainData data = new BrainData();
-        data.pastPatterns = ai.getBrain().getPatternCount();
-        data.pastActions = ai.getBrain().getPlayerActions();
-        data.score = ai.getBrain().getScore();
-        data.totalPossible = ai.getBrain().getTotalPossible();
 
         AIData allData = new AIData();
-        allData.brain = data;
+        allData.brain = ai.getBrain();
         allData.neutrality = ai.getNeutrality();
         allData.maze = ai.getGraph();
         allData.mazeEndIndexs = ai.getEndings();
         allData.currentGraphIndex = ai.getCurrentGraphIndex();
 
         bf.Serialize(file, allData);
-        Debug.Log("Stats: AI scored: " + data.score + "/" + data.totalPossible
-                + "  Grade = " + ((float)data.score / data.totalPossible) * 100
+        Debug.Log("Stats: AI scored: " + allData.brain.getScore() + "/" + allData.brain.getTotalPossible()
+                + "  Grade = " + ((float)allData.brain.getScore() / allData.brain.getTotalPossible()) * 100
+                + "\nCurrentVertex: " + allData.currentGraphIndex 
                 + "\n" + "Saved data to: " + Application.persistentDataPath + "/" + fileName);
         file.Close();
     }
@@ -275,7 +271,7 @@ public class GameControl : MonoBehaviour
             AIData data = (AIData)bf.Deserialize(file);
             file.Close();
             Debug.Log("Loaded data from: " + Application.persistentDataPath + "/" + fileName);
-            ai = new AI(data.maze, new Neutrality(data.neutrality), new Brain(data.brain), data.mazeEndIndexs, data.currentGraphIndex);
+            ai = new AI(data.maze, new Neutrality(data.neutrality), data.brain, data.mazeEndIndexs, data.currentGraphIndex);
             ableToLoadGame = true;
         }
     }

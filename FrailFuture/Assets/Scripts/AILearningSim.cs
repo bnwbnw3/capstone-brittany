@@ -23,25 +23,9 @@ public class AILearningSim : MonoBehaviour {
 	void Start () {
 	}
 	
-	void OnGUI()
-	{
-        /*
-        text =  GUI.TextField(new Rect(10, Screen.height - 380,100,50), text, 20) ;
-
-        if (GUI.Button(new Rect(10, Screen.height - 280, 100, 100), "Save"))
-        {
-            GameControl.control.Save(text + ".dat");
-        }
-        if (GUI.Button(new Rect(10, Screen.height - 180, 100, 100), "Load"))
-        {
-            GameControl.control.Load(text + ".dat");
-            GameControl.control.GameReady = false;
-        }*/
-	}
     public void userPicked(int choice)
     {
         GameControl.control.Ai.informOfPick(choice);
-        //Debug.Log("Player Choice: " + choice);
     }
 
 	void getRandomChoices()

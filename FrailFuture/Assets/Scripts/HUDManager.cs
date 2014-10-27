@@ -5,6 +5,7 @@ using System.Collections;
 public class HUDManager : MonoBehaviour
 {
     public GameObject player;
+    public GameObject HUDCameraOBJ;
     public Menu ResetMenuTo;
     public Menu CurrentMenu;
     private bool HUDOpen;
@@ -24,6 +25,7 @@ public class HUDManager : MonoBehaviour
             if (HUDOpen)
             {
                 player.SetActive(false);
+                HUDCameraOBJ.SetActive(true);
                 ShowMenu(CurrentMenu);
             }
             else
@@ -41,7 +43,6 @@ public class HUDManager : MonoBehaviour
             CurrentMenu.IsOpen = false;
 
             ChangeSettings options = GameObject.Find("OptionsMenuContainer").GetComponentInChildren<ChangeSettings>();
-            Debug.Log(options);
             options.invertX.isOn = GameControl.control.invertX;
             options.invertY.isOn = GameControl.control.invertY;
             options.mouseSensitivity.value = GameControl.control.mouseSensitivity;
@@ -66,6 +67,7 @@ public class HUDManager : MonoBehaviour
     public void ResumeGame()
     {
         player.SetActive(true);
+        HUDCameraOBJ.SetActive(false);
         CurrentMenu.IsOpen = false;
         HUDOpen = false;
     }

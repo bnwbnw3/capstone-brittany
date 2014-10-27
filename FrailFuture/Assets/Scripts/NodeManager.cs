@@ -12,17 +12,9 @@ public class NodeManager : MonoBehaviour
 	// Use this for initialization
     void Awake()
     {
-        if (nodeManager == null)
-        {
-            DontDestroyOnLoad(gameObject);
             nodeManager = this;
             init();
             justReset = false;
-        }
-        else if (nodeManager != this)
-        {
-            Destroy(gameObject);
-        }
     }
 
     void init()
@@ -36,20 +28,25 @@ public class NodeManager : MonoBehaviour
         {
             //first round, start of maze, only needs 1 hallway
             hallwaysUsed = new HashSet<int>() { 3, 4 };
+            //If initial index is at 0 we are at the begining of the game. Otherwise we 
+            //are loading in an old game and we should start the player at the current index
+            if (GameControl.control.Ai.getCurrentGraphIndex() == 0)
+            {
+                showNextHall();
+            }
+            else
+            {
+                showNextNode();
+            }
         }
-        //TESTING PURPOSES
-        //showNextNode();
-
-        //USE FOR GAME
-       ///*
-       if (hallwaysUsed.Count <= 2)
+        else if (hallwaysUsed.Count <= 2)
         {
             showNextHall();
         }
         else
         {
             showNextNode();
-        }//*/
+        }
     }
 
     void showNextNode()
