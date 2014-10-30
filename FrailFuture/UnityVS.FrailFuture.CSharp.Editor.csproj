@@ -82,6 +82,9 @@
     <Reference Include="Assembly-UnityScript-firstpass">
       <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
     </Reference>
+    <Reference Include="Assembly-UnityScript">
+      <HintPath>Library\ScriptAssemblies\Assembly-UnityScript.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="UnityVS.FrailFuture.CSharp.csproj">
@@ -112,6 +115,9 @@
     <Compile Include="Assets\ProCore\Prototype\Editor\ProBuilderMenuItems.cs" />
     <Compile Include="Assets\ProCore\Prototype\Editor\pb_Preferences.cs" />
     <Compile Include="Assets\ProCore\Shared\About\Editor\pc_AboutWindow.cs" />
+    <None Include="Assets\Destroyed_city_FREE\Destroyed_city_FREE_Info.txt" />
+    <None Include="Assets\Destroyed_city_FREE\Shaders\AlphaTest-DiffuseDoubleSide.shader" />
+    <None Include="Assets\Destroyed_city_FREE\Standard Assets\Water (Pro Only)\Sources\Shaders\FX-Water.shader" />
     <None Include="Assets\ProCore\Prototype\About\changelog.txt" />
     <None Include="Assets\ProCore\Prototype\About\Credits.txt" />
     <None Include="Assets\ProCore\Prototype\About\pc_AboutEntry_ProBuilder.txt" />
