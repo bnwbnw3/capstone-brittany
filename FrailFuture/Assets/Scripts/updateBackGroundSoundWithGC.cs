@@ -3,7 +3,7 @@ using System.Collections;
 
 public class updateBackGroundSoundWithGC : MonoBehaviour {
 
-    public float multiplier = 0.25f;
+    public float multiplier = 0.3f;
 
     void Start()
     {
