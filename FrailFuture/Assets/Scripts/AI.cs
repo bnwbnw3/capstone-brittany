@@ -150,9 +150,14 @@ public class AI
            return _brain;
        }
 
-       public float getNeutrality()
+       public float getNeutralityValue()
        {
            return _neutrality.getNeutrality();
+       }
+
+       public NeutralityTypes getNeutralityState()
+       {
+           return _neutrality.getState();
        }
 
        public Graph getGraph()

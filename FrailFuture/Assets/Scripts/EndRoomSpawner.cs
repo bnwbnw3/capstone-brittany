@@ -11,6 +11,9 @@ public class EndRoomSpawner : MonoBehaviour {
             transform.collider.isTrigger = false;
             //get the top parent, which holds neutrality, and grab neutrality
             NeutralityTypes type = (NeutralityTypes)transform.root.gameObject.GetComponentInChildren<GUINode>().endNodeType;
+
+            SoundManager.soundManager.playEndMaze(type);
+
             float timeTillDelete = 3; ;
             float scriptWaitTime = 10; // get from Ai next speech length is for end index script
             GameObjectSpawner spawnScript = spawner.GetComponent<GameObjectSpawner>();
@@ -19,11 +22,11 @@ public class EndRoomSpawner : MonoBehaviour {
             resetButton.transform.position = new Vector3(oldPos.x, oldPos.y - 10, oldPos.z);
             if (type == NeutralityTypes.Heavenly)
             {
-                spawnScript.spawnObject(new int[] { 0, 1, 2, 3 }, timeTillDelete, 30, 0.05f);
+                spawnScript.spawnObject(new int[] { 4, 5, 6 }, timeTillDelete, 30, 0.05f);
             }
             else if (type == NeutralityTypes.Lovely)
             {
-                spawnScript.spawnObject(new int[] { 4, 5, 6 }, timeTillDelete, 30, 0.05f);
+                spawnScript.spawnObject(new int[] { 0, 1, 2, 3 }, timeTillDelete, 30, 0.05f);
             }
             else if (type == NeutralityTypes.Neutral)
             {
@@ -42,6 +45,7 @@ public class EndRoomSpawner : MonoBehaviour {
             StartCoroutine(ResetGame(scriptWaitTime, c));
         }
     }
+
 
     private IEnumerator ResetGame(float waitTime, Collider c)
     {

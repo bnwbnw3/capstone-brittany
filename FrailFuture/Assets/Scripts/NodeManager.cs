@@ -6,6 +6,7 @@ public class NodeManager : MonoBehaviour
 {
     public List<GameObject> AllNodes;
     public List<GameObject> Hallways;
+    public List<GameObject> objectSpawner;
     HashSet<int> hallwaysUsed;
     public static NodeManager nodeManager;
     private bool justReset;
@@ -24,14 +25,21 @@ public class NodeManager : MonoBehaviour
 
     public void showNextRoom()
     {
+        resetObjSpawners();
         if (hallwaysUsed == null)
         {
             //first round, start of maze, only needs 1 hallway
-            hallwaysUsed = new HashSet<int>() { 3, 4 };
+            hallwaysUsed = new HashSet<int>() { 1 ,2, 3, 4 };
             //If initial index is at 0 we are at the begining of the game. Otherwise we 
             //are loading in an old game and we should start the player at the current index
             if (GameControl.control.Ai.getCurrentGraphIndex() == 0)
             {
+                objectSpawner[0].SetActive(true);
+                GameObject player = GameObject.Find("Player");
+                if (player != null)
+                {
+                    player.transform.position = GameObject.Find("maze0Spawner").transform.position;
+                }
                 showNextHall();
             }
             else
@@ -51,6 +59,7 @@ public class NodeManager : MonoBehaviour
 
     void showNextNode()
     {
+        SoundManager.soundManager.playDONADialogue();
         int inputsAvalible = (!justReset && GameControl.control.Ai.getNextGraphEndNodeType() != NeutralityTypes.None) ? 0 : GameControl.control.Ai.getNextInputsFromGraph().Length;
         justReset = (inputsAvalible == 0);
         string name = "" + inputsAvalible + "DoorGUINode";
@@ -88,6 +97,7 @@ public class NodeManager : MonoBehaviour
         for (int i = 0; i < Hallways.Count; i++)
         {
             Hallways[i].SetActive(false);
+            Hallways[i].BroadcastMessage("resetDummyNode");
         }
     }
 
@@ -107,5 +117,13 @@ public class NodeManager : MonoBehaviour
     public void resetAllNodes()
     {
         BroadcastMessage("resetGUINode");
+    }
+
+    public void resetObjSpawners()
+    {
+        for (int i = 0; i < objectSpawner.Count; i++)
+        {
+            objectSpawner[i].SetActive(false);
+        }
     }
 }

@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Collections;
 
-public class GUINode : MonoBehaviour {
-
-    public NeutralityTypes endNodeType = NeutralityTypes.None;
-    public float waitTimeTillCloseNode = 0.25f;
+public class DummyNode : MonoBehaviour
+{
     public Material openDoorMaterial;
     public Material closedDoorMaterial;
     private bool passedThrough;
@@ -17,7 +15,7 @@ public class GUINode : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() 
+    void Update()
     {
         if (!passedThrough)
         {
@@ -36,33 +34,26 @@ public class GUINode : MonoBehaviour {
                 }
             }
         }
-	}
+    }
 
     public void OnTriggerExit(Collider c)
     {
         if (collider.isTrigger)
         {
-           StartCoroutine(closeNode(waitTimeTillCloseNode));
-           passedThrough = true;
+            passedThrough = true;
+            HallwayDialogueVOTrigger vot = transform.root.gameObject.GetComponentInChildren<HallwayDialogueVOTrigger>();
+            if (vot != null)
+            {
+                vot.resetTrigger();
+            }
+            closingNode();
         }
     }
 
-    public void resetGUINode()
+    public void resetDummyNode()
     {
         openingNode();
         passedThrough = false;
-    }
-
-    public IEnumerator closeNode(float secondsToWait)
-    {
-        //play next audio for path to choose
-        if (endNodeType == NeutralityTypes.None)
-        {
-            int pickDoor = AILearningSim.AIsim.getNextDirection();
-            SoundManager.soundManager.playDirection(pickDoor);
-        }
-        yield return new WaitForSeconds(secondsToWait);
-        closingNode();
     }
 
     void openingNode()
@@ -77,4 +68,3 @@ public class GUINode : MonoBehaviour {
         collider.isTrigger = false;
     }
 }
-

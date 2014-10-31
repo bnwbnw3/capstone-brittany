@@ -248,7 +248,7 @@ public class GameControl : MonoBehaviour
 
         AIData allData = new AIData();
         allData.brain = ai.getBrain();
-        allData.neutrality = ai.getNeutrality();
+        allData.neutrality = ai.getNeutralityValue();
         allData.maze = ai.getGraph();
         allData.mazeEndIndexs = ai.getEndings();
         allData.currentGraphIndex = ai.getCurrentGraphIndex();

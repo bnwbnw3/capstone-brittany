@@ -5,13 +5,23 @@ using System.Collections;
 
 public class SoundManager : MonoBehaviour {
     public List<AudioClip> playerMovementSounds;
-    public List<AudioClip> AiDirections;
+
+    public List<AudioClip> AiDirectionsDoor1;
+    public List<AudioClip> AiDirectionsDoor2;
+    public List<AudioClip> AiDirectionsDoor3;
+
     public List<AudioClip> PickedRightDoor;
     public List<AudioClip> PickedWrongDoor;
-    public List<AudioClip> PickedWrong_DesiredDoor;
+    public List<AudioClip> PickedRightDoor_Desired;
+    public List<AudioClip> PickedWrongDoor_Desired;
     public List<AudioClip> EngingsFromBestToWorst;
-    public List<AudioClip> AiDialogue;
-    public List<AudioClip> AiComments;
+
+    public List<AudioClip> IntroAudio;
+    public List<AudioClip> DONADialoguePos;
+    public List<AudioClip> DONADialogueNeg;
+    public List<AudioClip> RoomDialogue;
+    public List<AudioClip> VODialogue;
+    private int VO_DIndex = 0;
 
     private System.Random randMaker;
     //Do pattern stating later.
@@ -63,28 +73,37 @@ public class SoundManager : MonoBehaviour {
 
     //Ai Audio
 
-    //Ai Diolauge
-    public void playStartMaze()
+    //Ai Dialogue
+
+    public void playDONADialogue()
     {
-        if (GameControl.control.Ai.getLastPickedInfo() == null)
+        //play random dialogue from DONA based on neutrality
+        if (GameControl.control.Ai.getCurrentGraphIndex() == 0 && GameControl.control.Ai.getLastPickedInfo() == null)
         {
-            startMaze0();
+            playDONAIntro(GameObject.Find("AiSpeaker").audio);
+        }
+        else if (GameControl.control.Ai.getNeutralityValue() >= 0)
+        {
+            int index = randMaker.Next(0,DONADialoguePos.Count);
+            playAudio(DONADialoguePos[index], GameObject.Find("AiSpeaker").audio, 2.0f);
         }
         else
         {
-            startMazeRandom();
+            int index = randMaker.Next(0, DONADialogueNeg.Count);
+            playAudio(DONADialogueNeg[index], GameObject.Find("AiSpeaker").audio, 2.0f);
         }
     }
-    private void startMaze0()
+
+    public void playVODialogue()
     {
-        //play intro DONA
-        playAudio(AiDialogue[0], GameObject.Find("AiSpeaker").audio, 2.0f);
-    }
-    private void startMazeRandom()
-    {
-        //play random fact
-        int index = randMaker.Next(0,AiComments.Count);
-        playAudio(AiComments[index], GameObject.Find("AiSpeaker").audio, 2.0f);
+        if (GameControl.control.Ai.getCurrentGraphIndex() == 0 && GameControl.control.Ai.getLastPickedInfo() == null)
+        {
+            StartCoroutine(playVOIntro(GameObject.Find("AiSpeaker").audio));
+        }
+        else
+        {
+            StartCoroutine(playVoDialogue(GameObject.Find("AiSpeaker").audio));
+        }
     }
 
     public void playEndMaze(NeutralityTypes neutralityOfEnding)
@@ -97,30 +116,56 @@ public class SoundManager : MonoBehaviour {
     public void playDirection(int doorToPick)
     {
         Tools.AssertFalse(doorToPick <= 0 && doorToPick > GameControl.control.maxNumChoices);
-        playAudio(AiDirections[doorToPick - 1], GameObject.Find("AiSpeaker").audio,2.0f);
+        int AiNeutrality = (int)GameControl.control.Ai.getNeutralityState();
+        if (doorToPick == 1)
+        {
+            playAudio(AiDirectionsDoor1[AiNeutrality], GameObject.Find("AiSpeaker").audio, 2.0f);
+        }
+        else if (doorToPick == 2)
+        {
+            playAudio(AiDirectionsDoor2[AiNeutrality], GameObject.Find("AiSpeaker").audio, 2.0f);
+        }
+
+        else if (doorToPick == 3)
+        {
+            playAudio(AiDirectionsDoor3[AiNeutrality], GameObject.Find("AiSpeaker").audio, 2.0f);
+        }
     }
 
     public void playResponse()
     {
         PlayerData pd = GameControl.control.Ai.getLastPickedInfo();
+        bool aiIsPos = GameControl.control.Ai.getNeutralityValue() >= 0;
+        //grab random index based on having pos or neg neutrality
+        int index = randMaker.Next(2, (PickedRightDoor_Desired.Count+1));
+        if (index % 2 == 0 && !aiIsPos)
+        {
+            index -= 1;
+        }
+        if (index % 2 != 0 && aiIsPos)
+        {
+            index -= 2;
+        }
         if (pd.picked == pd.delivered)
         {
-            int index = randMaker.Next(1, 5);
-            index = index % 2 == 0 ? 0 : 1;
-            playAudio(PickedRightDoor[index], GameObject.Find("AiSpeaker").audio, 2.0f);
+            if (pd.picked == pd.desired)
+            {
+                playAudio(PickedRightDoor_Desired[index], GameObject.Find("AiSpeaker").audio, 2.0f);
+            }
+            else
+            {
+                playAudio(PickedRightDoor[index], GameObject.Find("AiSpeaker").audio, 2.0f);
+            }
         }
         else
         {
             if (pd.picked == pd.desired)
             {
-                int index = randMaker.Next(0, 3);
-                playAudio(PickedWrong_DesiredDoor[index], GameObject.Find("AiSpeaker").audio, 2.0f);
+                playAudio(PickedWrongDoor_Desired[index], GameObject.Find("AiSpeaker").audio, 2.0f);
             }
             else
             {
-                int index = randMaker.Next(1, 5);
-                index = index % 2 == 0 ? 0 : 1;
-                playAudio(PickedWrongDoor[index], GameObject.Find("AiSpeaker").audio,2.0f);
+                playAudio(PickedWrongDoor[index], GameObject.Find("AiSpeaker").audio, 2.0f);
             }
         }
     }
@@ -147,11 +192,34 @@ public class SoundManager : MonoBehaviour {
         }
     }
 
+    private void playDONAIntro(AudioSource source)
+    {
+        playAudio(IntroAudio[2], source, 2.0f);
+    }
+
     private IEnumerator stopNon_LoopAudio(AudioSource source)
     {
         yield return new WaitForSeconds(source.audio.clip.length);
         source.loop = false;
         source.volume = 0.0f;
         source.Stop();
+    }
+
+    private IEnumerator playVOIntro(AudioSource source)
+    {
+        playAudio(IntroAudio[0], source, 2.0f);
+        yield return new WaitForSeconds(source.audio.clip.length);
+        playAudio(IntroAudio[1], source, 2.0f);
+    }
+
+    private IEnumerator playVoDialogue(AudioSource source)
+    {
+        if (VO_DIndex == VODialogue.Count-1)
+        {
+            VO_DIndex = 0;
+        }
+        playAudio(VODialogue[VO_DIndex++], source, 2.0f);
+        yield return new WaitForSeconds(source.audio.clip.length);
+        playAudio(VODialogue[VODialogue.Count - 1], source, 2.0f);
     }
 }
