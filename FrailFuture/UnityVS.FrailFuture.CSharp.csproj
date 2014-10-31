@@ -111,7 +111,6 @@
     <Compile Include="Assets\Scripts\Tools.cs" />
     <Compile Include="Assets\Scripts\UISound.cs" />
     <Compile Include="Assets\Scripts\updateBackGroundSoundWithGC.cs" />
-    <None Include="Assets\Destroyed_city_FREE\Destroyed_city_FREE_Info.txt" />
     <None Include="Assets\Destroyed_city_FREE\Shaders\AlphaTest-DiffuseDoubleSide.shader" />
     <None Include="Assets\Destroyed_city_FREE\Standard Assets\Water (Pro Only)\Sources\Shaders\FX-Water.shader" />
     <None Include="Assets\ProCore\Prototype\About\changelog.txt" />
