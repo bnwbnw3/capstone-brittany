@@ -128,8 +128,6 @@
     <None Include="Assets\ProCore\Prototype\Shader\UnlitColor-Overlay.shader" />
     <None Include="Assets\ProCore\Prototype\Shader\VertexBillboard.shader" />
     <None Include="Assets\ProCore\Shared\About\README.txt" />
-    <None Include="Assets\Sounds\FootstepsSoundsCarpetPack\FootstepsSoundsCarpetPackInfo.txt" />
-    <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
     <None Include="Assets\ProCore\Prototype\Editor\ProBuilderEditor.dll" />
     <None Include="Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll" />
     <None Include="Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Messaging.dll" />
