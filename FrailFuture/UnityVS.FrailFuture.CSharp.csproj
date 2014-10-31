@@ -76,10 +76,10 @@
     <Compile Include="Assets\ProCore\Prototype\Scripts\RebuildMeshOnWake.cs" />
     <Compile Include="Assets\Scripts\AI.cs" />
     <Compile Include="Assets\Scripts\AILearningSim.cs" />
-    <Compile Include="Assets\Scripts\BeginMaze.cs" />
     <Compile Include="Assets\Scripts\Brain.cs" />
     <Compile Include="Assets\Scripts\ChangeSettings.cs" />
     <Compile Include="Assets\Scripts\DestroyAllThatTouchMe.cs" />
+    <Compile Include="Assets\Scripts\DummyNode.cs" />
     <Compile Include="Assets\Scripts\EndRoomSpawner.cs" />
     <Compile Include="Assets\Scripts\FollowCamera.cs" />
     <Compile Include="Assets\Scripts\GUINode.cs" />
@@ -87,6 +87,9 @@
     <Compile Include="Assets\Scripts\GameObjectSpawner.cs" />
     <Compile Include="Assets\Scripts\Graph.cs" />
     <Compile Include="Assets\Scripts\HUDManager.cs" />
+    <Compile Include="Assets\Scripts\HallwayDialogueDONATrigger.cs" />
+    <Compile Include="Assets\Scripts\HallwayDialogueVOTrigger.cs" />
+    <Compile Include="Assets\Scripts\LookAtTarget.cs" />
     <Compile Include="Assets\Scripts\Menu.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />
     <Compile Include="Assets\Scripts\MouseLook.cs" />
@@ -98,6 +101,7 @@
     <Compile Include="Assets\Scripts\NotMine\PlatformInputController.cs" />
     <Compile Include="Assets\Scripts\PathChoice.cs" />
     <Compile Include="Assets\Scripts\PathWayFinder.cs" />
+    <Compile Include="Assets\Scripts\RandomLerpMe.cs" />
     <Compile Include="Assets\Scripts\ResetButton.cs" />
     <Compile Include="Assets\Scripts\SaveOriginalPos.cs" />
     <Compile Include="Assets\Scripts\SimpleDoNotDestroyOnLoad.cs" />
