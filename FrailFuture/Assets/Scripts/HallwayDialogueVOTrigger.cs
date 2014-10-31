@@ -3,17 +3,21 @@ using System.Collections;
 
 public class HallwayDialogueVOTrigger : MonoBehaviour {
 
+    private int lastVertexKnown;
+
+    void Awake()
+    {
+        lastVertexKnown = -1;
+    }
     public void OnTriggerEnter(Collider c)
     {
-        if (collider.isTrigger && !SoundManager.soundManager.getIsAiTalking())
+        if (lastVertexKnown != GameControl.control.Ai.getCurrentGraphIndex())
         {
-            SoundManager.soundManager.playVODialogue();
-            collider.enabled = false;
+            if (!SoundManager.soundManager.getIsAiTalking())
+            {
+                lastVertexKnown = GameControl.control.Ai.getCurrentGraphIndex();
+                SoundManager.soundManager.playVODialogue();
+            }
         }
-    }
-
-    public void resetTrigger()
-    {
-        collider.enabled = true;
     }
 }

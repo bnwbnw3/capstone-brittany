@@ -9,7 +9,7 @@ public class NodeManager : MonoBehaviour
     public List<GameObject> objectSpawner;
     HashSet<int> hallwaysUsed;
     public static NodeManager nodeManager;
-    private bool justReset;
+    public bool justReset;
 	// Use this for initialization
     void Awake()
     {
@@ -32,19 +32,30 @@ public class NodeManager : MonoBehaviour
             hallwaysUsed = new HashSet<int>() { 1 ,2, 3, 4 };
             //If initial index is at 0 we are at the begining of the game. Otherwise we 
             //are loading in an old game and we should start the player at the current index
-            if (GameControl.control.Ai.getCurrentGraphIndex() == 0)
+
+            if (GameControl.control.wasLoaded)
             {
-                objectSpawner[0].SetActive(true);
-                GameObject player = GameObject.Find("Player");
-                if (player != null)
+                if (GameControl.control.Ai.getCurrentGraphIndex() == 0)
                 {
-                    player.transform.position = GameObject.Find("maze0Spawner").transform.position;
+                    showNextHall();
                 }
-                showNextHall();
+                else
+                {
+                    showNextNode();
+                }
             }
             else
             {
-                showNextNode();
+                if (GameControl.control.Ai.getCurrentGraphIndex() == 0)
+                {
+                    objectSpawner[0].SetActive(true);
+                    GameObject player = GameObject.Find("Player");
+                    if (player != null)
+                    {
+                        player.transform.position = GameObject.Find("maze0Spawner").transform.position;
+                    }
+                    showNextHall();
+                }
             }
         }
         else if (hallwaysUsed.Count <= 2)
@@ -59,6 +70,7 @@ public class NodeManager : MonoBehaviour
 
     void showNextNode()
     {
+        Debug.Log("Ai Neutrality:" +GameControl.control.Ai.getNeutralityState());
         SoundManager.soundManager.playDONADialogue();
         int inputsAvalible = (!justReset && GameControl.control.Ai.getNextGraphEndNodeType() != NeutralityTypes.None) ? 0 : GameControl.control.Ai.getNextInputsFromGraph().Length;
         justReset = (inputsAvalible == 0);
@@ -97,7 +109,6 @@ public class NodeManager : MonoBehaviour
         for (int i = 0; i < Hallways.Count; i++)
         {
             Hallways[i].SetActive(false);
-            Hallways[i].BroadcastMessage("resetDummyNode");
         }
     }
 

@@ -35,27 +35,6 @@ public class DummyNode : MonoBehaviour
             }
         }
     }
-
-    public void OnTriggerExit(Collider c)
-    {
-        if (collider.isTrigger)
-        {
-            passedThrough = true;
-            HallwayDialogueVOTrigger vot = transform.root.gameObject.GetComponentInChildren<HallwayDialogueVOTrigger>();
-            if (vot != null)
-            {
-                vot.resetTrigger();
-            }
-            closingNode();
-        }
-    }
-
-    public void resetDummyNode()
-    {
-        openingNode();
-        passedThrough = false;
-    }
-
     void openingNode()
     {
         renderer.material = openDoorMaterial;

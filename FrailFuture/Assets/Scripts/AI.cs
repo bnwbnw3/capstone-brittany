@@ -23,6 +23,13 @@ public class AI
             _brain = brain;
             _mazeEndIndexs = mazeEndIndexs;
             int lowestEndIndex = mazeEndIndexs.OrderBy(k => k.Value).FirstOrDefault().Value;
+            foreach (KeyValuePair<NeutralityTypes, int> mazeEndI in mazeEndIndexs)
+            {
+                if (mazeEndI.Value == currentGraphIndex)
+                {
+                    currentGraphIndex = 0;
+                }
+            }
             pf = new PathWayFinder(_maze, lowestEndIndex, currentGraphIndex);
             AiDesiredEndIndex = _mazeEndIndexs[_neutrality.getState()];
             int numInputs = pf.getNumPossibleInputs(currentGraphIndex);
@@ -95,15 +102,6 @@ public class AI
            {
                _brain.checkUserChoice(userChoice);
                PlayerData pd = getLastPickedInfo();
-               //CHANGE LATER NEUTRALITY NEEDS TO BE TWEAKED
-               if (pd.delivered == pd.picked)
-               {
-                   _neutrality.Add(neutralityAdder);
-               }
-               else
-               {
-                   _neutrality.Add(-neutralityAdder);
-               }
            }
            AiCurrentDesire = pf.getNextDesiredInput(userChoice, AiDesiredEndIndex).input;
            graphIndex = pf.getCurrentGraphIndex();
@@ -119,7 +117,6 @@ public class AI
         while(pf.isEndOfPath())
            {
                pf.reset();
-               //UPDATE NEUTRALITY
                int endIndexWas = pf.endIndex;
                if (endIndexWas == AiDesiredEndIndex)
                {
@@ -129,6 +126,9 @@ public class AI
                {
                    int halfWinner = 4;
                }
+               //UPDATE NEUTRALITY
+               float change = _neutrality.getAdditiveFromNeutrality(_mazeEndIndexs.First(n => n.Value == endIndexWas).Key);
+            _neutrality.Add(change);
 
                //set new neutrality after effects from last game
                AiDesiredEndIndex = _mazeEndIndexs[_neutrality.getState()];
@@ -194,7 +194,29 @@ public class Neutrality
             _neutrality = _neutrality > 0 ? 1:-1;
         }
     }
-    
+
+    public float getAdditiveFromNeutrality(NeutralityTypes type)
+    {
+        float additive = 0;
+        if (type == NeutralityTypes.Heavenly)
+        {
+            additive += devidePoint;
+        }
+        else if (type == NeutralityTypes.Lovely)
+        {
+            additive += (devidePoint / 2.0f) + 0.01f;
+        }
+        else if (type == NeutralityTypes.Agitated)
+        {
+            additive -= (devidePoint / 2.0f) - 0.01f;
+        }
+        else if (type == NeutralityTypes.Evil)
+        {
+            additive -= devidePoint;
+        }
+        return additive;
+    }
+
     public void setNeutrality(float value)
     {
         _neutrality = value;

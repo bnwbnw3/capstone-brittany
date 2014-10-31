@@ -16,6 +16,7 @@ public class GameControl : MonoBehaviour
     public float mouseSensitivity = 15F;
     public float backgroundMusicVolume = 1.0f;
     public float soundEffectsVolume =  0.25f;
+    public bool wasLoaded;
 
     private AI ai;
     private Graph maze;
@@ -41,6 +42,7 @@ public class GameControl : MonoBehaviour
         // makeBeginnerAi();
         gameReady = false;
         aiReady = false;
+        wasLoaded = false;
         _startingPlayerVars = new StartingTransform();
         _playerStartTransNotSet = true;
         ableToLoadGame = false;
@@ -48,14 +50,14 @@ public class GameControl : MonoBehaviour
 
     public void makeBeginnerAi()
     {
+        wasLoaded = false;
          SizedList<PlayerData> temp = new SizedList<PlayerData>(10);
         BrainData bd = new BrainData() { pastPatterns = new Dictionary<string, int>(), pastActions = temp };
         Brain brain = new Brain(bd);
         initMazeEndIndexsToNeg1();
         createMaze();
         System.Random random = new System.Random();
-        float randNeutrality = (float)random.NextDouble() * (1 - (-1)) + (-1);
-        Neutrality neutrality = new Neutrality(randNeutrality);
+        Neutrality neutrality = new Neutrality(0);
         ai = new AI(maze, neutrality, brain, mazeEndIndexs);
         aiReady = true;
     }
@@ -272,7 +274,7 @@ public class GameControl : MonoBehaviour
             file.Close();
             Debug.Log("Loaded data from: " + Application.persistentDataPath + "/" + fileName);
             ai = new AI(data.maze, new Neutrality(data.neutrality), data.brain, data.mazeEndIndexs, data.currentGraphIndex);
-            ableToLoadGame = true;
+            wasLoaded = ableToLoadGame = true;
         }
     }
 

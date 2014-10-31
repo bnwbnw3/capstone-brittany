@@ -4,6 +4,8 @@ using System;
 using System.Collections;
 
 public class SoundManager : MonoBehaviour {
+
+    public AudioListener gameListener;
     public List<AudioClip> playerMovementSounds;
 
     public List<AudioClip> AiDirectionsDoor1;
@@ -137,15 +139,16 @@ public class SoundManager : MonoBehaviour {
         PlayerData pd = GameControl.control.Ai.getLastPickedInfo();
         bool aiIsPos = GameControl.control.Ai.getNeutralityValue() >= 0;
         //grab random index based on having pos or neg neutrality
-        int index = randMaker.Next(2, (PickedRightDoor_Desired.Count+1));
-        if (index % 2 == 0 && !aiIsPos)
-        {
-            index -= 1;
-        }
-        if (index % 2 != 0 && aiIsPos)
+        int index = randMaker.Next(2, (PickedRightDoor_Desired.Count));
+        if (index % 2 == 0 && aiIsPos)
         {
             index -= 2;
         }
+        if (index % 2 != 0 && !aiIsPos)
+        {
+            index -= 1;
+        }
+        Debug.Log("isGood: " +aiIsPos + "--> Response index: " + index);
         if (pd.picked == pd.delivered)
         {
             if (pd.picked == pd.desired)

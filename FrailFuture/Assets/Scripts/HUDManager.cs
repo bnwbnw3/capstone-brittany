@@ -10,7 +10,6 @@ public class HUDManager : MonoBehaviour
     public Menu CurrentMenu;
     private bool HUDOpen;
 
-
     public void Start()
     {
         HUDOpen = false;
@@ -18,7 +17,8 @@ public class HUDManager : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        //breaks if ai is talking while half pausing game. Tried to debug and couldn't get to source.
+        if (Input.GetKeyDown(KeyCode.Escape) && !SoundManager.soundManager.getIsAiTalking())
         {
             HUDOpen = !HUDOpen;
 
@@ -81,5 +81,4 @@ public class HUDManager : MonoBehaviour
     {
         Application.Quit();
     }
-
 }
