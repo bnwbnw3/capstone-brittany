@@ -208,7 +208,7 @@ public class Neutrality
         }
         else if (type == NeutralityTypes.Agitated)
         {
-            additive -= (devidePoint / 2.0f) - 0.01f;
+            additive -= (devidePoint / 2.0f) + 0.01f;
         }
         else if (type == NeutralityTypes.Evil)
         {
