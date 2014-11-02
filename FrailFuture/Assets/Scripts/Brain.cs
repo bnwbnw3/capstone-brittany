@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 [Serializable]
 public class Brain
@@ -29,7 +30,7 @@ public class Brain
 
         if (userChoice == lastDesiredChoice)
         {
-            bd.score += 1;
+            bd.scoreOfPickingDesiredInput += 1;
         }
         bd.pastActions.Add(new PlayerData { numOfInputs = inputs.Length, desired = lastDesiredChoice, delivered = lastChoiceToDeliver, picked = userChoice });
     }
@@ -78,8 +79,7 @@ public class Brain
         }
         if (final == -1)
         {
-            //something went wrong
-            int four = 1;
+            Debug.Log("Brain failed to find a direction to give the player");
         }
         return final;
     }
@@ -311,7 +311,7 @@ public class Brain
         {
             if (inputs.Length > 2)
             {
-                toReturn = new Random().Next(1, inputs.Length + 1);
+                toReturn = new System.Random().Next(1, inputs.Length + 1);
             }
             else
             {
@@ -392,7 +392,7 @@ public class Brain
     }
     public int getScore()
     {
-        return bd.score;
+        return bd.scoreOfPickingDesiredInput;
     }
     public int getTotalPossible()
     {
@@ -415,6 +415,6 @@ public class BrainData
 {
     public Dictionary<string, int> pastPatterns;
     public SizedList<PlayerData> pastActions;
-    public int score;
+    public int scoreOfPickingDesiredInput;
     public int totalPossible;
 }
