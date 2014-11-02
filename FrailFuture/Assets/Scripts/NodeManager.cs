@@ -13,9 +13,9 @@ public class NodeManager : MonoBehaviour
 	// Use this for initialization
     void Awake()
     {
-            nodeManager = this;
-            init();
-            justReset = false;
+      nodeManager = this;
+      init();
+      justReset = false;
     }
 
     void init()
@@ -52,7 +52,8 @@ public class NodeManager : MonoBehaviour
                     GameObject player = GameObject.Find("Player");
                     if (player != null)
                     {
-                        player.transform.position = GameObject.Find("maze0Spawner").transform.position;
+                        Vector3 newPos = GameObject.Find("maze0Spawner").transform.position;
+                        player.transform.position = new Vector3(newPos.x, 0.5f,newPos.z);
                     }
                     showNextHall();
                 }
