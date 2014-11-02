@@ -13,9 +13,9 @@ public class EndRoomSpawner : MonoBehaviour {
             NeutralityTypes type = (NeutralityTypes)transform.root.gameObject.GetComponentInChildren<GUINode>().endNodeType;
 
             SoundManager.soundManager.playEndMaze(type);
-
-            float timeTillDelete = 3; ;
-            float scriptWaitTime = GameObject.Find("AiSpeaker").audio.clip.length + 5; // get from Ai next speech length is for end index script
+            float buffer = 3.0f;
+            float scriptWaitTime = GameObject.Find("AiSpeaker").audio.clip.length + buffer;
+            float timeTillDelete = scriptWaitTime * (0.5f); 
             GameObjectSpawner spawnScript = spawner.GetComponent<GameObjectSpawner>();
             GameObject resetButton = GameObject.Find("ResetButton");
             Vector3 oldPos = resetButton.transform.position;
