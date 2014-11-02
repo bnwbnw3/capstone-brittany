@@ -43,10 +43,6 @@ public class GameObjectSpawner : MonoBehaviour {
                         }
                     }
                 }
-                else
-                {
-                    Debug.Log("Tried to spawn something not in array");
-                }
                 yield return new WaitForSeconds (wait); 
             }
         }

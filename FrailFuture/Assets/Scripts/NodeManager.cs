@@ -71,7 +71,6 @@ public class NodeManager : MonoBehaviour
 
     void showNextNode()
     {
-        Debug.Log("Ai Neutrality:" +GameControl.control.Ai.getNeutralityState());
         SoundManager.soundManager.playDONADialogue();
         int inputsAvalible = (!justReset && GameControl.control.Ai.getNextGraphEndNodeType() != NeutralityTypes.None) ? 0 : GameControl.control.Ai.getNextInputsFromGraph().Length;
         justReset = (inputsAvalible == 0);

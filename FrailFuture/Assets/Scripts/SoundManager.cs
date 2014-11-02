@@ -152,7 +152,6 @@ public class SoundManager : MonoBehaviour {
         {
             index -= 1;
         }
-        Debug.Log("isGood: " +aiIsPos + "--> Response index: " + index);
         if (pd.picked == pd.delivered)
         {
             if (pd.picked == pd.desired)
