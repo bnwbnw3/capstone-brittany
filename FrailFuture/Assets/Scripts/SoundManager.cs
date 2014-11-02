@@ -37,6 +37,10 @@ public class SoundManager : MonoBehaviour {
             DontDestroyOnLoad(gameObject);
             soundManager = this;
             randMaker = new System.Random();
+            if (GameControl.control.wasLoaded)
+            {
+                VO_DIndex = randMaker.Next(0, VODialogue.Count);
+            }
         }
         else if (soundManager != this)
         {
