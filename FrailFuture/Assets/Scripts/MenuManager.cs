@@ -64,6 +64,7 @@ public class MenuManager : MonoBehaviour
         loadingScene.SetActive(true);
         loadingObj.SetActive(true);
         CurrentMenu.IsOpen = false;
+        Screen.lockCursor = true;
         yield return new WaitForSeconds(waitTime);
         Application.LoadLevel("GameScene");
     }

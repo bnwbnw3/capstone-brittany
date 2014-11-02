@@ -27,6 +27,7 @@ public class HUDManager : MonoBehaviour
                 player.SetActive(false);
                 HUDCameraOBJ.SetActive(true);
                 ShowMenu(CurrentMenu);
+                Screen.lockCursor = true;
             }
             else
             {
@@ -70,15 +71,18 @@ public class HUDManager : MonoBehaviour
         HUDCameraOBJ.SetActive(false);
         CurrentMenu.IsOpen = false;
         HUDOpen = false;
+        Screen.showCursor = true;
     }
 
     public void LoadMainMenu()
     {
         Application.LoadLevel("MainMenu");
+        Screen.showCursor = true;
     }
 
     public void QuitGame()
     {
         Application.Quit();
+        Screen.showCursor = true;
     }
 }
