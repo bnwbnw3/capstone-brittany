@@ -8,6 +8,7 @@ public class AI
        private Graph _maze;
        private Brain _brain;
        private Dictionary<NeutralityTypes, int> _mazeEndIndexs;
+       private AIEndingsScore _score;
        private PathWayFinder pf;
 
       private int AiCurrentDesire;
@@ -16,12 +17,13 @@ public class AI
       private int[] inputsAvalible;
       private int graphIndex;
       private const float neutralityAdder = 0.1f;
-        public AI(Graph maze, Neutrality starting, Brain brain, Dictionary<NeutralityTypes, int> mazeEndIndexs, int currentGraphIndex = 0)
+        public AI(Graph maze, Neutrality starting, Brain brain, Dictionary<NeutralityTypes, int> mazeEndIndexs, AIEndingsScore score, int currentGraphIndex = 0)
         {
             _maze = maze;
             _neutrality = starting;
             _brain = brain;
             _mazeEndIndexs = mazeEndIndexs;
+            _score = score;
             int lowestEndIndex = mazeEndIndexs.OrderBy(k => k.Value).FirstOrDefault().Value;
             foreach (KeyValuePair<NeutralityTypes, int> mazeEndI in mazeEndIndexs)
             {
@@ -53,49 +55,6 @@ public class AI
             }
         }
 
-        public int getDirection()
-        {
-            return directionGiven;
-        }
-        public int getAiCurrentDesire()
-        {
-            return AiCurrentDesire;
-        }
-        public int[] getNextInputsFromGraph()
-        {
-            return inputsAvalible;
-        }
-        public PlayerData getLastPickedInfo()
-        {
-            if (_brain.getPlayerActions().Count > 0)
-            {
-                return _brain.getPlayerActions().Get(_brain.getPlayerActions().Count-1);
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public int getCurrentGraphIndex()
-        {
-            return graphIndex;
-        }
-
-        public NeutralityTypes getNextGraphEndNodeType()
-    {
-        NeutralityTypes type = NeutralityTypes.None;
-        for (int i = (int)NeutralityTypes.Heavenly; i < (int)NeutralityTypes.COUNT; i++)
-        {
-            if (_mazeEndIndexs.ContainsKey((NeutralityTypes)i) && _mazeEndIndexs[(NeutralityTypes)i] == graphIndex)
-            {
-                type = (NeutralityTypes)i;
-            }
-        }
-
-        return type;
-    }
-
        public void informOfPick(int userChoice)
        {
            if (userChoice != 0)
@@ -120,11 +79,11 @@ public class AI
                int endIndexWas = pf.endIndex;
                if (endIndexWas == AiDesiredEndIndex)
                {
-                   int winner = 3;
+                   _score.scoreOfPickingAiBestEnding++;
                }
-               if (endIndexWas == pf.getAvalibleDesiredIndex())
+               else if (endIndexWas == pf.getAvalibleDesiredIndex())
                {
-                   int halfWinner = 4;
+                   _score.scoreOfPickingAiSecondBestEnding++;
                }
                //UPDATE NEUTRALITY
                float change = _neutrality.getAdditiveFromNeutrality(_mazeEndIndexs.First(n => n.Value == endIndexWas).Key);
@@ -169,6 +128,62 @@ public class AI
        {
            return _mazeEndIndexs;
        }
+
+       public int getDirection()
+       {
+           return directionGiven;
+       }
+       public int getAiCurrentDesire()
+       {
+           return AiCurrentDesire;
+       }
+       public int[] getNextInputsFromGraph()
+       {
+           return inputsAvalible;
+       }
+       public PlayerData getLastPickedInfo()
+       {
+           if (_brain.getPlayerActions().Count > 0)
+           {
+               return _brain.getPlayerActions().Get(_brain.getPlayerActions().Count - 1);
+           }
+           else
+           {
+               return null;
+           }
+       }
+
+       public int getCurrentGraphIndex()
+       {
+           return graphIndex;
+       }
+
+       public NeutralityTypes getNextGraphEndNodeType()
+       {
+           NeutralityTypes type = NeutralityTypes.None;
+           for (int i = (int)NeutralityTypes.Heavenly; i < (int)NeutralityTypes.COUNT; i++)
+           {
+               if (_mazeEndIndexs.ContainsKey((NeutralityTypes)i) && _mazeEndIndexs[(NeutralityTypes)i] == graphIndex)
+               {
+                   type = (NeutralityTypes)i;
+               }
+           }
+
+           return type;
+       }
+
+       public AIEndingsScore getAIEndingsScore()
+       {
+           return _score;
+       }
+}
+
+[Serializable]
+public class AIEndingsScore
+{
+   public int scoreOfPickingAiBestEnding;
+   public int scoreOfPickingAiSecondBestEnding;
+   public int totalEndings;
 }
 
 public class Neutrality
@@ -249,7 +264,6 @@ public class Neutrality
         }
         return state;
     }
-
 }
 
 public enum NeutralityTypes
@@ -267,9 +281,10 @@ public enum NeutralityTypes
 [Serializable]
 public class AIData
 {
-   public Brain brain;
    public float neutrality;
-   public Graph maze;
-   public Dictionary<NeutralityTypes, int> mazeEndIndexs;
    public int currentGraphIndex;
+   public AIEndingsScore score;
+   public Brain brain;
+   public Dictionary<NeutralityTypes, int> mazeEndIndexs;
+   public Graph maze;
 }
