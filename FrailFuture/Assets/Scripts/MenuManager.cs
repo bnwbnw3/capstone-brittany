@@ -9,7 +9,6 @@ public class MenuManager : MonoBehaviour
     public GameObject loadingScene;
     public GameObject loadingObj;
 
-
     public void Start()
     {
         ShowMenu(CurrentMenu);
