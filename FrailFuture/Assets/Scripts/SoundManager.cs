@@ -142,7 +142,7 @@ public class SoundManager : MonoBehaviour {
         int index = randMaker.Next(2, (PickedRightDoor_Desired.Count));
         if (index % 2 == 0 && aiIsPos)
         {
-            index -= 2;
+            index -= 1;
         }
         if (index % 2 != 0 && !aiIsPos)
         {
