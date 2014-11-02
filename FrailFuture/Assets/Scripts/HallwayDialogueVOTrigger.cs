@@ -8,10 +8,18 @@ public class HallwayDialogueVOTrigger : MonoBehaviour {
     void Awake()
     {
         lastVertexKnown = -1;
+        if (GameControl.control.wasLoaded)
+        {
+            string name = this.gameObject.name;
+            if (name.CompareTo("VOIntroTrigger") == 0)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
     public void OnTriggerEnter(Collider c)
     {
-        if (lastVertexKnown != GameControl.control.Ai.getCurrentGraphIndex())
+        if (lastVertexKnown != GameControl.control.Ai.getCurrentGraphIndex() || NodeManager.nodeManager.justReset)
         {
             if (!SoundManager.soundManager.getIsAiTalking())
             {
