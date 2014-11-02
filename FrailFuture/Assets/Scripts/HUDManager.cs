@@ -24,15 +24,14 @@ public class HUDManager : MonoBehaviour
 
             if (HUDOpen)
             {
+                Screen.showCursor = true;
                 player.SetActive(false);
                 HUDCameraOBJ.SetActive(true);
                 ShowMenu(CurrentMenu);
-                Screen.lockCursor = true;
             }
             else
             {
                 ResumeGame();
-                CurrentMenu = ResetMenuTo;
             }
         }
     }
@@ -61,28 +60,30 @@ public class HUDManager : MonoBehaviour
 
     public void SaveGame(InputField Field)
     {
+        Screen.showCursor = true;
         string fileName = Field.text.text + ".dat";
         GameControl.control.Save(fileName);
     }
 
     public void ResumeGame()
     {
+        Screen.lockCursor = true;
         player.SetActive(true);
         HUDCameraOBJ.SetActive(false);
         CurrentMenu.IsOpen = false;
         HUDOpen = false;
-        Screen.showCursor = true;
+        CurrentMenu = ResetMenuTo;
     }
 
     public void LoadMainMenu()
     {
-        Application.LoadLevel("MainMenu");
         Screen.showCursor = true;
+        Application.LoadLevel("MainMenu");
     }
 
     public void QuitGame()
     {
-        Application.Quit();
         Screen.showCursor = true;
+        Application.Quit();
     }
 }
