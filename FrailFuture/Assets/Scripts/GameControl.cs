@@ -58,7 +58,8 @@ public class GameControl : MonoBehaviour
         createMaze();
         System.Random random = new System.Random();
         Neutrality neutrality = new Neutrality(0);
-        ai = new AI(maze, neutrality, brain, mazeEndIndexs);
+        AIEndingsScore score = new AIEndingsScore();
+        ai = new AI(maze, neutrality, brain, mazeEndIndexs, score);
         aiReady = true;
     }
 
@@ -69,44 +70,6 @@ public class GameControl : MonoBehaviour
         //testMazeGraph2();
         //testMazeGraph3();
     }
-    //OLD
-    /*void useGUINodesToMakeGraph()
-    {
-        NodeManager nodeManager = NodeManager.nodeManager;
-        //check that maze exists
-        if (nodeManager != null && nodeManager.AllNodes.Count > 0)
-        {
-            //Add Node Connections To Maze
-            List<GUINode> allNodes = nodeManager.AllNodes;
-            int allNodesCount = allNodes.Count;
-
-            maze = new Graph(allNodesCount);
-
-            for (int i = 0; i < allNodesCount; i++)
-            {
-                int nodeIndex = i;
-                if (allNodes[i].endNodeType == NeutralityTypes.None)
-                {
-                    List<GUINode> edges_connections = allNodes[i].Edges_Connections;
-                    int edges_connectionsCount = edges_connections.Count;
-                    for (int j = 0; j < edges_connectionsCount; j++)
-                    {
-                        int neighborIndex = edges_connections[j].getIndexFromNodeManager();
-                        maze.addEdge(nodeIndex, neighborIndex) ;
-                    }
-                }
-                //Grab End AllNodes
-                else
-                {
-                    NeutralityTypes type = (NeutralityTypes)allNodes[i].endNodeType;
-                    //find if it's end node type already used
-                    int IsSetTo = mazeEndIndexs[type];
-                    Tools.AssertTrue(IsSetTo == MAZE_END_INDEX_NULL, "Can only use Neutrality type for one Node");
-                    mazeEndIndexs[type] = nodeIndex; 
-                }
-            }
-        }
-    }*/
 
     public void initMazeEndIndexsToNeg1()
     {
@@ -116,6 +79,11 @@ public class GameControl : MonoBehaviour
         mazeEndIndexs[NeutralityTypes.Neutral]  = MAZE_END_INDEX_NULL;
         mazeEndIndexs[NeutralityTypes.Lovely]   = MAZE_END_INDEX_NULL;
         mazeEndIndexs[NeutralityTypes.Heavenly] = MAZE_END_INDEX_NULL;
+    }
+
+    void generateRandomGraph(int maxNumConnections, int endNodeAmount)
+    {
+
     }
 
     void testMazeGraph1()
@@ -254,10 +222,15 @@ public class GameControl : MonoBehaviour
         allData.maze = ai.getGraph();
         allData.mazeEndIndexs = ai.getEndings();
         allData.currentGraphIndex = ai.getCurrentGraphIndex();
+        allData.score = ai.getAIEndingsScore();
 
         bf.Serialize(file, allData);
-        Debug.Log("Stats: AI scored: " + allData.brain.getScore() + "/" + allData.brain.getTotalPossible()
-                + "  Grade = " + ((float)allData.brain.getScore() / allData.brain.getTotalPossible()) * 100
+        Debug.Log(
+                  "Stats: "
+                + "\nAI input score: " + allData.brain.getScore() + "/" + allData.brain.getTotalPossible()
+                + "\nAI's Picked Best Ending score: " + allData.score.scoreOfPickingAiBestEnding + "/" + allData.score.totalEndings
+                + "\nAI's Picked Second Best Ending score: " + allData.score.scoreOfPickingAiSecondBestEnding + "/" + allData.score.totalEndings
+                + "\nGrade = " + ((float)allData.score.scoreOfPickingAiBestEnding / allData.score.totalEndings) * 100
                 + "\nCurrentVertex: " + allData.currentGraphIndex 
                 + "\n" + "Saved data to: " + Application.persistentDataPath + "/" + fileName);
         file.Close();
@@ -272,8 +245,7 @@ public class GameControl : MonoBehaviour
 
             AIData data = (AIData)bf.Deserialize(file);
             file.Close();
-            Debug.Log("Loaded data from: " + Application.persistentDataPath + "/" + fileName);
-            ai = new AI(data.maze, new Neutrality(data.neutrality), data.brain, data.mazeEndIndexs, data.currentGraphIndex);
+            ai = new AI(data.maze, new Neutrality(data.neutrality), data.brain, data.mazeEndIndexs, data.score, data.currentGraphIndex);
             wasLoaded = ableToLoadGame = true;
         }
     }
