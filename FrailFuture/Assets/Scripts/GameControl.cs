@@ -310,8 +310,7 @@ public class GameControl : MonoBehaviour
         AIData allData = new AIData();
         allData.brain = ai.getBrain();
         allData.neutrality = ai.getNeutralityValue();
-        allData.maze = ai.getGraph();
-        allData.mazeEndIndexs = ai.getEndings();
+        allData.mazeInfo = ai.getMazeInfo();
         allData.currentGraphIndex = ai.getCurrentGraphIndex();
         allData.score = ai.getAIEndingsScore();
 
@@ -336,7 +335,7 @@ public class GameControl : MonoBehaviour
 
             AIData data = (AIData)bf.Deserialize(file);
             file.Close();
-            ai = new AI(data.maze, new Neutrality(data.neutrality), data.brain, data.mazeEndIndexs, data.score, data.currentGraphIndex);
+            ai = new AI(data.mazeInfo, new Neutrality(data.neutrality), data.brain, data.score, data.currentGraphIndex);
             wasLoaded = ableToLoadGame = true;
         }
     }

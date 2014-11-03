@@ -5,9 +5,8 @@ using System.Linq;
 public class AI
 {
        private Neutrality _neutrality;
-       private Graph _maze;
+       private MazeGroup _mazeInfo;
        private Brain _brain;
-       private Dictionary<NeutralityTypes, int> _mazeEndIndexs;
        private AIEndingsScore _score;
        private PathWayFinder pf;
 
@@ -17,23 +16,22 @@ public class AI
       private int[] inputsAvalible;
       private int graphIndex;
       private const float neutralityAdder = 0.1f;
-        public AI(Graph maze, Neutrality starting, Brain brain, Dictionary<NeutralityTypes, int> mazeEndIndexs, AIEndingsScore score, int currentGraphIndex = 0)
+        public AI(MazeGroup mazeInfo, Neutrality starting, Brain brain, AIEndingsScore score, int currentGraphIndex = 0)
         {
-            _maze = maze;
+            _mazeInfo = mazeInfo;
             _neutrality = starting;
             _brain = brain;
-            _mazeEndIndexs = mazeEndIndexs;
             _score = score;
-            int lowestEndIndex = mazeEndIndexs.OrderBy(k => k.Value).FirstOrDefault().Value;
-            foreach (KeyValuePair<NeutralityTypes, int> mazeEndI in mazeEndIndexs)
+            int lowestEndIndex = _mazeInfo.mazeEndIndexs.OrderBy(k => k.Value).FirstOrDefault().Value;
+            foreach (KeyValuePair<NeutralityTypes, int> mazeEndIndex in _mazeInfo.mazeEndIndexs)
             {
-                if (mazeEndI.Value == currentGraphIndex)
+                if (mazeEndIndex.Value == currentGraphIndex)
                 {
                     currentGraphIndex = 0;
                 }
             }
-            pf = new PathWayFinder(_maze, lowestEndIndex, currentGraphIndex);
-            AiDesiredEndIndex = _mazeEndIndexs[_neutrality.getState()];
+            pf = new PathWayFinder(_mazeInfo.maze, lowestEndIndex, currentGraphIndex);
+            AiDesiredEndIndex = _mazeInfo.mazeEndIndexs[_neutrality.getState()];
             int numInputs = pf.getNumPossibleInputs(currentGraphIndex);
             int[] inputs = new int[numInputs];
             for (int i = 0; i < numInputs; i++)
@@ -86,11 +84,11 @@ public class AI
                    _score.scoreOfPickingAiSecondBestEnding++;
                }
                //UPDATE NEUTRALITY
-               float change = _neutrality.getAdditiveFromNeutrality(_mazeEndIndexs.First(n => n.Value == endIndexWas).Key);
+               float change = _neutrality.getAdditiveFromNeutrality(_mazeInfo.mazeEndIndexs.First(n => n.Value == endIndexWas).Key);
             _neutrality.Add(change);
 
                //set new neutrality after effects from last game
-               AiDesiredEndIndex = _mazeEndIndexs[_neutrality.getState()];
+            AiDesiredEndIndex = _mazeInfo.mazeEndIndexs[_neutrality.getState()];
                AiCurrentDesire = pf.getNextDesiredInput(0, AiDesiredEndIndex).input;
            }
     }
@@ -119,16 +117,10 @@ public class AI
            return _neutrality.getState();
        }
 
-       public Graph getGraph()
+       public MazeGroup getMazeInfo()
        {
-           return _maze;
+           return _mazeInfo;
        }
-
-       public Dictionary<NeutralityTypes, int> getEndings()
-       {
-           return _mazeEndIndexs;
-       }
-
        public int getDirection()
        {
            return directionGiven;
@@ -163,7 +155,7 @@ public class AI
            NeutralityTypes type = NeutralityTypes.None;
            for (int i = (int)NeutralityTypes.Heavenly; i < (int)NeutralityTypes.COUNT; i++)
            {
-               if (_mazeEndIndexs.ContainsKey((NeutralityTypes)i) && _mazeEndIndexs[(NeutralityTypes)i] == graphIndex)
+               if (_mazeInfo.mazeEndIndexs.ContainsKey((NeutralityTypes)i) && _mazeInfo.mazeEndIndexs[(NeutralityTypes)i] == graphIndex)
                {
                    type = (NeutralityTypes)i;
                }
@@ -279,12 +271,18 @@ public enum NeutralityTypes
 }
 
 [Serializable]
+public class MazeGroup
+{
+    public Graph maze;
+    public Dictionary<NeutralityTypes, int> mazeEndIndexs;
+}
+
+[Serializable]
 public class AIData
 {
    public float neutrality;
    public int currentGraphIndex;
    public AIEndingsScore score;
    public Brain brain;
-   public Dictionary<NeutralityTypes, int> mazeEndIndexs;
-   public Graph maze;
+   public MazeGroup mazeInfo;
 }
