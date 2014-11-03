@@ -174,131 +174,34 @@ public class GameControl : MonoBehaviour
         }
         return nodesInRow;
     }
-
-
-
-    void testMazeGraph1()
+    MazeGroup testMazeGraph1()
     {
-        maze = new Graph(12);
-        maze.addEdge(0, 1);
-        maze.addEdge(0, 2);
-        maze.addEdge(1, 3);
-        maze.addEdge(1, 4);
-        maze.addEdge(1, 5);
-        maze.addEdge(2, 5);
-        maze.addEdge(2, 6);
-        maze.addEdge(3, 7);
-        maze.addEdge(3, 8);
-        maze.addEdge(4, 8);
-        maze.addEdge(4, 9);
-        maze.addEdge(4, 10);
-        maze.addEdge(5, 9);
-        maze.addEdge(5, 10);
-        maze.addEdge(5, 11);
-        maze.addEdge(6, 10);
-        maze.addEdge(6, 11);
+        Graph theMaze = new Graph(12);
+        theMaze.addEdge(0, 1);
+        theMaze.addEdge(0, 2);
+        theMaze.addEdge(1, 3);
+        theMaze.addEdge(1, 4);
+        theMaze.addEdge(1, 5);
+        theMaze.addEdge(2, 5);
+        theMaze.addEdge(2, 6);
+        theMaze.addEdge(3, 7);
+        theMaze.addEdge(3, 8);
+        theMaze.addEdge(4, 8);
+        theMaze.addEdge(4, 9);
+        theMaze.addEdge(4, 10);
+        theMaze.addEdge(5, 9);
+        theMaze.addEdge(5, 10);
+        theMaze.addEdge(5, 11);
+        theMaze.addEdge(6, 10);
+        theMaze.addEdge(6, 11);
 
-        mazeEndIndexs[NeutralityTypes.Evil] = 7;
-        mazeEndIndexs[NeutralityTypes.Agitated] = 8;
-        mazeEndIndexs[NeutralityTypes.Neutral] = 9;
-        mazeEndIndexs[NeutralityTypes.Lovely] = 10;
-        mazeEndIndexs[NeutralityTypes.Heavenly] = 11;
-    }
-    void testMazeGraph2()
-    {
-        maze = new Graph(25);
-        maze.addEdge(0, 1);
-        maze.addEdge(0, 2);
-        maze.addEdge(1, 3);
-        maze.addEdge(1, 4);
-        maze.addEdge(2, 5);
-        maze.addEdge(2, 6);
-        maze.addEdge(3, 7);
-        maze.addEdge(3, 8);
-        maze.addEdge(4, 9);
-        maze.addEdge(4, 10);
-        maze.addEdge(5, 8);
-        maze.addEdge(5, 10);
-        maze.addEdge(5, 11);
-        maze.addEdge(6, 11);
-        maze.addEdge(6, 12);
-        maze.addEdge(7, 13);
-        maze.addEdge(7, 14);
-        maze.addEdge(7, 15);
-        maze.addEdge(8, 15);
-        maze.addEdge(8, 16);
-        maze.addEdge(9, 16);
-        maze.addEdge(9, 19);
-        maze.addEdge(10, 17);
-        maze.addEdge(10, 18);
-        maze.addEdge(11, 17);
-        maze.addEdge(11, 18);
-        maze.addEdge(12, 18);
-        maze.addEdge(12, 19);
-        maze.addEdge(13, 20);
-        maze.addEdge(13, 21);
-        maze.addEdge(14, 20);
-        maze.addEdge(14, 22);
-        maze.addEdge(15, 21);
-        maze.addEdge(15, 22);
-        maze.addEdge(16, 20);
-        maze.addEdge(16, 23);
-        maze.addEdge(17, 21);
-        maze.addEdge(17, 24);
-        maze.addEdge(18, 23);
-        maze.addEdge(18, 24);
-        maze.addEdge(19, 22);
-        maze.addEdge(19, 24);
-
-        mazeEndIndexs[NeutralityTypes.Evil] = 20;
-        mazeEndIndexs[NeutralityTypes.Agitated] = 21;
-        mazeEndIndexs[NeutralityTypes.Neutral] = 22;
-        mazeEndIndexs[NeutralityTypes.Lovely] = 23;
-        mazeEndIndexs[NeutralityTypes.Heavenly] = 24;
-    }
-    void testMazeGraph3()
-    {
-        maze = new Graph(19);
-        maze.addEdge(0, 1);
-        maze.addEdge(0, 2);
-        maze.addEdge(0, 3);
-        maze.addEdge(1, 4);
-        maze.addEdge(1, 5);
-        maze.addEdge(2, 6);
-        maze.addEdge(2, 7);
-        maze.addEdge(3, 7);
-        maze.addEdge(3, 8);
-        maze.addEdge(4, 9);
-        maze.addEdge(4, 10);
-        maze.addEdge(4, 11);
-        maze.addEdge(5, 10);
-        maze.addEdge(5, 11);
-        maze.addEdge(5, 12);
-        maze.addEdge(6, 9);
-        maze.addEdge(6, 11);
-        maze.addEdge(6, 12);
-        maze.addEdge(7, 10);
-        maze.addEdge(7, 12);
-        maze.addEdge(7, 13);
-        maze.addEdge(8, 9);
-        maze.addEdge(8, 11);
-        maze.addEdge(8, 13);
-        maze.addEdge(9, 14);
-        maze.addEdge(9, 17);
-        maze.addEdge(10, 15);
-        maze.addEdge(10, 16);
-        maze.addEdge(11, 15);
-        maze.addEdge(11, 18);
-        maze.addEdge(12, 16);
-        maze.addEdge(12, 18);
-        maze.addEdge(13, 14);
-        maze.addEdge(13, 16);
-
-        mazeEndIndexs[NeutralityTypes.Evil] = 14;
-        mazeEndIndexs[NeutralityTypes.Agitated] = 15;
-        mazeEndIndexs[NeutralityTypes.Neutral] = 16;
-        mazeEndIndexs[NeutralityTypes.Lovely] = 17;
-        mazeEndIndexs[NeutralityTypes.Heavenly] = 18;
+        Dictionary<NeutralityTypes, int> endIndexs = new Dictionary<NeutralityTypes, int>();
+        endIndexs[NeutralityTypes.Evil] = 7;
+        endIndexs[NeutralityTypes.Agitated] = 8;
+        endIndexs[NeutralityTypes.Neutral] = 9;
+        endIndexs[NeutralityTypes.Lovely] = 10;
+        endIndexs[NeutralityTypes.Heavenly] = 11;
+        return new MazeGroup() { maze = theMaze, mazeEndIndexs = endIndexs };
     }
 
     public void Save(string fileName)
