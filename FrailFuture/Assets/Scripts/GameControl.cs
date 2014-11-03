@@ -65,8 +65,9 @@ public class GameControl : MonoBehaviour
 
     void createMaze()
     {
+        generateRandomGraph(6);
        // useGUINodesToMakeGraph();
-        testMazeGraph1();
+        //testMazeGraph1();
         //testMazeGraph2();
         //testMazeGraph3();
     }
@@ -81,10 +82,100 @@ public class GameControl : MonoBehaviour
         mazeEndIndexs[NeutralityTypes.Heavenly] = MAZE_END_INDEX_NULL;
     }
 
-    void generateRandomGraph(int maxNumConnections, int endNodeAmount)
+    void generateRandomGraph(int maxRow)
     {
+        int rowReachsEndNodeCount = mazeEndIndexs.Count-1;
+        //the row where increaseing nodes in rows stops. From this row to the next row
+        //untill the max row decrease nodes. Highest Increase Point
+        int Hip = rowReachsEndNodeCount + ((maxRow - rowReachsEndNodeCount) / 2);
 
+        //find number of nodes for the graph
+        int totalNodes = getTotalNodesFromRowAmount(maxRow, Hip);
+
+        maze = new Graph(totalNodes);
+        
+        //put in edges
+        for (int row = 0; row <= maxRow; row++)
+        {
+            if (row == 0)
+            {
+                maze.addEdge(0, 1);
+                maze.addEdge(0, 2);
+            }
+            else
+            {
+                int[] fromNodes = getNodesInARow(row, Hip);
+                int[] toNodes = getNodesInARow(row + 1, Hip);
+                for (int j = 0; j < fromNodes.Length; j++)
+                {
+                    int connections = new System.Random().Next(minNumChoices, maxNumChoices + 1);
+                    int currentConnections = 0;
+                    if (j + connections > toNodes.Length)
+                    {
+                        currentConnections = (-1) * (j + connections - toNodes.Length);
+                    }
+                    while (currentConnections < connections)
+                    {
+                        maze.addEdge(fromNodes[j], toNodes[j + currentConnections]);
+                        currentConnections++;
+                    }
+                }
+            }
+        }
+
+        //put in endings
+        mazeEndIndexs[NeutralityTypes.Evil] = totalNodes - 5;
+        mazeEndIndexs[NeutralityTypes.Agitated] = totalNodes - 4;
+        mazeEndIndexs[NeutralityTypes.Neutral] = totalNodes - 3;
+        mazeEndIndexs[NeutralityTypes.Lovely] = totalNodes - 2;
+        mazeEndIndexs[NeutralityTypes.Heavenly] = totalNodes - 1;
     }
+    private int getTotalNodesFromRowAmount(int maxRow, int Hip)
+    {
+        int totalNodes = 0;
+        int increaseAmount = 1;
+        int decreaseAmount = 1;
+
+        for (int rowLevel = 0; rowLevel <= maxRow; rowLevel++)
+        {
+            if (rowLevel <= Hip)
+            {
+                totalNodes += (rowLevel + increaseAmount);
+            }
+            else
+            {
+                totalNodes += (rowLevel - decreaseAmount);
+                decreaseAmount++;
+            }
+        }
+        return totalNodes;
+    }
+    private int[] getNodesInARow(int rowNum, int Hip)
+    {
+        int beginOfRow = 0;
+        int endOfRow = 0;
+        if (rowNum <= Hip)
+        {
+            beginOfRow = Tools.SummationDownFrom(rowNum);
+            endOfRow = beginOfRow + rowNum;
+        }
+        else
+        {
+            int diffFromHip = rowNum - Hip;
+            beginOfRow = Tools.SummationDownFrom(Hip) + Tools.SummationDownBy(Hip+1, diffFromHip);
+            endOfRow = beginOfRow + (rowNum - diffFromHip + 1);
+        }
+        int[] nodesInRow = new int[(endOfRow - beginOfRow) + 1];
+        //grab nodes in current row
+        int count = 0;
+        for (int j = beginOfRow; j <= endOfRow; j++)
+        {
+            nodesInRow[count++] = j;
+        }
+        return nodesInRow;
+    }
+
+
 
     void testMazeGraph1()
     {
