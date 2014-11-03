@@ -4,26 +4,15 @@ using System;
 
 public class Tools : MonoBehaviour
 {
-    public static int SummationUpBy(int from, int timesToIncrease, int IncreaseBy = 1)
+    public static int SummationChangeBy(int from, int timesToChange, int Increase_Decrease_By = 1)
     {
         int summation = 0;
-        int decreaseAmount = 0;
-        while (decreaseAmount < timesToIncrease)
+        int timesChanged = 0;
+        while (timesChanged < timesToChange)
         {
             summation += from;
-            from += IncreaseBy;
-        }
-        return summation;
-    }
-
-    public static int SummationDownBy(int from, int timesToDecrease, int decreaseBy = 1)
-    {
-        int summation = 0;
-        int decreaseAmount = 0;
-        while (decreaseAmount < timesToDecrease)
-        {
-            summation += from;
-            from -= decreaseBy;
+            from += Increase_Decrease_By;
+            timesChanged++;
         }
         return summation;
     }
