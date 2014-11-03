@@ -46,7 +46,7 @@ public class NodeManager : MonoBehaviour
             }
             else
             {
-                if (GameControl.control.Ai.getCurrentGraphIndex() == 0)
+                if (GameControl.control.Ai.getCurrentGraphIndex() == 0 && !justReset)
                 {
                     objectSpawner[0].SetActive(true);
                     GameObject player = GameObject.Find("Player");
