@@ -63,7 +63,6 @@ public class AI
            AiCurrentDesire = pf.getNextDesiredInput(userChoice, AiDesiredEndIndex).input;
            graphIndex = pf.getCurrentGraphIndex();
 
-           findNewPathIfReachedAnEnd();
            getNextInputsFromCurrentGraphPosition();
            
            directionGiven = _brain.getChoiceToDeliver(inputsAvalible, AiCurrentDesire);
@@ -91,6 +90,9 @@ public class AI
             AiDesiredEndIndex = _mazeInfo.mazeEndIndexs[_neutrality.getState()];
                AiCurrentDesire = pf.getNextDesiredInput(0, AiDesiredEndIndex).input;
            }
+
+        getNextInputsFromCurrentGraphPosition();
+        directionGiven = _brain.getChoiceToDeliver(inputsAvalible, AiCurrentDesire);
     }
 
     public void getNextInputsFromCurrentGraphPosition()

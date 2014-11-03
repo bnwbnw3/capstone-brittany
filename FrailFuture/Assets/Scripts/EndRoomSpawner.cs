@@ -13,6 +13,7 @@ public class EndRoomSpawner : MonoBehaviour {
             NeutralityTypes type = (NeutralityTypes)transform.root.gameObject.GetComponentInChildren<GUINode>().endNodeType;
 
             SoundManager.soundManager.playEndMaze(type);
+            GameControl.control.Ai.findNewPathIfReachedAnEnd();
             float buffer = 3.0f;
             float scriptWaitTime = GameObject.Find("AiSpeaker").audio.clip.length + buffer;
             float timeTillDelete = scriptWaitTime * (0.5f); 
