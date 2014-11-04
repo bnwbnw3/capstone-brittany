@@ -63,9 +63,11 @@ public class AI
            AiCurrentDesire = pf.getNextDesiredInput(userChoice, AiDesiredEndIndex).input;
            graphIndex = pf.getCurrentGraphIndex();
 
-           getNextInputsFromCurrentGraphPosition();
-           
-           directionGiven = _brain.getChoiceToDeliver(inputsAvalible, AiCurrentDesire);
+           if (!pf.isEndOfPath())
+           {
+               getNextInputsFromCurrentGraphPosition();
+               directionGiven = _brain.getChoiceToDeliver(inputsAvalible, AiCurrentDesire);
+           }
        }
 
     public void findNewPathIfReachedAnEnd()

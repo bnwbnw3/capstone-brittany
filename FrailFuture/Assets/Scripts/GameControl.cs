@@ -10,6 +10,11 @@ public class GameControl : MonoBehaviour
     public static GameControl control;
     public int maxNumChoices;
     public int minNumChoices;
+    public int maxRowsForGraph = 6;
+    public bool useMaxRows;
+    private int minRows = 4;
+    private int numMazeEndings = 5;
+
     static public bool ableToLoadGame;
     public bool invertY = false;
     public bool invertX = false;
@@ -19,9 +24,6 @@ public class GameControl : MonoBehaviour
     public bool wasLoaded;
 
     private AI ai;
-    private Graph maze;
-    private Dictionary<NeutralityTypes, int> mazeEndIndexs;
-    private const int MAZE_END_INDEX_NULL = 999;
     private bool gameReady;
     private bool aiReady;
     private StartingTransform _startingPlayerVars;
@@ -54,37 +56,32 @@ public class GameControl : MonoBehaviour
          SizedList<PlayerData> temp = new SizedList<PlayerData>(10);
         BrainData bd = new BrainData() { pastPatterns = new Dictionary<string, int>(), pastActions = temp };
         Brain brain = new Brain(bd);
-        initMazeEndIndexsToNeg1();
-        createMaze();
         System.Random random = new System.Random();
         Neutrality neutrality = new Neutrality(0);
         AIEndingsScore score = new AIEndingsScore();
-        ai = new AI(maze, neutrality, brain, mazeEndIndexs, score);
+        ai = new AI(createMaze(), neutrality, brain, score);
         aiReady = true;
     }
 
-    void createMaze()
+    MazeGroup createMaze()
     {
-        generateRandomGraph(6);
-       // useGUINodesToMakeGraph();
+        int rowsToUse = 0;
+        if(useMaxRows)
+        {
+            rowsToUse = maxRowsForGraph >= minRows ? maxRowsForGraph : minRows;
+        }
+        else
+        {
+            rowsToUse = new System.Random().Next(minRows, maxRowsForGraph+1);
+        }
+        return generateRandomGraph(rowsToUse);
         //testMazeGraph1();
-        //testMazeGraph2();
-        //testMazeGraph3();
     }
 
-    public void initMazeEndIndexsToNeg1()
+    MazeGroup generateRandomGraph(int maxRow)
     {
-        mazeEndIndexs = new Dictionary<NeutralityTypes, int>();
-        mazeEndIndexs[NeutralityTypes.Evil]     = MAZE_END_INDEX_NULL;
-        mazeEndIndexs[NeutralityTypes.Agitated] = MAZE_END_INDEX_NULL;
-        mazeEndIndexs[NeutralityTypes.Neutral]  = MAZE_END_INDEX_NULL;
-        mazeEndIndexs[NeutralityTypes.Lovely]   = MAZE_END_INDEX_NULL;
-        mazeEndIndexs[NeutralityTypes.Heavenly] = MAZE_END_INDEX_NULL;
-    }
-
-    void generateRandomGraph(int maxRow)
-    {
-        int rowReachsEndNodeCount = mazeEndIndexs.Count-1;
+        Graph mazeToReturn;
+        int rowReachsEndNodeCount = numMazeEndings - 1;
         //the row where increaseing nodes in rows stops. From this row to the next row
         //untill the max row decrease nodes. Highest Increase Point
         int Hip = rowReachsEndNodeCount + ((maxRow - rowReachsEndNodeCount) / 2);
@@ -92,43 +89,51 @@ public class GameControl : MonoBehaviour
         //find number of nodes for the graph
         int totalNodes = getTotalNodesFromRowAmount(maxRow, Hip);
 
-        maze = new Graph(totalNodes);
+        mazeToReturn = new Graph(totalNodes);
         
         //put in edges
-        for (int row = 0; row <= maxRow; row++)
+        for (int row = 0; row < maxRow; row++)
         {
             if (row == 0)
             {
-                maze.addEdge(0, 1);
-                maze.addEdge(0, 2);
+                mazeToReturn.addEdge(0, 1);
+                mazeToReturn.addEdge(0, 2);
             }
             else
             {
-                int[] fromNodes = getNodesInARow(row, Hip);
-                int[] toNodes = getNodesInARow(row + 1, Hip);
-                for (int j = 0; j < fromNodes.Length; j++)
+                int[] fromNodes = getNodesInARow(row, Hip, maxRow);
+                int[] toNodes = getNodesInARow(row + 1, Hip, maxRow);
+                for (int j = fromNodes.Length-1; j >= 0 ; j--)
                 {
                     int connections = new System.Random().Next(minNumChoices, maxNumChoices + 1);
-                    int currentConnections = 0;
-                    if (j + connections > toNodes.Length)
+                    int connectionCount = 0;
+                    int currentConnectionPoint = 1;
+                    int check = (j + currentConnectionPoint) - (connections - 1);
+                    currentConnectionPoint += check >= 0 ? 0:(-1) *check;
+                    if (fromNodes.Length == toNodes.Length && j == fromNodes.Length - 1)
                     {
-                        currentConnections = (-1) * (j + connections - toNodes.Length);
+                        currentConnectionPoint--;
                     }
-                    while (currentConnections < connections)
+                    while (connectionCount < connections)
                     {
-                        maze.addEdge(fromNodes[j], toNodes[j + currentConnections]);
-                        currentConnections++;
+                        mazeToReturn.addEdge(fromNodes[j], toNodes[j + currentConnectionPoint]);
+
+                        currentConnectionPoint--;
+                        connectionCount++;
                     }
                 }
             }
         }
 
         //put in endings
-        mazeEndIndexs[NeutralityTypes.Evil] = totalNodes - 5;
-        mazeEndIndexs[NeutralityTypes.Agitated] = totalNodes - 4;
-        mazeEndIndexs[NeutralityTypes.Neutral] = totalNodes - 3;
-        mazeEndIndexs[NeutralityTypes.Lovely] = totalNodes - 2;
-        mazeEndIndexs[NeutralityTypes.Heavenly] = totalNodes - 1;
+        Dictionary<NeutralityTypes, int> endIndexs = new Dictionary<NeutralityTypes, int>();
+        endIndexs[NeutralityTypes.Evil] = totalNodes - 5;
+        endIndexs[NeutralityTypes.Agitated] = totalNodes - 4;
+        endIndexs[NeutralityTypes.Neutral] = totalNodes - 3;
+        endIndexs[NeutralityTypes.Lovely] = totalNodes - 2;
+        endIndexs[NeutralityTypes.Heavenly] = totalNodes - 1;
+
+        return new MazeGroup() { maze = mazeToReturn, mazeEndIndexs = endIndexs };
     }
     private int getTotalNodesFromRowAmount(int maxRow, int Hip)
     {
@@ -144,13 +149,20 @@ public class GameControl : MonoBehaviour
             }
             else
             {
-                totalNodes += (rowLevel - decreaseAmount);
+                int diffFromHip = rowLevel - Hip;
+                totalNodes += (rowLevel + 1 - diffFromHip * 2);
+                if (rowLevel == maxRow && rowLevel % 2 != 0)
+                {
+                    //if row is odd at the end the last row will not change from the row before it.
+                    //re add in 1 to compensate.
+                    totalNodes += 1;
+                }
                 decreaseAmount++;
             }
         }
         return totalNodes;
     }
-    private int[] getNodesInARow(int rowNum, int Hip)
+    private int[] getNodesInARow(int rowNum, int Hip, int maxRow)
     {
         int beginOfRow = 0;
         int endOfRow = 0;
@@ -162,8 +174,15 @@ public class GameControl : MonoBehaviour
         else
         {
             int diffFromHip = rowNum - Hip;
-            beginOfRow = Tools.SummationDownFrom(Hip) + Tools.SummationDownBy(Hip+1, diffFromHip);
-            endOfRow = beginOfRow + (rowNum - diffFromHip + 1);
+            beginOfRow = Tools.SummationDownFrom(Hip) + Tools.SummationChangeBy(Hip+1, diffFromHip, -1);
+            endOfRow = beginOfRow + (rowNum - diffFromHip*2);
+
+            if (rowNum == maxRow && rowNum % 2 != 0)
+            {
+                //if row is odd at the end the last row will not change from the row before it.
+                //re add in 1 to compensate.
+                endOfRow += 1;
+            }
         }
         int[] nodesInRow = new int[(endOfRow - beginOfRow) + 1];
         //grab nodes in current row

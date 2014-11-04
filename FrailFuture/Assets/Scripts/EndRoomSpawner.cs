@@ -60,7 +60,7 @@ public class EndRoomSpawner : MonoBehaviour {
         transform.collider.isTrigger = true;
 
         StartingTransform spv = GameControl.control.getPlayerStartingTransform();
-        c.transform.position = spv.pos;
+        c.transform.position = TeleportToOrigin.getOrigin();
         c.transform.localScale = spv.scale;
         c.transform.eulerAngles = spv.eulerAngles;
     }

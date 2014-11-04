@@ -24,4 +24,9 @@ public class TeleportToOrigin : MonoBehaviour {
             c.transform.position = origin;
         }
     }
+
+    static public Vector3 getOrigin()
+    {
+        return origin;
+    }
 }
