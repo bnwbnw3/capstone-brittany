@@ -9,7 +9,6 @@ class MazeGenerator
     {
         int rowsToUse = 0;
         rand = new System.Random(System.DateTime.Now.GetHashCode());
-
         if (GameControl.control.useMaxRows)
         {
             rowsToUse = GameControl.control.maxRowsForGraph >= GameControl.control.getMinRows() ? GameControl.control.maxRowsForGraph : GameControl.control.getMinRows();
@@ -28,7 +27,6 @@ class MazeGenerator
         //the row where increaseing nodes in rows stops. From this row to the next row
         //until the max row decrease nodes. Highest Increase Point
         int Hip = rowReachsEndNodeCount + ((maxRow - rowReachsEndNodeCount) / 2);
-
         //find number of nodes for the graph
         int totalNodes = getTotalNodesFromRowAmount(maxRow, Hip);
 
@@ -46,7 +44,6 @@ class MazeGenerator
             {
                 int[] fromNodes = getNodesInARow(row, Hip, maxRow);
                 int[] toNodes = getNodesInARow(row + 1, Hip, maxRow);
-
                 List<NodeAndNumConns> ToNodesGroup = toNodes.ToArray().Select(n => new NodeAndNumConns(n)).ToList();
                 foreach(int fromVertex in fromNodes)
                 {
@@ -68,7 +65,6 @@ class MazeGenerator
                 }
             }
         }
-
         //put in endings
         Dictionary<NeutralityTypes, int> endIndexs = new Dictionary<NeutralityTypes, int>();
         endIndexs[NeutralityTypes.Evil] = totalNodes - 5;
@@ -84,7 +80,6 @@ class MazeGenerator
         int totalNodes = 0;
         int increaseAmount = 1;
         int decreaseAmount = 1;
-
         for (int rowLevel = 0; rowLevel <= maxRow; rowLevel++)
         {
             if (rowLevel <= Hip)
@@ -124,7 +119,7 @@ class MazeGenerator
             if (rowNum == maxRow && rowNum % 2 != 0)
             {
                 //if row is odd at the end the last row will not change from the row before it.
-                //re add in 1 to compensate.
+                //re-add in 1 to compensate.
                 endOfRow += 1;
             }
         }
@@ -142,7 +137,6 @@ class MazeGenerator
     {
         public int nodeVertex { get; set; }
         public int numConnectionsTo { get; set; }
-
         public NodeAndNumConns(int node) { nodeVertex = node; }
     }
 }
