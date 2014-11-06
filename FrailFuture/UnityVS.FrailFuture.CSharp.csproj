@@ -86,6 +86,8 @@
     <Compile Include="Assets\Scripts\Ai\Node.cs" />
     <Compile Include="Assets\Scripts\Ai\PathWayFinder.cs" />
     <Compile Include="Assets\Scripts\Ai\PlayerData.cs" />
+    <Compile Include="Assets\Scripts\AnimationControls\EndSceneDONAMoveScript.cs" />
+    <Compile Include="Assets\Scripts\AnimationControls\LookAtTarget.cs" />
     <Compile Include="Assets\Scripts\GUI\HUDManager.cs" />
     <Compile Include="Assets\Scripts\GUI\Menu.cs" />
     <Compile Include="Assets\Scripts\GUI\MenuManager.cs" />
@@ -93,6 +95,7 @@
     <Compile Include="Assets\Scripts\Game\Door.cs" />
     <Compile Include="Assets\Scripts\Game\DummyNode.cs" />
     <Compile Include="Assets\Scripts\Game\EndRoomEvents.cs" />
+    <Compile Include="Assets\Scripts\Game\EndTheGameButton.cs" />
     <Compile Include="Assets\Scripts\Game\GUINode.cs" />
     <Compile Include="Assets\Scripts\Game\HallwayDialogueDONATrigger.cs" />
     <Compile Include="Assets\Scripts\Game\HallwayDialogueVOTrigger.cs" />
@@ -104,7 +107,6 @@
     <Compile Include="Assets\Scripts\Helper\GameObjectSpawner.cs" />
     <Compile Include="Assets\Scripts\Helper\GrabInputFieldTextFromGC.cs" />
     <Compile Include="Assets\Scripts\Helper\Graph.cs" />
-    <Compile Include="Assets\Scripts\Helper\LookAtTarget.cs" />
     <Compile Include="Assets\Scripts\Helper\RandomLerpMe.cs" />
     <Compile Include="Assets\Scripts\Helper\SaveOriginalPos.cs" />
     <Compile Include="Assets\Scripts\Helper\SizedList.cs" />
