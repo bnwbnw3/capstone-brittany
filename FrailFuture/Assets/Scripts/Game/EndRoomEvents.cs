@@ -19,13 +19,13 @@ public class EndRoomEvents : MonoBehaviour
             //make button disapear from view
             GameObject resetButton = GameObject.Find("ResetButton");
             Vector3 oldPos = resetButton.transform.position;
+            resetButton.transform.position = new Vector3(oldPos.x, oldPos.y - 10, oldPos.z);
 
             //spawn end room stuffs
             float buffer = 3.0f;
             float scriptWaitTime = GameObject.Find("AiSpeaker").audio.clip.length + buffer;
             float timeTillDelete = scriptWaitTime * (0.5f); 
             GameObjectSpawner spawnScript = spawner.GetComponent<GameObjectSpawner>();
-            resetButton.transform.position = new Vector3(oldPos.x, oldPos.y - 10, oldPos.z);
             if (type == NeutralityTypes.Heavenly)
             {
                 spawnScript.spawnObject(new int[] { 4, 5, 6 }, timeTillDelete, 30, 0.05f);
