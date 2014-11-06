@@ -1,0 +1,3014 @@
+fileFormatVersion: 2
+guid: 43f51fa5ecabfa243b1558de3b20f100
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Group_0
+    100004: Group_12
+    100006: Group_13
+    100008: Group_14
+    100010: Group_15
+    100012: Group_16
+    100014: Group_17
+    100016: Group_18
+    100018: Group_19
+    100020: Group_20
+    100022: Group_21
+    100024: Group_22
+    100026: Group_23
+    100028: Group_24
+    100030: Group_25
+    100032: Group_26
+    100034: Group_27
+    100036: Group_28
+    100038: Group_29
+    100040: Group_3
+    100042: Group_30
+    100044: Group_31
+    100046: Group_32
+    100048: Group_33
+    100050: Group_34
+    100052: Group_35
+    100054: Group_36
+    100056: Group_37
+    100058: Group_38
+    100060: Group_39
+    100062: Group_40
+    100064: Group_41
+    100066: Group_42
+    100068: Group_43
+    100070: Group_44
+    100072: Group_45
+    100074: Group_6
+    100076: Group_7
+    100078: mixamorig:Head
+    100080: mixamorig:HeadTop_End
+    100082: mixamorig:Hips
+    100084: mixamorig:LeftArm
+    100086: mixamorig:LeftFoot
+    100088: mixamorig:LeftForeArm
+    100090: mixamorig:LeftHand
+    100092: mixamorig:LeftHandIndex1
+    100094: mixamorig:LeftHandIndex2
+    100096: mixamorig:LeftHandIndex3
+    100098: mixamorig:LeftHandIndex4
+    100100: mixamorig:LeftHandMiddle1
+    100102: mixamorig:LeftHandMiddle2
+    100104: mixamorig:LeftHandMiddle3
+    100106: mixamorig:LeftHandMiddle4
+    100108: mixamorig:LeftHandThumb1
+    100110: mixamorig:LeftHandThumb2
+    100112: mixamorig:LeftHandThumb3
+    100114: mixamorig:LeftHandThumb4
+    100116: mixamorig:LeftLeg
+    100118: mixamorig:LeftShoulder
+    100120: mixamorig:LeftToe_End
+    100122: mixamorig:LeftToeBase
+    100124: mixamorig:LeftUpLeg
+    100126: mixamorig:Neck
+    100128: mixamorig:RightArm
+    100130: mixamorig:RightFoot
+    100132: mixamorig:RightForeArm
+    100134: mixamorig:RightHand
+    100136: mixamorig:RightHandIndex1
+    100138: mixamorig:RightHandIndex2
+    100140: mixamorig:RightHandIndex3
+    100142: mixamorig:RightHandIndex4
+    100144: mixamorig:RightHandMiddle1
+    100146: mixamorig:RightHandMiddle2
+    100148: mixamorig:RightHandMiddle3
+    100150: mixamorig:RightHandMiddle4
+    100152: mixamorig:RightHandThumb1
+    100154: mixamorig:RightHandThumb2
+    100156: mixamorig:RightHandThumb3
+    100158: mixamorig:RightHandThumb4
+    100160: mixamorig:RightLeg
+    100162: mixamorig:RightShoulder
+    100164: mixamorig:RightToe_End
+    100166: mixamorig:RightToeBase
+    100168: mixamorig:RightUpLeg
+    100170: mixamorig:Spine
+    100172: mixamorig:Spine1
+    100174: mixamorig:Spine2
+    100176: polySurface1
+    100178: polySurface10
+    100180: polySurface11
+    100182: polySurface128
+    100184: polySurface129
+    100186: polySurface13
+    100188: polySurface130
+    100190: polySurface131
+    100192: polySurface132
+    100194: polySurface133
+    100196: polySurface134
+    100198: polySurface135
+    100200: polySurface136
+    100202: polySurface137
+    100204: polySurface138
+    100206: polySurface139
+    100208: polySurface14
+    100210: polySurface140
+    100212: polySurface141
+    100214: polySurface15
+    100216: polySurface159
+    100218: polySurface16
+    100220: polySurface160
+    100222: polySurface161
+    100224: polySurface162
+    100226: polySurface163
+    100228: polySurface164
+    100230: polySurface165
+    100232: polySurface166
+    100234: polySurface167
+    100236: polySurface168
+    100238: polySurface169
+    100240: polySurface17
+    100242: polySurface170
+    100244: polySurface171
+    100246: polySurface172
+    100248: polySurface173
+    100250: polySurface174
+    100252: polySurface175
+    100254: polySurface176
+    100256: polySurface177
+    100258: polySurface178
+    100260: polySurface179
+    100262: polySurface18
+    100264: polySurface180
+    100266: polySurface181
+    100268: polySurface182
+    100270: polySurface183
+    100272: polySurface184
+    100274: polySurface185
+    100276: polySurface186
+    100278: polySurface187
+    100280: polySurface188
+    100282: polySurface189
+    100284: polySurface19
+    100286: polySurface190
+    100288: polySurface191
+    100290: polySurface192
+    100292: polySurface193
+    100294: polySurface194
+    100296: polySurface195
+    100298: polySurface196
+    100300: polySurface197
+    100302: polySurface198
+    100304: polySurface199
+    100306: polySurface2
+    100308: polySurface20
+    100310: polySurface200
+    100312: polySurface201
+    100314: polySurface202
+    100316: polySurface203
+    100318: polySurface204
+    100320: polySurface205
+    100322: polySurface206
+    100324: polySurface207
+    100326: polySurface208
+    100328: polySurface209
+    100330: polySurface21
+    100332: polySurface210
+    100334: polySurface211
+    100336: polySurface212
+    100338: polySurface213
+    100340: polySurface214
+    100342: polySurface215
+    100344: polySurface216
+    100346: polySurface217
+    100348: polySurface218
+    100350: polySurface219
+    100352: polySurface22
+    100354: polySurface220
+    100356: polySurface221
+    100358: polySurface222
+    100360: polySurface223
+    100362: polySurface224
+    100364: polySurface225
+    100366: polySurface226
+    100368: polySurface227
+    100370: polySurface228
+    100372: polySurface229
+    100374: polySurface23
+    100376: polySurface230
+    100378: polySurface231
+    100380: polySurface232
+    100382: polySurface233
+    100384: polySurface234
+    100386: polySurface235
+    100388: polySurface236
+    100390: polySurface237
+    100392: polySurface238
+    100394: polySurface239
+    100396: polySurface24
+    100398: polySurface25
+    100400: polySurface26
+    100402: polySurface27
+    100404: polySurface28
+    100406: polySurface29
+    100408: polySurface3
+    100410: polySurface30
+    100412: polySurface31
+    100414: polySurface34
+    100416: polySurface4
+    100418: polySurface5
+    100420: polySurface6
+    100422: polySurface7
+    100424: polySurface8
+    100426: polySurface9
+    100428: transform1
+    100430: transform10
+    100432: transform100
+    100434: transform101
+    100436: transform102
+    100438: transform103
+    100440: transform104
+    100442: transform105
+    100444: transform106
+    100446: transform107
+    100448: transform108
+    100450: transform109
+    100452: transform11
+    100454: transform110
+    100456: transform111
+    100458: transform112
+    100460: transform113
+    100462: transform114
+    100464: transform115
+    100466: transform116
+    100468: transform117
+    100470: transform118
+    100472: transform119
+    100474: transform12
+    100476: transform120
+    100478: transform121
+    100480: transform122
+    100482: transform123
+    100484: transform124
+    100486: transform125
+    100488: transform126
+    100490: transform127
+    100492: transform128
+    100494: transform129
+    100496: transform13
+    100498: transform130
+    100500: transform131
+    100502: transform132
+    100504: transform133
+    100506: transform134
+    100508: transform135
+    100510: transform136
+    100512: transform137
+    100514: transform138
+    100516: transform139
+    100518: transform14
+    100520: transform140
+    100522: transform141
+    100524: transform142
+    100526: transform143
+    100528: transform144
+    100530: transform145
+    100532: transform146
+    100534: transform147
+    100536: transform148
+    100538: transform149
+    100540: transform15
+    100542: transform150
+    100544: transform151
+    100546: transform152
+    100548: transform153
+    100550: transform154
+    100552: transform155
+    100554: transform156
+    100556: transform157
+    100558: transform158
+    100560: transform159
+    100562: transform16
+    100564: transform160
+    100566: transform161
+    100568: transform162
+    100570: transform163
+    100572: transform17
+    100574: transform18
+    100576: transform19
+    100578: transform2
+    100580: transform20
+    100582: transform21
+    100584: transform22
+    100586: transform23
+    100588: transform24
+    100590: transform25
+    100592: transform26
+    100594: transform27
+    100596: transform28
+    100598: transform29
+    100600: transform3
+    100602: transform30
+    100604: transform31
+    100606: transform32
+    100608: transform33
+    100610: transform34
+    100612: transform35
+    100614: transform36
+    100616: transform37
+    100618: transform38
+    100620: transform39
+    100622: transform4
+    100624: transform40
+    100626: transform41
+    100628: transform42
+    100630: transform43
+    100632: transform44
+    100634: transform45
+    100636: transform46
+    100638: transform47
+    100640: transform48
+    100642: transform49
+    100644: transform5
+    100646: transform50
+    100648: transform51
+    100650: transform52
+    100652: transform53
+    100654: transform54
+    100656: transform55
+    100658: transform56
+    100660: transform57
+    100662: transform58
+    100664: transform59
+    100666: transform6
+    100668: transform60
+    100670: transform61
+    100672: transform62
+    100674: transform63
+    100676: transform64
+    100678: transform65
+    100680: transform66
+    100682: transform67
+    100684: transform68
+    100686: transform69
+    100688: transform7
+    100690: transform70
+    100692: transform71
+    100694: transform72
+    100696: transform73
+    100698: transform74
+    100700: transform75
+    100702: transform76
+    100704: transform77
+    100706: transform78
+    100708: transform79
+    100710: transform8
+    100712: transform80
+    100714: transform81
+    100716: transform82
+    100718: transform83
+    100720: transform84
+    100722: transform85
+    100724: transform86
+    100726: transform87
+    100728: transform88
+    100730: transform89
+    100732: transform9
+    100734: transform90
+    100736: transform91
+    100738: transform92
+    100740: transform93
+    100742: transform94
+    100744: transform95
+    100746: transform96
+    100748: transform97
+    100750: transform98
+    100752: transform99
+    400000: //RootNode
+    400002: Group_0
+    400004: Group_12
+    400006: Group_13
+    400008: Group_14
+    400010: Group_15
+    400012: Group_16
+    400014: Group_17
+    400016: Group_18
+    400018: Group_19
+    400020: Group_20
+    400022: Group_21
+    400024: Group_22
+    400026: Group_23
+    400028: Group_24
+    400030: Group_25
+    400032: Group_26
+    400034: Group_27
+    400036: Group_28
+    400038: Group_29
+    400040: Group_3
+    400042: Group_30
+    400044: Group_31
+    400046: Group_32
+    400048: Group_33
+    400050: Group_34
+    400052: Group_35
+    400054: Group_36
+    400056: Group_37
+    400058: Group_38
+    400060: Group_39
+    400062: Group_40
+    400064: Group_41
+    400066: Group_42
+    400068: Group_43
+    400070: Group_44
+    400072: Group_45
+    400074: Group_6
+    400076: Group_7
+    400078: mixamorig:Head
+    400080: mixamorig:HeadTop_End
+    400082: mixamorig:Hips
+    400084: mixamorig:LeftArm
+    400086: mixamorig:LeftFoot
+    400088: mixamorig:LeftForeArm
+    400090: mixamorig:LeftHand
+    400092: mixamorig:LeftHandIndex1
+    400094: mixamorig:LeftHandIndex2
+    400096: mixamorig:LeftHandIndex3
+    400098: mixamorig:LeftHandIndex4
+    400100: mixamorig:LeftHandMiddle1
+    400102: mixamorig:LeftHandMiddle2
+    400104: mixamorig:LeftHandMiddle3
+    400106: mixamorig:LeftHandMiddle4
+    400108: mixamorig:LeftHandThumb1
+    400110: mixamorig:LeftHandThumb2
+    400112: mixamorig:LeftHandThumb3
+    400114: mixamorig:LeftHandThumb4
+    400116: mixamorig:LeftLeg
+    400118: mixamorig:LeftShoulder
+    400120: mixamorig:LeftToe_End
+    400122: mixamorig:LeftToeBase
+    400124: mixamorig:LeftUpLeg
+    400126: mixamorig:Neck
+    400128: mixamorig:RightArm
+    400130: mixamorig:RightFoot
+    400132: mixamorig:RightForeArm
+    400134: mixamorig:RightHand
+    400136: mixamorig:RightHandIndex1
+    400138: mixamorig:RightHandIndex2
+    400140: mixamorig:RightHandIndex3
+    400142: mixamorig:RightHandIndex4
+    400144: mixamorig:RightHandMiddle1
+    400146: mixamorig:RightHandMiddle2
+    400148: mixamorig:RightHandMiddle3
+    400150: mixamorig:RightHandMiddle4
+    400152: mixamorig:RightHandThumb1
+    400154: mixamorig:RightHandThumb2
+    400156: mixamorig:RightHandThumb3
+    400158: mixamorig:RightHandThumb4
+    400160: mixamorig:RightLeg
+    400162: mixamorig:RightShoulder
+    400164: mixamorig:RightToe_End
+    400166: mixamorig:RightToeBase
+    400168: mixamorig:RightUpLeg
+    400170: mixamorig:Spine
+    400172: mixamorig:Spine1
+    400174: mixamorig:Spine2
+    400176: polySurface1
+    400178: polySurface10
+    400180: polySurface11
+    400182: polySurface128
+    400184: polySurface129
+    400186: polySurface13
+    400188: polySurface130
+    400190: polySurface131
+    400192: polySurface132
+    400194: polySurface133
+    400196: polySurface134
+    400198: polySurface135
+    400200: polySurface136
+    400202: polySurface137
+    400204: polySurface138
+    400206: polySurface139
+    400208: polySurface14
+    400210: polySurface140
+    400212: polySurface141
+    400214: polySurface15
+    400216: polySurface159
+    400218: polySurface16
+    400220: polySurface160
+    400222: polySurface161
+    400224: polySurface162
+    400226: polySurface163
+    400228: polySurface164
+    400230: polySurface165
+    400232: polySurface166
+    400234: polySurface167
+    400236: polySurface168
+    400238: polySurface169
+    400240: polySurface17
+    400242: polySurface170
+    400244: polySurface171
+    400246: polySurface172
+    400248: polySurface173
+    400250: polySurface174
+    400252: polySurface175
+    400254: polySurface176
+    400256: polySurface177
+    400258: polySurface178
+    400260: polySurface179
+    400262: polySurface18
+    400264: polySurface180
+    400266: polySurface181
+    400268: polySurface182
+    400270: polySurface183
+    400272: polySurface184
+    400274: polySurface185
+    400276: polySurface186
+    400278: polySurface187
+    400280: polySurface188
+    400282: polySurface189
+    400284: polySurface19
+    400286: polySurface190
+    400288: polySurface191
+    400290: polySurface192
+    400292: polySurface193
+    400294: polySurface194
+    400296: polySurface195
+    400298: polySurface196
+    400300: polySurface197
+    400302: polySurface198
+    400304: polySurface199
+    400306: polySurface2
+    400308: polySurface20
+    400310: polySurface200
+    400312: polySurface201
+    400314: polySurface202
+    400316: polySurface203
+    400318: polySurface204
+    400320: polySurface205
+    400322: polySurface206
+    400324: polySurface207
+    400326: polySurface208
+    400328: polySurface209
+    400330: polySurface21
+    400332: polySurface210
+    400334: polySurface211
+    400336: polySurface212
+    400338: polySurface213
+    400340: polySurface214
+    400342: polySurface215
+    400344: polySurface216
+    400346: polySurface217
+    400348: polySurface218
+    400350: polySurface219
+    400352: polySurface22
+    400354: polySurface220
+    400356: polySurface221
+    400358: polySurface222
+    400360: polySurface223
+    400362: polySurface224
+    400364: polySurface225
+    400366: polySurface226
+    400368: polySurface227
+    400370: polySurface228
+    400372: polySurface229
+    400374: polySurface23
+    400376: polySurface230
+    400378: polySurface231
+    400380: polySurface232
+    400382: polySurface233
+    400384: polySurface234
+    400386: polySurface235
+    400388: polySurface236
+    400390: polySurface237
+    400392: polySurface238
+    400394: polySurface239
+    400396: polySurface24
+    400398: polySurface25
+    400400: polySurface26
+    400402: polySurface27
+    400404: polySurface28
+    400406: polySurface29
+    400408: polySurface3
+    400410: polySurface30
+    400412: polySurface31
+    400414: polySurface34
+    400416: polySurface4
+    400418: polySurface5
+    400420: polySurface6
+    400422: polySurface7
+    400424: polySurface8
+    400426: polySurface9
+    400428: transform1
+    400430: transform10
+    400432: transform100
+    400434: transform101
+    400436: transform102
+    400438: transform103
+    400440: transform104
+    400442: transform105
+    400444: transform106
+    400446: transform107
+    400448: transform108
+    400450: transform109
+    400452: transform11
+    400454: transform110
+    400456: transform111
+    400458: transform112
+    400460: transform113
+    400462: transform114
+    400464: transform115
+    400466: transform116
+    400468: transform117
+    400470: transform118
+    400472: transform119
+    400474: transform12
+    400476: transform120
+    400478: transform121
+    400480: transform122
+    400482: transform123
+    400484: transform124
+    400486: transform125
+    400488: transform126
+    400490: transform127
+    400492: transform128
+    400494: transform129
+    400496: transform13
+    400498: transform130
+    400500: transform131
+    400502: transform132
+    400504: transform133
+    400506: transform134
+    400508: transform135
+    400510: transform136
+    400512: transform137
+    400514: transform138
+    400516: transform139
+    400518: transform14
+    400520: transform140
+    400522: transform141
+    400524: transform142
+    400526: transform143
+    400528: transform144
+    400530: transform145
+    400532: transform146
+    400534: transform147
+    400536: transform148
+    400538: transform149
+    400540: transform15
+    400542: transform150
+    400544: transform151
+    400546: transform152
+    400548: transform153
+    400550: transform154
+    400552: transform155
+    400554: transform156
+    400556: transform157
+    400558: transform158
+    400560: transform159
+    400562: transform16
+    400564: transform160
+    400566: transform161
+    400568: transform162
+    400570: transform163
+    400572: transform17
+    400574: transform18
+    400576: transform19
+    400578: transform2
+    400580: transform20
+    400582: transform21
+    400584: transform22
+    400586: transform23
+    400588: transform24
+    400590: transform25
+    400592: transform26
+    400594: transform27
+    400596: transform28
+    400598: transform29
+    400600: transform3
+    400602: transform30
+    400604: transform31
+    400606: transform32
+    400608: transform33
+    400610: transform34
+    400612: transform35
+    400614: transform36
+    400616: transform37
+    400618: transform38
+    400620: transform39
+    400622: transform4
+    400624: transform40
+    400626: transform41
+    400628: transform42
+    400630: transform43
+    400632: transform44
+    400634: transform45
+    400636: transform46
+    400638: transform47
+    400640: transform48
+    400642: transform49
+    400644: transform5
+    400646: transform50
+    400648: transform51
+    400650: transform52
+    400652: transform53
+    400654: transform54
+    400656: transform55
+    400658: transform56
+    400660: transform57
+    400662: transform58
+    400664: transform59
+    400666: transform6
+    400668: transform60
+    400670: transform61
+    400672: transform62
+    400674: transform63
+    400676: transform64
+    400678: transform65
+    400680: transform66
+    400682: transform67
+    400684: transform68
+    400686: transform69
+    400688: transform7
+    400690: transform70
+    400692: transform71
+    400694: transform72
+    400696: transform73
+    400698: transform74
+    400700: transform75
+    400702: transform76
+    400704: transform77
+    400706: transform78
+    400708: transform79
+    400710: transform8
+    400712: transform80
+    400714: transform81
+    400716: transform82
+    400718: transform83
+    400720: transform84
+    400722: transform85
+    400724: transform86
+    400726: transform87
+    400728: transform88
+    400730: transform89
+    400732: transform9
+    400734: transform90
+    400736: transform91
+    400738: transform92
+    400740: transform93
+    400742: transform94
+    400744: transform95
+    400746: transform96
+    400748: transform97
+    400750: transform98
+    400752: transform99
+    4300000: polySurface239
+    7400000: mixamo.com
+    9500000: //RootNode
+    13700000: polySurface239
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 3
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .159999996
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human:
+    - boneName: mixamorig:Hips
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftUpLeg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightUpLeg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftLeg
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightLeg
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftFoot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightFoot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:Spine1
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftShoulder
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightShoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftForeArm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightForeArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftHand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftToeBase
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightToeBase
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftHandThumb1
+      humanName: Left Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftHandThumb2
+      humanName: Left Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftHandThumb3
+      humanName: Left Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftHandIndex1
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftHandIndex2
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftHandIndex3
+      humanName: Left Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftHandMiddle1
+      humanName: Left Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftHandMiddle2
+      humanName: Left Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftHandMiddle3
+      humanName: Left Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightHandThumb1
+      humanName: Right Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightHandThumb2
+      humanName: Right Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightHandThumb3
+      humanName: Right Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightHandIndex1
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightHandIndex2
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightHandIndex3
+      humanName: Right Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightHandMiddle1
+      humanName: Right Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightHandMiddle2
+      humanName: Right Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightHandMiddle3
+      humanName: Right Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: DONA(Clone)
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_0
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform6
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform11
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface3
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface26
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform57
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface27
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform60
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform38
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface4
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform56
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface5
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform36
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface6
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform10
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface7
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform12
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface8
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform35
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface9
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform8
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface10
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform34
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface11
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform33
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface13
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface24
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform49
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface25
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform41
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform37
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface14
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform48
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface15
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform25
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface16
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform24
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface17
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform9
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface18
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform23
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface19
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform22
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_3
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform5
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_6
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform4
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_7
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform3
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_12
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_13
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform13
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_14
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform14
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_15
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform7
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_16
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform40
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_17
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform39
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_18
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform47
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_19
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform46
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_20
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform45
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_21
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform44
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_22
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform43
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_23
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform42
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_24
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform59
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_25
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform58
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_26
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform55
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_27
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform54
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_28
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform53
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_29
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform52
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_30
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform51
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_31
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform50
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_32
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform21
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_33
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform20
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_34
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform19
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_35
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform18
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_36
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform17
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_37
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform16
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_38
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform32
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_39
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform31
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_40
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform30
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_41
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform29
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_42
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform28
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_43
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform27
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_44
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform15
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Group_45
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform26
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface20
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform68
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface21
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform67
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface22
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform66
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface23
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform65
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface28
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform64
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface29
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform63
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface30
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform62
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface31
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform61
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface34
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform69
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface128
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface129
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform163
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface130
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform162
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface131
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform161
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface132
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform160
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface133
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform159
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface134
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform158
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface135
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform157
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface136
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform156
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface137
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform155
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface138
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform154
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface139
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform153
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface140
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform152
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface141
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform151
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface159
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform150
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface160
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform149
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface161
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform148
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface162
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform147
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface163
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform146
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface164
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform145
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface165
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform144
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface166
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform143
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface167
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform142
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface168
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform141
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface169
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform140
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface170
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform139
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface171
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform138
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface172
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform137
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface173
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform136
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface174
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform135
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface175
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform134
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface176
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform133
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface177
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform132
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface178
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform131
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface179
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform130
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface180
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform129
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface181
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform128
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface182
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform127
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface183
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform126
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface184
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform125
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface185
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform124
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface186
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform123
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface187
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform122
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface188
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform121
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface189
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform120
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface190
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform119
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface191
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform118
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface192
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform117
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface193
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform116
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface194
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform115
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface195
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform114
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface196
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform113
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface197
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform112
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface198
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform111
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface199
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform110
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface200
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform109
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface201
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform108
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface202
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform107
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface203
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform106
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface204
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform105
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface205
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform104
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface206
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform103
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface207
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform102
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface208
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform101
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface209
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform100
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface210
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform99
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface211
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform98
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface212
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform97
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface213
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform96
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface214
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform95
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface215
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform94
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface216
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform93
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface217
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform92
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface218
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform91
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface219
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform90
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface220
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform89
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface221
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform88
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface222
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform87
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface223
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform86
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface224
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform85
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface225
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform84
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface226
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform83
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface227
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform82
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface228
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform81
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface229
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform80
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface230
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform79
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface231
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform78
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface232
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform77
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface233
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform76
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface234
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform75
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface235
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform74
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface236
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform73
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface237
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform72
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface238
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: -1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform71
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: transform70
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: polySurface239
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:Hips
+      position: {x: -6.3374835e-05, y: 1.2054702, z: .0342921577}
+      rotation: {x: 0, y: -0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:Spine
+      position: {x: -0, y: .133823931, z: -.0144227259}
+      rotation: {x: -.0536382198, y: -9.25822042e-06, z: .000144491569, w: .998560429}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:Spine1
+      position: {x: -0, y: .157032043, z: -6.10202722e-11}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:Spine2
+      position: {x: -0, y: .179465264, z: 1.55223889e-10}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:Neck
+      position: {x: -0, y: .201898515, z: 1.81279223e-08}
+      rotation: {x: .0536539778, y: -1.36279932e-19, z: -2.28729419e-18, w: .998559594}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:Head
+      position: {x: -0, y: .0828585774, z: .0103299618}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:HeadTop_End
+      position: {x: -0, y: .237515107, z: .0296109598}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:LeftShoulder
+      position: {x: -.0906812921, y: .180369377, z: -.00549379038}
+      rotation: {x: .537523091, y: -.451797545, z: .571105599, w: .425189704}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:LeftArm
+      position: {x: -2.04670794e-10, y: .185903579, z: 2.06524708e-09}
+      rotation: {x: -.115917757, y: -.00671679154, z: -.0297187641, w: .992791414}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:LeftForeArm
+      position: {x: -2.04218004e-10, y: .222899318, z: -1.15819319e-10}
+      rotation: {x: -4.12492426e-07, y: .000322037027, z: 1.96358755e-07, w: .99999994}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:LeftHand
+      position: {x: -1.47391786e-11, y: .358124882, z: 2.32844855e-11}
+      rotation: {x: .0134057514, y: -.0108784093, z: -.0852441937, w: .996210515}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:LeftHandMiddle1
+      position: {x: -.0198188052, y: .114790112, z: -.00289796665}
+      rotation: {x: -.0122164274, y: -.0030764048, z: .0886755884, w: .995980918}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:LeftHandMiddle2
+      position: {x: .000232457911, y: .0367689617, z: 1.65775019e-10}
+      rotation: {x: -.000366615917, y: 2.60964971e-05, z: .0029752939, w: .99999553}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:LeftHandMiddle3
+      position: {x: 7.79819457e-05, y: .0338133462, z: -1.52134305e-10}
+      rotation: {x: .0412435047, y: .00124769972, z: -.0102157369, w: .999096155}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:LeftHandMiddle4
+      position: {x: -.000310439878, y: .0217338763, z: -1.03098613e-10}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:LeftHandThumb1
+      position: {x: .021976525, y: .0267897341, z: .0184274875}
+      rotation: {x: .0185250845, y: -.0249975938, z: -.201284245, w: .979038656}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:LeftHandThumb2
+      position: {x: .00454162387, y: .0310664196, z: 1.78370388e-10}
+      rotation: {x: -3.47734795e-06, y: -.000115879942, z: -.116439119, w: .993197858}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:LeftHandThumb3
+      position: {x: -.00393316476, y: .0445122384, z: -2.96175484e-09}
+      rotation: {x: .0146628879, y: -7.13322734e-09, z: -1.54410156e-08, w: .999892533}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:LeftHandThumb4
+      position: {x: -.000608454342, y: .0418101922, z: 1.39143877e-10}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:LeftHandIndex1
+      position: {x: .0198188033, y: .0995091051, z: .000474071916}
+      rotation: {x: -.0182143357, y: -.00082337705, z: .0451513529, w: .998813748}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:LeftHandIndex2
+      position: {x: -.000140928445, y: .0372555405, z: -2.60382355e-10}
+      rotation: {x: .0058299182, y: -.00197443389, z: .0407501087, w: .999150455}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:LeftHandIndex3
+      position: {x: 3.84611012e-05, y: .0356372222, z: -9.08471492e-11}
+      rotation: {x: .0233696979, y: -1.55504605e-08, z: -2.94459248e-08, w: .999726892}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:LeftHandIndex4
+      position: {x: .000102467457, y: .0297427475, z: -1.69050052e-10}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:RightShoulder
+      position: {x: .0906812921, y: .180422097, z: -.00598291075}
+      rotation: {x: -.535850227, y: -.453125149, z: .572408438, w: -.424135268}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:RightArm
+      position: {x: -1.88735319e-10, y: .18593955, z: 8.69476886e-12}
+      rotation: {x: -.115580209, y: .00623295922, z: .0324892029, w: .992747128}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:RightForeArm
+      position: {x: -5.64802038e-10, y: .222873747, z: 2.70740652e-10}
+      rotation: {x: 2.76574184e-07, y: -.000322868902, z: 1.73617693e-07, w: .99999994}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:RightHand
+      position: {x: 3.90933848e-11, y: .358139336, z: 9.26235061e-11}
+      rotation: {x: .00441983668, y: .0575953349, z: .144746348, w: .987781227}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:RightHandMiddle1
+      position: {x: .0230890587, y: .0772088096, z: .000635409844}
+      rotation: {x: .0037370713, y: -.00187821104, z: -.144435182, w: .98950541}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:RightHandMiddle2
+      position: {x: 3.75273921e-05, y: .0478757434, z: 1.12116254e-10}
+      rotation: {x: .0402615629, y: 1.39756802e-08, z: -3.03698009e-08, w: .999189198}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:RightHandMiddle3
+      position: {x: -.00017299928, y: .0479998663, z: -7.51057896e-11}
+      rotation: {x: -.0395212844, y: -4.57955175e-05, z: .00240451237, w: .999215841}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:RightHandMiddle4
+      position: {x: .000135471942, y: .0232432187, z: 1.51693769e-10}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:RightHandThumb1
+      position: {x: -.0220459178, y: .02682212, z: .0199268237}
+      rotation: {x: -.0024186282, y: .0366570875, z: .134344831, w: .990253508}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:RightHandThumb2
+      position: {x: -.00525800046, y: .0315906182, z: -5.38972811e-10}
+      rotation: {x: -9.7860735e-05, y: .0014451039, z: .0973381847, w: .995250344}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:RightHandThumb3
+      position: {x: .00129631476, y: .0434298106, z: 7.49168116e-10}
+      rotation: {x: -.000246250478, y: -.00382794696, z: .0343562961, w: .999402285}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:RightHandThumb4
+      position: {x: .00396168604, y: .0401285365, z: -7.87374277e-10}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:RightHandIndex1
+      position: {x: -.023089055, y: .0945388377, z: 6.56644042e-05}
+      rotation: {x: .00395410322, y: -.000400719611, z: -.1445584, w: .989488304}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:RightHandIndex2
+      position: {x: 1.29020873e-05, y: .0393810011, z: 1.08623506e-10}
+      rotation: {x: .0168799926, y: 1.57766582e-08, z: 2.95522522e-08, w: .999857545}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:RightHandIndex3
+      position: {x: 7.99288591e-06, y: .0375907049, z: -1.49012174e-11}
+      rotation: {x: -.0168801192, y: -1.28861229e-05, z: -.000459548726, w: .999857426}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:RightHandIndex4
+      position: {x: -2.08949168e-05, y: .0311784577, z: 1.78920628e-10}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:LeftUpLeg
+      position: {x: -.131539404, y: -.0745138526, z: .0406243019}
+      rotation: {x: .000292982644, y: .0460303426, z: .998939037, w: .00139094098}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:LeftLeg
+      position: {x: 1.50821213e-11, y: .568485916, z: -5.72530435e-12}
+      rotation: {x: -.143842384, y: -.000683640596, z: .0024819551, w: .989597261}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:LeftFoot
+      position: {x: -5.07613153e-11, y: .499415159, z: -3.41150463e-09}
+      rotation: {x: .63071084, y: .0464052856, z: -.0348233655, w: .77384609}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:LeftToeBase
+      position: {x: 1.34815958e-09, y: .175138071, z: -2.97448399e-09}
+      rotation: {x: .183963597, y: .00561369676, z: .0299799591, w: .982459724}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:LeftToe_End
+      position: {x: -1.50099169e-10, y: .0684183091, z: 5.4817758e-11}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:RightUpLeg
+      position: {x: .131539404, y: -.0745138526, z: .0119255232}
+      rotation: {x: -.000233478728, y: .0472319797, z: .998882771, w: -.00154198403}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:RightLeg
+      position: {x: 3.6823964e-11, y: .56859231, z: -6.68240852e-10}
+      rotation: {x: -.118175671, y: .000521145121, z: -.00245258817, w: .99298954}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:RightFoot
+      position: {x: 8.96546812e-12, y: .494739026, z: -3.60996011e-09}
+      rotation: {x: .612608075, y: -.0466477796, z: .0336819366, w: .788289845}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:RightToeBase
+      position: {x: -7.03260672e-10, y: .178275719, z: -4.08424494e-09}
+      rotation: {x: .17962046, y: -.0052468786, z: -.0287231524, w: .983302593}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mixamorig:RightToe_End
+      position: {x: 1.52055479e-10, y: .0658674464, z: 3.56854025e-11}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  additionalBone: 0
+  userData: 
