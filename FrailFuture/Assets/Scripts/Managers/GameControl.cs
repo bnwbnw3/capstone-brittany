@@ -11,6 +11,7 @@ public class GameControl : MonoBehaviour
     public int minNumChoices;
     public int maxRowsForGraph = 6;
     public bool useMaxRows;
+    public int minNumPlayThroughsEditor = 3;
 
     //stuff that shouldn't be editable from editor
     public static GameControl control;
@@ -22,13 +23,17 @@ public class GameControl : MonoBehaviour
     public float BackgroundMusicVolume { get; set; }
     public float SoundEffectsVolume { get; set; }
     public string LastKnownFileName { get; set; }
-    public bool WasLoaded { get; set; } 
+    public bool WasLoaded { get; set; }
+    public int MinNumPlayThroughs { get { return _minNumPlayThroughs; } }
+    public int currentPlayThrough { get; set; } 
+    public const string tempAutoSaveFileLocation = "TempSaveSpot3693";
 
     private AI ai;
     private int minRows = 4;
     private int numMazeEndings = 5;
     private string fileNameExtension;
 
+    private int _minNumPlayThroughs;
     void Awake()
     {
         //Edit script Awake call through Edit->ProjectSettings->Script Order
@@ -46,6 +51,8 @@ public class GameControl : MonoBehaviour
             WasLoaded = false;
             StartingPlayerVars = new AccessibleTransform();
             AbleToLoadGame = false;
+            currentPlayThrough = 1;
+            _minNumPlayThroughs = minNumPlayThroughsEditor;
         }
         else if (control != this)
         {

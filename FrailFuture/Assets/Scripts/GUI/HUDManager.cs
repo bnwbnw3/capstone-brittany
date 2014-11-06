@@ -8,7 +8,6 @@ public class HUDManager : MonoBehaviour
     public GameObject HUDCameraOBJ;
     public Menu ResetMenuTo;
     public Menu CurrentMenu;
-    public string tempAutoSaveFileLocation = "TempSaveSpot3693";
     private bool HUDOpen;
 
     public void Start()
@@ -79,14 +78,14 @@ public class HUDManager : MonoBehaviour
     public void LoadMainMenu()
     {
         Screen.showCursor = true;
-        GameControl.control.Save(tempAutoSaveFileLocation);
+        GameControl.control.Save(GameControl.tempAutoSaveFileLocation);
         Application.LoadLevel("MainMenu");
     }
 
     public void QuitGame()
     {
         Screen.showCursor = true;
-        GameControl.control.Save(tempAutoSaveFileLocation);
+        GameControl.control.Save(GameControl.tempAutoSaveFileLocation);
         Application.Quit();
     }
 }

@@ -33,7 +33,15 @@ public class NodeManager : MonoBehaviour
             {
                 if (GameControl.control.getAi.getCurrentGraphIndex() == 0)
                 {
-                    showNextHall();
+                    if (GameControl.control.currentPlayThrough > GameControl.control.MinNumPlayThroughs && GameControl.control.getAi.getNeutralityState() != NeutralityTypes.Neutral)
+                    {
+                        //show "game over/done" screen
+                    }
+                    else
+                    {
+                        showNextHall();
+                    }
+                    
                 }
                 else
                 {
@@ -42,7 +50,11 @@ public class NodeManager : MonoBehaviour
             }
             else
             {
-                if (GameControl.control.getAi.getCurrentGraphIndex() == 0 && !JustReset)
+                if (GameControl.control.currentPlayThrough > GameControl.control.MinNumPlayThroughs && GameControl.control.getAi.getNeutralityState() != NeutralityTypes.Neutral)
+                {
+                    //show "game over/done" screen
+                }
+                else if (GameControl.control.getAi.getCurrentGraphIndex() == 0 && !JustReset)
                 {
                     objectSpawner[0].SetActive(true);
                     GameObject player = GameObject.Find("Player");
@@ -70,6 +82,10 @@ public class NodeManager : MonoBehaviour
         SoundManager.soundManager.playDONADialogue();
         int inputsAvalible = (!JustReset && GameControl.control.getAi.getNextGraphEndNodeType() != NeutralityTypes.None) ? 0 : GameControl.control.getAi.getNextInputsFromGraph().Length;
         JustReset = (inputsAvalible == 0);
+        if (JustReset)
+        {
+            GameControl.control.currentPlayThrough++;
+        }
         string name = "" + inputsAvalible + "DoorGUINode";
         onlyShowNode(name);
     }
