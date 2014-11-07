@@ -16,7 +16,7 @@ public class EndTheGameButton : MonoBehaviour {
             //Fade out
 
             Screen.showCursor = true;
-            Application.LoadLevel("MainMenu");
+            ScreenFader.screenFader.makeSolid("MainMenu", 2.0f);
         }
     }
 }
