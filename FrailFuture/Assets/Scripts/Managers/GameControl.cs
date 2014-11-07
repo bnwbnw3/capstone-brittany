@@ -9,9 +9,6 @@ public class GameControl : MonoBehaviour
 {
     public int maxNumChoices;
     public int minNumChoices;
-    public int maxRowsForGraph = 6;
-    public bool useMaxRows;
-    public int minNumPlayThroughsEditor = 3;
 
     //stuff that shouldn't be editable from editor
     public static GameControl control;
@@ -23,23 +20,62 @@ public class GameControl : MonoBehaviour
     public float BackgroundMusicVolume { get; set; }
     public float SoundEffectsVolume { get; set; }
     public string LastKnownFileName { get; set; }
+
     public bool WasLoaded { get; set; }
-    public int MinNumPlayThroughs { get { return _minNumPlayThroughs; } }
-    public int currentPlayThrough { get; set; } 
     public const string tempAutoSaveFileLocation = "TempSaveSpot3693";
 
+    //Game Longevity
+    public int GameLongevity
+    {
+        get { return _gameLongevity; }
+        set
+        {
+            _gameLongevity = value;
+            _gameLongevity = _gameLongevity < 1 ? 1 : _gameLongevity;
+            _gameLongevity = _gameLongevity > 3 ? 3 : _gameLongevity;
+
+            if (_gameLongevity == 1)
+            {
+                _numOfHallways = 1;
+                _maxNumRows = _minNumRows;
+                _minNumPlayThroughs = 2;
+            }
+            if (_gameLongevity == 2)
+            {
+                _numOfHallways = 2;
+                _maxNumRows = _minNumRows + _minNumRows / 2;
+                _minNumPlayThroughs = 3;
+            }
+            if (_gameLongevity == 3)
+            {
+                _numOfHallways = 3;
+                _maxNumRows = _minNumRows + _minNumRows;
+                _minNumPlayThroughs = 4;
+            }
+        }
+    }
+    //not to be changed w/ options
+    public int NumberOfHallways { get { return _numOfHallways; } }
+    public int MaxNumberOfRows { get { return _maxNumRows; } }
+    public int MinNumPlayThroughs { get { return _minNumPlayThroughs; } }
+    public int CurrentPlayThrough { get; set; }
+
     private AI ai;
-    private int minRows = 4;
-    private int numMazeEndings = 5;
+    private int _gameLongevity;
+    private int _numOfHallways;
+    private int _maxNumRows;
+    private int _minNumPlayThroughs;
+    private const int _minNumRows = 4;
+    private const int numMazeEndings = 5;
     private string fileNameExtension;
 
-    private int _minNumPlayThroughs;
     void Awake()
     {
         //Edit script Awake call through Edit->ProjectSettings->Script Order
         if (control == null)
         {
             DontDestroyOnLoad(gameObject);
+
             control = this;
             InvertY = false;
             InvertX = false;
@@ -47,12 +83,13 @@ public class GameControl : MonoBehaviour
             BackgroundMusicVolume = 1.0f;
             SoundEffectsVolume = 0.25f;
             LastKnownFileName = "default";
+            GameLongevity = 2;
+
             fileNameExtension = ".dat";
             WasLoaded = false;
             StartingPlayerVars = new AccessibleTransform();
             AbleToLoadGame = false;
-            currentPlayThrough = 1;
-            _minNumPlayThroughs = minNumPlayThroughsEditor;
+            CurrentPlayThrough = 0;
         }
         else if (control != this)
         {
@@ -102,12 +139,14 @@ public class GameControl : MonoBehaviour
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/" + fileName);
 
-        AIData allData = new AIData();
+        GameData allData = new GameData();
         allData.brain = ai.getBrain();
         allData.neutrality = ai.getNeutralityValue();
         allData.mazeInfo = ai.getMazeInfo();
         allData.currentGraphIndex = ai.getCurrentGraphIndex();
         allData.score = ai.getAIEndingsScore();
+        allData.currentPlayThrough = CurrentPlayThrough;
+        allData.gameLongevity = GameLongevity;
 
         bf.Serialize(file, allData);
         Debug.Log(
@@ -124,8 +163,11 @@ public class GameControl : MonoBehaviour
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/" + fileName, FileMode.Open);
 
-            AIData data = (AIData)bf.Deserialize(file);
+            GameData data = (GameData)bf.Deserialize(file);
             file.Close();
+
+            CurrentPlayThrough = data.currentPlayThrough;
+            GameLongevity = data.gameLongevity;
             ai = new AI(data.mazeInfo, new Neutrality(data.neutrality), data.brain, data.score, data.currentGraphIndex);
             WasLoaded = AbleToLoadGame = true;
         }
@@ -138,7 +180,7 @@ public class GameControl : MonoBehaviour
     }
     public int getMinRows()
     {
-        return minRows;
+        return _minNumRows;
     }
     public int getNumMazeEndings()
     {

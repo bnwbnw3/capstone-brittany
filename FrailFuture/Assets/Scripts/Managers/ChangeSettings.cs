@@ -9,6 +9,7 @@ public class ChangeSettings : MonoBehaviour
    public Slider mouseSensitivity;
    public Slider backgroundMusic;
    public Slider soundEffects;
+   public Slider gameLongevity;
    public MenuManager menuManager;
    public HUDManager HUDManager;
 
@@ -19,6 +20,10 @@ public class ChangeSettings : MonoBehaviour
        mouseSensitivity.value = GameControl.control.MouseSensitivity;
        backgroundMusic.value = GameControl.control.BackgroundMusicVolume;
        soundEffects.value = GameControl.control.SoundEffectsVolume;
+       if (menuManager != null)
+       {
+           gameLongevity.value = GameControl.control.GameLongevity;
+       }
    }
 
     public void updateSettings(Menu toLoadAfter)
@@ -30,6 +35,7 @@ public class ChangeSettings : MonoBehaviour
         setSoundEffectsVol(soundEffects.value);
         if (menuManager != null)
         {
+            setGameLongevity(gameLongevity.value);
             menuManager.ShowMenu(toLoadAfter);
         }
         else if (HUDManager != null)
@@ -57,5 +63,9 @@ public class ChangeSettings : MonoBehaviour
     private void setSoundEffectsVol(float value)
     {
         GameControl.control.SoundEffectsVolume = value;
+    }
+    private void setGameLongevity(float value)
+    {
+        GameControl.control.GameLongevity = (int)value;
     }
 }

@@ -11,16 +11,31 @@ public class NodeManager : MonoBehaviour
     public static NodeManager nodeManager;
     private HashSet<int> hallwaysUsed;
     public bool JustReset {get;set;}
+    private bool conditionToLoadEndScene;
 
     void Awake()
     {
       nodeManager = this;
       showNextRoom();
       JustReset = false;
+      conditionToLoadEndScene = GameControl.control.CurrentPlayThrough >= GameControl.control.MinNumPlayThroughs && GameControl.control.getAi.getNeutralityState() != NeutralityTypes.Neutral;
+    }
+
+    private void SetUpHallways()
+    {
+        if (GameControl.control.NumberOfHallways == 1)
+        {
+            hallwaysUsed = new HashSet<int>() { 1, 2, 3, 4 };
+        }
+        else
+        {
+            hallwaysUsed = new HashSet<int>() { };
+        }
     }
 
     public void showNextRoom()
     {
+        conditionToLoadEndScene = GameControl.control.CurrentPlayThrough >= GameControl.control.MinNumPlayThroughs && GameControl.control.getAi.getNeutralityState() != NeutralityTypes.Neutral;
         resetObjSpawners();
         if (hallwaysUsed == null)
         {
@@ -84,7 +99,7 @@ public class NodeManager : MonoBehaviour
         JustReset = (inputsAvalible == 0);
         if (JustReset)
         {
-            GameControl.control.currentPlayThrough++;
+            GameControl.control.CurrentPlayThrough++;
         }
         string name = "" + inputsAvalible + "DoorGUINode";
         onlyShowNode(name);
@@ -92,10 +107,14 @@ public class NodeManager : MonoBehaviour
 
     void showNextHall()
     {
-        var range = Enumerable.Range(0, Hallways.Count).Where(i => !hallwaysUsed.Contains(i));
-        var rand = new System.Random();
-        int index = rand.Next(0, Hallways.Count - hallwaysUsed.Count);
-        int indexToUse = range.ElementAt(index);
+        int indexToUse = 0;
+        if (hallwaysUsed.Contains(0))
+        {
+            var range = Enumerable.Range(0, Hallways.Count).Where(i => !hallwaysUsed.Contains(i));
+            var rand = new System.Random();
+            int index = rand.Next(0, Hallways.Count - hallwaysUsed.Count);
+            indexToUse = range.ElementAt(index);
+        }
         hallwaysUsed.Add(indexToUse);
         onlyShowHallway(indexToUse);
     }

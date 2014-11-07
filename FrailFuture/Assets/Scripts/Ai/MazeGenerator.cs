@@ -9,14 +9,7 @@ class MazeGenerator
     {
         int rowsToUse = 0;
         rand = new System.Random(System.DateTime.Now.GetHashCode());
-        if (GameControl.control.useMaxRows)
-        {
-            rowsToUse = GameControl.control.maxRowsForGraph >= GameControl.control.getMinRows() ? GameControl.control.maxRowsForGraph : GameControl.control.getMinRows();
-        }
-        else
-        {
-            rowsToUse = rand.Next(GameControl.control.getMinRows(), GameControl.control.maxRowsForGraph + 1);
-        }
+        rowsToUse = rand.Next(GameControl.control.getMinRows(), GameControl.control.MaxNumberOfRows + 1);
         return generateRandomGraph(rowsToUse);
     }
 
