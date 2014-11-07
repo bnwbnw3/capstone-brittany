@@ -49,13 +49,14 @@ public class EndRoomEvents : MonoBehaviour
                 spawnScript.spawnObject(new int[] { 11 }, scriptWaitTime, 1, 0.05f);
             }
             StartCoroutine(ResetGame(scriptWaitTime, c));
+            StartCoroutine(FadeScreen(scriptWaitTime - 2));
         }
     }
 
 
     private IEnumerator ResetGame(float waitTime, Collider c)
     {
-        yield return new WaitForSeconds(waitTime); 
+        yield return new WaitForSeconds(waitTime);
         transform.root.collider.isTrigger = false;
         GameObject mainCam = GameObject.Find("Main Camera");
         mainCam.camera.clearFlags = CameraClearFlags.Skybox;
@@ -67,6 +68,12 @@ public class EndRoomEvents : MonoBehaviour
         c.transform.position = TeleportPlayerToOriginOnCollide.getOrigin();
         c.transform.localScale = GameControl.control.StartingPlayerVars.scale;
         c.transform.eulerAngles = GameControl.control.StartingPlayerVars.eulerAngles;
+    }
+
+    private IEnumerator FadeScreen(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        ScreenFader.screenFader.makeSolid();
     }
 
     private IEnumerator waitAndDrop(float waitTime, Collider c)
