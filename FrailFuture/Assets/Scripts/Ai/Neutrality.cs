@@ -33,11 +33,11 @@ public class Neutrality
         }
         else if (type == NeutralityTypes.Lovely)
         {
-            additive += (devidePoint / 2.0f) + 0.01f;
+            additive += (devidePoint / 2.0f);
         }
         else if (type == NeutralityTypes.Agitated)
         {
-            additive -= (devidePoint / 2.0f) + 0.01f;
+            additive -= (devidePoint / 2.0f);
         }
         else if (type == NeutralityTypes.Evil)
         {
@@ -52,7 +52,7 @@ public class Neutrality
         NeutralityTypes state = NeutralityTypes.Neutral;
         float halfNeg = -devidePoint / 2.0f;
         float halfPos = devidePoint / 2.0f;
-        if (Value < halfNeg && Value >= (-devidePoint + halfNeg))
+        if (Value <= halfNeg && Value >= (-devidePoint + halfNeg))
         {
             state = NeutralityTypes.Agitated;
         }
@@ -60,7 +60,7 @@ public class Neutrality
         {
             state = NeutralityTypes.Evil;
         }
-        if (Value > halfPos && Value <= (devidePoint + halfPos))
+        if (Value >= halfPos && Value <= (devidePoint + halfPos))
         {
             state = NeutralityTypes.Lovely;
         }
