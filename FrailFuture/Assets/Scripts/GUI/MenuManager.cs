@@ -11,6 +11,7 @@ public class MenuManager : MonoBehaviour
 
     public void Start()
     {
+        Screen.showCursor = true;
         ShowMenu(CurrentMenu);
         mainScene.SetActive(true);
         loadingScene.SetActive(false);
@@ -48,7 +49,7 @@ public class MenuManager : MonoBehaviour
         {
             GameControl.control.LastKnownFileName = fileName;
             GameControl.control.AbleToLoadGame = false;
-            StartCoroutine(waitToLoadGame(5.0f));
+            StartCoroutine(waitToLoadGame(4.0f));
         }
         else
         {
@@ -60,7 +61,8 @@ public class MenuManager : MonoBehaviour
     public void StartGame()
     {
         GameControl.control.makeBeginnerAi();
-        StartCoroutine(waitToLoadGame(5.0f));
+
+        StartCoroutine(waitToLoadGame(4.0f));
     }
 
     IEnumerator waitToLoadGame(float waitTime)
@@ -71,6 +73,6 @@ public class MenuManager : MonoBehaviour
         CurrentMenu.IsOpen = false;
         Screen.lockCursor = true;
         yield return new WaitForSeconds(waitTime);
-        Application.LoadLevel("GameScene");
+        ScreenFader.screenFader.makeSolid("GameScene", 2.0f);
     }
 }

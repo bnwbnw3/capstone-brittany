@@ -48,9 +48,9 @@ public class NodeManager : MonoBehaviour
             {
                 if (GameControl.control.getAi.getCurrentGraphIndex() == 0)
                 {
-                    if (GameControl.control.currentPlayThrough > GameControl.control.MinNumPlayThroughs && GameControl.control.getAi.getNeutralityState() != NeutralityTypes.Neutral)
+                    if (conditionToLoadEndScene)
                     {
-                        //show "game over/done" screen
+                        loadEndScene();
                     }
                     else
                     {
@@ -65,9 +65,9 @@ public class NodeManager : MonoBehaviour
             }
             else
             {
-                if (GameControl.control.currentPlayThrough > GameControl.control.MinNumPlayThroughs && GameControl.control.getAi.getNeutralityState() != NeutralityTypes.Neutral)
+                if (conditionToLoadEndScene)
                 {
-                    //show "game over/done" screen
+                    loadEndScene();
                 }
                 else if (GameControl.control.getAi.getCurrentGraphIndex() == 0 && !JustReset)
                 {
@@ -82,14 +82,24 @@ public class NodeManager : MonoBehaviour
                 }
             }
         }
-        else if (hallwaysUsed.Count <= 2)
+        else if (conditionToLoadEndScene)
         {
+            loadEndScene();
+        }
+        else if (hallwaysUsed.Count < GameControl.control.NumberOfHallways)
+        {
+            SetUpHallways();
             showNextHall();
         }
         else
         {
             showNextNode();
         }
+    }
+
+    void loadEndScene()
+    {
+        ScreenFader.screenFader.makeSolid("ControlRoom_EndScene", 2.0f);
     }
 
     void showNextNode()
