@@ -18,6 +18,7 @@ public class SoundManager : MonoBehaviour
     public List<AudioClip> EngingsFromBestToWorst;
 
     public List<AudioClip> IntroAudio;
+    public List<AudioClip> OutroAudio;
     public List<AudioClip> DONADialoguePos;
     public List<AudioClip> DONADialogueNeg;
     public List<AudioClip> RoomDialogue;
@@ -73,6 +74,13 @@ public class SoundManager : MonoBehaviour
     public void playLandSound()
     {
         playAudio(playerMovementSounds[2], GameObject.Find("Player").audio, 1.00f, false);
+    }
+
+    //getAi Outro
+    public void playOutro()
+    {
+        int AiNeutrality = (int)GameControl.control.getAi.getNeutralityState();
+        playAudio(OutroAudio[AiNeutrality], GameObject.Find("AiSpeaker").audio, 2.0f);
     }
 
     //getAi Dialogue
