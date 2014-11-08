@@ -28,10 +28,6 @@ public class NodeManager : MonoBehaviour
         {
             hallwaysUsed = new HashSet<int>() { 1, 2, 3, 4 };
         }
-        else
-        {
-            hallwaysUsed = new HashSet<int>() { };
-        }
     }
 
     public void showNextRoom()
