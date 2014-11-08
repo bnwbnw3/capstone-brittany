@@ -108,8 +108,9 @@ public class AI
             _neutrality.Add(change);
 
                //set new neutrality after effects from last game
-            AiDesiredEndIndex = _mazeInfo.mazeEndIndexs[_neutrality.getState()];
+                AiDesiredEndIndex = _mazeInfo.mazeEndIndexs[_neutrality.getState()];
                AiCurrentDesire = pf.findNextDesiredInput(0, AiDesiredEndIndex).input;
+               graphIndex = 0;
 
                setNextInputsFromCurrentGraphPosition();
                directionGiven = _brain.getChoiceToDeliver(inputsAvalible, AiCurrentDesire);
