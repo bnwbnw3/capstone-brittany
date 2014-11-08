@@ -21,7 +21,7 @@ public class EndScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (/*!SoundManager.soundManager.getIsAiTalking() &&*/ hasPlayedDialogue && !hasToldDONAToMove)
+        if (!SoundManager.soundManager.getIsAiTalking() && hasPlayedDialogue && !hasToldDONAToMove)
         {
             DONA.GetComponent<EndSceneDONAMoveScript>().walkToExitControlRoom();
             hasToldDONAToMove = true;
@@ -61,8 +61,8 @@ public class EndScript : MonoBehaviour
 
     private IEnumerator pauseToGiveAudio(float waitTime)
     {
-        yield return new WaitForSeconds(waitTime);
-        //SoundManager.soundManager.playOutro();
+        SoundManager.soundManager.playOutro();
+        yield return new WaitForSeconds(SoundManager.soundManager.totalOutroAudioTime);
 
         player.AddComponent<FirstPersonLookAtTarget>();
 

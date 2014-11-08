@@ -18,9 +18,15 @@ public class SoundManager : MonoBehaviour
     public List<AudioClip> EngingsFromBestToWorst;
 
     public List<AudioClip> IntroAudio;
-    public List<AudioClip> OutroAudio;
+
+    public AudioClip OutroAllBeginAudio;
+    public List<AudioClip> OutroNeutralityAudio;
+    public List<AudioClip> OutroEndingAudio;
+    public float totalOutroAudioTime;
+
     public List<AudioClip> DONADialoguePos;
     public List<AudioClip> DONADialogueNeg;
+
     public List<AudioClip> RoomDialogue;
     public List<AudioClip> VODialogue;
 
@@ -80,7 +86,19 @@ public class SoundManager : MonoBehaviour
     public void playOutro()
     {
         int AiNeutrality = (int)GameControl.control.getAi.getNeutralityState();
-        playAudio(OutroAudio[AiNeutrality], GameObject.Find("AiSpeaker").audio, 2.0f);
+        AudioClip begin = OutroAllBeginAudio;
+        AudioClip middle = OutroNeutralityAudio[AiNeutrality];
+        AudioClip end;
+        if (GameControl.control.getAi.getNeutralityValue() > 0)
+        {
+            end = OutroEndingAudio[0];
+        }
+        else
+        {
+            end  = OutroEndingAudio[1];
+        }
+        totalOutroAudioTime = begin.length + middle.length + end.length + 0.5f;
+        StartCoroutine(playAllOutro(GameObject.Find("AiSpeaker").audio, begin, middle, end));
     }
 
     //getAi Dialogue
@@ -271,5 +289,19 @@ public class SoundManager : MonoBehaviour
         playAudio(VODialogue[VO_DIndex++], source, 2.0f);
         yield return new WaitForSeconds(source.audio.clip.length);
         playAudio(VODialogue[VODialogue.Count - 1], source, 2.0f);
+    }
+
+    private IEnumerator playAllOutro(AudioSource source, AudioClip begin, AudioClip middle, AudioClip end)
+    {
+        playAudio(begin, source, 2.0f);
+        yield return new WaitForSeconds(source.audio.clip.length);
+        StartCoroutine(playMiddleAndEndAudio(source, middle,end));
+    }
+
+    private IEnumerator playMiddleAndEndAudio(AudioSource source, AudioClip middle, AudioClip end)
+    {
+        playAudio(middle, GameObject.Find("AiSpeaker").audio, 2.0f);
+        yield return new WaitForSeconds(source.audio.clip.length);
+        playAudio(end, GameObject.Find("AiSpeaker").audio, 2.0f);
     }
 }
