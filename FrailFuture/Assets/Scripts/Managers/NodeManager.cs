@@ -10,15 +10,16 @@ public class NodeManager : MonoBehaviour
 
     public static NodeManager nodeManager;
     private HashSet<int> hallwaysUsed;
-    public bool JustReset {get;set;}
     private bool conditionToLoadEndScene;
 
+    System.Random rand;
     void Awake()
     {
       nodeManager = this;
       showNextRoom();
-      JustReset = false;
+      GameControl.control.JustReset = false;
       conditionToLoadEndScene = GameControl.control.CurrentPlayThrough >= GameControl.control.MinNumPlayThroughs && GameControl.control.getAi.getNeutralityState() != NeutralityTypes.Neutral;
+      rand = new System.Random(System.DateTime.Now.GetHashCode());
     }
 
     private void SetUpHallways()
@@ -69,7 +70,7 @@ public class NodeManager : MonoBehaviour
                 {
                     loadEndScene();
                 }
-                else if (GameControl.control.getAi.getCurrentGraphIndex() == 0 && !JustReset)
+                else if (GameControl.control.getAi.getCurrentGraphIndex() == 0 && !GameControl.control.JustReset)
                 {
                     objectSpawner[0].SetActive(true);
                     GameObject player = GameObject.Find("Player");
@@ -105,9 +106,9 @@ public class NodeManager : MonoBehaviour
     void showNextNode()
     {
         SoundManager.soundManager.playDONADialogue();
-        int inputsAvalible = (!JustReset && GameControl.control.getAi.getNextGraphEndNodeType() != NeutralityTypes.None) ? 0 : GameControl.control.getAi.getNextInputsFromGraph().Length;
-        JustReset = (inputsAvalible == 0);
-        if (JustReset)
+        int inputsAvalible = (!GameControl.control.JustReset && GameControl.control.getAi.getNextGraphEndNodeType() != NeutralityTypes.None) ? 0 : GameControl.control.getAi.getNextInputsFromGraph().Length;
+        GameControl.control.JustReset = (inputsAvalible == 0);
+        if (GameControl.control.JustReset)
         {
             GameControl.control.CurrentPlayThrough++;
         }
@@ -121,7 +122,6 @@ public class NodeManager : MonoBehaviour
         if (hallwaysUsed.Contains(0))
         {
             var range = Enumerable.Range(0, Hallways.Count).Where(i => !hallwaysUsed.Contains(i));
-            var rand = new System.Random();
             int index = rand.Next(0, Hallways.Count - hallwaysUsed.Count);
             indexToUse = range.ElementAt(index);
         }
@@ -139,7 +139,7 @@ public class NodeManager : MonoBehaviour
                 AllNodes[i].SetActive(true);
                 GameObject go = AllNodes[i];
                 GUINode node = (GUINode)go.GetComponentInChildren<GUINode>();
-                node.EndNodeType = !JustReset ? NeutralityTypes.None : GameControl.control.getAi.getNextGraphEndNodeType();
+                node.EndNodeType = !GameControl.control.JustReset ? NeutralityTypes.None : GameControl.control.getAi.getNextGraphEndNodeType();
                 node.resetGUINode();
             }
             else

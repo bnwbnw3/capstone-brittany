@@ -39,11 +39,15 @@ public class AI
         _score = score;
         int lowestEndIndex = _mazeInfo.mazeEndIndexs.OrderBy(k => k.Value).FirstOrDefault().Value;
 
-        foreach (KeyValuePair<NeutralityTypes, int> mazeEndIndex in _mazeInfo.mazeEndIndexs)
+        if (GameControl.control.JustReset)
         {
-            if (mazeEndIndex.Value == currentGraphIndex)
+            foreach (KeyValuePair<NeutralityTypes, int> mazeEndIndex in _mazeInfo.mazeEndIndexs)
             {
-                currentGraphIndex = 0;
+                if (mazeEndIndex.Value == currentGraphIndex)
+                {
+                    currentGraphIndex = 0;
+                    GameControl.control.JustReset = false;
+                }
             }
         }
         pf = new PathWayFinder(_mazeInfo.maze, lowestEndIndex, currentGraphIndex);

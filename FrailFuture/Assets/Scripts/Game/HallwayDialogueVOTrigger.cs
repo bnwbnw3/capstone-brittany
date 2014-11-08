@@ -23,7 +23,7 @@ public class HallwayDialogueVOTrigger : MonoBehaviour
     }
     public void Update()
     {
-        if (NodeManager.nodeManager.JustReset)
+        if (GameControl.control.JustReset)
         {
             destroyLargeTrigger();
         }
@@ -35,7 +35,7 @@ public class HallwayDialogueVOTrigger : MonoBehaviour
 
     public void OnTriggerEnter(Collider c)
     {
-        if (lastVertexKnown != GameControl.control.getAi.getCurrentGraphIndex() || NodeManager.nodeManager.JustReset)
+        if (lastVertexKnown != GameControl.control.getAi.getCurrentGraphIndex() || GameControl.control.JustReset)
         {
             if (!SoundManager.soundManager.getIsAiTalking())
             {

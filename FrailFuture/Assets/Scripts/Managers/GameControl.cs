@@ -20,6 +20,7 @@ public class GameControl : MonoBehaviour
     public float BackgroundMusicVolume { get; set; }
     public float SoundEffectsVolume { get; set; }
     public string LastKnownFileName { get; set; }
+    public bool JustReset { get; set; }
 
     public bool WasLoaded { get; set; }
     public const string tempAutoSaveFileLocation = "TempSaveSpot3693";
@@ -147,6 +148,7 @@ public class GameControl : MonoBehaviour
         allData.score = ai.getAIEndingsScore();
         allData.currentPlayThrough = CurrentPlayThrough;
         allData.gameLongevity = GameLongevity;
+        allData.justReset = JustReset;
 
         bf.Serialize(file, allData);
         Debug.Log(
@@ -168,6 +170,7 @@ public class GameControl : MonoBehaviour
 
             CurrentPlayThrough = data.currentPlayThrough;
             GameLongevity = data.gameLongevity;
+            JustReset = data.justReset;
             ai = new AI(data.mazeInfo, new Neutrality(data.neutrality), data.brain, data.score, data.currentGraphIndex);
             WasLoaded = AbleToLoadGame = true;
         }
