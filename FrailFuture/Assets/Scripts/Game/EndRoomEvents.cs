@@ -79,6 +79,9 @@ public class EndRoomEvents : MonoBehaviour
     private IEnumerator waitAndDrop(float waitTime, Collider c)
     {
         yield return new WaitForSeconds(waitTime);
+        GameObject resetButton = GameObject.Find("ResetButton");
+        Vector3 oldPosRB = resetButton.transform.position;
+        resetButton.transform.position = new Vector3(oldPosRB.x - 100, oldPosRB.y - 10, oldPosRB.z);
         Vector3 oldPos = c.transform.position;
         c.transform.position = new Vector3(oldPos.x, oldPos.y - 2, oldPos.z);
     }
