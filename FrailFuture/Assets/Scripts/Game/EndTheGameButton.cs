@@ -15,7 +15,7 @@ public class EndTheGameButton : MonoBehaviour {
 
             //Fade out
 
-            Screen.showCursor = true;
+            Screen.lockCursor = false;
             ScreenFader.screenFader.makeSolid("MainMenu", 2.0f);
         }
     }
