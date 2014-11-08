@@ -61,13 +61,12 @@ public class EndRoomEvents : MonoBehaviour
         GameObject mainCam = GameObject.Find("Main Camera");
         mainCam.camera.clearFlags = CameraClearFlags.Skybox;
         GameObject.Find("ResetButton").GetComponent<SaveOriginalPos>().reset();
-        
-        NodeManager.nodeManager.showNextRoom(); 
-        transform.collider.isTrigger = true;
 
         c.transform.position = TeleportPlayerToOriginOnCollide.getOrigin();
         c.transform.localScale = GameControl.control.StartingPlayerVars.scale;
         c.transform.eulerAngles = GameControl.control.StartingPlayerVars.eulerAngles;
+        NodeManager.nodeManager.showNextRoom(); 
+        transform.collider.isTrigger = true;
     }
 
     private IEnumerator FadeScreen(float waitTime)
