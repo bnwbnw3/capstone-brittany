@@ -78,6 +78,7 @@ public class Brain
         }
         if (final == -1)
         {
+            //should only occur when going to room with button. There are no inputs in that room
             Debug.Log("Brain failed to find a direction to give the player");
         }
         return final;
