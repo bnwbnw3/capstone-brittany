@@ -11,7 +11,7 @@ public class MenuManager : MonoBehaviour
 
     public void Start()
     {
-        Screen.showCursor = true;
+        Screen.lockCursor = false;
         ShowMenu(CurrentMenu);
         mainScene.SetActive(true);
         loadingScene.SetActive(false);

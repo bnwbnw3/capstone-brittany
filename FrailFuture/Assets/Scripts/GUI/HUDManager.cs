@@ -23,7 +23,7 @@ public class HUDManager : MonoBehaviour
 
             if (HUDOpen)
             {
-                Screen.showCursor = true;
+                Screen.lockCursor = false;
                 player.SetActive(false);
                 HUDCameraOBJ.SetActive(true);
                 ShowMenu(CurrentMenu);
@@ -59,7 +59,7 @@ public class HUDManager : MonoBehaviour
 
     public void SaveGame(InputField Field)
     {
-        Screen.showCursor = true;
+        Screen.lockCursor = false;
         string fileName = Field.text.text;
         GameControl.control.Save(fileName);
         GameControl.control.LastKnownFileName = fileName;
@@ -77,14 +77,14 @@ public class HUDManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        Screen.showCursor = true;
+        Screen.lockCursor = false;
         GameControl.control.Save(GameControl.tempAutoSaveFileLocation);
         ScreenFader.screenFader.makeSolid("MainMenu", 2.0f);
     }
 
     public void QuitGame()
     {
-        Screen.showCursor = true;
+        Screen.lockCursor = false;
         GameControl.control.Save(GameControl.tempAutoSaveFileLocation);
         Application.Quit();
     }
