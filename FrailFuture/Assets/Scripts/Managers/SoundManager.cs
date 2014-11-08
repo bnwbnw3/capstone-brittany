@@ -36,6 +36,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager soundManager;
     private int VO_DIndex = 0;
     private List<int> DONAResponsesUsed;
+    private int maxAllDONAResetPointAt = 5;
     private List<int> DONADialougueUsed;
     private System.Random randMaker;
 
@@ -115,15 +116,15 @@ public class SoundManager : MonoBehaviour
         {
             while (!dialogueFound)
             {
-                if (DONADialougueUsed.Count == DONADialoguePos.Count)
-                {
-                    DONADialougueUsed.Clear();
-                }
                  index = randMaker.Next(0, DONADialoguePos.Count);
                  if (!DONADialougueUsed.Contains(index))
                  {
                      DONADialougueUsed.Add(index);
                      dialogueFound = true;
+                     if (DONADialougueUsed.Count == maxAllDONAResetPointAt)
+                     {
+                         DONADialougueUsed.Clear();
+                     }
                  }
             }
             playAudio(DONADialoguePos[index], GameObject.Find("AiSpeaker").audio, 2.0f);
@@ -132,15 +133,16 @@ public class SoundManager : MonoBehaviour
         {
             while (!dialogueFound)
             {
-                if (DONADialougueUsed.Count == DONADialogueNeg.Count)
-                {
-                    DONADialougueUsed.Clear();
-                }
                 index = randMaker.Next(0, DONADialogueNeg.Count);
                 if (!DONADialougueUsed.Contains(index))
                 {
                     DONADialougueUsed.Add(index);
                     dialogueFound = true;
+
+                    if (DONADialougueUsed.Count == maxAllDONAResetPointAt)
+                    {
+                        DONADialougueUsed.Clear();
+                    }
                 }
             }
             playAudio(DONADialogueNeg[index], GameObject.Find("AiSpeaker").audio, 2.0f);
@@ -197,10 +199,6 @@ public class SoundManager : MonoBehaviour
         //grab random index based on having pos or neg neutrality
         bool foundIndex = false;
         int index = 0;
-        if (DONAResponsesUsed.Count == PickedRightDoor.Count)
-        {
-            DONAResponsesUsed.Clear();
-        }
         while (!foundIndex)
         {
             index = randMaker.Next(2, (PickedRightDoor_Desired.Count));
@@ -210,14 +208,27 @@ public class SoundManager : MonoBehaviour
             }
             if (index % 2 != 0 && !aiIsPos)
             {
-                index -= 1;
+                if (!DONAResponsesUsed.Contains(0))
+                {
+                    index = 0;
+                }
+                else
+                {
+                    index -= 1;
+                }
             }
             if (!DONAResponsesUsed.Contains(index))
             {
                 DONAResponsesUsed.Add(index);
                 foundIndex = true;
+
+                if (DONAResponsesUsed.Count == maxAllDONAResetPointAt)
+                {
+                    DONAResponsesUsed.Clear();
+                }
             }
         }
+
         if (pd.picked == pd.delivered)
         {
             if (pd.picked == pd.desired)
