@@ -44,14 +44,14 @@ public class GameControl : MonoBehaviour
             if (_gameLongevity == 2)
             {
                 _numOfHallways = 2;
-                _maxNumRows = _minNumRows + _minNumRows / 2;
-                _minNumPlayThroughs = 3;
+                _maxNumRows = _minNumRows + 1;// _minNumRows / 2;
+                _minNumPlayThroughs = 2;// 3;
             }
             if (_gameLongevity == 3)
             {
                 _numOfHallways = 3;
-                _maxNumRows = _minNumRows + _minNumRows;
-                _minNumPlayThroughs = 4;
+                _maxNumRows = _minNumRows + 2;// _minNumRows;
+                _minNumPlayThroughs = 3;// 4;
             }
         }
     }
