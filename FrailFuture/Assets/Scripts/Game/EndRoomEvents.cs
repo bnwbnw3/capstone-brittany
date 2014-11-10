@@ -62,9 +62,10 @@ public class EndRoomEvents : MonoBehaviour
         mainCam.camera.clearFlags = CameraClearFlags.Skybox;
         GameObject.Find("ResetButton").GetComponent<SaveOriginalPos>().reset();
 
-        c.transform.position = TeleportPlayerToOriginOnCollide.getOrigin();
-        c.transform.localScale = GameControl.control.StartingPlayerVars.scale;
-        c.transform.eulerAngles = GameControl.control.StartingPlayerVars.eulerAngles;
+        GameObject player = GameObject.Find("Player");
+        player.transform.position = TeleportPlayerToOriginOnCollide.getOrigin();
+        player.transform.localScale = GameControl.control.StartingPlayerVars.scale;
+        player.transform.eulerAngles = GameControl.control.StartingPlayerVars.eulerAngles;
         NodeManager.nodeManager.showNextRoom(); 
         transform.collider.isTrigger = true;
     }
@@ -81,7 +82,8 @@ public class EndRoomEvents : MonoBehaviour
         GameObject resetButton = GameObject.Find("ResetButton");
         Vector3 oldPosRB = resetButton.transform.position;
         resetButton.transform.position = new Vector3(oldPosRB.x - 100, oldPosRB.y - 10, oldPosRB.z);
+        GameObject player = GameObject.Find("Player");
         Vector3 oldPos = c.transform.position;
-        c.transform.position = new Vector3(oldPos.x, oldPos.y - 2, oldPos.z);
+        player.transform.position = new Vector3(oldPos.x, oldPos.y - 2, oldPos.z);
     }
 }
