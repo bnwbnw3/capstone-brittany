@@ -5,6 +5,7 @@ public class MovementSoundManager : MonoBehaviour
 {
     private bool wasAirbourne;
     private bool wasPressingJump;
+    public GameObject cameraThatFollowsPlayer;
 
     void Awake()
     {
@@ -18,6 +19,8 @@ public class MovementSoundManager : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
+        cameraThatFollowsPlayer.GetComponent<FollowCamera>().updatePos();
+
         bool spaceDown = Input.GetKeyDown(KeyCode.Space);
        
         if (!wasPressingJump && spaceDown)
