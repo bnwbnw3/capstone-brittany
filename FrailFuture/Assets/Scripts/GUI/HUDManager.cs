@@ -79,6 +79,7 @@ public class HUDManager : MonoBehaviour
     {
         Screen.lockCursor = false;
         GameControl.control.Save(GameControl.tempAutoSaveFileLocation);
+        NodeManager.nodeManager.resetAllHallways();
         ScreenFader.screenFader.makeSolid("MainMenu", 2.0f);
     }
 
