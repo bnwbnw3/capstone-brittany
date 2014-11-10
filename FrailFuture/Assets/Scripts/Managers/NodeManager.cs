@@ -96,6 +96,7 @@ public class NodeManager : MonoBehaviour
 
     void loadEndScene()
     {
+        resetAllHallways();
         ScreenFader.screenFader.makeSolid("ControlRoom_EndScene", 2.0f);
     }
 
@@ -165,6 +166,12 @@ public class NodeManager : MonoBehaviour
     public void resetAllNodes()
     {
         BroadcastMessage("resetGUINode");
+    }
+
+    public void resetAllHallways()
+    {
+        GameControl.control.JustReset = false;
+        hallwaysUsed.Clear();
     }
 
     public void resetObjSpawners()
