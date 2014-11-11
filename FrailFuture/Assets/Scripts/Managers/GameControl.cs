@@ -77,30 +77,28 @@ public class GameControl : MonoBehaviour
         {
             DontDestroyOnLoad(gameObject);
 
-            control = this;
-            InvertY = false;
-            InvertX = false;
-            MouseSensitivity = 15F;
-            BackgroundMusicVolume = 1.0f;
-            SoundEffectsVolume = 0.25f;
-            LastKnownFileName = "default";
-            GameLongevity = 2;
 
             fileNameExtension = ".dat";
-            WasLoaded = false;
-            StartingPlayerVars = new AccessibleTransform();
-            AbleToLoadGame = false;
-            CurrentPlayThrough = 0;
+
+            SetDefaultOptionSettings();
+            SetToDefaultGameValues();
         }
         else if (control != this)
         {
             Destroy(gameObject);
         }
     }
-    public void makeBeginnerAi()
+
+    private void SetDefaultOptionSettings()
     {
-        WasLoaded = false;
-        ai = new AI();
+        control = this;
+        InvertY = false;
+        InvertX = false;
+        MouseSensitivity = 15F;
+        BackgroundMusicVolume = 1.0f;
+        SoundEffectsVolume = 0.25f;
+        LastKnownFileName = "default";
+        GameLongevity = 2;
     }
 
     //HardCoded Maze
@@ -173,6 +171,22 @@ public class GameControl : MonoBehaviour
             JustReset = data.justReset;
             ai = new AI(data.mazeInfo, new Neutrality(data.neutrality), data.brain, data.score, data.currentGraphIndex);
             WasLoaded = AbleToLoadGame = true;
+        }
+    }
+
+    public void SetToDefaultGameValues()
+    {
+        if (CurrentPlayThrough > 0)
+        {
+            Save(GameControl.tempAutoSaveFileLocation);
+        }
+        WasLoaded = false;
+        StartingPlayerVars = new AccessibleTransform();
+        AbleToLoadGame = false;
+        CurrentPlayThrough = 0;
+        if (NodeManager.nodeManager != null)
+        {
+            NodeManager.nodeManager.resetAllHallways();
         }
     }
 

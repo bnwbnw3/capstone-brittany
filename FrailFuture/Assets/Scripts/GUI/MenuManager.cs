@@ -9,13 +9,20 @@ public class MenuManager : MonoBehaviour
     public GameObject loadingScene;
     public GameObject loadingObj;
 
-    public void Start()
+    private bool gameSettingsNotInited;
+    void Start()
     {
         Screen.lockCursor = false;
         ShowMenu(CurrentMenu);
         mainScene.SetActive(true);
         loadingScene.SetActive(false);
         loadingObj.SetActive(false);
+        gameSettingsNotInited = true;
+    }
+
+    void Update()
+    {
+        updateGameValues();
     }
 
     public void ShowMenu(Menu menu)
@@ -60,8 +67,6 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        GameControl.control.makeBeginnerAi();
-
         StartCoroutine(waitToLoadGame(4.0f));
     }
 
@@ -74,5 +79,14 @@ public class MenuManager : MonoBehaviour
         Screen.lockCursor = true;
         yield return new WaitForSeconds(waitTime);
         ScreenFader.screenFader.makeSolid("GameScene", 2.0f);
+    }
+
+    public void updateGameValues()
+    {
+        if(gameSettingsNotInited)
+        {
+            GameControl.control.SetToDefaultGameValues();
+            gameSettingsNotInited = false;
+        }
     }
 }
