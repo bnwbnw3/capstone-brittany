@@ -34,6 +34,11 @@ public class NodeManager : MonoBehaviour
     {
         conditionToLoadEndScene = GameControl.control.CurrentPlayThrough >= GameControl.control.MinNumPlayThroughs && GameControl.control.getAi.getNeutralityState() != NeutralityTypes.Neutral;
         resetObjSpawners();
+        if (GameControl.control.getAi.getCurrentGraphIndex() != 0)
+        {
+            GameControl.control.EndNodeButtonPressed = false;
+        }
+
         if (hallwaysUsed == null)
         {
             //first round, start of maze, only needs 1 hallway
@@ -43,40 +48,11 @@ public class NodeManager : MonoBehaviour
 
             if (GameControl.control.WasLoaded)
             {
-                if (GameControl.control.getAi.getCurrentGraphIndex() == 0)
-                {
-                    if (conditionToLoadEndScene)
-                    {
-                        loadEndScene();
-                    }
-                    else
-                    {
-                        showNextHall();
-                    }
-                    
-                }
-                else
-                {
-                    showNextNode();
-                }
+                gameWasLoadedAtBegining();
             }
             else
             {
-                if (conditionToLoadEndScene)
-                {
-                    loadEndScene();
-                }
-                else if (GameControl.control.getAi.getCurrentGraphIndex() == 0 && !GameControl.control.JustReset)
-                {
-                    objectSpawner[0].SetActive(true);
-                    GameObject player = GameObject.Find("Player");
-                    if (player != null)
-                    {
-                        Vector3 newPos = GameObject.Find("maze0Spawner").transform.position;
-                        player.transform.position = new Vector3(newPos.x, 0.5f,newPos.z);
-                    }
-                    showNextHall();
-                }
+                gameWasNotLoadedAtBegining();
             }
         }
         else if (conditionToLoadEndScene)
@@ -91,6 +67,50 @@ public class NodeManager : MonoBehaviour
         else
         {
             showNextNode();
+        }
+    }
+
+    void gameWasLoadedAtBegining()
+    {
+        if (GameControl.control.getAi.getCurrentGraphIndex() == 0)
+        {
+            //load end scene or hallway
+            if (conditionToLoadEndScene)
+            {
+                loadEndScene();
+            }
+            else
+            {
+                //showNextHall();
+                showNextNode();
+            }
+
+        }
+            //load node
+        else
+        {
+            showNextNode();
+        }
+    }
+
+    void gameWasNotLoadedAtBegining()
+    {
+        //load end scene?
+        if (conditionToLoadEndScene)
+        {
+            loadEndScene();
+        }
+            //load beginning room with hospital stuff?
+        else if (GameControl.control.getAi.getCurrentGraphIndex() == 0 && !GameControl.control.JustReset)
+        {
+            objectSpawner[0].SetActive(true);
+            GameObject player = GameObject.Find("Player");
+            if (player != null)
+            {
+                Vector3 newPos = GameObject.Find("maze0Spawner").transform.position;
+                player.transform.position = new Vector3(newPos.x, 0.5f, newPos.z);
+            }
+            showNextHall();
         }
     }
 
