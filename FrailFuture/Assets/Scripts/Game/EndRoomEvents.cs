@@ -4,11 +4,15 @@ using System.Collections;
 public class EndRoomEvents : MonoBehaviour 
 {
     public GameObject spawner;
+    public GameObject player;
 
     public void OnTriggerEnter(Collider c)
     {
         if (c.tag == "Player")
         {
+            GameControl.control.CurrentPlayThrough++;
+            GameControl.control.EndNodeButtonPressed = true;
+
             transform.collider.isTrigger = false;
             //get the top parent, which holds neutrality, and grab neutrality
             NeutralityTypes type = (NeutralityTypes)transform.root.gameObject.GetComponentInChildren<GUINode>().EndNodeType;

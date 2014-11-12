@@ -125,10 +125,6 @@ public class NodeManager : MonoBehaviour
         SoundManager.soundManager.playDONADialogue();
         int inputsAvalible = (!GameControl.control.JustReset && GameControl.control.getAi.getNextGraphEndNodeType() != NeutralityTypes.None) ? 0 : GameControl.control.getAi.getNextInputsFromGraph().Length;
         GameControl.control.JustReset = (inputsAvalible == 0);
-        if (GameControl.control.JustReset)
-        {
-            GameControl.control.CurrentPlayThrough++;
-        }
         string name = "" + inputsAvalible + "DoorGUINode";
         onlyShowNode(name);
     }
