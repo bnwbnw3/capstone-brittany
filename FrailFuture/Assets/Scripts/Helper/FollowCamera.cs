@@ -7,13 +7,24 @@ public class FollowCamera : MonoBehaviour
 
 	void Update () 
     {
-        updatePos();
+        updateData();
 	}
+
+    public void updateData()
+    {
+        updatePos();
+        updateClearFlags();
+    }
 
     public void updatePos()
     {
         this.transform.position = followThis.transform.position;
         this.transform.rotation = followThis.transform.rotation;
         this.transform.localScale = followThis.transform.localScale;
+    }
+
+    public void updateClearFlags()
+    {
+        this.camera.clearFlags = followThis.clearFlags;
     }
 }

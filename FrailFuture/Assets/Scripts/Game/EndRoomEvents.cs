@@ -48,8 +48,7 @@ public class EndRoomEvents : MonoBehaviour
             }
             else if (type == NeutralityTypes.Evil)
             {
-                GameObject mainCam = GameObject.Find("Main Camera");
-                mainCam.camera.clearFlags = CameraClearFlags.Color;
+                player.GetComponent<MovementSoundManager>().SetCameraFlags(CameraClearFlags.Color);
                 spawnScript.spawnObject(new int[] { 11 }, scriptWaitTime, 1, 0.05f);
             }
             StartCoroutine(ResetGame(scriptWaitTime, c));
@@ -62,11 +61,9 @@ public class EndRoomEvents : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         transform.root.collider.isTrigger = false;
-        GameObject mainCam = GameObject.Find("Main Camera");
-        mainCam.camera.clearFlags = CameraClearFlags.Skybox;
+        player.GetComponent<MovementSoundManager>().SetCameraFlags(CameraClearFlags.Skybox);
         GameObject.Find("ResetButton").GetComponent<SaveOriginalPos>().reset();
 
-        GameObject player = GameObject.Find("Player");
         player.transform.position = TeleportPlayerToOriginOnCollide.getOrigin();
         player.transform.localScale = GameControl.control.StartingPlayerVars.scale;
         player.transform.eulerAngles = GameControl.control.StartingPlayerVars.eulerAngles;
@@ -86,7 +83,6 @@ public class EndRoomEvents : MonoBehaviour
         GameObject resetButton = GameObject.Find("ResetButton");
         Vector3 oldPosRB = resetButton.transform.position;
         resetButton.transform.position = new Vector3(oldPosRB.x - 100, oldPosRB.y - 10, oldPosRB.z);
-        GameObject player = GameObject.Find("Player");
         Vector3 oldPos = c.transform.position;
         player.transform.position = new Vector3(oldPos.x, oldPos.y - 2, oldPos.z);
     }
