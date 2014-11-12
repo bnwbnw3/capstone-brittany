@@ -21,6 +21,7 @@ public class GameControl : MonoBehaviour
     public float SoundEffectsVolume { get; set; }
     public string LastKnownFileName { get; set; }
     public bool JustReset { get; set; }
+    public bool EndNodeButtonPressed { get; set; }
 
     public bool WasLoaded { get; set; }
     public const string tempAutoSaveFileLocation = "TempSaveSpot3693";
@@ -147,6 +148,7 @@ public class GameControl : MonoBehaviour
         allData.currentPlayThrough = CurrentPlayThrough;
         allData.gameLongevity = GameLongevity;
         allData.justReset = JustReset;
+        allData.endNodeButtonPressed = EndNodeButtonPressed;
 
         bf.Serialize(file, allData);
         Debug.Log(
@@ -169,6 +171,8 @@ public class GameControl : MonoBehaviour
             CurrentPlayThrough = data.currentPlayThrough;
             GameLongevity = data.gameLongevity;
             JustReset = data.justReset;
+            EndNodeButtonPressed = data.endNodeButtonPressed;
+
             ai = new AI(data.mazeInfo, new Neutrality(data.neutrality), data.brain, data.score, data.currentGraphIndex);
             WasLoaded = AbleToLoadGame = true;
         }
@@ -181,9 +185,12 @@ public class GameControl : MonoBehaviour
             Save(GameControl.tempAutoSaveFileLocation);
         }
         WasLoaded = false;
+        ai = new AI();
         StartingPlayerVars = new AccessibleTransform();
         AbleToLoadGame = false;
         CurrentPlayThrough = 0;
+        JustReset = false;
+        EndNodeButtonPressed = false;
         if (NodeManager.nodeManager != null)
         {
             NodeManager.nodeManager.resetAllHallways();
