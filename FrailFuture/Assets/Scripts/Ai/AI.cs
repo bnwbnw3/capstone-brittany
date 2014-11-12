@@ -39,7 +39,7 @@ public class AI
         _score = score;
         int lowestEndIndex = _mazeInfo.mazeEndIndexs.OrderBy(k => k.Value).FirstOrDefault().Value;
 
-        if (GameControl.control.JustReset)
+        if (GameControl.control.JustReset && GameControl.control.EndNodeButtonPressed)
         {
             foreach (KeyValuePair<NeutralityTypes, int> mazeEndIndex in _mazeInfo.mazeEndIndexs)
             {
