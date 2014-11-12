@@ -8,6 +8,7 @@ public class GameData
     public int gameLongevity;
     public int currentPlayThrough;
     public bool justReset;
+    public bool endNodeButtonPressed;
     public AIEndingsScore score;
     public Brain brain;
     public MazeGroup mazeInfo;
