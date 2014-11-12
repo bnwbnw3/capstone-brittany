@@ -13,7 +13,7 @@ public class PathWayFinder
     private int endIndex;
     private int _currentGraphVertex;
     private int _lowestEndPathIndex;
-    private int possibleNextInputs;
+    private int possibleNextNeighbors;
 
     public PathWayFinder(Graph toUse, int lowestEndPathIndex, int currentGraphVertex)
     {
@@ -22,13 +22,13 @@ public class PathWayFinder
         isEndOfPath = false;
         _currentGraphVertex = currentGraphVertex;
         _lowestEndPathIndex = lowestEndPathIndex;
-        possibleNextInputs = 0;
+        possibleNextNeighbors = 0;
     }
 
     public int findVertexAt(int input)
     {
         var choices = g.findAllNeighbors(_currentGraphVertex);
-        possibleNextInputs = choices.Count;
+        possibleNextNeighbors = choices.Count();
         int vertex = _currentGraphVertex;
         if (input <= choices.Count && input > 0)
         {
@@ -56,33 +56,32 @@ public class PathWayFinder
     }
     public int findNumPossibleInputs()
     {
-        if (possibleNextInputs == 0)
+        if (possibleNextNeighbors == 0)
         {
-            possibleNextInputs = g.findAllNeighbors(_currentGraphVertex).Count;
+            possibleNextNeighbors = g.findAllNeighbors(_currentGraphVertex).Count();
         }
-        return possibleNextInputs;
+        return possibleNextNeighbors;
     }
 
-    public Node findNextDesiredInput(int input, int desiredEndingIndex, int KnownVertex = 0)
+    public Node findNextDesiredInput(int input, int desiredEndingIndex, NeutralityTypes currentNeutrality, int KnownVertex = 0)
     {
         Node toReturn;
         _desiredEndingIndex  = desiredEndingIndex;
-        if (KnownVertex == 0)
-        {
-            _currentGraphVertex = findVertexAt(input);
-        }
-        else
-        {
-            _currentGraphVertex = KnownVertex;
-        }
-        possibleNextInputs =  g.findAllNeighbors(_currentGraphVertex).Count;
-        if (possibleNextInputs < 1)
+        _currentGraphVertex = KnownVertex == 0 ?  findVertexAt(input): KnownVertex;
+        possibleNextNeighbors = g.findAllNeighbors(_currentGraphVertex).Count();
+        int lastDesiredIndex = nextToUse > 0 ? nextToUse - 1 : 0;
+
+        if (possibleNextNeighbors < 1)
         {
             endIndex = _currentGraphVertex;
             isEndOfPath = true;
         }
-        int nextDesiredIndex = nextToUse > 0 ? nextToUse - 1 : 0;
-        if (!isEndOfPath && (indexInputsDesired == null || !(indexInputsDesired[nextDesiredIndex].input == input && indexInputsDesired[indexInputsDesired.Count - 1].vertex == desiredEndingIndex)))
+            //if the end of path hasn't been hit AND 
+                //the index pool is null OR players input is not the input that was needed OR the last index this will give does not equals the desired end index ))
+            //....
+            // grab a new set of indexs to use to give to the player
+        else if (!isEndOfPath 
+            && (indexInputsDesired == null || indexInputsDesired[lastDesiredIndex].input != input || indexInputsDesired[indexInputsDesired.Count - 1].vertex != desiredEndingIndex))
         {
             nextToUse = 0;
             generatePath(_currentGraphVertex);
@@ -107,9 +106,13 @@ public class PathWayFinder
         indexInputsDesired = null;
         isEndOfPath = false;
         nextToUse = 0;
-        possibleNextInputs = 0;
+        possibleNextNeighbors = 0;
     }
 
+    /// <summary>
+    /// Generate the next path to take to get to the end vertex.
+    /// </summary>
+    /// <param name="currentVertex">vertex to start from</param>
     private void generatePath(int currentVertex)
     {
         bool done = false;
@@ -117,7 +120,7 @@ public class PathWayFinder
         while (!done)
         {
             List<Node> start = new List<Node>();
-            done = generatePathHelper(g.findAllNeighbors(currentVertex), start);
+           done = generatePathHelper(g.findAllNeighbors(currentVertex), start);
             if (!done)
             {
                 desiredTried.Add(_desiredEndingIndex);
@@ -147,6 +150,7 @@ public class PathWayFinder
             }
         }
     }
+
     private bool generatePathHelper(List<int> parents, List<Node> set)
     {
         if (parents.Count == 0 && set.Count > 0)
