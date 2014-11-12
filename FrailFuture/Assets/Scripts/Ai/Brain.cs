@@ -79,7 +79,7 @@ public class Brain
         if (final == -1)
         {
             //should only occur when going to room with button. There are no inputs in that room
-            Debug.Log("Brain failed to find a direction to give the player");
+            Debug.Log("Brain failed to find a direction to give the player, Are you at the End of the graph?");
         }
         return final;
     }
@@ -332,8 +332,13 @@ public class Brain
 
     private int grabOppositeNumOutOfTwo()
     {
-        int index = lastDesiredChoice - 1 > 0 ? 0 : 1;
-        return inputs[index];
+        int toReturn = -1;
+        if (inputs.Count() >= 2)
+        {
+            int index = (lastDesiredChoice - 1 > 0) ? 0 : 1;
+            toReturn = inputs[index];
+        }
+        return toReturn;
     }
 
     private void checkForKeys()
