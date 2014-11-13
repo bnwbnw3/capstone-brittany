@@ -30,10 +30,13 @@ public class SoundManager : MonoBehaviour
     public List<AudioClip> RoomDialogue;
     public List<AudioClip> VODialogue;
 
+    public int NumberOfVoDialogue {get {return numOfVoDialogue;}}
+
     //Do pattern stating later.
     //public Dictionary<string, List<AudioClip>> patterns;
 
     public static SoundManager soundManager;
+    private int numOfVoDialogue;
     private int VO_DIndex = 0;
     private List<int> DONAResponsesUsed;
     private int maxAllDONAResetPointAt = 5;
@@ -49,6 +52,7 @@ public class SoundManager : MonoBehaviour
             randMaker = new System.Random(System.DateTime.Now.GetHashCode());
             DONAResponsesUsed = new List<int>();
             DONADialougueUsed = new List<int>();
+            numOfVoDialogue = VODialogue.Count - 1;
             if (GameControl.control.WasLoaded)
             {
                 VO_DIndex = randMaker.Next(0, VODialogue.Count);
