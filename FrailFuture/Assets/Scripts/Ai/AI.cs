@@ -67,7 +67,7 @@ public class AI
         else
         {
             graphIndex = currentGraphIndex;
-            AiCurrentDesire = pf.findNextDesiredInput(0, AiDesiredEndIndex, getNeutralityState(), currentGraphIndex).input;
+            AiCurrentDesire = pf.findNextDesiredInput(0, AiDesiredEndIndex, getNeutralityValue(), currentGraphIndex).input;
             setNextInputsFromCurrentGraphPosition();
             directionGiven = _brain.getChoiceToDeliver(inputsAvalible, AiCurrentDesire);
         }
@@ -79,7 +79,7 @@ public class AI
            {
                _brain.checkUserChoice(userChoice);
            }
-           AiCurrentDesire = pf.findNextDesiredInput(userChoice, AiDesiredEndIndex, getNeutralityState()).input;
+           AiCurrentDesire = pf.findNextDesiredInput(userChoice, AiDesiredEndIndex, getNeutralityValue()).input;
            graphIndex = pf.getCurrentGraphIndex();
 
            if (!pf.getIsEndOfPath())
@@ -109,7 +109,7 @@ public class AI
 
                //set new neutrality after effects from last game
                 AiDesiredEndIndex = _mazeInfo.mazeEndIndexs[_neutrality.getState()];
-                AiCurrentDesire = pf.findNextDesiredInput(0, AiDesiredEndIndex, getNeutralityState()).input;
+                AiCurrentDesire = pf.findNextDesiredInput(0, AiDesiredEndIndex, getNeutralityValue()).input;
                graphIndex = 0;
 
                setNextInputsFromCurrentGraphPosition();
