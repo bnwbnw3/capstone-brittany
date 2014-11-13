@@ -12,13 +12,17 @@ public class NodeManager : MonoBehaviour
     private HashSet<int> hallwaysUsed;
     private bool conditionToLoadEndScene;
 
+    private int CountSinceLastVo;
+    private int buffer;
+    private int TotalCountToSeeVo;
+
+
     System.Random rand;
     void Awake()
     {
       nodeManager = this;
       showNextRoom();
-      GameControl.control.JustReset = false;
-      conditionToLoadEndScene = GameControl.control.CurrentPlayThrough >= GameControl.control.MinNumPlayThroughs && GameControl.control.getAi.getNeutralityState() != NeutralityTypes.Neutral;
+      setupAllHallways();
       rand = new System.Random(System.DateTime.Now.GetHashCode());
     }
 
@@ -116,12 +120,13 @@ public class NodeManager : MonoBehaviour
 
     void loadEndScene()
     {
-        resetAllHallways();
+        setupAllHallways();
         ScreenFader.screenFader.makeSolid("ControlRoom_EndScene", 2.0f);
     }
 
     void showNextNode()
     {
+        CountSinceLastVo++;
         SoundManager.soundManager.playDONADialogue();
         int inputsAvalible = (!GameControl.control.JustReset && GameControl.control.getAi.getNextGraphEndNodeType() != NeutralityTypes.None) ? 0 : GameControl.control.getAi.getNextInputsFromGraph().Length;
         GameControl.control.JustReset = (inputsAvalible == 0);
@@ -131,13 +136,19 @@ public class NodeManager : MonoBehaviour
 
     void showNextHall()
     {
-        int indexToUse = 0;
-        if (hallwaysUsed.Contains(0))
+        int indexToUse = -1;
+        if (CountSinceLastVo >= TotalCountToSeeVo)
+        {
+            indexToUse = 0;
+            CountSinceLastVo = 0;
+        }
+        else
         {
             var range = Enumerable.Range(0, Hallways.Count).Where(i => !hallwaysUsed.Contains(i));
             int index = rand.Next(0, Hallways.Count - hallwaysUsed.Count);
             indexToUse = range.ElementAt(index);
         }
+
         hallwaysUsed.Add(indexToUse);
         onlyShowHallway(indexToUse);
     }
@@ -184,10 +195,24 @@ public class NodeManager : MonoBehaviour
         BroadcastMessage("resetGUINode");
     }
 
-    public void resetAllHallways()
+    public void setupAllHallways()
     {
         GameControl.control.JustReset = false;
-        hallwaysUsed.Clear();
+        if (hallwaysUsed != null)
+        {
+            hallwaysUsed.Clear();
+        }
+        conditionToLoadEndScene = GameControl.control.CurrentPlayThrough >= GameControl.control.MinNumPlayThroughs && GameControl.control.getAi.getNeutralityState() != NeutralityTypes.Neutral;
+        CountSinceLastVo = 0;
+        SetUpHallwayToSeeVo();
+    }
+
+    private void SetUpHallwayToSeeVo()
+    {
+        int HallwaysPerPlayThrough = GameControl.control.MaxNumberOfRows + 1;
+        buffer = HallwaysPerPlayThrough;
+        int divisional = (HallwaysPerPlayThrough * GameControl.control.MinNumPlayThroughs) + buffer;
+        TotalCountToSeeVo = Mathf.CeilToInt(divisional / SoundManager.soundManager.NumberOfVoDialogue);
     }
 
     public void resetObjSpawners()
