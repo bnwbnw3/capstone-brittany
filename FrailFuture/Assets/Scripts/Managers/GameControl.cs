@@ -193,7 +193,7 @@ public class GameControl : MonoBehaviour
         EndNodeButtonPressed = false;
         if (NodeManager.nodeManager != null)
         {
-            NodeManager.nodeManager.resetAllHallways();
+            NodeManager.nodeManager.setupAllHallways();
         }
     }
 

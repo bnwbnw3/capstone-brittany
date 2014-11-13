@@ -23,6 +23,7 @@ public class NodeManager : MonoBehaviour
       nodeManager = this;
       showNextRoom();
       setupAllHallways();
+      SetUpHallwayToSeeVo();
       rand = new System.Random(System.DateTime.Now.GetHashCode());
     }
 
@@ -203,12 +204,11 @@ public class NodeManager : MonoBehaviour
             hallwaysUsed.Clear();
         }
         conditionToLoadEndScene = GameControl.control.CurrentPlayThrough >= GameControl.control.MinNumPlayThroughs && GameControl.control.getAi.getNeutralityState() != NeutralityTypes.Neutral;
-        CountSinceLastVo = 0;
-        SetUpHallwayToSeeVo();
     }
 
     private void SetUpHallwayToSeeVo()
     {
+        CountSinceLastVo = 0;
         int HallwaysPerPlayThrough = GameControl.control.MaxNumberOfRows + 1;
         buffer = HallwaysPerPlayThrough;
         int divisional = (HallwaysPerPlayThrough * GameControl.control.MinNumPlayThroughs) + buffer;
