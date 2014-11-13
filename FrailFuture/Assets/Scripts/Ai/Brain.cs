@@ -319,7 +319,7 @@ public class Brain
                 int highestIndex = -1;
                 for(int i = 1; i <= inputs.Length; i++)
                 {
-                    if(highestCount < bd.pastPatterns["Picks" + i] && i != toReturn)
+                    if(highestCount <= bd.pastPatterns["Picks" + i] && i != toReturn)
                     {
                         highestIndex = i;
                         highestCount = bd.pastPatterns["Picks" + i];
