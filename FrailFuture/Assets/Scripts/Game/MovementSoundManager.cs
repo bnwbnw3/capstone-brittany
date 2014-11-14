@@ -25,7 +25,11 @@ public class MovementSoundManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        cameraThatFollowsPlayer.GetComponent<FollowCamera>().updateData();
+        FollowCamera fc = cameraThatFollowsPlayer.GetComponent<FollowCamera>();
+        if (fc != null)
+        {
+            fc.manualUpdateAll();
+        }
 
         bool spaceDown = Input.GetKeyDown(KeyCode.Space);
        
@@ -65,7 +69,7 @@ public class MovementSoundManager : MonoBehaviour
     public void SetCameraFlags(UnityEngine.CameraClearFlags flag)
     {
         playerCamera.camera.clearFlags = flag;
-        cameraThatFollowsPlayer.GetComponent<FollowCamera>().updateData();
+        cameraThatFollowsPlayer.GetComponent<FollowCamera>().manualUpdateAll();
     }
     //Private Get-ers
     private bool getIfWASDKeysDown()

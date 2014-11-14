@@ -7,10 +7,10 @@ public class FollowCamera : MonoBehaviour
 
 	void Update () 
     {
-        updateData();
+        manualUpdateAll();
 	}
 
-    public void updateData()
+    public void manualUpdateAll()
     {
         updatePos();
         updateClearFlags();
