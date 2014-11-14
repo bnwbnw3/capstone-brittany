@@ -4,5 +4,18 @@ using System.Collections;
 
 public class DummyNode : Door
 {
-    //Add more later potentially 
+    public void OnTriggerExit(Collider c)
+    {
+        if (collider.isTrigger)
+        {
+            passedThrough = true;
+            closingNode();
+        }
+    }
+
+    public void resetDummyNode()
+    {
+        openingNode();
+        passedThrough = false;
+    }
 }
