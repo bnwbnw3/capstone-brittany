@@ -43,6 +43,11 @@ public class SoundManager : MonoBehaviour
     private List<int> DONADialougueUsed;
     private System.Random randMaker;
 
+
+    private const float normalDonaVol = 2.5f;
+    private const float endSceneDonaVol = 3.0f;
+    private const float movementVol = 1.0f;
+    private const float VoVol = 2.0f;
     void Awake()
     {
         if (soundManager == null)
@@ -72,7 +77,7 @@ public class SoundManager : MonoBehaviour
     //Player Movement Audio
 	public void playWalkSound()
     {
-       playAudio(playerMovementSounds[0], GameObject.Find("Player").audio, 1.00f, true);
+        playAudio(playerMovementSounds[0], GameObject.Find("Player").audio, movementVol, true);
     }
     public void stopPlayerSounds()
     {
@@ -80,11 +85,11 @@ public class SoundManager : MonoBehaviour
     }
     public void playJumpSound()
     {
-        playAudio(playerMovementSounds[1], GameObject.Find("Player").audio, 1.00f, false);
+        playAudio(playerMovementSounds[1], GameObject.Find("Player").audio, movementVol, false);
     }
     public void playLandSound()
     {
-        playAudio(playerMovementSounds[2], GameObject.Find("Player").audio, 1.00f, false);
+        playAudio(playerMovementSounds[2], GameObject.Find("Player").audio, movementVol, false);
     }
 
     //getAi Outro
@@ -131,7 +136,7 @@ public class SoundManager : MonoBehaviour
                      }
                  }
             }
-            playAudio(DONADialoguePos[index], GameObject.Find("AiSpeaker").audio, 2.0f);
+            playAudio(DONADialoguePos[index], GameObject.Find("AiSpeaker").audio, normalDonaVol);
         }
         else
         {
@@ -149,7 +154,7 @@ public class SoundManager : MonoBehaviour
                     }
                 }
             }
-            playAudio(DONADialogueNeg[index], GameObject.Find("AiSpeaker").audio, 2.0f);
+            playAudio(DONADialogueNeg[index], GameObject.Find("AiSpeaker").audio, normalDonaVol);
         }
     }
 
@@ -169,7 +174,7 @@ public class SoundManager : MonoBehaviour
     {
         if (neutralityOfEnding != NeutralityTypes.None)
         {
-            playAudio(EngingsFromBestToWorst[(int)neutralityOfEnding], GameObject.Find("AiSpeaker").audio, 2.0f);
+            playAudio(EngingsFromBestToWorst[(int)neutralityOfEnding], GameObject.Find("AiSpeaker").audio, normalDonaVol);
         }
     }
 
@@ -182,16 +187,16 @@ public class SoundManager : MonoBehaviour
             int AiNeutrality = (int)GameControl.control.getAi.getNeutralityState();
             if (doorToPick == 1)
             {
-                playAudio(AiDirectionsDoor1[AiNeutrality], GameObject.Find("AiSpeaker").audio, 2.0f);
+                playAudio(AiDirectionsDoor1[AiNeutrality], GameObject.Find("AiSpeaker").audio, normalDonaVol);
             }
             else if (doorToPick == 2)
             {
-                playAudio(AiDirectionsDoor2[AiNeutrality], GameObject.Find("AiSpeaker").audio, 2.0f);
+                playAudio(AiDirectionsDoor2[AiNeutrality], GameObject.Find("AiSpeaker").audio, normalDonaVol);
             }
 
             else if (doorToPick == 3)
             {
-                playAudio(AiDirectionsDoor3[AiNeutrality], GameObject.Find("AiSpeaker").audio, 2.0f);
+                playAudio(AiDirectionsDoor3[AiNeutrality], GameObject.Find("AiSpeaker").audio, normalDonaVol);
             }
         }
     }
@@ -237,22 +242,22 @@ public class SoundManager : MonoBehaviour
         {
             if (pd.picked == pd.desired)
             {
-                playAudio(PickedRightDoor_Desired[index], GameObject.Find("AiSpeaker").audio, 2.0f);
+                playAudio(PickedRightDoor_Desired[index], GameObject.Find("AiSpeaker").audio, normalDonaVol);
             }
             else
             {
-                playAudio(PickedRightDoor[index], GameObject.Find("AiSpeaker").audio, 2.0f);
+                playAudio(PickedRightDoor[index], GameObject.Find("AiSpeaker").audio, normalDonaVol);
             }
         }
         else
         {
             if (pd.picked == pd.desired)
             {
-                playAudio(PickedWrongDoor_Desired[index], GameObject.Find("AiSpeaker").audio, 2.0f);
+                playAudio(PickedWrongDoor_Desired[index], GameObject.Find("AiSpeaker").audio, normalDonaVol);
             }
             else
             {
-                playAudio(PickedWrongDoor[index], GameObject.Find("AiSpeaker").audio, 2.0f);
+                playAudio(PickedWrongDoor[index], GameObject.Find("AiSpeaker").audio, normalDonaVol);
             }
         }
     }
@@ -287,13 +292,13 @@ public class SoundManager : MonoBehaviour
 
     private void playDONAIntro(AudioSource source)
     {
-        playAudio(IntroAudio[2], source, 2.0f);
+        playAudio(IntroAudio[2], source, normalDonaVol);
     }
     private IEnumerator playVOIntro(AudioSource source)
     {
-        playAudio(IntroAudio[0], source, 2.0f);
+        playAudio(IntroAudio[0], source, VoVol);
         yield return new WaitForSeconds(source.audio.clip.length);
-        playAudio(IntroAudio[1], source, 2.0f);
+        playAudio(IntroAudio[1], source, VoVol);
     }
     private IEnumerator playVoDialogue(AudioSource source)
     {
@@ -301,22 +306,22 @@ public class SoundManager : MonoBehaviour
         {
             VO_DIndex = 0;
         }
-        playAudio(VODialogue[VO_DIndex++], source, 2.0f);
+        playAudio(VODialogue[VO_DIndex++], source, VoVol);
         yield return new WaitForSeconds(source.audio.clip.length);
-        playAudio(VODialogue[VODialogue.Count - 1], source, 2.0f);
+        playAudio(VODialogue[VODialogue.Count - 1], source, VoVol);
     }
 
     private IEnumerator playAllOutro(AudioSource source, AudioClip begin, AudioClip middle, AudioClip end)
     {
-        playAudio(begin, source, 2.0f);
+        playAudio(begin, source, endSceneDonaVol);
         yield return new WaitForSeconds(source.audio.clip.length);
         StartCoroutine(playMiddleAndEndAudio(source, middle,end));
     }
 
     private IEnumerator playMiddleAndEndAudio(AudioSource source, AudioClip middle, AudioClip end)
     {
-        playAudio(middle, GameObject.Find("AiSpeaker").audio, 2.0f);
+        playAudio(middle, GameObject.Find("AiSpeaker").audio, endSceneDonaVol);
         yield return new WaitForSeconds(source.audio.clip.length);
-        playAudio(end, GameObject.Find("AiSpeaker").audio, 2.0f);
+        playAudio(end, GameObject.Find("AiSpeaker").audio, endSceneDonaVol);
     }
 }
