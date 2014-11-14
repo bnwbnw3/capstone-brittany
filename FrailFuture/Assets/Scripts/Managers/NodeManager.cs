@@ -184,12 +184,13 @@ public class NodeManager : MonoBehaviour
         for (int i = 0; i < Hallways.Count; i++)
         {
             //if active and not the node we want, deActivate it.
-            Hallways[i].SetActive((Hallways[i].activeInHierarchy != true && i == index) || i ==index);
+            Hallways[i].SetActive((Hallways[i].activeInHierarchy != true && i == index) || i == index);
         }
         for (int i = 0; i < AllNodes.Count; i++)
         {
             AllNodes[i].SetActive(false);
         }
+        Hallways[index].BroadcastMessage("resetDummyNode"); 
     }
 
     public void resetAllNodes()
