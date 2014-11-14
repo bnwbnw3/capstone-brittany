@@ -52,6 +52,7 @@ class MazeGenerator
                             potentialConnections = potentialConnections.Where(n => n.numConnectionsTo == smallestTotalConnectionCount).ToList();
                             int randomIndexToUse = rand.Next(0, potentialConnections.Count());
                             int toNodeConnectionVertex = potentialConnections[randomIndexToUse].nodeVertex;
+                            potentialConnections[randomIndexToUse].numConnectionsTo++;
                             mazeToReturn.addEdge(fromVertex, toNodeConnectionVertex);
                         }
                     }
