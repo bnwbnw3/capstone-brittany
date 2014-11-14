@@ -57,7 +57,7 @@ public class GameControl : MonoBehaviour
         }
     }
     //not to be changed w/ options
-    public int NumberOfHallways { get { return _numOfHallways; } }
+    public int NumberOfHallwaySections { get { return _numOfHallways; } }
     public int MaxNumberOfRows { get { return _maxNumRows; } }
     public int MinNumPlayThroughs { get { return _minNumPlayThroughs; } }
     public int CurrentPlayThrough { get; set; }
@@ -82,7 +82,6 @@ public class GameControl : MonoBehaviour
             fileNameExtension = ".dat";
 
             SetDefaultOptionSettings();
-            SetToDefaultGameValues();
         }
         else if (control != this)
         {
