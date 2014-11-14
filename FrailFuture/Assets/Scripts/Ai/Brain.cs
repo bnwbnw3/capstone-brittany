@@ -12,6 +12,8 @@ public class Brain
    private int lastDesiredChoice;
    private int lastChoiceToDeliver;
 
+   private int currentPicksSpecificNum;
+   private int currentDoubleBackNum;
     public Brain(BrainData pastHistory)
     {
         bd = pastHistory;
@@ -56,32 +58,23 @@ public class Brain
         int picksSuccesionWrapNumR = picksSuccesionWrapNumPattern();
         int picksReccesionWrapNumR = picksReccesionWrapNumPattern();
 
-        if (picksSuccesionWrapNumR != -1)
-        {
-            final = picksSuccesionWrapNumR;
-        }
-        else if (picksReccesionWrapNumR != -1)
-        {
-            final = picksReccesionWrapNumR;
-        }
-        else if (picksFarthestNumR != -1)
-        {
-            final = picksFarthestNumR;
-        }
-        else if (picksDoubleBackNumR != -1)
-        {
-            final = picksDoubleBackNumR;
-        }
-        else if (picksSpecificNumR != -1)
-        {
-            final = picksSpecificNumR;
-        }
+        final = checkValidityToChange(picksSuccesionWrapNumR, final);
+        final = checkValidityToChange(picksReccesionWrapNumR, final);
+        final = checkValidityToChange(picksFarthestNumR, final);
+        final = checkValidityToChange(picksDoubleBackNumR, final);
+        final = checkValidityToChange(picksSpecificNumR, final);
+
         if (final == -1)
         {
             //should only occur when going to room with button. There are no inputs in that room
             Debug.Log("Brain failed to find a direction to give the player, Are you at the End of the graph?");
         }
         return final;
+    }
+
+    private int checkValidityToChange(int value, int original)
+    {
+        return (value > 0) && (value < inputs.Length) ? value : original;
     }
 
     private int picksGivenNumPattern()
@@ -116,7 +109,7 @@ public class Brain
         int toReturn = -1;
         if (bd.pastPatterns["PicksSpecificNum"] > 2)
         {
-            toReturn = bd.pastActions.Get(bd.pastActions.Count - 1).picked;
+            toReturn = currentPicksSpecificNum;
             bool nextPatternNumIsDesired = toReturn == lastDesiredChoice;
 
             if (bd.pastPatterns["PicksSpecificNum"] <= 4)
@@ -138,7 +131,14 @@ public class Brain
     {
         if(bd.pastActions.Count >= 1)
         {
-            checkPatternHelper((userChoice == bd.pastActions.Get(bd.pastActions.Count - 1).picked), "PicksSpecificNum");
+            if (checkPatternHelper((userChoice == bd.pastActions.Get(bd.pastActions.Count - 1).picked), "PicksSpecificNum"))
+            {
+                currentPicksSpecificNum = userChoice;
+            }
+        }
+        else
+        {
+            currentPicksSpecificNum = -1;
         }
         bd.pastPatterns["Picks" + userChoice] += 1;
     }
@@ -148,7 +148,7 @@ public class Brain
         int toReturn = -1;
         if (bd.pastPatterns["PicksDoubleBackNum"] > 0)
         {
-            int nextInPattern = bd.pastActions.Get(bd.pastActions.Count - 2).picked;
+            int nextInPattern = currentDoubleBackNum;
              bool nextPatternNumIsDesired = (nextInPattern == lastDesiredChoice);
 
              if (!nextPatternNumIsDesired)
@@ -170,6 +170,7 @@ public class Brain
             int pastPicked2 = bd.pastActions.Get(bd.pastActions.Count - 2).picked;
             int pastPicked3 = bd.pastActions.Get(bd.pastActions.Count - 1).picked;
             checkPatternHelper((pastPicked1 == pastPicked3 && pastPicked2 == userChoice), "PicksDoubleBackNum");
+            currentDoubleBackNum = pastPicked3;
             if (pastPicked1 != pastPicked3 && pastPicked2 != userChoice && bd.pastPatterns["PicksDoubleBackNum"] > 0)
             {
                 bd.pastPatterns["PicksDoubleBackNum"] = 0;
@@ -281,11 +282,13 @@ public class Brain
         }
     }
 
-    private void checkPatternHelper(bool condition, string key)
+    private bool checkPatternHelper(bool condition, string key)
     {
+        bool toReturn = false;
         if (condition)
         {
             bd.pastPatterns[key] += 1;
+            toReturn = true;
         }
         else
         {
@@ -294,6 +297,7 @@ public class Brain
                 bd.pastPatterns[key] += -1;
             }
         }
+        return toReturn;
     }
 
     private void resetPatternIfOver(int threshHold, string key, int restartPositive = 1, int restartNegative = -1)
