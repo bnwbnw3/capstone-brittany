@@ -1,1 +1,0 @@
-Can walk halfway thorough path/node trigger than walk backwards and break the game.

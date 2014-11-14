@@ -6,7 +6,7 @@ public class DummyNode : Door
 {
     public void OnTriggerExit(Collider c)
     {
-        if (collider.isTrigger)
+        if (collider.isTrigger && c.tag == "Player")
         {
             passedThrough = true;
             closingNode();

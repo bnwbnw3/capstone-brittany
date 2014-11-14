@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Destroyed_city_FREE\Standard Assets\Water (Pro Only)\Sources\Scripts\Water.cs" />
+    <Compile Include="Assets\GUI\TriggerEnableText.cs" />
     <Compile Include="Assets\ProCore\Prototype\Scripts\RebuildMeshOnWake.cs" />
     <Compile Include="Assets\Scripts\Ai\AI.cs" />
     <Compile Include="Assets\Scripts\Ai\AIEndingScore.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Assets\Scripts\AnimationControls\FirstPersonLookAtTarget.cs" />
     <Compile Include="Assets\Scripts\AnimationControls\ForceFPSWalkForward.cs" />
     <Compile Include="Assets\Scripts\AnimationControls\LookAtTarget.cs" />
+    <Compile Include="Assets\Scripts\GUI\DialogueBox.cs" />
     <Compile Include="Assets\Scripts\GUI\HUDManager.cs" />
     <Compile Include="Assets\Scripts\GUI\Menu.cs" />
     <Compile Include="Assets\Scripts\GUI\MenuManager.cs" />
