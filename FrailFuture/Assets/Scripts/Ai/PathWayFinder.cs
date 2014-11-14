@@ -145,11 +145,32 @@ public class PathWayFinder
                             }
                         }
                     }
-                    var range = Enumerable.Range(_lowestEndPathIndex, g.vCount()).Where(i => neighborsLeft.Contains(i) && !desiredTried.Contains(i) && IsACorrectNextBestIndex(i)).ToList();
-                    var rand = new System.Random();
-                    int index = rand.Next(0, range.Count);
-                   _desiredEndingIndex = range.ElementAt(index);
-
+                    //get ranges of indexs of the same neutrality type "going up" or "going down" as the original desired index.
+                    List<int> range = Enumerable.Range(_lowestEndPathIndex, g.vCount()).Where(i => neighborsLeft.Contains(i) && !desiredTried.Contains(i) && IsACorrectNextBestIndex(i)).ToList();
+                    //if there are none try 
+                    if (range.Count <= 0 )
+                    {
+                        //random
+                        if(desiredTried.Contains(_lowestEndPathIndex + 2))
+                        {
+                            List<int> range2 = Enumerable.Range(_lowestEndPathIndex, g.vCount()).Where(i => neighborsLeft.Contains(i) && !desiredTried.Contains(i)).ToList();
+                            var rand = new System.Random();
+                            int index = rand.Next(0, range.Count);
+                            _desiredEndingIndex = range.ElementAt(index);
+                        }
+                        //the neutral path
+                        else
+                        {
+                            _desiredEndingIndex = _lowestEndPathIndex + 2;
+                        }
+                    }
+                    else
+                    {
+                        //it's a good range
+                        var rand = new System.Random();
+                        int index = rand.Next(0, range.Count);
+                        _desiredEndingIndex = range.ElementAt(index);
+                    }
                    done = generatePathHelper(g.findAllNeighbors(currentVertex), start);
             }
         }
