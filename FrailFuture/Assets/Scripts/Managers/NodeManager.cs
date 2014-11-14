@@ -10,26 +10,25 @@ public class NodeManager : MonoBehaviour
 
     public static NodeManager nodeManager;
     private HashSet<int> hallwaysUsed;
+    private int lastHallwayAdded;
     private bool conditionToLoadEndScene;
 
     private int CountSinceLastVo;
     private int buffer;
     private int TotalCountToSeeVo;
 
-
     System.Random rand;
     void Awake()
     {
-      nodeManager = this;
-      showNextRoom();
-      setupAllHallways();
-      SetUpHallwayToSeeVo();
-      rand = new System.Random(System.DateTime.Now.GetHashCode());
+        nodeManager = this;
+        setupAllHallways();
+        SetUpHallwayToSeeVo();
+        showNextRoom();
     }
 
     private void SetUpHallways()
     {
-        if (GameControl.control.NumberOfHallways == 1)
+        if (GameControl.control.NumberOfHallwaySections == 1)
         {
             hallwaysUsed = new HashSet<int>() { 1, 2, 3, 4 };
         }
@@ -47,7 +46,8 @@ public class NodeManager : MonoBehaviour
         if (hallwaysUsed == null)
         {
             //first round, start of maze, only needs 1 hallway
-            hallwaysUsed = new HashSet<int>() { 1 ,2, 3, 4 };
+            hallwaysUsed = new HashSet<int>() { 1, 2, 3, 4 };
+            SetUpHallwayToSeeVo();
             //If initial index is at 0 we are at the begining of the game. Otherwise we 
             //are loading in an old game and we should start the player at the current index
 
@@ -64,7 +64,7 @@ public class NodeManager : MonoBehaviour
         {
             loadEndScene();
         }
-        else if (hallwaysUsed.Count < GameControl.control.NumberOfHallways)
+        else if ((hallwaysUsed.Count < GameControl.control.NumberOfHallwaySections) && (hallwaysUsed.Count < Hallways.Count))
         {
             SetUpHallways();
             showNextHall();
@@ -115,7 +115,7 @@ public class NodeManager : MonoBehaviour
                 Vector3 newPos = GameObject.Find("maze0Spawner").transform.position;
                 player.transform.position = new Vector3(newPos.x, 0.5f, newPos.z);
             }
-            showNextHall();
+            showNextHall(true);
         }
     }
 
@@ -127,7 +127,7 @@ public class NodeManager : MonoBehaviour
 
     void showNextNode()
     {
-        CountSinceLastVo++;
+        hallwaysUsed.Clear();
         SoundManager.soundManager.playDONADialogue();
         int inputsAvalible = (!GameControl.control.JustReset && GameControl.control.getAi.getNextGraphEndNodeType() != NeutralityTypes.None) ? 0 : GameControl.control.getAi.getNextInputsFromGraph().Length;
         GameControl.control.JustReset = (inputsAvalible == 0);
@@ -135,28 +135,29 @@ public class NodeManager : MonoBehaviour
         onlyShowNode(name);
     }
 
-    void showNextHall()
+    void showNextHall(bool forceShow0Hallway = false)
     {
-        int indexToUse = -1;
-        if (CountSinceLastVo >= TotalCountToSeeVo)
+        int indexToUse = 0;
+        if (forceShow0Hallway || (CountSinceLastVo >= TotalCountToSeeVo))
         {
-            indexToUse = 0;
             CountSinceLastVo = 0;
         }
         else
         {
-            var range = Enumerable.Range(0, Hallways.Count).Where(i => !hallwaysUsed.Contains(i));
-            int index = rand.Next(0, Hallways.Count - hallwaysUsed.Count);
-            indexToUse = range.ElementAt(index);
+            CountSinceLastVo++;
+            //-1 are there because we are not allowing the index 0 hallway to be used.
+           List<int> range = Enumerable.Range(1, Hallways.Count - 1).Where(i => i != 0 && !hallwaysUsed.Contains(i)).ToList();
+           int index = rand.Next(0, range.Count);
+           indexToUse = range[index];
         }
 
         hallwaysUsed.Add(indexToUse);
+        lastHallwayAdded = indexToUse;
         onlyShowHallway(indexToUse);
     }
 
     void onlyShowNode(string name)
     {
-        hallwaysUsed.Clear();
         for (int i = 0; i < AllNodes.Count; i++)
         {
             if (AllNodes[i].name == name)
@@ -198,19 +199,17 @@ public class NodeManager : MonoBehaviour
 
     public void setupAllHallways()
     {
+        rand = new System.Random(System.DateTime.Now.GetHashCode());
         GameControl.control.JustReset = false;
-        if (hallwaysUsed != null)
-        {
-            hallwaysUsed.Clear();
-        }
+        hallwaysUsed = null;
         conditionToLoadEndScene = GameControl.control.CurrentPlayThrough >= GameControl.control.MinNumPlayThroughs && GameControl.control.getAi.getNeutralityState() != NeutralityTypes.Neutral;
     }
 
     private void SetUpHallwayToSeeVo()
     {
         CountSinceLastVo = 0;
-        int HallwaysPerPlayThrough = GameControl.control.MaxNumberOfRows + 1;
-        buffer = HallwaysPerPlayThrough;
+        int HallwaysPerPlayThrough = (GameControl.control.MaxNumberOfRows + 1) * GameControl.control.NumberOfHallwaySections;
+        buffer = 0;// HallwaysPerPlayThrough;
         int divisional = (HallwaysPerPlayThrough * GameControl.control.MinNumPlayThroughs) + buffer;
         TotalCountToSeeVo = Mathf.CeilToInt(divisional / SoundManager.soundManager.NumberOfVoDialogue);
     }
