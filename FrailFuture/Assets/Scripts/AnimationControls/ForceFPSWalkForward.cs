@@ -5,7 +5,6 @@ public class ForceFPSWalkForward : MonoBehaviour
 {
     public GameObject playerCamera;
     public GameObject stopIfCollideWith;
-    public float secondsToWalk = 3.0f;
     public float walkAmount = -0.02f;
     public bool walkForwardStarting = true;
 
@@ -30,7 +29,7 @@ public class ForceFPSWalkForward : MonoBehaviour
             player.GetComponent<MovementSoundManager>().enabled = false;
             player.GetComponent<MouseLook>().enabled = false;
             playerCamera.GetComponent<MouseLook>().enabled = false;
-            StartCoroutine(walkThenStop(secondsToWalk));
+            currentlyWalking = true;
         }
         if (currentlyWalking)
         {
@@ -46,13 +45,5 @@ public class ForceFPSWalkForward : MonoBehaviour
             currentlyWalking = false;
             WalkForward = false;
         }
-    }
-
-    private IEnumerator walkThenStop(float waitTime)
-    {
-        currentlyWalking = true;
-        yield return new WaitForSeconds(waitTime);
-        currentlyWalking = false;
-        WalkForward = false;
     }
 }
