@@ -35,6 +35,10 @@ public class HallwayDialogueVOTrigger : MonoBehaviour
 
     public void OnTriggerEnter(Collider c)
     {
+        playVODialogue();
+    }
+    public void playVODialogue()
+    {
         if (lastVertexKnown != GameControl.control.getAi.getCurrentGraphIndex() || GameControl.control.JustReset)
         {
             if (!SoundManager.soundManager.getIsAiTalking())

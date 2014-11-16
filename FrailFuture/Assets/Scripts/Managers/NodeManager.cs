@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-
+using ProBuilder2.Common;
 public class NodeManager : MonoBehaviour 
 {
     public List<GameObject> AllNodes;
     public List<GameObject> Hallways;
     public List<GameObject> objectSpawner;
+    public GameObject closedDoor;
 
     public static NodeManager nodeManager;
     private HashSet<int> hallwaysUsed;
@@ -17,6 +18,9 @@ public class NodeManager : MonoBehaviour
     private int buffer;
     private int TotalCountToSeeVo;
 
+   // private bool mirrorNextObj;
+    private bool beginingOfGame;
+    private GameObject dupplicateObj;
     System.Random rand;
     void Awake()
     {
@@ -36,12 +40,19 @@ public class NodeManager : MonoBehaviour
 
     public void showNextRoom()
     {
+        if (dupplicateObj != null)
+        {
+            Destroy(dupplicateObj);
+        }
         conditionToLoadEndScene = GameControl.control.CurrentPlayThrough >= GameControl.control.MinNumPlayThroughs && GameControl.control.getAi.getNeutralityState() != NeutralityTypes.Neutral;
+        beginingOfGame = false;
         resetObjSpawners();
         if (GameControl.control.getAi.getCurrentGraphIndex() != 0)
         {
             GameControl.control.EndNodeButtonPressed = false;
         }
+
+
 
         if (hallwaysUsed == null)
         {
@@ -108,6 +119,7 @@ public class NodeManager : MonoBehaviour
             //load beginning room with hospital stuff?
         else if (GameControl.control.getAi.getCurrentGraphIndex() == 0 && !GameControl.control.JustReset)
         {
+            beginingOfGame = true;
             objectSpawner[0].SetActive(true);
             GameObject player = GameObject.Find("Player");
             if (player != null)
@@ -115,6 +127,8 @@ public class NodeManager : MonoBehaviour
                 Vector3 newPos = GameObject.Find("maze0Spawner").transform.position;
                 player.transform.position = new Vector3(newPos.x, 0.5f, newPos.z);
             }
+            //mirrorNextObj = true;
+            Hallways[0].GetComponentInChildren<HallwayDialogueVOTrigger>().playVODialogue();
             showNextHall(true);
         }
     }
@@ -127,6 +141,8 @@ public class NodeManager : MonoBehaviour
 
     void showNextNode()
     {
+        //closedDoor.SetActive(false);
+       // mirrorNextObj = true;
         hallwaysUsed.Clear();
         SoundManager.soundManager.playDONADialogue();
         int inputsAvalible = (!GameControl.control.JustReset && GameControl.control.getAi.getNextGraphEndNodeType() != NeutralityTypes.None) ? 0 : GameControl.control.getAi.getNextInputsFromGraph().Length;
@@ -137,6 +153,7 @@ public class NodeManager : MonoBehaviour
 
     void showNextHall(bool forceShow0Hallway = false)
     {
+        //closedDoor.SetActive(!mirrorNextObj);
         int indexToUse = 0;
         if (forceShow0Hallway || (CountSinceLastVo >= TotalCountToSeeVo))
         {
@@ -154,6 +171,7 @@ public class NodeManager : MonoBehaviour
         hallwaysUsed.Add(indexToUse);
         lastHallwayAdded = indexToUse;
         onlyShowHallway(indexToUse);
+       // mirrorNextObj = false;
     }
 
     void onlyShowNode(string name)
@@ -164,9 +182,10 @@ public class NodeManager : MonoBehaviour
             {
                 AllNodes[i].SetActive(true);
                 GameObject go = AllNodes[i];
-                GUINode node = (GUINode)go.GetComponentInChildren<GUINode>();
-                node.EndNodeType = !GameControl.control.JustReset ? NeutralityTypes.None : GameControl.control.getAi.getNextGraphEndNodeType();
-                node.resetGUINode();
+                SetUpNode(go);
+                //Mirror Node
+                dupplicateObj = (GameObject)ProBuilder.Instantiate(AllNodes[i], new Vector3(2,0,0), new Quaternion(0, 180, 0, 0));
+                SetUpNode(dupplicateObj);
             }
             else
             {
@@ -179,12 +198,38 @@ public class NodeManager : MonoBehaviour
         }
     }
 
+    void SetUpNode(GameObject node)
+    {
+        GUINode tempGUINode = (GUINode)node.GetComponentInChildren<GUINode>();
+        tempGUINode.EndNodeType = !GameControl.control.JustReset ? NeutralityTypes.None : GameControl.control.getAi.getNextGraphEndNodeType();
+        tempGUINode.resetGUINode();
+    }
+
     void onlyShowHallway(int index)
     {
         for (int i = 0; i < Hallways.Count; i++)
         {
             //if active and not the node we want, deActivate it.
-            Hallways[i].SetActive((Hallways[i].activeInHierarchy != true && i == index) || i == index);
+            bool setMeActive = (Hallways[i].activeInHierarchy != true && i == index) || i == index;
+            Hallways[i].SetActive(setMeActive);
+
+            if (setMeActive)
+            {
+                int hallIndex = i;
+
+                //if normal hallway or is intro hallway
+                if (i != 0 || beginingOfGame)
+                {
+                    hallIndex = rand.Next(1, Hallways.Count);
+                }
+                
+                Hallways[hallIndex].SetActive(true);
+                dupplicateObj = (GameObject)ProBuilder.Instantiate(Hallways[hallIndex], new Vector3(2,0,0), new Quaternion(0, 180, 0, 0));
+                if (hallIndex != i)
+                {
+                    Hallways[hallIndex].SetActive(false);
+                }
+            }
         }
         for (int i = 0; i < AllNodes.Count; i++)
         {
@@ -204,6 +249,9 @@ public class NodeManager : MonoBehaviour
         GameControl.control.JustReset = false;
         hallwaysUsed = null;
         conditionToLoadEndScene = GameControl.control.CurrentPlayThrough >= GameControl.control.MinNumPlayThroughs && GameControl.control.getAi.getNeutralityState() != NeutralityTypes.Neutral;
+        //mirrorNextObj = false;
+        beginingOfGame = false;
+        dupplicateObj = null;
     }
 
     private void SetUpHallwayToSeeVo()

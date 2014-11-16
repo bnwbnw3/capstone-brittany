@@ -1,17 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System;
+using System.Linq;
 
 public class EndRoomEvents : MonoBehaviour 
 {
-    public GameObject spawner;
     public GameObject player;
 
+    private GameObject resetButton;
+    private GameObject instructionBox;
+    private GameObject spawner;
     public void OnTriggerEnter(Collider c)
     {
         if (c.tag == "Player")
         {
             GameControl.control.CurrentPlayThrough++;
             GameControl.control.EndNodeButtonPressed = true;
+            resetButton = findEndNodeScriptGameObjs("ResetButton");
+            instructionBox = findEndNodeScriptGameObjs("PushMeNotCanvas");
+            spawner = findEndNodeScriptGameObjs("EndNodeObjectSpawner");
 
             transform.collider.isTrigger = false;
             //get the top parent, which holds neutrality, and grab neutrality
@@ -21,12 +29,10 @@ public class EndRoomEvents : MonoBehaviour
             GameControl.control.getAi.findNewPathIfReachedAnEnd();
 
             //make button disapear from view
-            GameObject resetButton = GameObject.Find("ResetButton");
             Vector3 oldPos = resetButton.transform.position;
             resetButton.transform.position = new Vector3(oldPos.x, oldPos.y - 10, oldPos.z);
             //make button directions disapear from view
-            GameObject instructionBox = GameObject.Find("PushMeNotCanvas");
-            oldPos = resetButton.transform.position;
+            oldPos = instructionBox.transform.position;
             instructionBox.transform.position = new Vector3(oldPos.x, oldPos.y - 100, oldPos.z);
             instructionBox.GetComponent<DialogueBox>().DisableMyText();
 
@@ -37,6 +43,26 @@ public class EndRoomEvents : MonoBehaviour
             StartCoroutine(ResetGame(scriptWaitTime, c));
             StartCoroutine(FadeScreen(scriptWaitTime - 2));
         }
+    }
+
+    private GameObject findEndNodeScriptGameObjs(string name)
+    {
+        GameObject[] sameNameObjs = GameObject.FindGameObjectsWithTag("EndNodeScriptObjs");
+        float minDistance = -1; ;
+        int indexToUse = -1;
+        for(int index = 0; index < sameNameObjs.Length; index++)
+        {
+            if (sameNameObjs[index].name == name)
+            {
+                float distanceToPlayer = Math.Abs(sameNameObjs[index].transform.position.x - player.transform.position.x);
+                if (indexToUse < 0 || distanceToPlayer < minDistance) 
+                {
+                    indexToUse = index;
+                    minDistance = distanceToPlayer;
+                }
+            }
+        }
+        return sameNameObjs[indexToUse];
     }
 
     private void spawnEndRoomStuff(NeutralityTypes currentNutrality, float timeTillDelete, float totalScriptTime, Collider colliderToChange)
@@ -70,8 +96,8 @@ public class EndRoomEvents : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         transform.root.collider.isTrigger = false;
         player.GetComponent<MovementSoundManager>().SetCameraFlags(CameraClearFlags.Skybox);
-        GameObject.Find("ResetButton").GetComponent<SaveOriginalPos>().reset();
-        GameObject.Find("PushMeNotCanvas").GetComponent<SaveOriginalPos>().reset();
+        resetButton.GetComponent<SaveOriginalPos>().reset();
+        instructionBox.GetComponent<SaveOriginalPos>().reset();
 
         player.transform.position = TeleportPlayerToOriginOnCollide.getOrigin();
         player.transform.localScale = GameControl.control.StartingPlayerVars.scale;
@@ -89,12 +115,10 @@ public class EndRoomEvents : MonoBehaviour
     private IEnumerator waitAndDrop(float waitTime, Collider c)
     {
         yield return new WaitForSeconds(waitTime);
-        GameObject resetButton = GameObject.Find("ResetButton");
         Vector3 oldPos = resetButton.transform.position;
         resetButton.transform.position = new Vector3(oldPos.x - 100, oldPos.y - 10, oldPos.z);
 
-        GameObject instructionBox = GameObject.Find("PushMeNotCanvas");
-        oldPos = resetButton.transform.position;
+        oldPos = instructionBox.transform.position;
         instructionBox.transform.position = new Vector3(oldPos.x - 100, oldPos.y - 100, oldPos.z);
 
          oldPos = c.transform.position;

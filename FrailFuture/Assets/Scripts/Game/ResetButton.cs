@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ResetButton : MonoBehaviour 
+public class ResetButton : MonoBehaviour
 {
     public void OnTriggerEnter(Collider c)
     {
