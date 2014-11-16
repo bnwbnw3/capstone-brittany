@@ -4,18 +4,26 @@ using System.Collections;
 public class LookAtTarget : MonoBehaviour 
 {
     public GameObject targetToLookAt;
-	// Update is called once per frame
+    public float speed = 2;
+    public bool CanUpdate {get;set;}
+    void Awake()
+    {
+        CanUpdate = true;
+    }
+
 	void Update () 
     {
-        rotateToLookAtTarget(targetToLookAt.transform.position);
+        if (CanUpdate)
+        {
+            rotateToLookAtTarget(targetToLookAt.transform.position);
+        }
 	}
 
     public void rotateToLookAtTarget(Vector3 posToLookAt)
     {
-        int damping = 2;
         var lookPos = posToLookAt - transform.position;
         lookPos.y = 0;
         var rotation = Quaternion.LookRotation(lookPos);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping); 
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speed); 
     }
 }
