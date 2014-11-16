@@ -70,6 +70,11 @@ public class MenuManager : MonoBehaviour
         StartCoroutine(waitToLoadGame(4.0f));
     }
 
+    public void playIntroduction()
+    {
+        ScreenFader.screenFader.makeSolid("destroyed_city", 2.0f);
+    }
+
     IEnumerator waitToLoadGame(float waitTime)
     {
         mainScene.SetActive(false);
