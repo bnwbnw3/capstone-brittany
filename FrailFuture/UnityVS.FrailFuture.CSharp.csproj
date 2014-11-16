@@ -91,11 +91,15 @@
     <Compile Include="Assets\Scripts\AnimationControls\FirstPersonLookAtTarget.cs" />
     <Compile Include="Assets\Scripts\AnimationControls\ForceFPSWalkForward.cs" />
     <Compile Include="Assets\Scripts\AnimationControls\LookAtTarget.cs" />
+    <Compile Include="Assets\Scripts\AnimationControls\MoveToTarget.cs" />
+    <Compile Include="Assets\Scripts\AnimationControls\RailPoint.cs" />
+    <Compile Include="Assets\Scripts\AnimationControls\RailPointManager.cs" />
     <Compile Include="Assets\Scripts\GUI\DialogueBox.cs" />
     <Compile Include="Assets\Scripts\GUI\HUDManager.cs" />
     <Compile Include="Assets\Scripts\GUI\Menu.cs" />
     <Compile Include="Assets\Scripts\GUI\MenuManager.cs" />
     <Compile Include="Assets\Scripts\GUI\ScreenFader.cs" />
+    <Compile Include="Assets\Scripts\GUI\SimpleMainMenu.cs" />
     <Compile Include="Assets\Scripts\GUI\UISound.cs" />
     <Compile Include="Assets\Scripts\Game\Door.cs" />
     <Compile Include="Assets\Scripts\Game\DummyNode.cs" />
