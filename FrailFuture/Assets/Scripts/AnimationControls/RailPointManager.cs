@@ -1,67 +1,71 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class RailPointManager : MonoBehaviour {
 
-    public Camera camToMove;
-    public int numOfRailPoints;
-    public float delay = 0.0f;
-    private const int startingIndex =1;
+    public Camera CameraToMove;
+    public string TagNameToGrabRailPoints = "RailPoint";
+    public float Delay = 0.0f;
+    private const int startingIndex =0;
     private int currentIndex;
     private Vector3 camPos;
-    private GameObject point; 
+    private GameObject point;
+    private GameObject[] allRailPoints;
     
 	// Use this for initialization
 	void Start ()
     {
+        allRailPoints = GameObject.FindGameObjectsWithTag(TagNameToGrabRailPoints);
+        allRailPoints = allRailPoints.OrderBy(n => getIndexsFromRailPointNames(n.name)).ToArray();
         currentIndex = startingIndex;
-        point = GameObject.Find("RP" + currentIndex);
-        camToMove.gameObject.transform.position = point.gameObject.transform.position;
-        currentIndex = 2;
-        camToMove.GetComponent<LookAtTarget>().CanUpdate = false;
-        camToMove.GetComponent<MoveToTarget>().CanUpdate = false;
+        point = allRailPoints[currentIndex];
+        CameraToMove.gameObject.transform.position = point.gameObject.transform.position;
+        currentIndex++;
+        CameraToMove.GetComponent<LookAtTarget>().CanUpdate = false;
+        CameraToMove.GetComponent<MoveToTarget>().CanUpdate = false;
         GameObject nextLookAt = getNextLookAt();
 
-        point = GameObject.Find("RP" + currentIndex);
-        camToMove.GetComponent<LookAtTarget>().targetToLookAt = nextLookAt;
-        camToMove.GetComponent<MoveToTarget>().targetToMoveTo = point;
-        StartCoroutine(WaitTillGo(delay));
+        point = allRailPoints[currentIndex];
+        CameraToMove.GetComponent<LookAtTarget>().targetToLookAt = nextLookAt;
+        CameraToMove.GetComponent<MoveToTarget>().targetToMoveTo = point;
+        StartCoroutine(WaitTillGo(Delay));
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
-        camPos = camToMove.gameObject.transform.position;
-        point = GameObject.Find("RP" + currentIndex);
+        camPos = CameraToMove.gameObject.transform.position;
+        point = allRailPoints[currentIndex];
         RailPoint rp = point.GetComponent<RailPoint>();
         if(rp.HasBeenReached)
         {
             currentIndex++;
-            if (currentIndex < numOfRailPoints)
+            if (currentIndex < allRailPoints.Length)
             {
                 GameObject nextLookAt = getNextLookAt();
-                camToMove.GetComponent<LookAtTarget>().targetToLookAt = nextLookAt;
-                camToMove.GetComponent<MoveToTarget>().targetToMoveTo = point;
+                CameraToMove.GetComponent<LookAtTarget>().targetToLookAt = nextLookAt;
+                CameraToMove.GetComponent<MoveToTarget>().targetToMoveTo = point;
             }
             else
             {
                 //Done Moving
-                camToMove.GetComponent<LookAtTarget>().CanUpdate = false;
-                camToMove.GetComponent<MoveToTarget>().CanUpdate = false;
+                CameraToMove.GetComponent<LookAtTarget>().CanUpdate = false;
+                CameraToMove.GetComponent<MoveToTarget>().CanUpdate = false;
             }
         }
 	}
 
     private GameObject getNextLookAt()
     {
-        point = GameObject.Find("RP" + currentIndex);
+        point = allRailPoints[currentIndex];
         RailPoint rp = point.GetComponent<RailPoint>();
         GameObject nextLookAt = rp.ToLookAtWhenInRouteToMe;
         if (nextLookAt == null)
         {
-            int pointIndex = currentIndex >= numOfRailPoints ? 0 : currentIndex;
-            nextLookAt = GameObject.Find("RP" + currentIndex);
+            int pointIndex = currentIndex >= allRailPoints.Length ? 0 : currentIndex;
+            nextLookAt = allRailPoints[pointIndex];
         }
         return nextLookAt;
     }
@@ -69,7 +73,22 @@ public class RailPointManager : MonoBehaviour {
     private IEnumerator WaitTillGo(float time)
     {
         yield return new WaitForSeconds(time);
-        camToMove.GetComponent<LookAtTarget>().CanUpdate = true;
-        camToMove.GetComponent<MoveToTarget>().CanUpdate = true;
+        CameraToMove.GetComponent<LookAtTarget>().CanUpdate = true;
+        CameraToMove.GetComponent<MoveToTarget>().CanUpdate = true;
+    }
+
+    int getIndexsFromRailPointNames(string src)
+    {
+        int ret = 0;
+        int power = 1;
+        for (int i = src.Length - 1; i >= 0; i--)
+        {
+            if ('0' <= src[i] && src[i] <= '9')
+            {
+                ret += ((int)src[i] - (int)'0') * power;
+                power *= 10;
+            }
+        }
+        return ret;
     }
 }
