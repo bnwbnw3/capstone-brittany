@@ -83,7 +83,7 @@ public class EndSceneDONAMoveScript : MonoBehaviour {
         if (c.gameObject == turnToObjOne)
         {
             LookAtTarget lookScript = this.gameObject.GetComponent<LookAtTarget>();
-            lookScript.targetToLookAt = turnToObjTwo;
+            lookScript.TargetToLookAt = turnToObjTwo;
         }
 
         if (c.gameObject == turnToObjTwo)
@@ -152,7 +152,7 @@ public class EndSceneDONAMoveScript : MonoBehaviour {
     public void walkToExitControlRoom()
     {
         LookAtTarget lookScript = this.gameObject.GetComponent<LookAtTarget>();
-        lookScript.targetToLookAt = turnToObjOne;
+        lookScript.TargetToLookAt = turnToObjOne;
         walkForward = true;
     }
 
