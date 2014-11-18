@@ -7,19 +7,10 @@ public class RailPoint : MonoBehaviour
     public bool HasBeenReached { get; private set; }
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
         HasBeenReached = false; 
-
         renderer.enabled = false;
-        if (ToLookAtWhenInRouteToMe != null)
-        {
-            ToLookAtWhenInRouteToMe.renderer.enabled = false;
-        }
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 
     void OnTriggerEnter(Collider c)
