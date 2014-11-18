@@ -5,7 +5,7 @@ using System.Linq;
 
 public class RailPointManager : MonoBehaviour
 {
-    public Camera CameraToMove;
+    public Camera CameraForRail;
     public string TagNameToGrabRailPoints = "RailPoint";
     public float Delay = 0.0f;
     public bool loopPath = false;
@@ -21,14 +21,14 @@ public class RailPointManager : MonoBehaviour
         allRailPoints = allRailPoints.OrderBy(n => getIndexFromRailPointName(n.name)).ToArray();
         currentIndex = 0;
         point = allRailPoints[currentIndex];
-        CameraToMove.gameObject.transform.position = point.gameObject.transform.position;
+        CameraForRail.gameObject.transform.position = point.gameObject.transform.position;
         currentIndex++;
         moving = false;
         GameObject nextLookAt = getNextLookAt();
 
         point = allRailPoints[currentIndex];
-        CameraToMove.GetComponent<LookAtTarget>().TargetToLookAt = nextLookAt;
-        CameraToMove.GetComponent<MoveToTarget>().targetToMoveTo = point;
+        CameraForRail.GetComponent<LookAtTarget>().TargetToLookAt = nextLookAt;
+        CameraForRail.GetComponent<MoveToTarget>().targetToMoveTo = point;
         StartCoroutine(WaitTillGo(Delay));
     }
 
@@ -38,8 +38,8 @@ public class RailPointManager : MonoBehaviour
         updateCurrentIndex();
         updateMoveAbility();
         
-        CameraToMove.GetComponent<LookAtTarget>().CanUpdate = moving;
-        CameraToMove.GetComponent<MoveToTarget>().CanUpdate = moving;
+        CameraForRail.GetComponent<LookAtTarget>().CanUpdate = moving;
+        CameraForRail.GetComponent<MoveToTarget>().CanUpdate = moving;
     }
 
     private void updateCurrentIndex()
@@ -76,8 +76,8 @@ public class RailPointManager : MonoBehaviour
     private void setUpNextPathTo()
     {
        GameObject nextLookAt = getNextLookAt();
-       CameraToMove.GetComponent<LookAtTarget>().TargetToLookAt = nextLookAt;
-       CameraToMove.GetComponent<MoveToTarget>().targetToMoveTo = point;
+       CameraForRail.GetComponent<LookAtTarget>().TargetToLookAt = nextLookAt;
+       CameraForRail.GetComponent<MoveToTarget>().targetToMoveTo = point;
     }
     private GameObject getNextLookAt()
     {
