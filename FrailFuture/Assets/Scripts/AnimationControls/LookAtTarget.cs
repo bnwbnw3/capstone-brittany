@@ -3,9 +3,10 @@ using System.Collections;
 
 public class LookAtTarget : MonoBehaviour 
 {
-    public GameObject targetToLookAt;
-    public float speed = 2;
-    public bool restrictUpDownRotation = true;
+    public GameObject TargetToLookAt;
+    public float Speed = 1;
+    public bool RestrictUpDownRotation = true;
+    public float TurnThreshold = 0.001f;
     public bool CanUpdate {get;set;}
     void Awake()
     {
@@ -16,18 +17,21 @@ public class LookAtTarget : MonoBehaviour
     {
         if (CanUpdate)
         {
-            rotateToLookAtTarget(targetToLookAt.transform.position);
+            rotateToLookAtTarget(TargetToLookAt.transform.position);
         }
 	}
 
     public void rotateToLookAtTarget(Vector3 posToLookAt)
     {
         var lookPos = posToLookAt - transform.position;
-        if (restrictUpDownRotation)
+        if (RestrictUpDownRotation)
         {
             lookPos.y = 0;
         }
-        var rotation = Quaternion.LookRotation(lookPos);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speed); 
+        if (lookPos.sqrMagnitude > TurnThreshold)
+        {
+            var rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * Speed); 
+        }
     }
 }
