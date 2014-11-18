@@ -122,6 +122,6 @@ public class EndRoomEvents : MonoBehaviour
         instructionBox.transform.position = new Vector3(oldPos.x - 100, oldPos.y - 100, oldPos.z);
 
          oldPos = c.transform.position;
-        player.transform.position = new Vector3(oldPos.x, oldPos.y - 2, oldPos.z);
+        player.transform.position = new Vector3(oldPos.x, oldPos.y - 10, oldPos.z);
     }
 }
