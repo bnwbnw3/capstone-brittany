@@ -17,7 +17,7 @@ public class HUDManager : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !SoundManager.soundManager.getIsAiTalking())
+        if (Input.GetKeyDown(KeyCode.Escape) && !SoundManager.soundManager.getAi_IsTalking())
         {
             HUDOpen = !HUDOpen;
 

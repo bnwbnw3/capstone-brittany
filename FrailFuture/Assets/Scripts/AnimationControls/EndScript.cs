@@ -21,7 +21,7 @@ public class EndScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!SoundManager.soundManager.getIsAiTalking() && hasPlayedDialogue && !hasToldDONAToMove)
+        if (!SoundManager.soundManager.getAi_IsTalking() && hasPlayedDialogue && !hasToldDONAToMove)
         {
             DONA.GetComponent<EndSceneDONAMoveScript>().walkToExitControlRoom();
             hasToldDONAToMove = true;

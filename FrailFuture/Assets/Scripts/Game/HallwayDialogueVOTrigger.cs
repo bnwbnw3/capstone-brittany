@@ -41,7 +41,7 @@ public class HallwayDialogueVOTrigger : MonoBehaviour
     {
         if (lastVertexKnown != GameControl.control.getAi.getCurrentGraphIndex() || GameControl.control.JustReset)
         {
-            if (!SoundManager.soundManager.getIsAiTalking())
+            if (!SoundManager.soundManager.getAi_IsTalking())
             {
                 destroyLargeTrigger();
                 lastVertexKnown = GameControl.control.getAi.getCurrentGraphIndex();
