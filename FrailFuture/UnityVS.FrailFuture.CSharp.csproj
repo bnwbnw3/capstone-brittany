@@ -125,12 +125,13 @@
     <Compile Include="Assets\Scripts\Managers\ChangeSettings.cs" />
     <Compile Include="Assets\Scripts\Managers\GameControl.cs" />
     <Compile Include="Assets\Scripts\Managers\NodeManager.cs" />
-    <Compile Include="Assets\Scripts\Managers\SoundManager.cs" />
-    <Compile Include="Assets\Scripts\Managers\ThemeMusicPlayer.cs" />
     <Compile Include="Assets\Scripts\NotMine\CharacterMotor.cs" />
     <Compile Include="Assets\Scripts\NotMine\FPSInputController.cs" />
     <Compile Include="Assets\Scripts\NotMine\MouseLook.cs" />
     <Compile Include="Assets\Scripts\NotMine\PlatformInputController.cs" />
+    <Compile Include="Assets\Scripts\Sound\SetIntroCineAudio.cs" />
+    <Compile Include="Assets\Scripts\Sound\SoundManager.cs" />
+    <Compile Include="Assets\Scripts\Sound\ThemeMusicPlayer.cs" />
     <None Include="Assets\Destroyed_city_FREE\Shaders\AlphaTest-DiffuseDoubleSide.shader" />
     <None Include="Assets\Destroyed_city_FREE\Standard Assets\Water (Pro Only)\Sources\Shaders\FX-Water.shader" />
     <None Include="Assets\ProCore\Prototype\About\changelog.txt" />
