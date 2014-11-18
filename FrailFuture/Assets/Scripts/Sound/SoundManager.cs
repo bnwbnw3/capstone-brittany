@@ -69,7 +69,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-   public bool getIsAiTalking()
+   public bool getAi_IsTalking()
     {
         return GameObject.Find("AiSpeaker").audio.isPlaying;
     }
