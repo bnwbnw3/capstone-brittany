@@ -24,7 +24,6 @@ public abstract class Door : MonoBehaviour
         {
             if (collider.isTrigger)
             {
-                renderer.material = openDoorMaterial;
                 if (SoundManager.soundManager.getAi_IsTalking())
                 {
                     closingNode();
@@ -32,12 +31,10 @@ public abstract class Door : MonoBehaviour
             }
             else
             {
-                renderer.material = closedDoorMaterial;
                 openingNode();
             }
         }
 
-        renderer.material = closedDoorMaterial;
         OnUpdate();
     }
     protected virtual void OnUpdate() {}
@@ -46,7 +43,7 @@ public abstract class Door : MonoBehaviour
     {
       if (!SoundManager.soundManager.getAi_IsTalking())
       {
-        //renderer.material = openDoorMaterial;
+        renderer.material = openDoorMaterial;
         collider.isTrigger = true;
         OnOpeningNode();
       }
@@ -55,7 +52,7 @@ public abstract class Door : MonoBehaviour
     
     protected void closingNode()
     {
-        //renderer.material = closedDoorMaterial;
+        renderer.material = closedDoorMaterial;
         collider.isTrigger = false;
         OnClosingNode();
     }
