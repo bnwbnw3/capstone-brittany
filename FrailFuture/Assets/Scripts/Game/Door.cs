@@ -24,34 +24,38 @@ public abstract class Door : MonoBehaviour
         {
             if (collider.isTrigger)
             {
-                if (SoundManager.soundManager.getIsAiTalking())
+                renderer.material = openDoorMaterial;
+                if (SoundManager.soundManager.getAi_IsTalking())
                 {
                     closingNode();
                 }
             }
             else
             {
-                if (!SoundManager.soundManager.getIsAiTalking())
-                {
-                    openingNode();
-                }
+                renderer.material = closedDoorMaterial;
+                openingNode();
             }
         }
+
+        renderer.material = closedDoorMaterial;
         OnUpdate();
     }
     protected virtual void OnUpdate() {}
 
     protected void openingNode()
     {
-        renderer.material = openDoorMaterial;
+      if (!SoundManager.soundManager.getAi_IsTalking())
+      {
+        //renderer.material = openDoorMaterial;
         collider.isTrigger = true;
         OnOpeningNode();
+      }
     }
     protected virtual void OnOpeningNode(){}
     
     protected void closingNode()
     {
-        renderer.material = closedDoorMaterial;
+        //renderer.material = closedDoorMaterial;
         collider.isTrigger = false;
         OnClosingNode();
     }
