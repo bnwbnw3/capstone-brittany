@@ -19,19 +19,25 @@ public class MovementSoundManager : MonoBehaviour
         wasAirbourne = false;
         wasPressingJump = false;
 
-        if (playerCamera.camera != cameraThatFollowsPlayer.GetComponent<FollowCamera>().followThis)
+        if (cameraThatFollowsPlayer != null)
         {
-            cameraThatFollowsPlayer.GetComponent<FollowCamera>().followThis = playerCamera.camera;
+            if (playerCamera.camera != cameraThatFollowsPlayer.GetComponent<FollowCamera>().followThis)
+            {
+                cameraThatFollowsPlayer.GetComponent<FollowCamera>().followThis = playerCamera.camera;
+            }
         }
     }
 
 	// Update is called once per frame
 	void Update ()
     {
-        FollowCamera fc = cameraThatFollowsPlayer.GetComponent<FollowCamera>();
-        if (fc != null)
+        if (cameraThatFollowsPlayer != null)
         {
-            fc.manualUpdateAll();
+            FollowCamera fc = cameraThatFollowsPlayer.GetComponent<FollowCamera>();
+            if (fc != null)
+            {
+                fc.manualUpdateAll();
+            }
         }
 
         bool spaceDown = Input.GetKeyDown(KeyCode.Space);
@@ -72,7 +78,10 @@ public class MovementSoundManager : MonoBehaviour
     public void SetCameraFlags(UnityEngine.CameraClearFlags flag)
     {
         playerCamera.camera.clearFlags = flag;
-        cameraThatFollowsPlayer.GetComponent<FollowCamera>().manualUpdateAll();
+        if (cameraThatFollowsPlayer != null)
+        {
+            cameraThatFollowsPlayer.GetComponent<FollowCamera>().manualUpdateAll();
+        }
     }
     //Private Get-ers
     private bool getIfWASDKeysDown()
