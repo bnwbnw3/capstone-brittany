@@ -5,10 +5,13 @@ using System.Linq;
 
 public class RailPointManager : MonoBehaviour
 {
-    public Camera CameraForRail;
+    public GameObject HolderOfMoveToScript;
+    public GameObject HolderOfLookAtScript;
     public string TagNameToGrabRailPoints = "RailPoint";
     public float Delay = 0.0f;
     public bool loopPath = false;
+
+    public bool AtEndRailPoint { get { return (currentIndex >= allRailPoints.Length); } }
     private int currentIndex;
     private GameObject point;
     private GameObject[] allRailPoints;
@@ -21,14 +24,14 @@ public class RailPointManager : MonoBehaviour
         allRailPoints = allRailPoints.OrderBy(n => getIndexFromRailPointName(n.name)).ToArray();
         currentIndex = 0;
         point = allRailPoints[currentIndex];
-        CameraForRail.gameObject.transform.position = point.gameObject.transform.position;
+        HolderOfMoveToScript.gameObject.transform.position = point.gameObject.transform.position;
         currentIndex++;
         moving = false;
         GameObject nextLookAt = getNextLookAt();
 
         point = allRailPoints[currentIndex];
-        CameraForRail.GetComponent<LookAtTarget>().TargetToLookAt = nextLookAt;
-        CameraForRail.GetComponent<MoveToTarget>().targetToMoveTo = point;
+        HolderOfLookAtScript.GetComponent<LookAtTarget>().TargetToLookAt = nextLookAt;
+        HolderOfMoveToScript.GetComponent<MoveToTarget>().targetToMoveTo = point;
         StartCoroutine(WaitTillGo(Delay));
     }
 
@@ -37,9 +40,8 @@ public class RailPointManager : MonoBehaviour
     {
         updateCurrentIndex();
         updateMoveAbility();
-        
-        CameraForRail.GetComponent<LookAtTarget>().CanUpdate = moving;
-        CameraForRail.GetComponent<MoveToTarget>().CanUpdate = moving;
+        HolderOfLookAtScript.GetComponent<LookAtTarget>().CanUpdate = moving;
+        HolderOfMoveToScript.GetComponent<MoveToTarget>().CanUpdate = moving;
     }
 
     private void updateCurrentIndex()
@@ -51,13 +53,14 @@ public class RailPointManager : MonoBehaviour
 
             if (rp.HasBeenReached)
             {
+                Debug.Log("Index reached: " + currentIndex);
                 currentIndex++;
             }
         }
     }
     private void updateMoveAbility()
     {
-        if (currentIndex >= allRailPoints.Length)
+        if (AtEndRailPoint)
         {
             if (loopPath)
             {
@@ -76,8 +79,8 @@ public class RailPointManager : MonoBehaviour
     private void setUpNextPathTo()
     {
        GameObject nextLookAt = getNextLookAt();
-       CameraForRail.GetComponent<LookAtTarget>().TargetToLookAt = nextLookAt;
-       CameraForRail.GetComponent<MoveToTarget>().targetToMoveTo = point;
+       HolderOfLookAtScript.GetComponent<LookAtTarget>().TargetToLookAt = nextLookAt;
+       HolderOfMoveToScript.GetComponent<MoveToTarget>().targetToMoveTo = point;
     }
     private GameObject getNextLookAt()
     {
