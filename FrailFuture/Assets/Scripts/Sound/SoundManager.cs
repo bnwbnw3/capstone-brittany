@@ -95,11 +95,11 @@ public class SoundManager : MonoBehaviour
     //getAi Outro
     public void playOutro()
     {
-        int AiNeutrality = (int)GameControl.control.getAi.getNeutralityState();
+        int AiNeutrality = (int)GameControl.control.Ai.getNeutralityState();
         AudioClip begin = OutroAllBeginAudio;
         AudioClip middle = OutroNeutralityAudio[AiNeutrality];
         AudioClip end;
-        if (GameControl.control.getAi.getNeutralityValue() > 0)
+        if (GameControl.control.Ai.getNeutralityValue() > 0)
         {
             end = OutroEndingAudio[0];
         }
@@ -117,11 +117,11 @@ public class SoundManager : MonoBehaviour
         bool dialogueFound = false;
         int index = 0;
         //play random dialogue from DONA based on neutrality
-        if (GameControl.control.getAi.getCurrentGraphIndex() == 0 && GameControl.control.getAi.getLastPickedInfo() == null)
+        if (GameControl.control.Ai.getCurrentGraphIndex() == 0 && GameControl.control.Ai.getLastPickedInfo() == null)
         {
             playDONAIntro(GameObject.Find("AiSpeaker").audio);
         }
-        else if (GameControl.control.getAi.getNeutralityValue() >= 0)
+        else if (GameControl.control.Ai.getNeutralityValue() >= 0)
         {
             while (!dialogueFound)
             {
@@ -160,9 +160,9 @@ public class SoundManager : MonoBehaviour
 
     public void playVODialogue()
     {
-        if (GameControl.control.getAi.getCurrentGraphIndex() == 0 && GameControl.control.getAi.getLastPickedInfo() == null)
+        if (GameControl.control.Ai.getCurrentGraphIndex() == 0 && GameControl.control.Ai.getLastPickedInfo() == null)
         {
-            StartCoroutine(playVOIntro(GameObject.Find("AiSpeaker").audio));
+            playVOIntro(GameObject.Find("AiSpeaker").audio);
         }
         else
         {
@@ -184,7 +184,7 @@ public class SoundManager : MonoBehaviour
         //doorToPick is one based
         if (doorToPick >= 1 && doorToPick <= GameControl.control.maxNumChoices)
         {
-            int AiNeutrality = (int)GameControl.control.getAi.getNeutralityState();
+            int AiNeutrality = (int)GameControl.control.Ai.getNeutralityState();
             if (doorToPick == 1)
             {
                 playAudio(AiDirectionsDoor1[AiNeutrality], GameObject.Find("AiSpeaker").audio, normalDonaVol);
@@ -203,8 +203,8 @@ public class SoundManager : MonoBehaviour
 
     public void playResponse()
     {
-        PlayerData pd = GameControl.control.getAi.getLastPickedInfo();
-        bool aiIsPos = GameControl.control.getAi.getNeutralityValue() >= 0;
+        PlayerData pd = GameControl.control.Ai.getLastPickedInfo();
+        bool aiIsPos = GameControl.control.Ai.getNeutralityValue() >= 0;
         //grab random index based on having pos or neg neutrality
         bool foundIndex = false;
         int index = 0;
@@ -292,13 +292,11 @@ public class SoundManager : MonoBehaviour
 
     private void playDONAIntro(AudioSource source)
     {
-        playAudio(IntroAudio[2], source, normalDonaVol);
+        playAudio(IntroAudio[1], source, normalDonaVol);
     }
-    private IEnumerator playVOIntro(AudioSource source)
+    private void playVOIntro(AudioSource source)
     {
         playAudio(IntroAudio[0], source, VoVol);
-        yield return new WaitForSeconds(source.audio.clip.length);
-        playAudio(IntroAudio[1], source, VoVol);
     }
     private IEnumerator playVoDialogue(AudioSource source)
     {
