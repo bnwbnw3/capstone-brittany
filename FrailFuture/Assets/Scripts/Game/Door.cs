@@ -6,6 +6,7 @@ public abstract class Door : MonoBehaviour
     public Material openDoorMaterial;
     public Material closedDoorMaterial;
     protected bool passedThrough;
+    public int TotalTriggerCount { protected set; get; }
 
      void Awake()
     {

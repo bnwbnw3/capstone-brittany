@@ -6,6 +6,7 @@ public class DummyNode : Door
 {
     public void OnTriggerExit(Collider c)
     {
+        TotalTriggerCount++;
         if (collider.isTrigger && c.tag == "Player")
         {
             passedThrough = true;
