@@ -94,12 +94,13 @@
     <Compile Include="Assets\Scripts\AnimationControls\MoveToTarget.cs" />
     <Compile Include="Assets\Scripts\AnimationControls\RailPoint.cs" />
     <Compile Include="Assets\Scripts\AnimationControls\RailPointManager.cs" />
+    <Compile Include="Assets\Scripts\AnimationControls\UpdateLookBySoundManager.cs" />
     <Compile Include="Assets\Scripts\GUI\DialogueBox.cs" />
     <Compile Include="Assets\Scripts\GUI\HUDManager.cs" />
     <Compile Include="Assets\Scripts\GUI\Menu.cs" />
     <Compile Include="Assets\Scripts\GUI\MenuManager.cs" />
+    <Compile Include="Assets\Scripts\GUI\ReturnToMainMenu.cs" />
     <Compile Include="Assets\Scripts\GUI\ScreenFader.cs" />
-    <Compile Include="Assets\Scripts\GUI\SimpleMainMenu.cs" />
     <Compile Include="Assets\Scripts\GUI\UISound.cs" />
     <Compile Include="Assets\Scripts\Game\Door.cs" />
     <Compile Include="Assets\Scripts\Game\DummyNode.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Assets\Scripts\Game\MovementSoundManager.cs" />
     <Compile Include="Assets\Scripts\Game\PathChoice.cs" />
     <Compile Include="Assets\Scripts\Game\ResetButton.cs" />
+    <Compile Include="Assets\Scripts\Game\UpdateVoTexture.cs" />
     <Compile Include="Assets\Scripts\Helper\AccessibleTransform.cs" />
     <Compile Include="Assets\Scripts\Helper\FollowCamera.cs" />
     <Compile Include="Assets\Scripts\Helper\GameObjectSpawner.cs" />
