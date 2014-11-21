@@ -6,11 +6,11 @@ public class EndScript : MonoBehaviour
     public GameObject player;
     public GameObject playerCam;
     public GameObject DONA;
-    public GameObject endLookAt;
+    public Door TriggerToEnableMovement;
     bool hasPlayedDialogue;
     bool hasToldDONAToMove;
     bool hasResetCam;
-    // Use this for initialization
+
     void Start()
     {
         hasPlayedDialogue = false;
@@ -18,7 +18,6 @@ public class EndScript : MonoBehaviour
         hasResetCam = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!SoundManager.soundManager.getAi_IsTalking() && hasPlayedDialogue && !hasToldDONAToMove)
@@ -28,7 +27,7 @@ public class EndScript : MonoBehaviour
         }
         if (hasPlayedDialogue && hasToldDONAToMove && !hasResetCam)
         {
-            if (DONA == null)
+            if (TriggerToEnableMovement.TotalTriggerCount > 0)
             {
                 player.GetComponent<FirstPersonLookAtTarget>().enabled = false;
 
@@ -56,16 +55,20 @@ public class EndScript : MonoBehaviour
             playerCam.GetComponent<MouseLook>().enabled = false;
             StartCoroutine(pauseToGiveAudio(3.5f));
         }
-
     }
 
     private IEnumerator pauseToGiveAudio(float waitTime)
     {
-        SoundManager.soundManager.playOutro();
-        yield return new WaitForSeconds(SoundManager.soundManager.totalOutroAudioTime);
-
+        if (GameControl.control.Ai != null)
+        {
+            SoundManager.soundManager.playOutro();
+            yield return new WaitForSeconds(SoundManager.soundManager.totalOutroAudioTime);
+        }
+        else
+        {
+            yield return new WaitForSeconds(1.0f);
+        }
         player.AddComponent<FirstPersonLookAtTarget>();
-
         player.GetComponent<FirstPersonLookAtTarget>().targetToLookAt = DONA;
         hasPlayedDialogue = true;
     }
