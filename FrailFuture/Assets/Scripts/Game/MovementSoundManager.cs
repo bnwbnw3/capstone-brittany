@@ -10,9 +10,12 @@ public class MovementSoundManager : MonoBehaviour
 
     void Awake()
     {
-        GameControl.control.StartingPlayerVars.pos = transform.position;
-        GameControl.control.StartingPlayerVars.eulerAngles = transform.eulerAngles;
-        GameControl.control.StartingPlayerVars.scale = transform.localScale;
+        if (GameControl.control.StartingPlayerVars != null)
+        {
+            GameControl.control.StartingPlayerVars.pos = transform.position;
+            GameControl.control.StartingPlayerVars.eulerAngles = transform.eulerAngles;
+            GameControl.control.StartingPlayerVars.scale = transform.localScale;
+        }
         wasAirbourne = false;
         wasPressingJump = false;
 
