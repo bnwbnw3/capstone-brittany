@@ -11,7 +11,7 @@ public class PathChoice : Door
     {
         if (c.tag == "Player")
         {
-            GameControl.control.getAi.informOfPick(pathNum);
+            GameControl.control.Ai.informOfPick(pathNum);
             SoundManager.soundManager.playResponse();
         }
     }

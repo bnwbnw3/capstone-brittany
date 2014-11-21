@@ -44,10 +44,10 @@ public class NodeManager : MonoBehaviour
         {
             Destroy(dupplicateObj);
         }
-        conditionToLoadEndScene = GameControl.control.CurrentPlayThrough >= GameControl.control.MinNumPlayThroughs && GameControl.control.getAi.getNeutralityState() != NeutralityTypes.Neutral;
+        conditionToLoadEndScene = GameControl.control.CurrentPlayThrough >= GameControl.control.MinNumPlayThroughs && GameControl.control.Ai.getNeutralityState() != NeutralityTypes.Neutral;
         beginingOfGame = false;
         resetObjSpawners();
-        if (GameControl.control.getAi.getCurrentGraphIndex() != 0)
+        if (GameControl.control.Ai.getCurrentGraphIndex() != 0)
         {
             GameControl.control.EndNodeButtonPressed = false;
         }
@@ -88,7 +88,7 @@ public class NodeManager : MonoBehaviour
 
     void gameWasLoadedAtBegining()
     {
-        if (GameControl.control.getAi.getCurrentGraphIndex() == 0)
+        if (GameControl.control.Ai.getCurrentGraphIndex() == 0)
         {
             //load end scene or hallway
             if (conditionToLoadEndScene)
@@ -117,7 +117,7 @@ public class NodeManager : MonoBehaviour
             loadEndScene();
         }
             //load beginning room with hospital stuff?
-        else if (GameControl.control.getAi.getCurrentGraphIndex() == 0 && !GameControl.control.JustReset)
+        else if (GameControl.control.Ai.getCurrentGraphIndex() == 0 && !GameControl.control.JustReset)
         {
             beginingOfGame = true;
             objectSpawner[0].SetActive(true);
@@ -145,7 +145,7 @@ public class NodeManager : MonoBehaviour
        // mirrorNextObj = true;
         hallwaysUsed.Clear();
         SoundManager.soundManager.playDONADialogue();
-        int inputsAvalible = (!GameControl.control.JustReset && GameControl.control.getAi.getNextGraphEndNodeType() != NeutralityTypes.None) ? 0 : GameControl.control.getAi.getNextInputsFromGraph().Length;
+        int inputsAvalible = (!GameControl.control.JustReset && GameControl.control.Ai.getNextGraphEndNodeType() != NeutralityTypes.None) ? 0 : GameControl.control.Ai.getNextInputsFromGraph().Length;
         GameControl.control.JustReset = (inputsAvalible == 0);
         string name = "" + inputsAvalible + "DoorGUINode";
         onlyShowNode(name);
@@ -201,7 +201,7 @@ public class NodeManager : MonoBehaviour
     void SetUpNode(GameObject node)
     {
         GUINode tempGUINode = (GUINode)node.GetComponentInChildren<GUINode>();
-        tempGUINode.EndNodeType = !GameControl.control.JustReset ? NeutralityTypes.None : GameControl.control.getAi.getNextGraphEndNodeType();
+        tempGUINode.EndNodeType = !GameControl.control.JustReset ? NeutralityTypes.None : GameControl.control.Ai.getNextGraphEndNodeType();
         tempGUINode.resetGUINode();
     }
 
@@ -248,7 +248,7 @@ public class NodeManager : MonoBehaviour
         rand = new System.Random(System.DateTime.Now.GetHashCode());
         GameControl.control.JustReset = false;
         hallwaysUsed = null;
-        conditionToLoadEndScene = GameControl.control.CurrentPlayThrough >= GameControl.control.MinNumPlayThroughs && GameControl.control.getAi.getNeutralityState() != NeutralityTypes.Neutral;
+        conditionToLoadEndScene = GameControl.control.CurrentPlayThrough >= GameControl.control.MinNumPlayThroughs && GameControl.control.Ai.getNeutralityState() != NeutralityTypes.Neutral;
         //mirrorNextObj = false;
         beginingOfGame = false;
         dupplicateObj = null;

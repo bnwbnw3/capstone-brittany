@@ -39,12 +39,12 @@ public class HallwayDialogueVOTrigger : MonoBehaviour
     }
     public void playVODialogue()
     {
-        if (lastVertexKnown != GameControl.control.getAi.getCurrentGraphIndex() || GameControl.control.JustReset)
+        if (lastVertexKnown != GameControl.control.Ai.getCurrentGraphIndex() || GameControl.control.JustReset)
         {
             if (!SoundManager.soundManager.getAi_IsTalking())
             {
                 destroyLargeTrigger();
-                lastVertexKnown = GameControl.control.getAi.getCurrentGraphIndex();
+                lastVertexKnown = GameControl.control.Ai.getCurrentGraphIndex();
                 SoundManager.soundManager.playVODialogue();
             }
         }

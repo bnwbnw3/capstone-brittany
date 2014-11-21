@@ -197,7 +197,7 @@ public class GameControl : MonoBehaviour
     }
 
     //Get-ers
-    public AI getAi
+    public AI Ai
     {
         get { return ai; }
     }

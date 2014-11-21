@@ -26,7 +26,7 @@ public class EndRoomEvents : MonoBehaviour
             NeutralityTypes type = (NeutralityTypes)transform.root.gameObject.GetComponentInChildren<GUINode>().EndNodeType;
             SoundManager.soundManager.playEndMaze(type);
             //reset BackEnd Ai
-            GameControl.control.getAi.findNewPathIfReachedAnEnd();
+            GameControl.control.Ai.findNewPathIfReachedAnEnd();
 
             //make button disapear from view
             Vector3 oldPos = resetButton.transform.position;

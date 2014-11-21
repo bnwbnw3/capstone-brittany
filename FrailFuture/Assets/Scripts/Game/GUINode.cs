@@ -33,7 +33,7 @@ public class GUINode : Door
         //play next audio for path to choose
         if (EndNodeType == NeutralityTypes.None)
         {
-            int pickDoor = GameControl.control.getAi.getDirection();
+            int pickDoor = GameControl.control.Ai.getDirection();
             SoundManager.soundManager.playDirection(pickDoor);
         }
         yield return new WaitForSeconds(secondsToWait);
