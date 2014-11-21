@@ -7,6 +7,7 @@ public class EndScript : MonoBehaviour
     public GameObject playerCam;
     public GameObject DONA;
     public Door TriggerToEnableMovement;
+    public float delayTillAllowMovement= 1.5f;
     bool hasPlayedDialogue;
     bool hasToldDONAToMove;
     bool hasResetCam;
@@ -29,16 +30,7 @@ public class EndScript : MonoBehaviour
         {
             if (TriggerToEnableMovement.TotalTriggerCount > 0)
             {
-                player.GetComponent<FirstPersonLookAtTarget>().enabled = false;
-
-                player.GetComponent<CharacterMotor>().enabled = true;
-                player.GetComponent<FPSInputController>().enabled = true;
-                player.GetComponent<MovementSoundManager>().enabled = true;
-                player.GetComponent<MouseLook>().enabled = true;
-                playerCam.GetComponent<MouseLook>().enabled = true;
-
-                hasResetCam = true;
-                Destroy(this.gameObject);
+                StartCoroutine(waitToAllowPlayerMovement());
             }
         }
     }
@@ -48,6 +40,8 @@ public class EndScript : MonoBehaviour
         if (c.gameObject == player && !hasPlayedDialogue)
         {
             SoundManager.soundManager.stopPlayerSounds();
+            player.AddComponent<FirstPersonLookAtTarget>();
+            player.GetComponent<FirstPersonLookAtTarget>().targetToLookAt = DONA;
             player.GetComponent<CharacterMotor>().enabled = false;
             player.GetComponent<FPSInputController>().enabled = false;
             player.GetComponent<MovementSoundManager>().enabled = false;
@@ -66,10 +60,23 @@ public class EndScript : MonoBehaviour
         }
         else
         {
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(waitTime);
         }
-        player.AddComponent<FirstPersonLookAtTarget>();
-        player.GetComponent<FirstPersonLookAtTarget>().targetToLookAt = DONA;
         hasPlayedDialogue = true;
+    }
+
+    private IEnumerator waitToAllowPlayerMovement()
+    {
+        yield return new WaitForSeconds(delayTillAllowMovement);
+        player.GetComponent<FirstPersonLookAtTarget>().enabled = false;
+
+        player.GetComponent<CharacterMotor>().enabled = true;
+        player.GetComponent<FPSInputController>().enabled = true;
+        player.GetComponent<MovementSoundManager>().enabled = true;
+        player.GetComponent<MouseLook>().enabled = true;
+        playerCam.GetComponent<MouseLook>().enabled = true;
+
+        hasResetCam = true;
+        Destroy(this.gameObject);
     }
 }

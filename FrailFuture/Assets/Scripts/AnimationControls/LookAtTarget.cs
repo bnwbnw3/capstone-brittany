@@ -15,7 +15,7 @@ public class LookAtTarget : MonoBehaviour
 
 	void Update () 
     {
-        if (CanUpdate)
+        if (CanUpdate && TargetToLookAt != null)
         {
             rotateToLookAtTarget(TargetToLookAt.transform.position);
         }

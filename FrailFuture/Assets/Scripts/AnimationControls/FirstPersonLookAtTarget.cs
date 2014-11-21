@@ -13,7 +13,7 @@ public class FirstPersonLookAtTarget : MonoBehaviour
 
     public void rotateToLookAtTarget(GameObject target)
     {
-        float damping = 10.0f;
+        float damping = 3.0f;
         GameObject player = this.gameObject;
         Vector3 objectPosition = target.transform.position;
         Vector3 playerPosition = player.transform.position;
