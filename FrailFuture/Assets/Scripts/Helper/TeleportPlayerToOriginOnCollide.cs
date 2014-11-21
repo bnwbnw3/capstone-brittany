@@ -5,7 +5,6 @@ public class TeleportPlayerToOriginOnCollide : MonoBehaviour
 {
     public Vector3 editorStartingOrigin = new Vector3(0, 0.05f, 0);
     static private Vector3 origin;
-    static private float yRotation = 0;
 
     void Awake()
     {
