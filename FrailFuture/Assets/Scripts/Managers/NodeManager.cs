@@ -52,14 +52,12 @@ public class NodeManager : MonoBehaviour
             GameControl.control.EndNodeButtonPressed = false;
         }
 
-
-
         if (hallwaysUsed == null)
         {
             //first round, start of maze, only needs 1 hallway
             hallwaysUsed = new HashSet<int>() { 1, 2, 3, 4 };
             SetUpHallwayToSeeVo();
-            //If initial index is at 0 we are at the begining of the game. Otherwise we 
+            //If initial index is at 0 we are at the beginning of the game. Otherwise we 
             //are loading in an old game and we should start the player at the current index
 
             if (GameControl.control.WasLoaded)
