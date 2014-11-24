@@ -15,39 +15,37 @@ public class SoundManager : MonoBehaviour
     public List<AudioClip> PickedWrongDoor;
     public List<AudioClip> PickedRightDoor_Desired;
     public List<AudioClip> PickedWrongDoor_Desired;
-    public List<AudioClip> EngingsFromBestToWorst;
+    public List<AudioClip> EndingsFromBestToWorst;
 
     public List<AudioClip> IntroAudio;
 
     public AudioClip OutroAllBeginAudio;
     public List<AudioClip> OutroNeutralityAudio;
     public List<AudioClip> OutroEndingAudio;
-    public float totalOutroAudioTime;
+    public float TotalOutroAudioTime {get; private set;}
 
     public List<AudioClip> DONADialoguePos;
     public List<AudioClip> DONADialogueNeg;
 
     public List<AudioClip> RoomDialogue;
     public List<AudioClip> VODialogue;
-
     public int NumberOfVoDialogue {get {return numOfVoDialogue;}}
-
-    //Do pattern stating later.
-    //public Dictionary<string, List<AudioClip>> patterns;
 
     public static SoundManager soundManager;
     private int numOfVoDialogue;
     private int VO_DIndex = 0;
-    private List<int> DONAResponsesUsed;
+    private List<int> DONAPosResponsesUsed;
+    private List<int> DONANegResponsesUsed;
+    private List<int> DONAPosDialougueUsed;
+    private List<int> DONANegDialougueUsed;
     private int maxAllDONAResetPointAt = 5;
-    private List<int> DONADialougueUsed;
     private System.Random randMaker;
-
 
     private const float normalDonaVol = 2.5f;
     private const float endSceneDonaVol = 3.0f;
     private const float movementVol = 1.0f;
     private const float VoVol = 2.0f;
+
     void Awake()
     {
         if (soundManager == null)
@@ -55,8 +53,10 @@ public class SoundManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             soundManager = this;
             randMaker = new System.Random(System.DateTime.Now.GetHashCode());
-            DONAResponsesUsed = new List<int>();
-            DONADialougueUsed = new List<int>();
+            DONAPosResponsesUsed = new List<int>();
+            DONANegResponsesUsed = new List<int>();
+            DONAPosDialougueUsed = new List<int>();
+            DONANegDialougueUsed = new List<int>();
             numOfVoDialogue = VODialogue.Count - 1;
             if (GameControl.control.WasLoaded)
             {
@@ -107,7 +107,7 @@ public class SoundManager : MonoBehaviour
         {
             end  = OutroEndingAudio[1];
         }
-        totalOutroAudioTime = begin.length + middle.length + end.length + 0.5f;
+        TotalOutroAudioTime = begin.length + middle.length + end.length + 0.5f;
         StartCoroutine(playAllOutro(GameObject.Find("AiSpeaker").audio, begin, middle, end));
     }
 
@@ -126,15 +126,7 @@ public class SoundManager : MonoBehaviour
             while (!dialogueFound)
             {
                  index = randMaker.Next(0, DONADialoguePos.Count);
-                 if (!DONADialougueUsed.Contains(index))
-                 {
-                     DONADialougueUsed.Add(index);
-                     dialogueFound = true;
-                     if (DONADialougueUsed.Count == maxAllDONAResetPointAt)
-                     {
-                         DONADialougueUsed.Clear();
-                     }
-                 }
+                 dialogueFound = keepTrackOfAudioPlayed(DONAPosDialougueUsed, maxAllDONAResetPointAt, index);
             }
             playAudio(DONADialoguePos[index], GameObject.Find("AiSpeaker").audio, normalDonaVol);
         }
@@ -143,16 +135,7 @@ public class SoundManager : MonoBehaviour
             while (!dialogueFound)
             {
                 index = randMaker.Next(0, DONADialogueNeg.Count);
-                if (!DONADialougueUsed.Contains(index))
-                {
-                    DONADialougueUsed.Add(index);
-                    dialogueFound = true;
-
-                    if (DONADialougueUsed.Count == maxAllDONAResetPointAt)
-                    {
-                        DONADialougueUsed.Clear();
-                    }
-                }
+                dialogueFound = keepTrackOfAudioPlayed(DONANegDialougueUsed, maxAllDONAResetPointAt, index);
             }
             playAudio(DONADialogueNeg[index], GameObject.Find("AiSpeaker").audio, normalDonaVol);
         }
@@ -206,35 +189,26 @@ public class SoundManager : MonoBehaviour
         PlayerData pd = GameControl.control.Ai.getLastPickedInfo();
         bool aiIsPos = GameControl.control.Ai.getNeutralityValue() >= 0;
         //grab random index based on having pos or neg neutrality
-        bool foundIndex = false;
+        bool goodIndex = false;
         int index = 0;
-        while (!foundIndex)
+        while (!goodIndex)
         {
             index = randMaker.Next(2, (PickedRightDoor_Desired.Count));
-            if (index % 2 == 0 && aiIsPos)
+            if (aiIsPos)
             {
-                index -= 1;
-            }
-            if (index % 2 != 0 && !aiIsPos)
-            {
-                if (!DONAResponsesUsed.Contains(0))
-                {
-                    index = 0;
-                }
-                else
+                if (index % 2 == 0)
                 {
                     index -= 1;
                 }
+                goodIndex = keepTrackOfAudioPlayed(DONAPosResponsesUsed, maxAllDONAResetPointAt, index);
             }
-            if (!DONAResponsesUsed.Contains(index))
+            else
             {
-                DONAResponsesUsed.Add(index);
-                foundIndex = true;
-
-                if (DONAResponsesUsed.Count == maxAllDONAResetPointAt)
+                if (index % 2 != 0)
                 {
-                    DONAResponsesUsed.Clear();
+                    index = DONANegDialougueUsed.Contains(0) ? (index - 1) : 0;
                 }
+                goodIndex = keepTrackOfAudioPlayed(DONANegResponsesUsed, maxAllDONAResetPointAt, index);
             }
         }
 
@@ -260,6 +234,24 @@ public class SoundManager : MonoBehaviour
                 playAudio(PickedWrongDoor[index], GameObject.Find("AiSpeaker").audio, normalDonaVol);
             }
         }
+    }
+
+    private bool keepTrackOfAudioPlayed(List<int> container, int maxCount, int newIndex)
+    {
+        bool goodIndex = false;
+        if (!container.Contains(newIndex))
+        {
+            container.Add(newIndex);
+            goodIndex = true;
+
+            if (container.Count == maxCount)
+            {
+                container.Clear();
+                //make sure same indexes are not played in a row when reseting.
+                container.Add(newIndex);
+            }
+        }
+        return goodIndex;
     }
 
     private void playAudio(AudioClip clip, AudioSource source, float volume = 1.0f, bool loopMe = false)

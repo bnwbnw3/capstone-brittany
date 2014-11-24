@@ -56,7 +56,7 @@ public class EndScript : MonoBehaviour
         if (GameControl.control.Ai != null)
         {
             SoundManager.soundManager.playOutro();
-            yield return new WaitForSeconds(SoundManager.soundManager.totalOutroAudioTime);
+            yield return new WaitForSeconds(SoundManager.soundManager.TotalOutroAudioTime);
         }
         else
         {
