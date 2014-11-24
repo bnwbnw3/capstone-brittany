@@ -16,7 +16,8 @@ public class DummyNode : Door
 
     public void resetDummyNode()
     {
-        openingNode();
+        collider.isTrigger = true;
         passedThrough = false;
+        openingNode();
     }
 }

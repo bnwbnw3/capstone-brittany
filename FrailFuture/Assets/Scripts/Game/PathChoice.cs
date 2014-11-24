@@ -17,6 +17,7 @@ public class PathChoice : Door
     }
     public void resetPath()
     {
+        collider.isTrigger = true;
         passedThrough = false;
         openingNode();
     }

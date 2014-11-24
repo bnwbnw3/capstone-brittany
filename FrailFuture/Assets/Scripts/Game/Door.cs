@@ -18,24 +18,16 @@ public abstract class Door : MonoBehaviour
     {
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (!passedThrough)
+        if (SoundManager.soundManager.getAi_IsTalking())
         {
-            if (collider.isTrigger)
-            {
-                if (SoundManager.soundManager.getAi_IsTalking())
-                {
-                    closingNode();
-                }
-            }
-            else
-            {
-                openingNode();
-            }
+            closingNode();
         }
-
+        else if (!passedThrough && !SoundManager.soundManager.getAi_IsTalking())
+        {
+           openingNode();
+        }
         OnUpdate();
     }
     protected virtual void OnUpdate() {}

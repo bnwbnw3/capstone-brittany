@@ -24,8 +24,9 @@ public class GUINode : Door
 
     public void resetGUINode()
     {
-        openingNode();
+        collider.isTrigger = true;
         passedThrough = false;
+        openingNode();
     }
 
     public IEnumerator closeNode(float secondsToWait)
