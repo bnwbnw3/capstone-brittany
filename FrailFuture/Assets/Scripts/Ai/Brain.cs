@@ -22,6 +22,7 @@ public class Brain
 
     public void checkUserChoice(int userChoice)
     {
+        Debug.Log("Delivered Choice: " +lastChoiceToDeliver+ ", User Picked: " + userChoice + ", Choice Desired: " + lastDesiredChoice);
         bd.totalPossible++;
         picksGivenNumCheck(userChoice);
         picksSpecificNumCheck(userChoice);
@@ -29,6 +30,7 @@ public class Brain
         picksFarthestNumCheck(userChoice);
         picksReccesionWrapNumCheck(userChoice);
         picksSuccesionWrapNumCheck(userChoice);
+        picksFollowNotFollowkNumCheck(userChoice);
 
         if (userChoice == lastDesiredChoice)
         {
@@ -57,12 +59,14 @@ public class Brain
         int picksFarthestNumR = picksFarthestNumPattern();
         int picksSuccesionWrapNumR = picksSuccesionWrapNumPattern();
         int picksReccesionWrapNumR = picksReccesionWrapNumPattern();
+        int picksFollowNotFollowNumR = picksFollowNotFollowkNumPattern();
 
-        final = checkValidityToChange(picksSuccesionWrapNumR, final);
-        final = checkValidityToChange(picksReccesionWrapNumR, final);
-        final = checkValidityToChange(picksFarthestNumR, final);
-        final = checkValidityToChange(picksDoubleBackNumR, final);
-        final = checkValidityToChange(picksSpecificNumR, final);
+        final = checkValidityToChange("Succession Wrap", picksSuccesionWrapNumR, final);
+        final = checkValidityToChange("Recession Wrap", picksReccesionWrapNumR, final);
+        final = checkValidityToChange("Farthest Number", picksFarthestNumR, final);
+        final = checkValidityToChange("Double Back", picksDoubleBackNumR, final);
+        final = checkValidityToChange("Specific Number", picksSpecificNumR, final);
+        final = checkValidityToChange("Follow, Not Follow", picksFollowNotFollowNumR, final);
 
         if (final == -1)
         {
@@ -72,9 +76,16 @@ public class Brain
         return final;
     }
 
-    private int checkValidityToChange(int value, int original)
+    private int checkValidityToChange(string pattern, int newValue, int original)
     {
-        return (value > 0) && (value < inputs.Length) ? value : original;
+        int toReturn = original;
+
+        if ((newValue > 0) && (newValue <= inputs.Length))
+        {
+            Debug.Log("Using Pattern: " + pattern);
+            toReturn = newValue;
+        }
+        return toReturn;
     }
 
     private int picksGivenNumPattern()
@@ -282,6 +293,38 @@ public class Brain
         }
     }
 
+    private int picksFollowNotFollowkNumPattern()
+    {
+        int toReturn = -1;
+        if (bd.pastPatterns["PicksFollowNotFollowkNum"] > 0)
+        {
+            PlayerData lastAction = bd.pastActions.Get(bd.pastActions.Count - 1);
+            //If last time user did not pick instruction, this time they will not.
+            bool willNotPickNextDesired = lastAction.picked == lastAction.delivered;
+
+            if (willNotPickNextDesired)
+            {
+                toReturn = grabNextBestNumberMostPicked();
+            }
+        }
+        resetPatternIfOver(5, "PicksFollowNotFollowkNum");
+        return toReturn;
+    }
+    private void picksFollowNotFollowkNumCheck(int userChoice)
+    {
+        if (bd.pastActions.Count >= 2)
+        {
+            bool followedDirections1 = bd.pastActions.Get(bd.pastActions.Count - 2).picked == bd.pastActions.Get(bd.pastActions.Count - 2).delivered;
+            bool followedDirections2 = bd.pastActions.Get(bd.pastActions.Count - 1).picked == bd.pastActions.Get(bd.pastActions.Count - 1).delivered;
+            bool followedDirections3 = userChoice == lastChoiceToDeliver;
+            bool isInPattern = checkPatternHelper((followedDirections1 != followedDirections2 && followedDirections1 == followedDirections3), "PicksFollowNotFollowkNum");
+            if (!isInPattern && bd.pastPatterns["PicksFollowNotFollowkNum"] > 0)
+            {
+                bd.pastPatterns["PicksFollowNotFollowkNum"] = 0;
+            }
+        }
+    }
+
     private bool checkPatternHelper(bool condition, string key)
     {
         bool toReturn = false;
@@ -362,6 +405,7 @@ public class Brain
         addKeyToPatternCount("PicksFarthestNum");
         addKeyToPatternCount("PicksSuccesionWrapNum");
         addKeyToPatternCount("PicksReccesionWrapNum");
+        addKeyToPatternCount("PicksFollowNotFollowkNum");
     }
 
     //adds if doesn't exist
