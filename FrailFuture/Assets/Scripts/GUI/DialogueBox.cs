@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class DialogueBox : MonoBehaviour {
 
     public List<Text> textBoxs;
+    public int IndexInUse { private set; get; }
 	// Use this for initialization
 	void Start () {
 	
@@ -18,10 +19,11 @@ public class DialogueBox : MonoBehaviour {
 
     public void EnableMyText(int indexOfTestToUse)
     {
+        IndexInUse = indexOfTestToUse;
         DisableMyText();
-        if (indexOfTestToUse < textBoxs.Count && indexOfTestToUse >= 0)
+        if (IndexInUse < textBoxs.Count && IndexInUse >= 0)
         {
-            textBoxs[indexOfTestToUse].gameObject.SetActive(true);
+            textBoxs[IndexInUse].gameObject.SetActive(true);
         }
     }
 

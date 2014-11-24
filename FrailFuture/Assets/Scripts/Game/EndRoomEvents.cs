@@ -7,6 +7,7 @@ using System.Linq;
 public class EndRoomEvents : MonoBehaviour 
 {
     public GameObject player;
+    public int ButtonNum;
 
     private GameObject resetButton;
     private GameObject instructionBox;
@@ -23,8 +24,9 @@ public class EndRoomEvents : MonoBehaviour
 
             transform.collider.isTrigger = false;
             //get the top parent, which holds neutrality, and grab neutrality
-            NeutralityTypes type = (NeutralityTypes)transform.root.gameObject.GetComponentInChildren<GUINode>().EndNodeType;
-            SoundManager.soundManager.playEndMaze(type);
+            NeutralityTypes neuType = (NeutralityTypes)transform.root.gameObject.GetComponentInChildren<GUINode>().EndNodeType;
+            neuType = setFinalNeutrality(neuType);
+            SoundManager.soundManager.playEndMaze(neuType);
             //reset BackEnd Ai
             GameControl.control.Ai.findNewPathIfReachedAnEnd();
 
@@ -39,10 +41,29 @@ public class EndRoomEvents : MonoBehaviour
             float buffer = 3.0f;
             float scriptWaitTime = GameObject.Find("AiSpeaker").audio.clip.length + buffer;
             float timeTillDelete = scriptWaitTime * (0.5f);
-            spawnEndRoomStuff(type,timeTillDelete, scriptWaitTime, c);
+            spawnEndRoomStuff(neuType,timeTillDelete, scriptWaitTime, c);
             StartCoroutine(ResetGame(scriptWaitTime, c));
             StartCoroutine(FadeScreen(scriptWaitTime - 2));
         }
+    }
+
+    private NeutralityTypes setFinalNeutrality(NeutralityTypes startWith)
+    {
+        Neutrality temp = new Neutrality(startWith);
+        int instructionBoxTextIndex = instructionBox.GetComponent<DialogueBox>().IndexInUse;
+        //0 = do not push buttonNum 0
+        //1 = do not push buttonNum 1
+        if (instructionBoxTextIndex == ButtonNum)
+        {
+            temp.Add(temp.getAdditiveFromNeutrality(NeutralityTypes.Agitated));
+        }
+        else
+        {
+            temp.Add(temp.getAdditiveFromNeutrality(NeutralityTypes.Lovely));
+        }
+
+        GameControl.control.Ai.editNeutrality(temp.Value / 2.0f);
+        return temp.getState();
     }
 
     private GameObject findEndNodeScriptGameObjs(string name)

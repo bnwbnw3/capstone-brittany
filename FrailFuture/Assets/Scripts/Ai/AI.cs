@@ -22,7 +22,7 @@ public class AI
           SizedList<PlayerData> temp = new SizedList<PlayerData>(10);
           BrainData bd = new BrainData() { pastPatterns = new Dictionary<string, int>(), pastActions = temp };
           Brain brain = new Brain(bd);
-          Neutrality neutrality = new Neutrality(0);
+          Neutrality neutrality = new Neutrality(0.0f);
           AIEndingsScore score = new AIEndingsScore();
 
           ConstructorHelper(MazeGenerator.getAProcedurallyGenMaze(), neutrality, brain, score);
@@ -103,10 +103,7 @@ public class AI
                {
                    _score.scoreOfPickingAiSecondBestEnding++;
                }
-               //UPDATE NEUTRALITY
-               float change = _neutrality.getAdditiveFromNeutrality(_mazeInfo.mazeEndIndexs.First(n => n.Value == endIndexWas).Key);
-            _neutrality.Add(change);
-
+              
                //set new neutrality after effects from last game
                 AiDesiredEndIndex = _mazeInfo.mazeEndIndexs[_neutrality.getState()];
                 AiCurrentDesire = pf.findNextDesiredInput(0, AiDesiredEndIndex, getNeutralityValue()).input;
@@ -115,6 +112,29 @@ public class AI
                setNextInputsFromCurrentGraphPosition();
                directionGiven = _brain.getChoiceToDeliver(inputsAvalible, AiCurrentDesire);
            }
+    }
+
+    public bool editNeutrality(NeutralityTypes neuTypeToGetAdditive)
+    {
+        bool canUpdate = pf.getIsEndOfPath();
+        if (canUpdate)
+        {
+            //UPDATE NEUTRALITY
+            float change = _neutrality.getAdditiveFromNeutrality(neuTypeToGetAdditive);
+            _neutrality.Add(change);
+        }
+        return canUpdate;
+    }
+
+    public bool editNeutrality(float additive)
+    {
+        bool canUpdate = pf.getIsEndOfPath();
+        if (canUpdate)
+        {
+            //UPDATE NEUTRALITY
+            _neutrality.Add(additive);
+        }
+        return canUpdate;
     }
 
     private void setNextInputsFromCurrentGraphPosition()

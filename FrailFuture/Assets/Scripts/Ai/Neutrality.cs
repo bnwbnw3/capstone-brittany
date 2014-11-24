@@ -4,16 +4,23 @@ public class Neutrality
 {
     private const float maxPosNeutrality = 1;
     private const float maxNegNeutrality = -1;
-    private float devidePoint;
     private int numOfNeutralityTypes;
     public float Value { get; set; }
+    public float DevidePoint {private set; get;}
 
     public Neutrality(float beginAt = 0)
     {
         Value = beginAt;
         //-2 for the Neutrality of None and COUNT
         numOfNeutralityTypes = (Enum.GetNames(typeof(NeutralityTypes)).Length) - 2;
-        devidePoint = (maxPosNeutrality + Math.Abs(maxNegNeutrality)) / numOfNeutralityTypes;
+        DevidePoint = (maxPosNeutrality + Math.Abs(maxNegNeutrality)) / numOfNeutralityTypes;
+    }
+    public Neutrality(NeutralityTypes Type)
+    {
+        //-2 for the Neutrality of None and COUNT
+        numOfNeutralityTypes = (Enum.GetNames(typeof(NeutralityTypes)).Length) - 2;
+        DevidePoint = (maxPosNeutrality + Math.Abs(maxNegNeutrality)) / numOfNeutralityTypes;
+        setValueFromNeutrality(Type);
     }
 
     public void Add(float amount)
@@ -29,19 +36,19 @@ public class Neutrality
         float additive = 0;
         if (type == NeutralityTypes.Heavenly)
         {
-            additive += devidePoint;
+            additive += DevidePoint;
         }
         else if (type == NeutralityTypes.Lovely)
         {
-            additive += (devidePoint / 2.0f);
+            additive += (DevidePoint / 2.0f);
         }
         else if (type == NeutralityTypes.Agitated)
         {
-            additive -= (devidePoint / 2.0f);
+            additive -= (DevidePoint / 2.0f);
         }
         else if (type == NeutralityTypes.Evil)
         {
-            additive -= devidePoint;
+            additive -= DevidePoint;
         }
         return additive;
     }
@@ -50,24 +57,47 @@ public class Neutrality
     public NeutralityTypes getState()
     {
         NeutralityTypes state = NeutralityTypes.Neutral;
-        float halfNeg = -devidePoint / 2.0f;
-        float halfPos = devidePoint / 2.0f;
-        if (Value <= halfNeg && Value >= (-devidePoint + halfNeg))
+        float halfNeg = -DevidePoint / 2.0f;
+        float halfPos = DevidePoint / 2.0f;
+        if (Value <= halfNeg && Value > (-DevidePoint + halfNeg))
         {
             state = NeutralityTypes.Agitated;
         }
-        else if (Value < (-devidePoint + halfNeg))
+        else if (Value <= (-DevidePoint + halfNeg))
         {
             state = NeutralityTypes.Evil;
         }
-        if (Value >= halfPos && Value <= (devidePoint + halfPos))
+        if (Value >= halfPos && Value < (DevidePoint + halfPos))
         {
             state = NeutralityTypes.Lovely;
         }
-        else if (Value > (devidePoint + halfPos))
+        else if (Value >= (DevidePoint + halfPos))
         {
             state = NeutralityTypes.Heavenly;
         }
         return state;
+    }
+
+    private void setValueFromNeutrality(NeutralityTypes neutrality)
+    {
+        float halfNeg = -DevidePoint / 2.0f;
+        float halfPos = DevidePoint / 2.0f;
+
+        if (neutrality == NeutralityTypes.Agitated)
+        {
+            Value = halfNeg;
+        }
+        else if (neutrality == NeutralityTypes.Evil)
+        {
+            Value = -DevidePoint + halfNeg;
+        }
+        else if (neutrality == NeutralityTypes.Lovely)
+        {
+            Value = halfPos;
+        }
+        else if (neutrality == NeutralityTypes.Heavenly)
+        {
+            Value = DevidePoint + halfPos;
+        }
     }
 }
