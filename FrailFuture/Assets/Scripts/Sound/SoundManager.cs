@@ -157,7 +157,7 @@ public class SoundManager : MonoBehaviour
     {
         if (neutralityOfEnding != NeutralityTypes.None)
         {
-            playAudio(EngingsFromBestToWorst[(int)neutralityOfEnding], GameObject.Find("AiSpeaker").audio, normalDonaVol);
+            playAudio(EndingsFromBestToWorst[(int)neutralityOfEnding], GameObject.Find("AiSpeaker").audio, normalDonaVol);
         }
     }
 
