@@ -34,7 +34,9 @@ public class NodeManager : MonoBehaviour
     {
         if (GameControl.control.NumberOfHallwaySections == 1)
         {
+            //force allways show Vo.
             hallwaysUsed = new HashSet<int>() { 1, 2, 3, 4 };
+            CountSinceLastVo = 2;
         }
     }
 
