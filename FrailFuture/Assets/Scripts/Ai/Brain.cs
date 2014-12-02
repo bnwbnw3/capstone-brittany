@@ -22,7 +22,7 @@ public class Brain
 
     public void checkUserChoice(int userChoice)
     {
-        Debug.Log("Delivered Choice: " +lastChoiceToDeliver+ ", User Picked: " + userChoice + ", Choice Desired: " + lastDesiredChoice);
+       // Debug.Log("Delivered Choice: " +lastChoiceToDeliver+ ", User Picked: " + userChoice + ", Choice Desired: " + lastDesiredChoice);
         bd.totalPossible++;
         picksGivenNumCheck(userChoice);
         picksSpecificNumCheck(userChoice);
@@ -140,7 +140,7 @@ public class Brain
     }
     private void picksSpecificNumCheck(int userChoice)
     {
-        if(bd.pastActions.Count >= 1)
+        if(bd.pastActions.Count > 0)
         {
             if (checkPatternHelper((userChoice == bd.pastActions.Get(bd.pastActions.Count - 1).picked), "PicksSpecificNum"))
             {
@@ -193,7 +193,7 @@ public class Brain
     {
         int toReturn = -1;
 
-        if(bd.pastPatterns["PicksFarthestNum"] > 1 && bd.pastPatterns["PicksGivenNum"] < 0 && inputs.Length >= 3)
+        if(bd.pastPatterns["PicksFarthestNum"] > 0 && bd.pastPatterns["PicksGivenNum"] < 0 && inputs.Length >= 3)
         {
             if (lastDesiredChoice == inputs[0])
             {
