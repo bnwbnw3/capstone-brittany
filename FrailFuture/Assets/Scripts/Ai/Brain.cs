@@ -30,7 +30,7 @@ public class Brain
         picksFarthestNumCheck(userChoice);
         picksReccesionWrapNumCheck(userChoice);
         picksSuccesionWrapNumCheck(userChoice);
-        picksFollowNotFollowkNumCheck(userChoice);
+        PicksFollowNotFollowNumCheck(userChoice);
 
         if (userChoice == lastDesiredChoice)
         {
@@ -59,7 +59,7 @@ public class Brain
         int picksFarthestNumR = picksFarthestNumPattern();
         int picksSuccesionWrapNumR = picksSuccesionWrapNumPattern();
         int picksReccesionWrapNumR = picksReccesionWrapNumPattern();
-        int picksFollowNotFollowNumR = picksFollowNotFollowkNumPattern();
+        int picksFollowNotFollowNumR = PicksFollowNotFollowNumPattern();
 
         final = checkValidityToChange("Succession Wrap", picksSuccesionWrapNumR, final);
         final = checkValidityToChange("Recession Wrap", picksReccesionWrapNumR, final);
@@ -293,10 +293,10 @@ public class Brain
         }
     }
 
-    private int picksFollowNotFollowkNumPattern()
+    private int PicksFollowNotFollowNumPattern()
     {
         int toReturn = -1;
-        if (bd.pastPatterns["PicksFollowNotFollowkNum"] > 0)
+        if (bd.pastPatterns["PicksFollowNotFollowNum"] > 0)
         {
             PlayerData lastAction = bd.pastActions.Get(bd.pastActions.Count - 1);
             //If last time user did not pick instruction, this time they will not.
@@ -307,20 +307,20 @@ public class Brain
                 toReturn = grabNextBestNumberMostPicked();
             }
         }
-        resetPatternIfOver(5, "PicksFollowNotFollowkNum");
+        resetPatternIfOver(5, "PicksFollowNotFollowNum");
         return toReturn;
     }
-    private void picksFollowNotFollowkNumCheck(int userChoice)
+    private void PicksFollowNotFollowNumCheck(int userChoice)
     {
         if (bd.pastActions.Count >= 2)
         {
             bool followedDirections1 = bd.pastActions.Get(bd.pastActions.Count - 2).picked == bd.pastActions.Get(bd.pastActions.Count - 2).delivered;
             bool followedDirections2 = bd.pastActions.Get(bd.pastActions.Count - 1).picked == bd.pastActions.Get(bd.pastActions.Count - 1).delivered;
             bool followedDirections3 = userChoice == lastChoiceToDeliver;
-            bool isInPattern = checkPatternHelper((followedDirections1 != followedDirections2 && followedDirections1 == followedDirections3), "PicksFollowNotFollowkNum");
-            if (!isInPattern && bd.pastPatterns["PicksFollowNotFollowkNum"] > 0)
+            bool isInPattern = checkPatternHelper((followedDirections1 != followedDirections2 && followedDirections1 == followedDirections3), "PicksFollowNotFollowNum");
+            if (!isInPattern && bd.pastPatterns["PicksFollowNotFollowNum"] > 0)
             {
-                bd.pastPatterns["PicksFollowNotFollowkNum"] = 0;
+                bd.pastPatterns["PicksFollowNotFollowNum"] = 0;
             }
         }
     }
@@ -405,7 +405,7 @@ public class Brain
         addKeyToPatternCount("PicksFarthestNum");
         addKeyToPatternCount("PicksSuccesionWrapNum");
         addKeyToPatternCount("PicksReccesionWrapNum");
-        addKeyToPatternCount("PicksFollowNotFollowkNum");
+        addKeyToPatternCount("PicksFollowNotFollowNum");
     }
 
     //adds if doesn't exist
