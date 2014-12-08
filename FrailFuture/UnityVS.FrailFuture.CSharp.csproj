@@ -15,6 +15,9 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
+    <UnityVersion>4.6.0b20</UnityVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -134,6 +137,8 @@
     <Compile Include="Assets\Scripts\Sound\SetIntroCineAudio.cs" />
     <Compile Include="Assets\Scripts\Sound\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Sound\ThemeMusicPlayer.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Assets\Destroyed_city_FREE\Shaders\AlphaTest-DiffuseDoubleSide.shader" />
     <None Include="Assets\Destroyed_city_FREE\Standard Assets\Water (Pro Only)\Sources\Shaders\FX-Water.shader" />
     <None Include="Assets\ProCore\Prototype\About\changelog.txt" />
@@ -146,10 +151,6 @@
     <None Include="Assets\ProCore\Prototype\Shader\UnlitColor-Overlay.shader" />
     <None Include="Assets\ProCore\Prototype\Shader\VertexBillboard.shader" />
     <None Include="Assets\ProCore\Shared\About\README.txt" />
-    <None Include="Assets\ProCore\Prototype\Classes\ProBuilderCore.dll" />
-    <None Include="Assets\ProCore\Prototype\Classes\ProBuilderMeshOps.dll" />
-    <None Include="Assets\ProCore\Shared\Code\ProCore.dll" />
-    <None Include="Assets\ProCore\Shared\Code\SixBySeven.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />
 </Project>

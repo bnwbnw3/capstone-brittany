@@ -15,6 +15,9 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectType>Editor:5</UnityProjectType>
+    <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
+    <UnityVersion>4.6.0b20</UnityVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -115,6 +118,8 @@
     <Compile Include="Assets\ProCore\Prototype\Editor\ProBuilderMenuItems.cs" />
     <Compile Include="Assets\ProCore\Prototype\Editor\pb_Preferences.cs" />
     <Compile Include="Assets\ProCore\Shared\About\Editor\pc_AboutWindow.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Assets\Destroyed_city_FREE\Shaders\AlphaTest-DiffuseDoubleSide.shader" />
     <None Include="Assets\Destroyed_city_FREE\Standard Assets\Water (Pro Only)\Sources\Shaders\FX-Water.shader" />
     <None Include="Assets\ProCore\Prototype\About\changelog.txt" />
@@ -127,10 +132,6 @@
     <None Include="Assets\ProCore\Prototype\Shader\UnlitColor-Overlay.shader" />
     <None Include="Assets\ProCore\Prototype\Shader\VertexBillboard.shader" />
     <None Include="Assets\ProCore\Shared\About\README.txt" />
-    <None Include="Assets\ProCore\Prototype\Editor\ProBuilderEditor.dll" />
-    <None Include="Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll" />
-    <None Include="Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Messaging.dll" />
-    <None Include="Assets\UnityVS\Editor\UnityVS.VersionSpecific.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />
 </Project>
