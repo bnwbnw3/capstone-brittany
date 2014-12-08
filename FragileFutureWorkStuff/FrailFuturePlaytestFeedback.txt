@@ -1,0 +1,172 @@
+Playtesting Frail Future
+can glitch through walls
+
+
+Kody Fike
+screen resolution wrong on start up
+really like the menu
+loading cube  is cool
+like to have subtitles
+bee able to skip dialogue
+
+Andrew Velez
+Either way?
+Vo dialogue played  after end node reached(fixed? in resetgame from end room events reset player pos before load room)
+game broke at a node (door 3) (fixed?) if not look back into showNextHall() in Node Manager NOT FIXED
+
+Ambrose Piambo
+kinda laggy
+assuming i can't go that way (red door) so I'll go the other way
+Dang she tricked me.
+(Green gas) oh god, oh god, well yolo
+So I choose the right door and didn't get congradulated so im choose the wrong door  next time
+i really like VO and the voice acting
+
+Bug:Same insult in a row.
+I turned around to see if there was something hidden back there but there wasn't
+ok Dona's learning what doors I go through
+
+Bug: After go through end node vo dialogue does not turn off
+Bug: after go through door 2 game broke
+Bugish: Random Generate hallway when there are fewer better. getting 0 and then then same hallway a lot
+I like how baren it is and Vo is the only way to get information.
+but why do i have to go through so many gates. are some of them just gates?
+if i listen to her she's only telling me to go through door number 1
+
+Let you choose your save click on it. instead of type your name.
+Save click noise sounds odd
+
+did not hit the end scene
+
+<-------------------------------------------> 
+Kody Fike**
+likes Vo, the design
+1 meter wall what is it for?
+do you like cake or cookies (laughs) it's funny
+good dialogue
+at the endings .. what? that was random (was given food and flowers - neutral ending)
+i like the explanation of the gates and how you go through them
+Bug: Dona dialogue repeated (go talk to Vo)
+Bug: Vo talked after end room with money hit with out touching collider, talked after neutral ending.
+I like how dona talks after door picked its very smart sounding
+end node where you repeat the game have no teleporting, have a way to walk to the new thing. OR make visual teleportation.
+instead of red have a close door thing
+Not muc replay-ability just going through door, after door, after door
+
+Kevin Garcia
+Audio cuts off when vo is saying mr banks likes donna better at the end of it.
+make sure to hard reset player chars position at the end of a room.
+^ pressing escape a lot  at the end node while fading makes you stuck in end node room
+if pause while standing on Vo it will bug out and continue to spink, then reseting is weird
+BUG: Bed does not show up on second new start game.
+AFter 3 play throughs don't feel like playing again.
+I can't imagin her with a body form
+ctrl = crouch?
+you can really tell when shes evil, not so much when she's good/happy
+But: spawned items are getting stuck on roof/in roof
+During Dialogue be able to do something to keep me interacting not just listening
+d
+
+
+Karl
+Options menus seem odd: the slide bar seems like it should go across the text area
+nice loading screen
+sensitivity of mouse is high on start
+wish I could pause during talk/dialogue
+green feels like it should only let you go through once always
+i like the aesthetics, good portl-esc feel
+some audio feels like there is no emotion
+ctrl = crouch? shift run -> eh?
+pause menu sometimes/oftenish blinks when you open it.
+Rouge Ai = Dona
+"I'm sorry I'm talking this way, I truly care about your safety" I don't understand this statement
+nice to have dialogue while doing something
+More variety in how choose to disobey, not just doors.
+^ "Please move calm and quick..." I should be able to not move and she comments
+Green doors dialogue : Wait so are each piece in betweeen green just individual pieces
+has on psyche she hasn't tried to do anyhting yet.
+no collision detection, now it's back? guess it didn't do anything
+she's evil i don't care what intent she has.(Dona)
+Her commentary is kinda hilarious sometimes (Are you deaf)
+Vo is now looping audio
+somehting bigger should have happened by now
+Dona tell you at end node what button is, if you should or should not push it.
+She was being nice, i went through wrong door, she said she had to trick me? now she's not being nice? i dont get it
+End scene after green gas -> wait i thought i was dead? am i Vo?
+I want to skip the opening now that I've heard it
+Not muc replay-ability just going through door, after door, after door.
+Need more variety
+Bug:Jumppy bug in middle of room possible to be the end node trigger button, somehow still affecting palyer.
+No change from Neutral to Happy sound-wise. I want a change.
+doesn't seem there is a right or wrong path. no cociquence really, no incentive to do right except being a pawn
+More feedback if you fail or do what she says
+reward for following commands.
+
+If just using doors, make game shorter than default
+
+Look up stup about atominity GameTheory youtube. I don't feel like my actions do anything.
+
+---------------------------------------------
+Emmerson Shafer
+
+good intro dialgoue just short enough to get across info
+Dona is a bit quite
+ooh i can't go back
+pause between audios for Vo there should be a pause for Donas waiting for you
+keep wanting to go back but i can't
+Improvement: mirror rooms with doors just have a copy.
+		adds a feel of control
+		right now feels really linear
+		could mirror where there is a decision
+		mirror some hallways, mirror path selection
+didn't know what button would do. felt traped. if i died or ending game wouldn't like that.
+i liked it but i didn't like the button, felt i had no control. have like a warning do not press button, then i feel like i want to.
+I want a choice to press the button, I feel like this game is about choice but i had no choice to press the button or not.
+I really like Vo and her voice and her character
+dont let Vo's audio loop, at the end of Vo's dialogue make game end. when it loops i lose interest
+felt like Dona knew what i was doing
+felt to long, maximum should be the length i just payed
+min length should be half audio 1 play to end node, second half audio for the 2ne play to end node, then end.
+Felt immediatly that Dona was learning what I do, I felt I couldn't trick her. (good thing)
+relaly felt a good story-line as long as Vo was giving more dialogue I really enjoyed the game.
+
+
+
+------------------------------------------------------------------------------------
+Things to do:
+****
+Improvements : 
+mirror rooms with doors just have a copy.
+		adds a feel of control
+		right now feels really linear
+		could mirror where there is a decision
+		mirror some hallways, mirror path selection
+only let Vo's room show up a certain amount of times so that dialogue NEVER loops
+		change random hallways so that 0th room only shows up some of the time.	
+get rid of green doors that don't do anyhting in middle of hallway
+green feels like it should only let you go through once always
+have pop up of random do/do not push button at end node
+reduce game length a little?
+Make resolution only allow certain values
+Raise volume of end audio files, DONA dialogue
+subtitles for dialogue?
+Add intro scene that tells the beginning dialogue
+		have Jake be narator
+		
+Fixed: (Tested)
+Sound Manager crashes game
+mouse icon not showing up when it needs to
+Dona dialogue repeating
+Vo dialogue repeating
+Random hallway generation messed up
+pause menu sometimes/oftenish blinks when you open it.
+Bed does not show up on second new start game.
+spawned items are getting stuck on roof/in roof
+^ pressing escape a lot  at the end node while fading makes you stuck in end node room
+if pause while standing on Vo it will bug out and continue to spin, then reseting is weird
+
+Fixed NOT TESTED:
+
+BUGs: 
+
+

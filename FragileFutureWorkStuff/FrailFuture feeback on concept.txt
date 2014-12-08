@@ -1,0 +1,7 @@
+Adding suggestions (Frail Future)
+
+If player doesn't move for a while have Ai say something - Talan
+If they try to go backwards say something about it  - Daniel Nipper
+have an area that's open with different doors that don't necessarily go to specific thing
+	have side rooms that are path choices - Luis
+bad consequence of choosing wrong door. (like getting shocked) - Tyler

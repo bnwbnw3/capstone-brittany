@@ -1,0 +1,10 @@
+new functionality
+Add GameOver restart after going through 3 diff generated graphs. save how many player has gone through.
+Add Game Over with cut scene of DONA
+	get audio for 5 neutrality endings
+	set up scene
+	animate Dona
+	
+PLAYTEST!!!
+	
+Change enviorment or make it more like game involving DONA's neutrality. (If DONA gets mad make it harder for the player to move around)

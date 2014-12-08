@@ -1,0 +1,5 @@
+To make me sound robotic in Audacity:
+ctrl A
+effect -> change pitch -> -15%
+effect -> echo -> Delay Time = .015 & Decay factor = .65
+effect -> change tempo -> -7

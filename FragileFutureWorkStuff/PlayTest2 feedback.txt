@@ -1,0 +1,181 @@
+Playtest session 2 notes
+
+DAY 1
+----------------------------------------------------------------------------------------------------------------------
+
+Carver Anglin (1st Timer)
+intro cinema, 
+	felt boring just walking down path
+	felt like the same stuff all around me maybe more diversity
+	story is good
+	audio felt like a few parts were a little messed up
+game
+ That was kinda a weird ending all the sudden I'm somewhere else.	
+ No visible sign that Vo has actually shut down
+ if you walk partially through a door and then back it will close. you can get stuck
+ 
+Cut scene ending:
+felt awakward that I couldn't look around during that scene
+un natural long pause after she was gone untill I could move
+
+
+
+Bryce Ellsworth (1st Timer)
+
+intro cinema:
+interesting, hard to hear voice
+end of it, fade out manually to main menu
+
+
+game:
+I'm confused I pushed the button two different times and got the same result. (neutral)
+The halls all look the same, idk if I've ever hit an end or not.
+This time I got cookies 
+
+End scene:
+felt abrupt
+
+General: (Bryce & Carver)
+it was a, did I actually hit an ending? I don't know
+I didn't know if I was making progress, rooms being so similar
+I felt like I was in a loop
+didn't like when I herd Dona say the same thing
+	no variation in audio for tricking you or comments
+		cookies cake better
+two buttons should have a 100% showing of difference that occurred.
+	perhaps button can change end node type?
+don't like wall texture
+I like overall voice, but not repetitiveness
+like overall concept
+like narrative, but i don't like the inability to do stuff while they are talking.
+I would like to hear the narritive as I am walking.
+didn't feel like there was a ton of feedback to player as i was moving along, some way to clarify what is happening.
+Maybe dont let Dona talk normal dialogue every time so less looping
+	add more audio(good job your getting there, your moving forward)
+
+
+Clayton Zaugg (1st Timer)
+Intro cinema
+Hard turns smooth them out it would be much better fine tuned
+Have button main menu go away if not moving mouse
+Subtitles for scene
+
+ Game
+Laughs at audio (good) intro with VO
+Cake or cookies better audio repeated
+I wonder if I have to do this the "right" way to pass this game like Mario?
+
+ End scene
+
+
+General
+Loved VO!
+Dissapointed  didn't get to go into world like intro at the end of game
+Really enjoyed
+Wish there was a run button
+Sluggish wanted to go faster, run
+additions
+A walk way with maybe with a pit
+Have Vo walk a path to show you where to go or you fall to your death
+		
+
+Kendrick Kiggins (2nd Timer)
+		
+intro cinema
+	increase volume of audio/add subtitles
+	camera turns are abrupt
+
+game
+	i like how the textures are set up, feels like a testing area
+	smooth transion between normal dialogue VO and Donas waiting for you part
+	Dona learns really quickly I like it, really intelligent
+	Aww she's mean (fell to death), I like it
+	I see not very talk -ative now
+	I really like the voice acting
+	Vo your awesome
+	Like the character design
+	Vo seems very "human" i guess
+	oh wow shes'(dona) getting mad at me now
+	DAAANG (audio: maybe your not as dumb as i thought you were)
+	Oh does Vo not talk unless you go up to her, that's cool, I just instictivly go up to her
+	I don't think (dona) she likes me very much
+	laughing and smiling while playin the game
+
+End scene
+	Did i just sign humanities death warrant?
+	
+General
+	game looks nice
+	well though out
+	didn't really find any bugs
+	just some polish on cinematic
+	
+		
+		
+		
+Karl Tompson (2nd Timer)
+intro cinema
+	take away cursor and button (just have a fade out of the end, if user clicks play should just make them watch it)
+	nice to have indications of what is being talked about, pictures about audio. people, places, stuff, etc
+	
+game
+		oh camera no longer clips
+		you are just on fire, sounds like it should only show up after you've done her commands neumerous of times
+		oh she already said something other than 1, that's a change of pace
+		having two options at the end makes the game so much better
+		Bug: door locked but it's green? feels like a bug
+		--The further along you got, give indications that you are getting closer to the end.
+2nd play
+		wow shes trying to trick me after the first door that's harsh
+				Addition: Start at either good, evil, or neutral and have her first intro audio indicate how she feels.
+		Bug: randomly character jumps up and down in the room, maybe it's the invisible button some how?
+		
+		
+end scene
+	
+	
+Genral:
+	Show that the place is 100% a program.
+		use idea of changing furniture in room passage based on donna's feelings.?
+	Add Pattern: I use the pattern follow, not follow, follow, not follow and I trick her.
+	
+-------------------------------------------------------------------------------------------------------------------------------		
+			
+Fixs to Do:
+
+	smooth out camera turn on Intro Cinemma
+	Make sure that when saving you are saving out the least amount of data (BE EFFICIENT)
+	Bug: if you walk partially through a door and then back it will close. you can get stuck
+	
+	
+	Wish there was a run button
+	Show that the place is 100% a program.
+		use idea of changing furniture in room passage based on donna's feelings.?
+	Make talking/dialogue occur while you are walking, so you're not just standing there idling.
+	Subtitles?
+	In Intro Cinema it would be nice to have indications of what is being talked about, pictures about audio. people, places, stuff, etc
+	
+-------------------------------------------------------------------------------------------------------------------------------
+Playtest with Jamie's kid -- Collin -- (1st timer)
+
+So it's a brain test is what I'm gathering.
+What did it say, I didn't hear that
+(is going through the doors DONA says to every time)
+Got falling animation. (Maybe is going against DONA? the paused button he was supposed to by sign directions)
+I like the dialogue
+I like how to doors turn red when you need to stop
+I like how the one robot tells you about the other robot
+DONA normal dialogue repeated.
+I like how green doors are transparent
+The hallways keep curving in the same way
+The robot keeps talking about stuff and it self
+texture makes it look like your in a scientific place
+I like diversity in praise
+He is following DONa but when he picks "correct" button he is getting bad ending.(BUG)
+I really liked it was a good game.
+
+---------------------------------------------
+Playtest Matthew Johnson (1st timer)
+
+enjoyed the game.
+	
