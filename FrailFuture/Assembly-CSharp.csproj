@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{3E891CD3-3213-22AD-734E-BD7C50941D81}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_4_6_1;UNITY_4_6;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>E:/THIS IS WHAT WE CARE ABOUT/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>E:/THIS IS WHAT WE CARE ABOUT/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Destroyed_city_FREE\Standard Assets\Water (Pro Only)\Sources\Scripts\Water.cs" />
+     <Compile Include="Assets\GUI\TriggerEnableText.cs" />
+     <Compile Include="Assets\ProCore\Prototype\Scripts\RebuildMeshOnWake.cs" />
+     <Compile Include="Assets\Scripts\Ai\AI.cs" />
+     <Compile Include="Assets\Scripts\Ai\AIEndingScore.cs" />
+     <Compile Include="Assets\Scripts\Ai\Brain.cs" />
+     <Compile Include="Assets\Scripts\Ai\BrainData.cs" />
+     <Compile Include="Assets\Scripts\Ai\MazeGenerator.cs" />
+     <Compile Include="Assets\Scripts\Ai\MazeGroup.cs" />
+     <Compile Include="Assets\Scripts\Ai\Neutrality.cs" />
+     <Compile Include="Assets\Scripts\Ai\NeutralityTypes.cs" />
+     <Compile Include="Assets\Scripts\Ai\Node.cs" />
+     <Compile Include="Assets\Scripts\Ai\PathWayFinder.cs" />
+     <Compile Include="Assets\Scripts\Ai\PlayerData.cs" />
+     <Compile Include="Assets\Scripts\AnimationControls\EndSceneDONAMoveScript.cs" />
+     <Compile Include="Assets\Scripts\AnimationControls\EndScript.cs" />
+     <Compile Include="Assets\Scripts\AnimationControls\FirstPersonLookAtTarget.cs" />
+     <Compile Include="Assets\Scripts\AnimationControls\ForceFPSWalkForward.cs" />
+     <Compile Include="Assets\Scripts\AnimationControls\LookAtTarget.cs" />
+     <Compile Include="Assets\Scripts\AnimationControls\MoveToTarget.cs" />
+     <Compile Include="Assets\Scripts\AnimationControls\RailPoint.cs" />
+     <Compile Include="Assets\Scripts\AnimationControls\RailPointManager.cs" />
+     <Compile Include="Assets\Scripts\AnimationControls\UpdateLookBySoundManager.cs" />
+     <Compile Include="Assets\Scripts\GUI\DialogueBox.cs" />
+     <Compile Include="Assets\Scripts\GUI\HUDManager.cs" />
+     <Compile Include="Assets\Scripts\GUI\Menu.cs" />
+     <Compile Include="Assets\Scripts\GUI\MenuManager.cs" />
+     <Compile Include="Assets\Scripts\GUI\ReturnToMainMenu.cs" />
+     <Compile Include="Assets\Scripts\GUI\ScreenFader.cs" />
+     <Compile Include="Assets\Scripts\GUI\UISound.cs" />
+     <Compile Include="Assets\Scripts\Game\Door.cs" />
+     <Compile Include="Assets\Scripts\Game\DummyNode.cs" />
+     <Compile Include="Assets\Scripts\Game\EndRoomEvents.cs" />
+     <Compile Include="Assets\Scripts\Game\EndTheGameButton.cs" />
+     <Compile Include="Assets\Scripts\Game\GUINode.cs" />
+     <Compile Include="Assets\Scripts\Game\GameData.cs" />
+     <Compile Include="Assets\Scripts\Game\HallwayDialogueDONATrigger.cs" />
+     <Compile Include="Assets\Scripts\Game\HallwayDialogueVOTrigger.cs" />
+     <Compile Include="Assets\Scripts\Game\MovementSoundManager.cs" />
+     <Compile Include="Assets\Scripts\Game\PathChoice.cs" />
+     <Compile Include="Assets\Scripts\Game\ResetButton.cs" />
+     <Compile Include="Assets\Scripts\Game\UpdateVoTexture.cs" />
+     <Compile Include="Assets\Scripts\Helper\AccessibleTransform.cs" />
+     <Compile Include="Assets\Scripts\Helper\FollowCamera.cs" />
+     <Compile Include="Assets\Scripts\Helper\GameObjectSpawner.cs" />
+     <Compile Include="Assets\Scripts\Helper\GrabInputFieldTextFromGC.cs" />
+     <Compile Include="Assets\Scripts\Helper\Graph.cs" />
+     <Compile Include="Assets\Scripts\Helper\RandomLerpMe.cs" />
+     <Compile Include="Assets\Scripts\Helper\SaveOriginalPos.cs" />
+     <Compile Include="Assets\Scripts\Helper\SizedList.cs" />
+     <Compile Include="Assets\Scripts\Helper\TeleportPlayerToOriginOnCollide.cs" />
+     <Compile Include="Assets\Scripts\Helper\Tools.cs" />
+     <Compile Include="Assets\Scripts\Managers\ChangeSettings.cs" />
+     <Compile Include="Assets\Scripts\Managers\GameControl.cs" />
+     <Compile Include="Assets\Scripts\Managers\NodeManager.cs" />
+     <Compile Include="Assets\Scripts\NotMine\CharacterMotor.cs" />
+     <Compile Include="Assets\Scripts\NotMine\FPSInputController.cs" />
+     <Compile Include="Assets\Scripts\NotMine\MouseLook.cs" />
+     <Compile Include="Assets\Scripts\NotMine\PlatformInputController.cs" />
+     <Compile Include="Assets\Scripts\Sound\SetIntroCineAudio.cs" />
+     <Compile Include="Assets\Scripts\Sound\SoundManager.cs" />
+     <Compile Include="Assets\Scripts\Sound\ThemeMusicPlayer.cs" />
+     <None Include="Assets\ProCore\Prototype\About\changelog.txt" />
+     <None Include="Assets\ProCore\Prototype\Shader\VertexBillboard.shader" />
+     <None Include="Assets\ProCore\Prototype\Shader\DiffuseVertexColor.shader" />
+     <None Include="Assets\ProCore\Shared\About\README.txt" />
+     <None Include="Assets\ProCore\Prototype\Shader\DiffuseVertexColorTransparency.shader" />
+     <None Include="Assets\ProCore\Prototype\Shader\UnlitColor.shader" />
+     <None Include="Assets\ProCore\Prototype\About\pc_AboutEntry_ProBuilder.txt" />
+     <None Include="Assets\Destroyed_city_FREE\Standard Assets\Water (Pro Only)\Sources\Shaders\FX-Water.shader" />
+     <None Include="Assets\ProCore\Prototype\Shader\UnlitColor-Overlay.shader" />
+     <None Include="Assets\ProCore\Prototype\Shader\DiffuseVertexColorEmission.shader" />
+     <None Include="Assets\Destroyed_city_FREE\Shaders\AlphaTest-DiffuseDoubleSide.shader" />
+     <None Include="Assets\ProCore\Prototype\About\Credits.txt" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>E:/THIS IS WHAT WE CARE ABOUT/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="ProBuilderCore">
+ <HintPath>E:/CapstoneRepo/FrailFuture/Assets/ProCore/Prototype/Classes/ProBuilderCore.dll</HintPath>
+ </Reference>
+ <Reference Include="ProBuilderMeshOps">
+ <HintPath>E:/CapstoneRepo/FrailFuture/Assets/ProCore/Prototype/Classes/ProBuilderMeshOps.dll</HintPath>
+ </Reference>
+ <Reference Include="ProCore">
+ <HintPath>E:/CapstoneRepo/FrailFuture/Assets/ProCore/Shared/Code/ProCore.dll</HintPath>
+ </Reference>
+ <Reference Include="SixBySeven">
+ <HintPath>E:/CapstoneRepo/FrailFuture/Assets/ProCore/Shared/Code/SixBySeven.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{CBB9AC0D-30E5-6783-ED16-F3C6E24F9F4F}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
+      <Project>{4C590E94-0BF8-9E35-F21E-7F6228874FCB}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>

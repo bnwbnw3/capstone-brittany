@@ -8,7 +8,6 @@ public class GrabInputFieldTextFromGC : MonoBehaviour {
     void Awake()
     {
         InputField field = this.gameObject.GetComponent<InputField>();
-        field.value = GameControl.control.LastKnownFileName;
-        field.text.text = GameControl.control.LastKnownFileName;
+        field.text = GameControl.control.LastKnownFileName;
     }
 }

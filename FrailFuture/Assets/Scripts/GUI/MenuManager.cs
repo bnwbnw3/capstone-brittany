@@ -50,7 +50,7 @@ public class MenuManager : MonoBehaviour
 
     public void LoadGame(InputField Field)
     {
-        string fileName = Field.text.text ;
+        string fileName = Field.text;
         GameControl.control.Load(fileName);
         if (GameControl.control.AbleToLoadGame)
         {
@@ -60,8 +60,7 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
-            Field.text.text = GameControl.control.LastKnownFileName;
-            Field.value = GameControl.control.LastKnownFileName;
+            Field.text = GameControl.control.LastKnownFileName;
         }
     }
 

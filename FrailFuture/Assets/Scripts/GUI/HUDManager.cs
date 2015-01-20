@@ -60,7 +60,7 @@ public class HUDManager : MonoBehaviour
     public void SaveGame(InputField Field)
     {
         Screen.lockCursor = false;
-        string fileName = Field.text.text;
+        string fileName = Field.text;
         GameControl.control.Save(fileName);
         GameControl.control.LastKnownFileName = fileName;
     }
