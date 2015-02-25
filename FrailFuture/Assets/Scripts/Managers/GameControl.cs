@@ -156,6 +156,14 @@ public class GameControl : MonoBehaviour
                 + "\n" + "Saved data to: " + Application.persistentDataPath + "/" + fileName);
         file.Close();
     }
+    public void SetUpQuickGame()
+    {
+        WasLoaded = AbleToLoadGame = true;
+        GameLongevity = 1;
+        _numOfHallways = 1;
+        _maxNumRows = _minNumRows;
+        _minNumPlayThroughs = 2;
+    }
     public void Load(string fileName)
     {
         fileName = fileName + fileNameExtension; 
