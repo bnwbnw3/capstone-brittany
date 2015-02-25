@@ -1,0 +1,47 @@
+Initialize engine version: 4.6.2f1 (bd99309c2ad7)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvd3dum.dll 9.18.13.1269]
+    Renderer: NVIDIA Quadro 2000M
+    Vendor:   NVIDIA
+    VRAM:     1998 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: E:\REPOS\CapstoneRepo\The Quick Game\FrailFutureQuickGame\FrailFutureQ_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading E:\REPOS\CapstoneRepo\The Quick Game\FrailFutureQuickGame\FrailFutureQ_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: E:\REPOS\CapstoneRepo\The Quick Game\FrailFutureQuickGame\FrailFutureQ_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading E:\REPOS\CapstoneRepo\The Quick Game\FrailFutureQuickGame\FrailFutureQ_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: E:\REPOS\CapstoneRepo\The Quick Game\FrailFutureQuickGame\FrailFutureQ_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading E:\REPOS\CapstoneRepo\The Quick Game\FrailFutureQuickGame\FrailFutureQ_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: E:\REPOS\CapstoneRepo\The Quick Game\FrailFutureQuickGame\FrailFutureQ_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading E:\REPOS\CapstoneRepo\The Quick Game\FrailFutureQuickGame\FrailFutureQ_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: E:\REPOS\CapstoneRepo\The Quick Game\FrailFutureQuickGame\FrailFutureQ_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading E:\REPOS\CapstoneRepo\The Quick Game\FrailFutureQuickGame\FrailFutureQ_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: E:\REPOS\CapstoneRepo\The Quick Game\FrailFutureQuickGame\FrailFutureQ_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading E:\REPOS\CapstoneRepo\The Quick Game\FrailFutureQuickGame\FrailFutureQ_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: E:\REPOS\CapstoneRepo\The Quick Game\FrailFutureQuickGame\FrailFutureQ_Data\Managed\ProBuilderCore.dll (this message is harmless)
+Loading E:\REPOS\CapstoneRepo\The Quick Game\FrailFutureQuickGame\FrailFutureQ_Data\Managed\ProBuilderCore.dll into Unity Child Domain
+Platform assembly: E:\REPOS\CapstoneRepo\The Quick Game\FrailFutureQuickGame\FrailFutureQ_Data\Managed\ProBuilderMeshOps.dll (this message is harmless)
+Loading E:\REPOS\CapstoneRepo\The Quick Game\FrailFutureQuickGame\FrailFutureQ_Data\Managed\ProBuilderMeshOps.dll into Unity Child Domain
+Platform assembly: E:\REPOS\CapstoneRepo\The Quick Game\FrailFutureQuickGame\FrailFutureQ_Data\Managed\ProCore.dll (this message is harmless)
+Loading E:\REPOS\CapstoneRepo\The Quick Game\FrailFutureQuickGame\FrailFutureQ_Data\Managed\ProCore.dll into Unity Child Domain
+Platform assembly: E:\REPOS\CapstoneRepo\The Quick Game\FrailFutureQuickGame\FrailFutureQ_Data\Managed\SixBySeven.dll (this message is harmless)
+Loading E:\REPOS\CapstoneRepo\The Quick Game\FrailFutureQuickGame\FrailFutureQ_Data\Managed\SixBySeven.dll into Unity Child Domain
+- Completed reload, in  0.064 seconds
+desktop: 1920x1080 50Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: E:\REPOS\CapstoneRepo\The Quick Game\FrailFutureQuickGame\FrailFutureQ_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: E:\REPOS\CapstoneRepo\The Quick Game\FrailFutureQuickGame\FrailFutureQ_Data\Managed\System.dll (this message is harmless)
+UnloadTime: 4.032751 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 43 unused Assets to reduce memory usage. Loaded Objects now: 2172.
+Total: 12.180439 ms (FindLiveObjects: 0.093278 ms CreateObjectMapping: 0.023833 ms MarkObjects: 11.493383 ms  DeleteObjects: 0.233812 ms)
+
+Stats: 
+Grade (User hit Ai perferred Endings) = 0
+Saved data to: C:/Users/bwaite/AppData/LocalLow/BNWGames/FrailFuture/TempSaveSpot3693.dat
+ 
+(Filename: C:/buildslave/unity/build/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 56)
+
